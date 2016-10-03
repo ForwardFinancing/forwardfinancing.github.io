@@ -37,3 +37,23 @@ $on-laptop:        800px;
 
 // Import partials from the `minima` theme.
 @import "minima";
+
+.site-header .wrapper {
+  background-color: #0B9B93;
+}
+
+.site-title, .site-title:visited {
+  color: white;
+}
+
+.site-nav .page-link {
+  color: white;
+}
+
+a {
+  color: #4C9242;
+
+  &:visited {
+    color: #428937;
+  }
+}
