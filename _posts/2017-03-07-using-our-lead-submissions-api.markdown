@@ -154,7 +154,10 @@ request to the `/v1/attachment` endpoint. For example, the POST url might be
 `https://api-staging.forwardfinancing.com/v1/attachment`. To submit multiple
 attachments, submit multiple requests.
 
-### Request
+You can send attachments by submitting either the raw binary of the attachment
+file, or by submitting a URL to the attachment.
+
+### Request - Sending the Attachment as a Binary
 
 #### URL Parameters
 
@@ -190,6 +193,36 @@ If for some reason, your system does not allow you to send a binary request
 body, you can Base 64 encode the binary into a string. If you choose this
 option, you must indicate the body is encoded by passing `encoded=true` in the
 URL parameters. Be sure to use strict Base 64 encoding, which encodes new line (`\n`) characters.
+
+### Request - Sending a URL to the attachment
+
+The same endpoint can be used to submit a URL to the attachment, rather than
+the raw binary.
+
+#### URL Parameters
+
+No URL parameters are needed, but optionally you can include the body params in
+the URL instead.
+
+#### Headers
+
+As with the other endpoints, you must include your API Key in the `api_key`
+header. The request body format is JSON, so the `Content-Type` should be
+`application/json`
+
+#### Body
+
+Three JSON body params are required. In addition to the filename and lead_id
+parameters, you provide an `attachment_url` parameter, which is a URL to the
+attachment you want to submit. For example:
+
+```
+{
+  "attachment_url": "https://yourwebsite.com/files/some_attachment.pdf",
+  "filename": "bank_statement.pdf",
+  "lead_id": "QTEQ.YJNyDzbMP0YX0D7qQr7PZcn7CU2E.TIIvFdZlr._ps.FDvDvwqGzI-c5FQ"
+}
+```
 
 ### Response
 
