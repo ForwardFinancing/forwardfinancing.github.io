@@ -139,19 +139,30 @@ request body is below:
         "zip": "00112"
       }
     },
+    // Attributes of their most recent previous loan on file.
     "loan_attributes": {
-      "company_name": "string",
-      "daily_payment_amount": 0,
-      "balance": 0
+      // The company's name that disbursed the loan
+      "company_name": "Wells Fargo",
+      // The Daily Payment Amount for the loan as a float
+      "daily_payment_amount": 25.00,
+      // The remaining balance on the loan
+      "balance": 15000.23
     },
     "application_attributes": {
+      // Does the applicant have a current loan?
       "has_current_loan": true,
+      // Is the applicant the owner of the business?
       "applicant_is_owner": true,
+      // What is the loan intended to be used for?
       "loan_use": "Debt Refinancing",
-      "capital_needed": "string",
-      "owner_1_percent_ownership": 0,
-      "owner_2_percent_ownership": 0,
-      "reference_id": "string"
+      // How much capital is needed?
+      "capital_needed": "50000",
+      // How much of the business does the primary owner own?
+      "owner_1_percent_ownership": 56,
+      // How much of the business does the secondary owner own (if applicable)?
+      "owner_2_percent_ownership": 9,
+      // Your internal ID for this submission
+      "reference_id": "ANYTHING_YOUWANT_AS_A_STRING"
     }
   }
 }
