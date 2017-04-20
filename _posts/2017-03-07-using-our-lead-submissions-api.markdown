@@ -60,59 +60,109 @@ request body is below:
 
 ```
 {
+  // All of the lead data is wrapped in the lead object
   "lead": {
+    // The contacts attributes are a list of contacts for the merchant, usually the owners
+    // If there are multiple contacts, provide multiple contact objects within the contacts_attributes list
     "contacts_attributes": [
       {
-        "first_name": "string",
-        "last_name": "string",
-        "email": "test@forwardfinancing.com",
-        "title": "string",
+        // The first name of a contact for the business
+        "first_name": "Erlich",
+        // The last name of a contact for the business
+        "last_name": "Bachman",
+        // The email of a contact for the business
+        "email": "erlich@piedpiper.com",
+        // The contact's title within the business
+        "title": "COO and Spiritual Advisor",
+        // The contact's date of birth
         "born_on": "2015-01-01",
+        // The contact's home phone number
         "home_phone": "6176781000",
+        // The contact's cell phone number
         "cell_phone": "6176781000",
+        // The contacts Social Security Number, with no spaces or dashes
         "ssn": "234345566",
+        // The date the contact became an owner in the business
         "ownership_date": "2015-01-01",
+        // The attributes for an owners current address are nested within the "current_address_attributes"
         "current_address_attributes": {
-          "street1": "string",
-          "street2": "string",
-          "city": "string",
-          "state": "AK",
+          // The first line of the contact's current address
+          "street1": "36 Bromfield St",
+          // The second line of the contact's current address
+          "street2": "Second Floor",
+          // The city of the contact's current address
+          "city": "Boston",
+          // The state of the contact's current address
+          "state": "MA",
+          // The zipcode of the contact's current address
           "zip": "00112"
         }
+        // If there were additional contacts, they would be listed here
       }
     ],
+    // The account attributes object describes the business applying for a loan. 
+    // Since it is an object ({}), not a list ([]) there can only be one.
     "account_attributes": {
-      "entity_type": "Sole Proprietor",
-      "name": "string",
+      // The entity_type of the business, all valid options can be found on this page:
+      // https://api.forwardfinancing.com/api_docs
+      // Expand the lead endpoint and click on "Model"
+      "entity_type": "Limited Liability Company (LLC)",
+      // The name of the business, also known as the "DBA" or "Trade Name"
+      "name": "Pied Piper",
+      // The date the business was started
       "started_on": "2015-01-01",
-      "legal_name": "string",
+      // The legal name of the business
+      "legal_name": "Pied Piper LLC",
+      // The phone number of the business
       "phone": "6176781000",
-      "email": "test@forwardfinancing.com",
-      "website": "string",
-      "fein": "string",
+      // The email of the business
+      "email": "support@piedpiper.com",
+      // The website for the business
+      "website": "https://www.piedpiper.com/",
+      // The Federal Employer Identification Number for the business, with no spaces or dashes
+      "fein": "000000000",
+      // The average monthly revenue bucket for the business, valid options can be found on the documentation page
       "monthly_revenue": "Less than $5,000",
-      "industry_name": "Laundry and dry cleaning services",
+      // The name of the industry the business is in
+      "industry_name": "Compression Algorithms",
+      // The attributes for the businesses current address are nested within the "current_address_attributes"
       "current_address_attributes": {
-        "street1": "string",
-        "street2": "string",
-        "city": "string",
-        "state": "AK",
+        // The first line of the business's current address
+        "street1": "36 Bromfield St",
+        // The second line of the business's current address
+        "street2": "Second Floor",
+        // The city of the business's current address
+        "city": "Boston",
+        // The state of the business's current address
+        "state": "MA",
+        // The zipcode of the business's current address
         "zip": "00112"
       }
     },
+    // Attributes of their most recent previous loan on file.
     "loan_attributes": {
-      "company_name": "string",
-      "daily_payment_amount": 0,
-      "balance": 0
+      // The company's name that disbursed the loan
+      "company_name": "Wells Fargo",
+      // The Daily Payment Amount for the loan as a float
+      "daily_payment_amount": 25.00,
+      // The remaining balance on the loan
+      "balance": 15000.23
     },
     "application_attributes": {
+      // Does the applicant have a current loan?
       "has_current_loan": true,
+      // Is the applicant the owner of the business?
       "applicant_is_owner": true,
+      // What is the loan intended to be used for?
       "loan_use": "Debt Refinancing",
-      "capital_needed": "string",
-      "owner_1_percent_ownership": 0,
-      "owner_2_percent_ownership": 0,
-      "reference_id": "string"
+      // How much capital is needed?
+      "capital_needed": "50000",
+      // How much of the business does the primary owner own?
+      "owner_1_percent_ownership": 56,
+      // How much of the business does the secondary owner own (if applicable)?
+      "owner_2_percent_ownership": 9,
+      // Your internal ID for this submission
+      "reference_id": "ANYTHING_YOUWANT_AS_A_STRING"
     }
   }
 }
