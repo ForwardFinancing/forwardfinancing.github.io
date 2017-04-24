@@ -3,13 +3,12 @@ layout: post
 title:  "Need for Speed: SQL vs. ActiveRecord"
 date:   2016-12-20 17:00:00 -0400
 categories: sql ruby rails efficiency speed
+author: Kelvin Ma
 ---
 
-#### **By Kelvin Ma, Jr. Software Engineer, Forward Financing** ####
+Here at Forward Financing, the ability to report on the state our portfolio is the backbone of our business and the primary tool for us to check on the health of our investments. The bulk of that load falls to our funding application, a Ruby on Rails application powered by Postgres.
 
-Here at Forward Financing, the ability to report on the state our portfolio is the backbone of our business and the primary tool for us to check on the health of our investments. The bulk of that load falls to our funding application, a Ruby on Rails application powered by Postgres. 
-
-The Tech team here recently brought the application in-house, after it had spent several years under the stewardship of consultants domestic and abroad. When it came under our umbrella in Spring 2016, reports were generated via ActiveRecord query, iterating through our portfolio of about 3,500 advances at the time and nearly 300k payments from merchants tied to those advances. 
+The Tech team here recently brought the application in-house, after it had spent several years under the stewardship of consultants domestic and abroad. When it came under our umbrella in Spring 2016, reports were generated via ActiveRecord query, iterating through our portfolio of about 3,500 advances at the time and nearly 300k payments from merchants tied to those advances.
 
 The code structure involved a Ruby module dedicated specifically for report calculations and a caching system on all associated records whose goal was to improve the processing time. Calculations for each advance would involve iterating through hundreds of its associated payments, along with any rejections or fees that may have been incurred along the way. Multiply that by a few thousand, and it's no surprise that a bottleneck was inevitable.
 
@@ -21,13 +20,13 @@ Though the code itself, by nature of it being Ruby, was semantically easy to rea
 
 At first, my team and I discussed a variety of solutions, such as porting out the reporting to another application in a more math-friendly language such as Elixir, to incorporating an already-in-use Solr solution. The overhead involved in getting everything up and running proved to be too large, and without any guarantee of a meaningful performance increase.
 
-In the end, we settled on a lower-level language solution — Custom SQL functions. By translating all of the calculations that were initially in the Ruby module to custom SQL functions, we were able to avoid iterating over hundreds of thousands records and perform a single query off the database. 
+In the end, we settled on a lower-level language solution — Custom SQL functions. By translating all of the calculations that were initially in the Ruby module to custom SQL functions, we were able to avoid iterating over hundreds of thousands records and perform a single query off the database.
 
 I first started by building out a query that would establish a base unit on which all of our other calculations would be based across the rest of the report. In this situation, it was the sum total of all of our payments for a scoped range set by the user:
 
 ```
 CREATE OR REPLACE FUNCTION total_payments_for_range(
-    payment_start_date date, 
+    payment_start_date date,
     payment_end_date date
 )
     RETURNS TABLE (
@@ -53,7 +52,7 @@ By structuring all of our subsequent calculations around this base query, we wer
 
 ```
 EXPLAIN ANALYZE SELECT * FROM generate_report(~~PARAMS~~);
-                  QUERY PLAN                                                          
+                  QUERY PLAN
 --------------------------------------------
  Function Scan on generate_report  (cost=0.25..10.25 rows=1000 width=1552) (actual time=3610.526..3610.817 rows=2995 loops=1)
  Planning time: 0.087 ms
@@ -64,4 +63,3 @@ EXPLAIN ANALYZE SELECT * FROM generate_report(~~PARAMS~~);
 Implementing the SQL query in to our existing Rails stack involved a trivial amount of overhead, setting up a sanitized query via Rails [`sanitize_sql_for_conditions`](http://api.rubyonrails.org/classes/ActiveRecord/Sanitization/ClassMethods.html#method-i-sanitize_sql_for_conditions) and building out a custom report record `Struct` to handle the query table.
 
 3.6 seconds. Down from 6 hours.
-
