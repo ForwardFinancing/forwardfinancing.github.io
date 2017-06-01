@@ -1,42 +1,44 @@
 ---
 layout: post
-title:  "Deploying create-react-app via S3"
+title:  "Integrating create-react-app with Elixir + Phoenix via Amazon S3"
 date:   2017-06-01 00:00:00 -0000
-categories: react devops
+categories: react elixir devops
 author: Zach Cotter
 ---
 
 At Forward Financing, we've started using
 [create-react-app][create-react-app]
-as a starter kit for all of our new React projects. Create-React-App is awesome
-because it comes with a one size fits all webpack configuration via the
+as a starter kit for all of our new
+[React][react]
+projects. create-react-app is awesome
+because it comes with a one-size-fits-all webpack configuration via the
 `react-scripts` package. All you have to do is `npm run build` and you have a
-ready to ship `/build` folder with minified production asset files.
+ready-to-ship `/build` folder with minified production asset files.
 
-The first project we did this with was a front-end for an application used internally to manage our user's roles and access to pages across our suite
-of apps. The backend server was our standalone single sign on service,
-written in Elixir+Phoenix, which had some existing server rendered views. An
+For our first project using create-react-app, we built an interface to manage our users' roles and access across our tech ecosystem. The backend server was our standalone single sign-on service,
+written in Elixir+Phoenix. An
 API for the new React frontend was built into that backend service.
 
 We had a few requirements for the deployment process of the React app:
 
-- The compiled javascript+css assets needed to be hosted somewhere cheaply and
+- The compiled JavaScript+CSS assets needed to be hosted somewhere cheaply and
 efficiently.
-- The react app need to live at a subresource of our existing single sign on
+- The React app need to live at a subresource of our existing single sign-on
 application, specifically `login.forwardfinancing.com/panel/user_roles`.
-- The react app needed to have a separate deploy process from the backend app
+- The React app needed to have a separate deploy process from the backend app
 
 ### Hosting the React build folder
 
-Lots of people seem to be using Express to host their react apps on a shared
-virtual server provider like Heroku or Digital Ocean. This doesn't make a lot of
-sense to me because you are paying ~$5/month just to serve up a few static
-files from a dedicated cloud server. I also am not a fan of using javascript as
-a backend web server. Instead, we decided to serve our assets from
-AWS S3+Cloudfront. This has a few big benefits:
+One popular option to quickly deploy React apps is to spin up an
+Express server on a shared
+virtual server provider like Heroku or DigitalOcean. This doesn't make a lot of
+sense because you are paying ~$5/month just to serve up a few static
+files from a dedicated cloud server. I also am not a fan of using JavaScript as
+a backend web server because it is single threaded. Instead, we decided to serve our assets from
+AWS S3+CloudFront. This has a few big benefits:
 
 - Amazon has already optimized those services to do one thing, and one thing
-only - serve up static files - exactly what we need.
+only - serve up static files.
 - Instead of paying for a whole server, you are only paying fractions of a cent
 to serve the files.
 - If someone wants to launch a DDoS attack against the service providing the
@@ -46,7 +48,7 @@ options to help prevent this.
 In order to host the assets cheaply and effectively on S3, we more or less
 followed [this helpful article.][helpful-article].
 
-1. Create a bucket on S3, and make that bucket public
+1. Create a bucket on S3 and make that bucket public
 
 2. Install aws-cli using your favorite package manager (brew install aws-cli)
 
@@ -62,22 +64,22 @@ followed [this helpful article.][helpful-article].
 {% endhighlight %}
 
 When you run `npm run deploy` after having run `npm run build`, the contents of
-the build folder will be synced to your s3 bucket.
+the build folder will be synced to your S3 bucket.
 
-Now your react app should be visible at
+Now your React app should be visible at
 `https://<your-bucket>.s3.amazonaws.com/index.html`
 
 ### Using the hosted assets in our backend app
 
-But we don't want to mount the react app at
+But we don't want to mount the React app at
 `https://<your-bucket>.s3.amazonaws.com/index.html`.
 
 We want to mount it within
 our backend service at `login.forwardfinancing.com/panel/user_roles`
 
-In order to mount the react app in our elixir backend we created a view layout
-which matched the `index.html` file in the s3 bucket. Next we replaced the
-relative asset URLs with the full URL to the file on s3:
+In order to mount the React app in our Elixir backend we created a view layout
+that matched the `index.html` file in the S3 bucket. Next we replaced the
+relative asset URLs with the full URL to the file on S3:
 
 {% highlight html %}
 <!-- In `web/templates/layout/react.html.eex` -->
@@ -103,7 +105,7 @@ relative asset URLs with the full URL to the file on s3:
 {% endhighlight %}
 
 Next, we modified the router file in our Elixir app to direct any requests to
-paths starting with `/panel/user_roles` to the new layout which loads the react
+paths starting with `/panel/user_roles` to the new layout which loads the React
 app:
 
 {% highlight elixir %}
@@ -123,23 +125,23 @@ end
 {% endhighlight %}
 
 Now, when a user navigates to any path starting with `/panel/user_roles`, the
-React layout renders a page with your React app. At that point, react router
+React layout renders a page with your React app. At that point, React router
 takes over, so no more requests will be made to the backend other than those
-for the API until the user refreshes the page or navigates out of the react
+for the API until the user refreshes the page or navigates out of the React
 part of your frontend.  
 
 
 ### Handling the asset manifest fingerprints
 
 You'll notice that the compiled asset files produced by `create-react-app`
-include an 8 digit fingerprint, like `main.123abc45.css`. This fingerprint
+include an 8-digit fingerprint, like `main.123abc45.css`. This fingerprint
 changes every time you make a change to your app and recompile it. The
 goal of this is to indicate to caching systems when the assets change that their
 cache needs to be invalidated. So, we need our backend to make a request to
-s3 for the asset manifest (which has a constant URL) in order to make sure we
+S3 for the asset manifest (which has a constant URL) in order to make sure we
 are pointing to the correct version of our assets.
 
-We created a small service module in our elixir app to contain this logic:
+We created a small service module in our Elixir app to contain this logic:
 
 {% highlight elixir %}
 defmodule YourApp.AssetManifestFetcher do
@@ -150,8 +152,8 @@ defmodule YourApp.AssetManifestFetcher do
   use HTTPoison.Base
 
   @doc """
-    The url for the s3 asset manifest file
-    Takes the domain of the s3 bucket
+    The url for the S3 asset manifest file
+    Takes the domain of the S3 bucket
   """
   def process_url(url) do
     "#{url}/asset-manifest.json"
@@ -238,7 +240,7 @@ asset paths:
 
 {% endhighlight %}
 
-This setup adds a few milliseconds to the initial react load time as the round
+This setup adds a few milliseconds to the initial React load time as the round
 trip request is made to S3 for the asset manifest. That request should probably
 be cached in higher volume production environments.
 
@@ -255,7 +257,7 @@ A further spin on that would be to mimic Heroku's "Review Apps" feature by
 deploying assets to a folder within the bucket with the same name as the
 current branch. This would be as simple as:
 
-`aws s3 sync build/$(git branch) s3://your-bucket --region your-region`
+`aws s3 sync build/$(git symbolic-ref --short HEAD) s3://your-bucket --region your-region`
 
 Then, reviewers could preview your changes just by going to:
 `https://<your-bucket>.s3.amazonaws.com/your-branch/index.html`
@@ -263,5 +265,6 @@ Then, reviewers could preview your changes just by going to:
 The staging and production environments could point to the assets in the folders
 for develop and master.
 
+[react]: https://facebook.github.io/react/
 [create-react-app]: https://github.com/facebookincubator/create-react-app
 [helpful-article]: https://medium.com/@omgwtfmarc/deploying-create-react-app-to-s3-or-cloudfront-48dae4ce0af

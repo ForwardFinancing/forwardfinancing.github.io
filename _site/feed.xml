@@ -4,11 +4,280 @@
     <title>ForwardFinancing Engineering Blog</title>
     <description>Technical content being created and curated from the technology group at ForwardFinancing.
 </description>
-    <link>/</link>
-    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 01 Jun 2017 15:07:22 -0400</pubDate>
-    <lastBuildDate>Thu, 01 Jun 2017 15:07:22 -0400</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 01 Jun 2017 15:35:24 -0400</pubDate>
+    <lastBuildDate>Thu, 01 Jun 2017 15:35:24 -0400</lastBuildDate>
     <generator>Jekyll v3.4.1</generator>
+    
+      <item>
+        <title>Integrating create-react-app with Elixir + Phoenix via Amazon S3</title>
+        <description>&lt;p&gt;At Forward Financing, we’ve started using
+&lt;a href=&quot;https://github.com/facebookincubator/create-react-app&quot;&gt;create-react-app&lt;/a&gt;
+as a starter kit for all of our new
+&lt;a href=&quot;https://facebook.github.io/react/&quot;&gt;React&lt;/a&gt;
+projects. create-react-app is awesome
+because it comes with a one-size-fits-all webpack configuration via the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;react-scripts&lt;/code&gt; package. All you have to do is &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run build&lt;/code&gt; and you have a
+ready-to-ship &lt;code class=&quot;highlighter-rouge&quot;&gt;/build&lt;/code&gt; folder with minified production asset files.&lt;/p&gt;
+
+&lt;p&gt;For our first project using create-react-app, we built an interface to manage our users’ roles and access across our tech ecosystem. The backend server was our standalone single sign-on service,
+written in Elixir+Phoenix. An
+API for the new React frontend was built into that backend service.&lt;/p&gt;
+
+&lt;p&gt;We had a few requirements for the deployment process of the React app:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The compiled JavaScript+CSS assets needed to be hosted somewhere cheaply and
+efficiently.&lt;/li&gt;
+  &lt;li&gt;The React app need to live at a subresource of our existing single sign-on
+application, specifically &lt;code class=&quot;highlighter-rouge&quot;&gt;login.forwardfinancing.com/panel/user_roles&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;The React app needed to have a separate deploy process from the backend app&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;hosting-the-react-build-folder&quot;&gt;Hosting the React build folder&lt;/h3&gt;
+
+&lt;p&gt;One popular option to quickly deploy React apps is to spin up an
+Express server on a shared
+virtual server provider like Heroku or DigitalOcean. This doesn’t make a lot of
+sense because you are paying ~$5/month just to serve up a few static
+files from a dedicated cloud server. I also am not a fan of using JavaScript as
+a backend web server because it is single threaded. Instead, we decided to serve our assets from
+AWS S3+CloudFront. This has a few big benefits:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Amazon has already optimized those services to do one thing, and one thing
+only - serve up static files.&lt;/li&gt;
+  &lt;li&gt;Instead of paying for a whole server, you are only paying fractions of a cent
+to serve the files.&lt;/li&gt;
+  &lt;li&gt;If someone wants to launch a DDoS attack against the service providing the
+assets, they will have to attack Amazon instead of you. S3 offers configuration
+options to help prevent this.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In order to host the assets cheaply and effectively on S3, we more or less
+followed &lt;a href=&quot;https://medium.com/@omgwtfmarc/deploying-create-react-app-to-s3-or-cloudfront-48dae4ce0af&quot;&gt;this helpful article.&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create a bucket on S3 and make that bucket public&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Install aws-cli using your favorite package manager (brew install aws-cli)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Run aws configure with your credentials&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add the following to your &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; scripts:&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;deploy&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;aws s3 sync build/ s3://your-bucket --region your-region&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;When you run &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run deploy&lt;/code&gt; after having run &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run build&lt;/code&gt;, the contents of
+the build folder will be synced to your S3 bucket.&lt;/p&gt;
+
+&lt;p&gt;Now your React app should be visible at
+&lt;code class=&quot;highlighter-rouge&quot;&gt;https://&amp;lt;your-bucket&amp;gt;.s3.amazonaws.com/index.html&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;using-the-hosted-assets-in-our-backend-app&quot;&gt;Using the hosted assets in our backend app&lt;/h3&gt;
+
+&lt;p&gt;But we don’t want to mount the React app at
+&lt;code class=&quot;highlighter-rouge&quot;&gt;https://&amp;lt;your-bucket&amp;gt;.s3.amazonaws.com/index.html&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;We want to mount it within
+our backend service at &lt;code class=&quot;highlighter-rouge&quot;&gt;login.forwardfinancing.com/panel/user_roles&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;In order to mount the React app in our Elixir backend we created a view layout
+that matched the &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; file in the S3 bucket. Next we replaced the
+relative asset URLs with the full URL to the file on S3:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- In `web/templates/layout/react.html.eex` --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- ...more head elements here... --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://&amp;lt;your-bucket&amp;gt;.s3.amazonaws.com/static/css/main.123abc45.css&quot;&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- This is the mount point for the react app --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;react&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script
+      &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://&amp;lt;your-bucket&amp;gt;.s3.amazonaws.com/static/js/main.123abc45.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Next, we modified the router file in our Elixir app to direct any requests to
+paths starting with &lt;code class=&quot;highlighter-rouge&quot;&gt;/panel/user_roles&lt;/code&gt; to the new layout which loads the React
+app:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;YourApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Router&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;YourApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Web&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:router&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:react&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;plug&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:put_layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;YourApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;LayoutView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:react&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/panel&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;YourApp&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;pipe_through&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:react&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/user_roles/*path&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;YourController&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:index&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now, when a user navigates to any path starting with &lt;code class=&quot;highlighter-rouge&quot;&gt;/panel/user_roles&lt;/code&gt;, the
+React layout renders a page with your React app. At that point, React router
+takes over, so no more requests will be made to the backend other than those
+for the API until the user refreshes the page or navigates out of the React
+part of your frontend.&lt;/p&gt;
+
+&lt;h3 id=&quot;handling-the-asset-manifest-fingerprints&quot;&gt;Handling the asset manifest fingerprints&lt;/h3&gt;
+
+&lt;p&gt;You’ll notice that the compiled asset files produced by &lt;code class=&quot;highlighter-rouge&quot;&gt;create-react-app&lt;/code&gt;
+include an 8-digit fingerprint, like &lt;code class=&quot;highlighter-rouge&quot;&gt;main.123abc45.css&lt;/code&gt;. This fingerprint
+changes every time you make a change to your app and recompile it. The
+goal of this is to indicate to caching systems when the assets change that their
+cache needs to be invalidated. So, we need our backend to make a request to
+S3 for the asset manifest (which has a constant URL) in order to make sure we
+are pointing to the correct version of our assets.&lt;/p&gt;
+
+&lt;p&gt;We created a small service module in our Elixir app to contain this logic:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;YourApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;AssetManifestFetcher&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;@moduledoc&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&quot;&quot;
+    Goes to S3 and downloads the asset manifest file, which we use to find
+    the fingerprints for the frontend asset.
+  &quot;&quot;&quot;&lt;/span&gt;
+  &lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HTTPoison&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
+
+  &lt;span class=&quot;nv&quot;&gt;@doc&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&quot;&quot;
+    The url for the S3 asset manifest file
+    Takes the domain of the S3 bucket
+  &quot;&quot;&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/asset-manifest.json&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;nv&quot;&gt;@doc&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&quot;&quot;
+    Turns the response body from a JSON string to a Map
+  &quot;&quot;&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process_response_body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Poison&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decode!&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;nv&quot;&gt;@doc&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&quot;&quot;
+    Makes the request for the asset manifest and returns it as a hash
+  &quot;&quot;&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_manifest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;domain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;get!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;domain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;We then used this service module in our controller to get the asset urls and pass them to the view:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;YourApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;YourController&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;YourApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Web&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:controller&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# We define these variables in config so they can quickly be swapped out in&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;#  production and so that its easy to stub over them in test&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;#  (Great article about that test concept here: http://blog.plataformatec.com.br/2015/10/mocks-and-explicit-contracts/)&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# Returns a String with your S3 url&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;@domain&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:your_app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:frontend_asset_domain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# Returns the service module (YourApp.AssetManifestFetcher)&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;@asset_manifest_fetcher&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:your_app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:asset_manifest_fetcher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;nv&quot;&gt;@doc&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&quot;&quot;
+  Get the asset urls from the asset manifest and pass them to the layout.
+  &quot;&quot;&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;manifest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;@asset_manifest_fetcher&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_manifest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;@domain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;ss&quot;&gt;:index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;%{&lt;/span&gt;
+        &lt;span class=&quot;ss&quot;&gt;css_asset:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;asset_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;manifest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;main.css&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+        &lt;span class=&quot;ss&quot;&gt;js_asset:&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;asset_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;manifest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;main.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;# Given the downloaded asset-manifest, return the full URL to the&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# fingerprinted asset.&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# For example, &quot;main.css&quot; becomes:&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# &quot;http://something.s3.us-east-2.amazonaws.com/static/css/main.441e57a7.css&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;defp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;asset_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;manifest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;asset_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;@domain&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;manifest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;asset_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Next, we modified the layout to reference the new variables instead of hard coded
+asset paths:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-erb&quot; data-lang=&quot;erb&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- In `web/templates/layout/react.html.eex` --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- ...more head elements here... --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@css_asset&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- This is the mount point for the react app --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;react&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@js_asset&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This setup adds a few milliseconds to the initial React load time as the round
+trip request is made to S3 for the asset manifest. That request should probably
+be cached in higher volume production environments.&lt;/p&gt;
+
+&lt;h3 id=&quot;future-steps&quot;&gt;Future Steps&lt;/h3&gt;
+
+&lt;p&gt;One feature that would be cool to add to the React build process would be
+the ability to deploy compiled assets to different environments. This would
+probably involve having the &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run deploy&lt;/code&gt; command take an argument with the
+environment name (ie staging, production), and post the assets to the S3 bucket
+in a folder with that name. Then the backend staging and production environments
+could point to the correct folder, and the assets for each would be separate.&lt;/p&gt;
+
+&lt;p&gt;A further spin on that would be to mimic Heroku’s “Review Apps” feature by
+deploying assets to a folder within the bucket with the same name as the
+current branch. This would be as simple as:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;aws s3 sync build/$(git symbolic-ref --short HEAD) s3://your-bucket --region your-region&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then, reviewers could preview your changes just by going to:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;https://&amp;lt;your-bucket&amp;gt;.s3.amazonaws.com/your-branch/index.html&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The staging and production environments could point to the assets in the folders
+for develop and master.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 31 May 2017 20:00:00 -0400</pubDate>
+        <link>http://localhost:4000/react/elixir/devops/2017/06/01/deploying-create-react-app-to-s3.html</link>
+        <guid isPermaLink="true">http://localhost:4000/react/elixir/devops/2017/06/01/deploying-create-react-app-to-s3.html</guid>
+        
+        
+        <category>react</category>
+        
+        <category>elixir</category>
+        
+        <category>devops</category>
+        
+      </item>
     
       <item>
         <title>Five Lessons Learned During My First Year as a Technical Director</title>
@@ -95,8 +364,8 @@ are to be accomplished, it all starts with listening.&lt;/p&gt;
 &lt;p&gt;Thanks for reading!&lt;/p&gt;
 </description>
         <pubDate>Mon, 08 May 2017 12:00:00 -0400</pubDate>
-        <link>/culture/management/leadership/2017/05/08/five-lessons-learned.html</link>
-        <guid isPermaLink="true">/culture/management/leadership/2017/05/08/five-lessons-learned.html</guid>
+        <link>http://localhost:4000/culture/management/leadership/2017/05/08/five-lessons-learned.html</link>
+        <guid isPermaLink="true">http://localhost:4000/culture/management/leadership/2017/05/08/five-lessons-learned.html</guid>
         
         
         <category>culture</category>
@@ -175,8 +444,8 @@ end
 &lt;p&gt;TL;DR: Don’t put multiple transactions into a single Sidekiq job!&lt;/p&gt;
 </description>
         <pubDate>Fri, 21 Apr 2017 15:00:00 -0400</pubDate>
-        <link>/sidekiq/activerecord/ruby/rails/2017/04/21/juggling-sidekiq-transactions.html</link>
-        <guid isPermaLink="true">/sidekiq/activerecord/ruby/rails/2017/04/21/juggling-sidekiq-transactions.html</guid>
+        <link>http://localhost:4000/sidekiq/activerecord/ruby/rails/2017/04/21/juggling-sidekiq-transactions.html</link>
+        <guid isPermaLink="true">http://localhost:4000/sidekiq/activerecord/ruby/rails/2017/04/21/juggling-sidekiq-transactions.html</guid>
         
         
         <category>sidekiq</category>
@@ -278,8 +547,8 @@ on Heroku was definitely not expected, but got us over the finish line.&lt;/p&gt
 &lt;p&gt;Thanks for reading!&lt;/p&gt;
 </description>
         <pubDate>Wed, 15 Mar 2017 12:00:00 -0400</pubDate>
-        <link>/elixir/r/heroku/2017/03/15/elixir-and-r-on-heroku.html</link>
-        <guid isPermaLink="true">/elixir/r/heroku/2017/03/15/elixir-and-r-on-heroku.html</guid>
+        <link>http://localhost:4000/elixir/r/heroku/2017/03/15/elixir-and-r-on-heroku.html</link>
+        <guid isPermaLink="true">http://localhost:4000/elixir/r/heroku/2017/03/15/elixir-and-r-on-heroku.html</guid>
         
         
         <category>elixir</category>
@@ -577,8 +846,8 @@ into our system.&lt;/p&gt;
 &lt;h4 id=&quot;happy-coding-if-you-encounter-any-issues-or-need-help-please-dont-hesitate-to-contact-us&quot;&gt;Happy Coding! If you encounter any issues or need help please don’t hesitate to contact us!&lt;/h4&gt;
 </description>
         <pubDate>Tue, 07 Mar 2017 11:00:00 -0500</pubDate>
-        <link>/api/2017/03/07/using-our-lead-submissions-api.html</link>
-        <guid isPermaLink="true">/api/2017/03/07/using-our-lead-submissions-api.html</guid>
+        <link>http://localhost:4000/api/2017/03/07/using-our-lead-submissions-api.html</link>
+        <guid isPermaLink="true">http://localhost:4000/api/2017/03/07/using-our-lead-submissions-api.html</guid>
         
         
         <category>api</category>
@@ -646,8 +915,8 @@ into our system.&lt;/p&gt;
 &lt;p&gt;3.6 seconds. Down from 6 hours.&lt;/p&gt;
 </description>
         <pubDate>Tue, 20 Dec 2016 16:00:00 -0500</pubDate>
-        <link>/sql/ruby/rails/efficiency/speed/2016/12/20/sql-functions-vs-active-record.html</link>
-        <guid isPermaLink="true">/sql/ruby/rails/efficiency/speed/2016/12/20/sql-functions-vs-active-record.html</guid>
+        <link>http://localhost:4000/sql/ruby/rails/efficiency/speed/2016/12/20/sql-functions-vs-active-record.html</link>
+        <guid isPermaLink="true">http://localhost:4000/sql/ruby/rails/efficiency/speed/2016/12/20/sql-functions-vs-active-record.html</guid>
         
         
         <category>sql</category>
@@ -680,8 +949,8 @@ into our system.&lt;/p&gt;
 
 </description>
         <pubDate>Fri, 30 Sep 2016 14:12:09 -0400</pubDate>
-        <link>/jekyll/update/2016/09/30/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">/jekyll/update/2016/09/30/welcome-to-jekyll.html</guid>
+        <link>http://localhost:4000/jekyll/update/2016/09/30/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://localhost:4000/jekyll/update/2016/09/30/welcome-to-jekyll.html</guid>
         
         
         <category>jekyll</category>

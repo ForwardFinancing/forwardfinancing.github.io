@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Deploying create-react-app via S3</title>
-  <meta name="description" content="At Forward Financing, we’ve started using create-react-app as a starter kit for all of our new React projects. Create-React-App is awesome because it comes w...">
+  <title>Integrating create-react-app with Elixir + Phoenix via Amazon S3</title>
+  <meta name="description" content="At Forward Financing, we’ve started using create-react-app as a starter kit for all of our new React projects. create-react-app is awesome because it comes w...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/react/devops/2017/06/01/deploying-create-react-app-to-s3.html">
+  <link rel="canonical" href="http://localhost:4000/react/elixir/devops/2017/06/01/deploying-create-react-app-to-s3.html">
   <link rel="alternate" type="application/rss+xml" title="ForwardFinancing Engineering Blog" href="/feed.xml">
   
   
@@ -61,45 +61,47 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Deploying create-react-app via S3</h1>
+    <h1 class="post-title" itemprop="name headline">Integrating create-react-app with Elixir + Phoenix via Amazon S3</h1>
     <p class="post-meta"><time datetime="2017-05-31T20:00:00-04:00" itemprop="datePublished">Jun 1, 2017</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Zach Cotter</span></span></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
     <p>At Forward Financing, we’ve started using
 <a href="https://github.com/facebookincubator/create-react-app">create-react-app</a>
-as a starter kit for all of our new React projects. Create-React-App is awesome
-because it comes with a one size fits all webpack configuration via the
+as a starter kit for all of our new
+<a href="https://facebook.github.io/react/">React</a>
+projects. create-react-app is awesome
+because it comes with a one-size-fits-all webpack configuration via the
 <code class="highlighter-rouge">react-scripts</code> package. All you have to do is <code class="highlighter-rouge">npm run build</code> and you have a
-ready to ship <code class="highlighter-rouge">/build</code> folder with minified production asset files.</p>
+ready-to-ship <code class="highlighter-rouge">/build</code> folder with minified production asset files.</p>
 
-<p>The first project we did this with was a front-end for an application used internally to manage our user’s roles and access to pages across our suite
-of apps. The backend server was our standalone single sign on service,
-written in Elixir+Phoenix, which had some existing server rendered views. An
+<p>For our first project using create-react-app, we built an interface to manage our users’ roles and access across our tech ecosystem. The backend server was our standalone single sign-on service,
+written in Elixir+Phoenix. An
 API for the new React frontend was built into that backend service.</p>
 
 <p>We had a few requirements for the deployment process of the React app:</p>
 
 <ul>
-  <li>The compiled javascript+css assets needed to be hosted somewhere cheaply and
+  <li>The compiled JavaScript+CSS assets needed to be hosted somewhere cheaply and
 efficiently.</li>
-  <li>The react app need to live at a subresource of our existing single sign on
+  <li>The React app need to live at a subresource of our existing single sign-on
 application, specifically <code class="highlighter-rouge">login.forwardfinancing.com/panel/user_roles</code>.</li>
-  <li>The react app needed to have a separate deploy process from the backend app</li>
+  <li>The React app needed to have a separate deploy process from the backend app</li>
 </ul>
 
 <h3 id="hosting-the-react-build-folder">Hosting the React build folder</h3>
 
-<p>Lots of people seem to be using Express to host their react apps on a shared
-virtual server provider like Heroku or Digital Ocean. This doesn’t make a lot of
-sense to me because you are paying ~$5/month just to serve up a few static
-files from a dedicated cloud server. I also am not a fan of using javascript as
-a backend web server. Instead, we decided to serve our assets from
-AWS S3+Cloudfront. This has a few big benefits:</p>
+<p>One popular option to quickly deploy React apps is to spin up an
+Express server on a shared
+virtual server provider like Heroku or DigitalOcean. This doesn’t make a lot of
+sense because you are paying ~$5/month just to serve up a few static
+files from a dedicated cloud server. I also am not a fan of using JavaScript as
+a backend web server because it is single threaded. Instead, we decided to serve our assets from
+AWS S3+CloudFront. This has a few big benefits:</p>
 
 <ul>
   <li>Amazon has already optimized those services to do one thing, and one thing
-only - serve up static files - exactly what we need.</li>
+only - serve up static files.</li>
   <li>Instead of paying for a whole server, you are only paying fractions of a cent
 to serve the files.</li>
   <li>If someone wants to launch a DDoS attack against the service providing the
@@ -112,7 +114,7 @@ followed <a href="https://medium.com/@omgwtfmarc/deploying-create-react-app-to-s
 
 <ol>
   <li>
-    <p>Create a bucket on S3, and make that bucket public</p>
+    <p>Create a bucket on S3 and make that bucket public</p>
   </li>
   <li>
     <p>Install aws-cli using your favorite package manager (brew install aws-cli)</p>
@@ -132,22 +134,22 @@ followed <a href="https://medium.com/@omgwtfmarc/deploying-create-react-app-to-s
 </span><span class="p">}</span></code></pre></figure>
 
 <p>When you run <code class="highlighter-rouge">npm run deploy</code> after having run <code class="highlighter-rouge">npm run build</code>, the contents of
-the build folder will be synced to your s3 bucket.</p>
+the build folder will be synced to your S3 bucket.</p>
 
-<p>Now your react app should be visible at
+<p>Now your React app should be visible at
 <code class="highlighter-rouge">https://&lt;your-bucket&gt;.s3.amazonaws.com/index.html</code></p>
 
 <h3 id="using-the-hosted-assets-in-our-backend-app">Using the hosted assets in our backend app</h3>
 
-<p>But we don’t want to mount the react app at
+<p>But we don’t want to mount the React app at
 <code class="highlighter-rouge">https://&lt;your-bucket&gt;.s3.amazonaws.com/index.html</code>.</p>
 
 <p>We want to mount it within
 our backend service at <code class="highlighter-rouge">login.forwardfinancing.com/panel/user_roles</code></p>
 
-<p>In order to mount the react app in our elixir backend we created a view layout
-which matched the <code class="highlighter-rouge">index.html</code> file in the s3 bucket. Next we replaced the
-relative asset URLs with the full URL to the file on s3:</p>
+<p>In order to mount the React app in our Elixir backend we created a view layout
+that matched the <code class="highlighter-rouge">index.html</code> file in the S3 bucket. Next we replaced the
+relative asset URLs with the full URL to the file on S3:</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- In `web/templates/layout/react.html.eex` --&gt;</span>
 <span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -170,7 +172,7 @@ relative asset URLs with the full URL to the file on s3:</p>
 <span class="nt">&lt;/html&gt;</span></code></pre></figure>
 
 <p>Next, we modified the router file in our Elixir app to direct any requests to
-paths starting with <code class="highlighter-rouge">/panel/user_roles</code> to the new layout which loads the react
+paths starting with <code class="highlighter-rouge">/panel/user_roles</code> to the new layout which loads the React
 app:</p>
 
 <figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defmodule</span> <span class="no">YourApp</span><span class="o">.</span><span class="no">Router</span> <span class="k">do</span>
@@ -188,22 +190,22 @@ app:</p>
 <span class="k">end</span></code></pre></figure>
 
 <p>Now, when a user navigates to any path starting with <code class="highlighter-rouge">/panel/user_roles</code>, the
-React layout renders a page with your React app. At that point, react router
+React layout renders a page with your React app. At that point, React router
 takes over, so no more requests will be made to the backend other than those
-for the API until the user refreshes the page or navigates out of the react
+for the API until the user refreshes the page or navigates out of the React
 part of your frontend.</p>
 
 <h3 id="handling-the-asset-manifest-fingerprints">Handling the asset manifest fingerprints</h3>
 
 <p>You’ll notice that the compiled asset files produced by <code class="highlighter-rouge">create-react-app</code>
-include an 8 digit fingerprint, like <code class="highlighter-rouge">main.123abc45.css</code>. This fingerprint
+include an 8-digit fingerprint, like <code class="highlighter-rouge">main.123abc45.css</code>. This fingerprint
 changes every time you make a change to your app and recompile it. The
 goal of this is to indicate to caching systems when the assets change that their
 cache needs to be invalidated. So, we need our backend to make a request to
-s3 for the asset manifest (which has a constant URL) in order to make sure we
+S3 for the asset manifest (which has a constant URL) in order to make sure we
 are pointing to the correct version of our assets.</p>
 
-<p>We created a small service module in our elixir app to contain this logic:</p>
+<p>We created a small service module in our Elixir app to contain this logic:</p>
 
 <figure class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="k">defmodule</span> <span class="no">YourApp</span><span class="o">.</span><span class="no">AssetManifestFetcher</span> <span class="k">do</span>
   <span class="nv">@moduledoc</span> <span class="sd">"""
@@ -213,8 +215,8 @@ are pointing to the correct version of our assets.</p>
   <span class="kn">use</span> <span class="no">HTTPoison</span><span class="o">.</span><span class="no">Base</span>
 
   <span class="nv">@doc</span> <span class="sd">"""
-    The url for the s3 asset manifest file
-    Takes the domain of the s3 bucket
+    The url for the S3 asset manifest file
+    Takes the domain of the S3 bucket
   """</span>
   <span class="k">def</span> <span class="n">process_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">do</span>
     <span class="sd">"</span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="s2">/asset-manifest.json"</span>
@@ -292,7 +294,7 @@ asset paths:</p>
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></figure>
 
-<p>This setup adds a few milliseconds to the initial react load time as the round
+<p>This setup adds a few milliseconds to the initial React load time as the round
 trip request is made to S3 for the asset manifest. That request should probably
 be cached in higher volume production environments.</p>
 
@@ -309,7 +311,7 @@ could point to the correct folder, and the assets for each would be separate.</p
 deploying assets to a folder within the bucket with the same name as the
 current branch. This would be as simple as:</p>
 
-<p><code class="highlighter-rouge">aws s3 sync build/$(git branch) s3://your-bucket --region your-region</code></p>
+<p><code class="highlighter-rouge">aws s3 sync build/$(git symbolic-ref --short HEAD) s3://your-bucket --region your-region</code></p>
 
 <p>Then, reviewers could preview your changes just by going to:
 <code class="highlighter-rouge">https://&lt;your-bucket&gt;.s3.amazonaws.com/your-branch/index.html</code></p>
