@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>ForwardFinancing Engineering Blog</title>
-  <meta name="description" content="Technical content being created and curated from the technology group at ForwardFinancing.">
+  <title>Sidekiq Gotchas: Juggling Multiple Database Commits in Sidekiq Transactions</title>
+  <meta name="description" content="The Issue">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="/">
+  <link rel="canonical" href="/sidekiq/activerecord/ruby/rails/2017/04/21/juggling-sidekiq-transactions.html">
   <link rel="alternate" type="application/rss+xml" title="ForwardFinancing Engineering Blog" href="/feed.xml">
   
   
@@ -70,75 +70,83 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Sidekiq Gotchas: Juggling Multiple Database Commits in Sidekiq Transactions</h1>
+    <p class="post-meta"><time datetime="2017-04-21T15:00:00-04:00" itemprop="datePublished">Apr 21, 2017</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Kelvin Ma</span></span></p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">May 8, 2017</span>
+  <div class="post-content" itemprop="articleBody">
+    <h2 id="the-issue">The Issue</h2>
 
-        <h2>
-          <a class="post-link" href="/culture/management/leadership/2017/05/08/five-lessons-learned.html">Five Lessons Learned During My First Year as a Technical Director</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 21, 2017</span>
+<p>In one of our applications, we have a feature that generates a schedule of payments for our merchants’ accounts. In these accounts, balances change, payment amounts may fluctuate, fees are incurred, terms can alter —- lots of things that can throw off the duration of a daily payment schedule. To solve this, our initial solution was to handle the recalculation via Sidekiq Worker, handling all of the different factors for potentially hundreds of thousands of records asynchronously. The worker would purge any outdated records, and then regenerate a schedule based on the new criteria for the account. Pretty straightforward, right?</p>
 
-        <h2>
-          <a class="post-link" href="/sidekiq/activerecord/ruby/rails/2017/04/21/juggling-sidekiq-transactions.html">Sidekiq Gotchas: Juggling Multiple Database Commits in Sidekiq Transactions</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 15, 2017</span>
+<p>It looked something like this:</p>
 
-        <h2>
-          <a class="post-link" href="/elixir/r/heroku/2017/03/15/elixir-and-r-on-heroku.html">Getting Elixir and R working on Heroku</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 7, 2017</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>def rebalance_schedule(starting_date)
+  delete_payments_after(starting_date)
+  create_scheduled_payments_after(starting_date)
+end
 
-        <h2>
-          <a class="post-link" href="/api/2017/03/07/using-our-lead-submissions-api.html">Using Our Lead Submissions API</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Dec 20, 2016</span>
+class ScheduleWorker
+  ...
+  def perform(id, starting_date)
+    schedule = Schedule.find(id)
+    rebalance_schedule(starting_date)
+  end
+end
 
-        <h2>
-          <a class="post-link" href="/sql/ruby/rails/efficiency/speed/2016/12/20/sql-functions-vs-active-record.html">Need for Speed: SQL vs. ActiveRecord</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Sep 30, 2016</span>
-
-        <h2>
-          <a class="post-link" href="/jekyll/update/2016/09/30/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-        </h2>
-      </li>
-    
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
-
+</code></pre>
 </div>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-41945096-2', 'auto');
-  ga('send', 'pageview');
+<p>Of course, a solution can never be that simple.</p>
 
-</script>
+<p>As soon as we started running this process, we noticed that schedules were showing duplicate items in the schedule. Not good!</p>
+
+<h2 id="so-what-happened">So, what happened?</h2>
+
+<p>Because of the transactional nature of the Sidekiq job, the duplication turned out to be side effect of introducing two database commits within the worker.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Within the context of the worker...
+
+def rebalance_schedule(starting_date)
+  delete_scheduled_payments_after(starting_date) &lt;-- Schedule payments "deleted", but not committed
+  create_scheduled_payments_after(starting_date) &lt;-- Creates duplicate payments on top of existing, but not-yet-deleted items
+
+  ** Duplicates get committed to database -- Bad! **
+end
+</code></pre>
+</div>
+
+<p>As a transaction, we should assume that there is only going to be one database commit. Makes sense, right?</p>
+
+<p>Our solution ended up decoupling the computationally easy deletion from the worker and only running the computationally expensive recalculation and record creation in to the asynchronous job.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>class ScheduleWorker
+  ...
+  def perform(id, starting_date)
+    schedule = Schedule.find(id)
+    create_scheduled_payments_after(starting_date)
+  end
+end
+
+def rebalance_schedule(starting_date)
+    ActiveRecord::Base.transaction do
+      delete_future_payments(starting_date)
+    end
+    ScheduleWorker.perform_async(id, starting_date)
+  end
+end
+</code></pre>
+</div>
+
+<p>TL;DR: Don’t put multiple transactions into a single Sidekiq job!</p>
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>

@@ -7,12 +7,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Need for Speed: SQL vs. ActiveRecord</title>
-  <meta name="description" content="By Kelvin Ma, Jr. Software Engineer, Forward Financing">
+  <meta name="description" content="Here at Forward Financing, the ability to report on the state our portfolio is the backbone of our business and the primary tool for us to check on the healt...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/sql/ruby/rails/efficiency/speed/2016/12/20/sql-functions-vs-active-record.html">
+  <link rel="canonical" href="/sql/ruby/rails/efficiency/speed/2016/12/20/sql-functions-vs-active-record.html">
   <link rel="alternate" type="application/rss+xml" title="ForwardFinancing Engineering Blog" href="/feed.xml">
   
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41945096-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
   
 </head>
 
@@ -62,13 +74,11 @@
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Need for Speed: SQL vs. ActiveRecord</h1>
-    <p class="post-meta"><time datetime="2016-12-20T16:00:00-05:00" itemprop="datePublished">Dec 20, 2016</time></p>
+    <p class="post-meta"><time datetime="2016-12-20T16:00:00-05:00" itemprop="datePublished">Dec 20, 2016</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Kelvin Ma</span></span></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <h4 id="by-kelvin-ma-jr-software-engineer-forward-financing"><strong>By Kelvin Ma, Jr. Software Engineer, Forward Financing</strong></h4>
-
-<p>Here at Forward Financing, the ability to report on the state our portfolio is the backbone of our business and the primary tool for us to check on the health of our investments. The bulk of that load falls to our funding application, a Ruby on Rails application powered by Postgres.</p>
+    <p>Here at Forward Financing, the ability to report on the state our portfolio is the backbone of our business and the primary tool for us to check on the health of our investments. The bulk of that load falls to our funding application, a Ruby on Rails application powered by Postgres.</p>
 
 <p>The Tech team here recently brought the application in-house, after it had spent several years under the stewardship of consultants domestic and abroad. When it came under our umbrella in Spring 2016, reports were generated via ActiveRecord query, iterating through our portfolio of about 3,500 advances at the time and nearly 300k payments from merchants tied to those advances.</p>
 
@@ -87,7 +97,7 @@
 <p>I first started by building out a query that would establish a base unit on which all of our other calculations would be based across the rest of the report. In this situation, it was the sum total of all of our payments for a scoped range set by the user:</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>CREATE OR REPLACE FUNCTION total_payments_for_range(
-    payment_start_date date, 
+    payment_start_date date,
     payment_end_date date
 )
     RETURNS TABLE (
@@ -113,7 +123,7 @@
 <p>By structuring all of our subsequent calculations around this base query, we were able to bring down our total report time to around 27 seconds on the first iteration of the SQL report function. Further refactors to remove my myriad structural problems, mostly duplicated or redundant queries, I was finally able to get our current build down to… <em>drumroll please</em></p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>EXPLAIN ANALYZE SELECT * FROM generate_report(~~PARAMS~~);
-                  QUERY PLAN                                                          
+                  QUERY PLAN
 --------------------------------------------
  Function Scan on generate_report  (cost=0.25..10.25 rows=1000 width=1552) (actual time=3610.526..3610.817 rows=2995 loops=1)
  Planning time: 0.087 ms
@@ -125,7 +135,6 @@
 <p>Implementing the SQL query in to our existing Rails stack involved a trivial amount of overhead, setting up a sanitized query via Rails <a href="http://api.rubyonrails.org/classes/ActiveRecord/Sanitization/ClassMethods.html#method-i-sanitize_sql_for_conditions"><code class="highlighter-rouge">sanitize_sql_for_conditions</code></a> and building out a custom report record <code class="highlighter-rouge">Struct</code> to handle the query table.</p>
 
 <p>3.6 seconds. Down from 6 hours.</p>
-
 
   </div>
 
