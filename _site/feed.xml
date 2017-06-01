@@ -4,11 +4,190 @@
     <title>ForwardFinancing Engineering Blog</title>
     <description>Technical content being created and curated from the technology group at ForwardFinancing.
 </description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 20 Apr 2017 15:39:06 -0400</pubDate>
-    <lastBuildDate>Thu, 20 Apr 2017 15:39:06 -0400</lastBuildDate>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 01 Jun 2017 15:07:22 -0400</pubDate>
+    <lastBuildDate>Thu, 01 Jun 2017 15:07:22 -0400</lastBuildDate>
     <generator>Jekyll v3.4.1</generator>
+    
+      <item>
+        <title>Five Lessons Learned During My First Year as a Technical Director</title>
+        <description>&lt;p&gt;Making the leap from an engineer to a director can be daunting. There are so
+many other responsibilities that get placed on you as a director that it can be
+overwhelming. The hardest shift, I feel, is the switch from spending most of your
+time and energy coding to solving other types of problems. Most of
+that time shifts towards higher priority responsibilities like budgeting,
+planning, product strategy, mentoring, recruitment and so much more.&lt;/p&gt;
+
+&lt;p&gt;Even though coding is still enjoyable for those making this switch, it can be
+rather far down the list of largest impacts a director can provide to their
+organization. But like engineering, one should have the mindset of embracing
+challenges and learning opportunities within their new role.
+There will never be a shortage of learning opportunities at this level,
+or so it feels.&lt;/p&gt;
+
+&lt;p&gt;With that, here are the top five things I have learned in my time as a director:&lt;/p&gt;
+
+&lt;h3 id=&quot;continuous-learning-is-a-fantastic-investment&quot;&gt;Continuous Learning Is a Fantastic Investment&lt;/h3&gt;
+&lt;p&gt;Investment in employee growth is not a new trend. This investment can be
+implemented in a variety of forms, ranging from conference budgets to ingrained
+processes that foster growth for employees.&lt;/p&gt;
+
+&lt;p&gt;Here are some things we do that help with continuous learning:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Office hours for experimentation&lt;/li&gt;
+  &lt;li&gt;Conference/workshop budgets for exposure to new ideas and new tools&lt;/li&gt;
+  &lt;li&gt;Code review&lt;/li&gt;
+  &lt;li&gt;Pair programming&lt;/li&gt;
+  &lt;li&gt;Mentoring&lt;/li&gt;
+  &lt;li&gt;Technical book-a-month club (not required reading, but we buy a technical
+book every month)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The response to the above has led to highly engaged and motivated individuals
+who continue to apply new tools to new situations and are continually creating
+more sustainable and maintainable software. &lt;a href=&quot;https://www.forwardfinancing.com/blog/takeaways-railsconf-2017/&quot;&gt;Here&lt;/a&gt;
+is a blog post by one of our engineers about Continuous Learning.&lt;/p&gt;
+
+&lt;h3 id=&quot;breaking-down-knowledge-silos&quot;&gt;Breaking Down Knowledge Silos&lt;/h3&gt;
+&lt;p&gt;As teams grow and scale, knowledge silos tend to form around services,
+codebases, and processes. Certain engineers who build and maintain codebases
+end up with all of the knowledge around how that piece of infrastructure
+interacts in the ecosystem. It’s important to disseminate this information as
+succinctly as possible. Other than creating documentation in the codebase, we
+have found that using &lt;a href=&quot;https://www.discourse.org/&quot;&gt;Discourse&lt;/a&gt;
+and documenting the following has helped immensely:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Business Processes&lt;/li&gt;
+  &lt;li&gt;Code Paths&lt;/li&gt;
+  &lt;li&gt;Blameless Post Mortems&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Each one of those deserves its own blog post, but suffice to say it helps
+onboarding new engineers to understand how each app works in the ecosystem and
+what its role is.&lt;/p&gt;
+
+&lt;h3 id=&quot;perceived-failure-is-an-actual-blessing&quot;&gt;Perceived Failure is an Actual Blessing&lt;/h3&gt;
+&lt;p&gt;Failure is defined differently from person to person. To some, it’s about using
+the wrong software pattern in the wrong circumstance. To others, it’s deploying
+bad code to production. Whatever the case may be, it’s important that teams
+understand it’s absolutely OK to make mistakes. From experience, it seems that
+most engineers learn the most from their missteps.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-on-1-meetings-are-indispensible&quot;&gt;1-on-1 Meetings are Indispensible&lt;/h3&gt;
+&lt;p&gt;I never really understood the importance of the 1-on-1 as an engineer. You
+have to take time out of your day and spend 30 minutes with your boss addressing
+things ranging from emotions to tasks. Now as a director, the 1-on-1 is the
+most important recurring meetings you will have. It gives
+you insight into how best to step up and fill the gaps that the team may have,
+which changes constantly. Most importantly, it sets your team up to be
+successful as you support its needs.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-most-important-aspect-of-a-directors-job-is&quot;&gt;The Most Important Aspect of a Director’s Job is…&lt;/h3&gt;
+&lt;p&gt;Listening.&lt;/p&gt;
+
+&lt;p&gt;I won’t expound much on this as many other highly qualified
+individuals have covered this topic at length. Everyone has pain points while
+working at any company. It is important to make sure individuals feel heard
+and feel supported within their organization. If any of these
+are to be accomplished, it all starts with listening.&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading!&lt;/p&gt;
+</description>
+        <pubDate>Mon, 08 May 2017 12:00:00 -0400</pubDate>
+        <link>/culture/management/leadership/2017/05/08/five-lessons-learned.html</link>
+        <guid isPermaLink="true">/culture/management/leadership/2017/05/08/five-lessons-learned.html</guid>
+        
+        
+        <category>culture</category>
+        
+        <category>management</category>
+        
+        <category>leadership</category>
+        
+      </item>
+    
+      <item>
+        <title>Sidekiq Gotchas: Juggling Multiple Database Commits in Sidekiq Transactions</title>
+        <description>&lt;h2 id=&quot;the-issue&quot;&gt;The Issue&lt;/h2&gt;
+
+&lt;p&gt;In one of our applications, we have a feature that generates a schedule of payments for our merchants’ accounts. In these accounts, balances change, payment amounts may fluctuate, fees are incurred, terms can alter —- lots of things that can throw off the duration of a daily payment schedule. To solve this, our initial solution was to handle the recalculation via Sidekiq Worker, handling all of the different factors for potentially hundreds of thousands of records asynchronously. The worker would purge any outdated records, and then regenerate a schedule based on the new criteria for the account. Pretty straightforward, right?&lt;/p&gt;
+
+&lt;p&gt;It looked something like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def rebalance_schedule(starting_date)
+  delete_payments_after(starting_date)
+  create_scheduled_payments_after(starting_date)
+end
+
+class ScheduleWorker
+  ...
+  def perform(id, starting_date)
+    schedule = Schedule.find(id)
+    rebalance_schedule(starting_date)
+  end
+end
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Of course, a solution can never be that simple.&lt;/p&gt;
+
+&lt;p&gt;As soon as we started running this process, we noticed that schedules were showing duplicate items in the schedule. Not good!&lt;/p&gt;
+
+&lt;h2 id=&quot;so-what-happened&quot;&gt;So, what happened?&lt;/h2&gt;
+
+&lt;p&gt;Because of the transactional nature of the Sidekiq job, the duplication turned out to be side effect of introducing two database commits within the worker.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Within the context of the worker...
+
+def rebalance_schedule(starting_date)
+  delete_scheduled_payments_after(starting_date) &amp;lt;-- Schedule payments &quot;deleted&quot;, but not committed
+  create_scheduled_payments_after(starting_date) &amp;lt;-- Creates duplicate payments on top of existing, but not-yet-deleted items
+
+  ** Duplicates get committed to database -- Bad! **
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As a transaction, we should assume that there is only going to be one database commit. Makes sense, right?&lt;/p&gt;
+
+&lt;p&gt;Our solution ended up decoupling the computationally easy deletion from the worker and only running the computationally expensive recalculation and record creation in to the asynchronous job.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class ScheduleWorker
+  ...
+  def perform(id, starting_date)
+    schedule = Schedule.find(id)
+    create_scheduled_payments_after(starting_date)
+  end
+end
+
+def rebalance_schedule(starting_date)
+    ActiveRecord::Base.transaction do
+      delete_future_payments(starting_date)
+    end
+    ScheduleWorker.perform_async(id, starting_date)
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;TL;DR: Don’t put multiple transactions into a single Sidekiq job!&lt;/p&gt;
+</description>
+        <pubDate>Fri, 21 Apr 2017 15:00:00 -0400</pubDate>
+        <link>/sidekiq/activerecord/ruby/rails/2017/04/21/juggling-sidekiq-transactions.html</link>
+        <guid isPermaLink="true">/sidekiq/activerecord/ruby/rails/2017/04/21/juggling-sidekiq-transactions.html</guid>
+        
+        
+        <category>sidekiq</category>
+        
+        <category>activerecord</category>
+        
+        <category>ruby</category>
+        
+        <category>rails</category>
+        
+      </item>
     
       <item>
         <title>Getting Elixir and R working on Heroku</title>
@@ -99,8 +278,8 @@ on Heroku was definitely not expected, but got us over the finish line.&lt;/p&gt
 &lt;p&gt;Thanks for reading!&lt;/p&gt;
 </description>
         <pubDate>Wed, 15 Mar 2017 12:00:00 -0400</pubDate>
-        <link>http://localhost:4000/elixir/r/heroku/2017/03/15/elixir-and-r-on-heroku.html</link>
-        <guid isPermaLink="true">http://localhost:4000/elixir/r/heroku/2017/03/15/elixir-and-r-on-heroku.html</guid>
+        <link>/elixir/r/heroku/2017/03/15/elixir-and-r-on-heroku.html</link>
+        <guid isPermaLink="true">/elixir/r/heroku/2017/03/15/elixir-and-r-on-heroku.html</guid>
         
         
         <category>elixir</category>
@@ -398,8 +577,8 @@ into our system.&lt;/p&gt;
 &lt;h4 id=&quot;happy-coding-if-you-encounter-any-issues-or-need-help-please-dont-hesitate-to-contact-us&quot;&gt;Happy Coding! If you encounter any issues or need help please don’t hesitate to contact us!&lt;/h4&gt;
 </description>
         <pubDate>Tue, 07 Mar 2017 11:00:00 -0500</pubDate>
-        <link>http://localhost:4000/api/2017/03/07/using-our-lead-submissions-api.html</link>
-        <guid isPermaLink="true">http://localhost:4000/api/2017/03/07/using-our-lead-submissions-api.html</guid>
+        <link>/api/2017/03/07/using-our-lead-submissions-api.html</link>
+        <guid isPermaLink="true">/api/2017/03/07/using-our-lead-submissions-api.html</guid>
         
         
         <category>api</category>
@@ -408,9 +587,7 @@ into our system.&lt;/p&gt;
     
       <item>
         <title>Need for Speed: SQL vs. ActiveRecord</title>
-        <description>&lt;h4 id=&quot;by-kelvin-ma-jr-software-engineer-forward-financing&quot;&gt;&lt;strong&gt;By Kelvin Ma, Jr. Software Engineer, Forward Financing&lt;/strong&gt;&lt;/h4&gt;
-
-&lt;p&gt;Here at Forward Financing, the ability to report on the state our portfolio is the backbone of our business and the primary tool for us to check on the health of our investments. The bulk of that load falls to our funding application, a Ruby on Rails application powered by Postgres.&lt;/p&gt;
+        <description>&lt;p&gt;Here at Forward Financing, the ability to report on the state our portfolio is the backbone of our business and the primary tool for us to check on the health of our investments. The bulk of that load falls to our funding application, a Ruby on Rails application powered by Postgres.&lt;/p&gt;
 
 &lt;p&gt;The Tech team here recently brought the application in-house, after it had spent several years under the stewardship of consultants domestic and abroad. When it came under our umbrella in Spring 2016, reports were generated via ActiveRecord query, iterating through our portfolio of about 3,500 advances at the time and nearly 300k payments from merchants tied to those advances.&lt;/p&gt;
 
@@ -429,7 +606,7 @@ into our system.&lt;/p&gt;
 &lt;p&gt;I first started by building out a query that would establish a base unit on which all of our other calculations would be based across the rest of the report. In this situation, it was the sum total of all of our payments for a scoped range set by the user:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CREATE OR REPLACE FUNCTION total_payments_for_range(
-    payment_start_date date, 
+    payment_start_date date,
     payment_end_date date
 )
     RETURNS TABLE (
@@ -455,7 +632,7 @@ into our system.&lt;/p&gt;
 &lt;p&gt;By structuring all of our subsequent calculations around this base query, we were able to bring down our total report time to around 27 seconds on the first iteration of the SQL report function. Further refactors to remove my myriad structural problems, mostly duplicated or redundant queries, I was finally able to get our current build down to… &lt;em&gt;drumroll please&lt;/em&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;EXPLAIN ANALYZE SELECT * FROM generate_report(~~PARAMS~~);
-                  QUERY PLAN                                                          
+                  QUERY PLAN
 --------------------------------------------
  Function Scan on generate_report  (cost=0.25..10.25 rows=1000 width=1552) (actual time=3610.526..3610.817 rows=2995 loops=1)
  Planning time: 0.087 ms
@@ -467,11 +644,10 @@ into our system.&lt;/p&gt;
 &lt;p&gt;Implementing the SQL query in to our existing Rails stack involved a trivial amount of overhead, setting up a sanitized query via Rails &lt;a href=&quot;http://api.rubyonrails.org/classes/ActiveRecord/Sanitization/ClassMethods.html#method-i-sanitize_sql_for_conditions&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sanitize_sql_for_conditions&lt;/code&gt;&lt;/a&gt; and building out a custom report record &lt;code class=&quot;highlighter-rouge&quot;&gt;Struct&lt;/code&gt; to handle the query table.&lt;/p&gt;
 
 &lt;p&gt;3.6 seconds. Down from 6 hours.&lt;/p&gt;
-
 </description>
         <pubDate>Tue, 20 Dec 2016 16:00:00 -0500</pubDate>
-        <link>http://localhost:4000/sql/ruby/rails/efficiency/speed/2016/12/20/sql-functions-vs-active-record.html</link>
-        <guid isPermaLink="true">http://localhost:4000/sql/ruby/rails/efficiency/speed/2016/12/20/sql-functions-vs-active-record.html</guid>
+        <link>/sql/ruby/rails/efficiency/speed/2016/12/20/sql-functions-vs-active-record.html</link>
+        <guid isPermaLink="true">/sql/ruby/rails/efficiency/speed/2016/12/20/sql-functions-vs-active-record.html</guid>
         
         
         <category>sql</category>
@@ -504,8 +680,8 @@ into our system.&lt;/p&gt;
 
 </description>
         <pubDate>Fri, 30 Sep 2016 14:12:09 -0400</pubDate>
-        <link>http://localhost:4000/jekyll/update/2016/09/30/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll/update/2016/09/30/welcome-to-jekyll.html</guid>
+        <link>/jekyll/update/2016/09/30/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">/jekyll/update/2016/09/30/welcome-to-jekyll.html</guid>
         
         
         <category>jekyll</category>
