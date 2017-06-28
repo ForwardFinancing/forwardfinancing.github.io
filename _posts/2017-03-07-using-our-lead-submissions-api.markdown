@@ -100,7 +100,7 @@ request body is below:
         // If there were additional contacts, they would be listed here
       }
     ],
-    // The account attributes object describes the business applying for a loan. 
+    // The account attributes object describes the business applying for a loan.
     // Since it is an object ({}), not a list ([]) there can only be one.
     "account_attributes": {
       // The entity_type of the business, all valid options can be found on this page:
@@ -162,7 +162,9 @@ request body is below:
       // How much of the business does the secondary owner own (if applicable)?
       "owner_2_percent_ownership": 9,
       // Your internal ID for this submission
-      "reference_id": "ANYTHING_YOUWANT_AS_A_STRING"
+      "reference_id": "ANYTHING_YOUWANT_AS_A_STRING",
+      // Any notes you want to include about the submission for our team
+      "notes": "We think this is a great deal!"
     }
   }
 }
