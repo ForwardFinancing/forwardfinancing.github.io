@@ -146,7 +146,7 @@ that any manager can do for engineers:
 2) Facilitate growing trust throughout the team
 
 Beyond those two, there is so much that happens to keep engineers happy,
-motivated, and engaged. Here are some articles written by people who I respect in
+motivated, and engaged. Here are some articles written by people whom I respect in
 the industry who have gone on to build some amazing engineering cultures:
 - http://firstround.com/review/three-powerful-conversations-managers-must-have-to-develop-their-people/
 - https://hackernoon.com/40-hours-is-enough-86d7166911ea
