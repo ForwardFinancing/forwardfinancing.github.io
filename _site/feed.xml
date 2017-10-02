@@ -6,9 +6,229 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 28 Jun 2017 11:30:34 -0400</pubDate>
-    <lastBuildDate>Wed, 28 Jun 2017 11:30:34 -0400</lastBuildDate>
+    <pubDate>Mon, 02 Oct 2017 11:11:47 -0400</pubDate>
+    <lastBuildDate>Mon, 02 Oct 2017 11:11:47 -0400</lastBuildDate>
     <generator>Jekyll v3.4.1</generator>
+    
+      <item>
+        <title>Our set of engineering culture and values</title>
+        <description>&lt;p&gt;Every engineering group is different. Every engineering manager values different
+aspects of their team. This list was put together by the engineering team at
+&lt;em&gt;Forward Financing&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;engineers-flow&quot;&gt;Engineer’s Flow&lt;/h2&gt;
+&lt;p&gt;There is an engineering management theory called “Flow” – it’s any state for an
+engineer that is void of interruption and disruption. This
+is when engineers do their best work, can tackle the hardest problems, and why
+you’ll often find our room either full of energy and boisterous or very very
+quiet to the point you can hear a pin drop. We do many things to help get
+engineers into Flow. Some rules we follow:&lt;br /&gt;
+1) Do not disturb if headset is on
+2) Turn off Slack notifications when working on larger/harder problems
+3) Flexible work-from-home policy to reduce visual noise and disruption from
+outside parties&lt;/p&gt;
+
+&lt;p&gt;Here are some articles that speak specifically about Flow or topics close in
+nature to Flow.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.paulgraham.com/makersschedule.html&quot;&gt;http://www.paulgraham.com/makersschedule.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.paulgraham.com/makersschedule.html&quot;&gt;http://firstround.com/review/track-and-facilitate-your-engineers-flow-states-in-this-simple-way/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hackernoon.com/its-a-wonder-some-teams-get-anything-done-64104f59bf5e&quot;&gt;https://hackernoon.com/its-a-wonder-some-teams-get-anything-done-64104f59bf5e&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;scrum&quot;&gt;Scrum&lt;/h2&gt;
+&lt;p&gt;Scrum is an Agile methodology that help teams get things done in as productive
+a manner as possible. It allows the business to track project progress
+transparently and get an idea of throughput based on estimation. Scrum allows
+the product team (Product Managers and Engineer) to be able to set expectations
+that stakeholders understand and abide by.&lt;/p&gt;
+
+&lt;p&gt;While none of us believes in burn down
+charts, for those people who are far removed from the process, it can act as
+a flag that a is sprint going well or falling behind.&lt;/p&gt;
+
+&lt;p&gt;The most important
+piece of Scrum is the Retrospective. This is an open forum to discuss what went
+well during the sprint, what failed, and what we can do as a team to address
+the issues that led to the failures. Thus far, we have evolved our process with
+our current team to address the issues that have arisen so far, and it has all
+been for the better. Most importantly, we archive our Retrospective notes in
+Confluence so we can track progress in fixing things that are broken with our
+process.&lt;/p&gt;
+
+&lt;p&gt;Here are some articles that speak specifically about Scrum and its importance
+in organizations.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://martinfowler.com/bliki/FlaccidScrum.html&quot;&gt;https://martinfowler.com/bliki/FlaccidScrum.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.scrumalliance.org/community/articles/2014/november/top-10-reasons-to-adopt-scrum-in-an-organization&quot;&gt;https://www.scrumalliance.org/community/articles/2014/november/top-10-reasons-to-adopt-scrum-in-an-organization&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;blameless-culture&quot;&gt;Blameless Culture&lt;/h2&gt;
+&lt;p&gt;Having a blameless culture is paramount for building a sustainable, long-lived
+engineering culture. No matter the project, bugs are going to exist. Whether
+it is due to miscommunication, misinterpretation, speed, lack of tests, etc.,
+bugs will always be introduced into new and old systems alike.
+It is of utmost importance to have a culture of &lt;em&gt;learning from
+mistakes&lt;/em&gt; as opposed to vilifying the one individual who made the mistake.&lt;/p&gt;
+
+&lt;p&gt;Here is a link that better describe the nuance of a blameless culture and
+it’s benefits to a team and it’s culture.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://americastestkitchen.github.io/culture/engineering/2015/05/13/the-value-of-postmortems/&quot;&gt;https://americastestkitchen.github.io/culture/engineering/2015/05/13/the-value-of-postmortems/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;technical-debt&quot;&gt;Technical Debt&lt;/h2&gt;
+&lt;p&gt;Every company has technical debt, and it can take many forms. Some are legacy
+projects that engineering teams inherit with its primary architects long gone.
+Sometimes shortcuts are taken in order to meet deadlines. In either scenario,
+technical debt has a negative
+effect on health of systems, engineering productivity, and more. This topic,
+which has been discussed in length in every possible forum, is of the utmost
+importance due to its impact.&lt;/p&gt;
+
+&lt;p&gt;Here are some links about what technical debt is, and its place in
+organizations.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://martinfowler.com/bliki/TechnicalDebt.html&quot;&gt;https://martinfowler.com/bliki/TechnicalDebt.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/modern-agile/who-manages-technical-debt-levels-7e634b0a5974?source=linkShare-fd418bfc22ba-1506544066&quot;&gt;https://medium.com/modern-agile/who-manages-technical-debt-levels-7e634b0a5974?source=linkShare-fd418bfc22ba-1506544066&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;code-review&quot;&gt;Code Review&lt;/h2&gt;
+&lt;p&gt;Code review is very important in every organization. It acts as a way to
+educate other engineers about a project, a form of quality control
+to prevent bugs from being introduced into systems and
+mentorship as the feedback given helps engineers form better practices and
+habits. While code reviews can be expensive, it is &lt;em&gt;the most important&lt;/em&gt; vehicle
+we have to help identify and prevent new technical debt from being introduced
+into the system.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.atlassian.com/agile/code-reviews&quot;&gt;https://www.atlassian.com/agile/code-reviews&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hackernoon.com/the-art-of-pull-requests-6f0f099850f9&quot;&gt;https://hackernoon.com/the-art-of-pull-requests-6f0f099850f9&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/@vaidehijoshi/crafting-better-code-reviews-1a5fc00a9312&quot;&gt;https://medium.com/@vaidehijoshi/crafting-better-code-reviews-1a5fc00a9312&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;continuous-delivery&quot;&gt;Continuous Delivery&lt;/h2&gt;
+&lt;p&gt;There are a lot of pros and cons around having a Continuous Delivery setup. We
+have most of our applications (all but our application that handles money) on
+continuous delivery. This methodology removes the ceremony around deployment.
+Removing the deployment ceremony reduces engineer frustration, increases
+engineer productivity, and so much more. From a business standpoint, features
+get released faster and quicker.&lt;/p&gt;
+
+&lt;p&gt;Here are some articles about what continuous delivery is and its benefits to an
+organization.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://martinfowler.com/bliki/ContinuousDelivery.html&quot;&gt;https://martinfowler.com/bliki/ContinuousDelivery.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;pair-programming&quot;&gt;Pair Programming&lt;/h2&gt;
+&lt;p&gt;It’s difficult to concisely speak about the importance of pair programming.
+Beyond the immediate impact it provides engineers, it also has long lasting
+effects that can’t be replaced with other frameworks. It helps form bonds of
+mentorship and coaching toward improving the engineer who requested the pair. It
+further strengthens trust and bonds between individuals as they build a rapport
+and help each other through challenges.&lt;/p&gt;
+
+&lt;p&gt;While there are plenty of pro and con articles around the internet about
+pairing, here are some about the positive benefits of it and why we use it
+at Forward Financing:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://raygun.com/blog/how-good-is-pair-programming-really/&quot;&gt;https://raygun.com/blog/how-good-is-pair-programming-really/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;
+&lt;p&gt;Testing is another important vehicle that helps reduce technical debt from
+being introduced into new systems and ensures that requirements are met. Tests
+are a way an engineer can programatically understand if its functionality is
+in fact doing what is intended.&lt;/p&gt;
+
+&lt;p&gt;Here are some articles about why testing is important and why companies decide
+to invest in testing.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://martinfowler.com/bliki/UnitTest.html&quot;&gt;https://martinfowler.com/bliki/UnitTest.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;continuous-learning&quot;&gt;Continuous Learning&lt;/h2&gt;
+&lt;p&gt;Continuous learning is nothing new to businesses, but has made a recent
+resurgence in business culture. This framework allows companies to invest in
+employees by giving them new skills, reinforcing old skills with new twists, and
+more. This has so many positive effects on an organization that it is difficult
+to enumerate them all. I tend to focus on two:
+1) Employee retention
+2) Employee growth&lt;/p&gt;
+
+&lt;p&gt;Here are some links that describe what continuous learning is and why it is important.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.td.org/Publications/Magazines/TD/TD-Archive/2017/02/Webex-10-Ways-to-Build-a-Culture-of-Continuous-Learning&quot;&gt;https://www.td.org/Publications/Magazines/TD/TD-Archive/2017/02/Webex-10-Ways-to-Build-a-Culture-of-Continuous-Learning&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;management&quot;&gt;Management&lt;/h2&gt;
+&lt;p&gt;Managing a team of engineers is often likened to herding cats. It is a tall task
+that most people fumble through. Being the liaison between senior management and
+engineers also has its own set of challenges. The two most important pieces
+that any manager can do for engineers:
+1) Guard rigorously against context switching
+2) Facilitate growing trust throughout the team&lt;/p&gt;
+
+&lt;p&gt;Beyond those two, there is so much that happens to keep engineers happy,
+motivated, and engaged. Here are some articles written by people whom I respect in
+the industry who have gone on to build some amazing engineering cultures:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.td.org/Publications/Magazines/TD/TD-Archive/2017/02/Webex-10-Ways-to-Build-a-Culture-of-Continuous-Learning&quot;&gt;http://firstround.com/review/three-powerful-conversations-managers-must-have-to-develop-their-people/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hackernoon.com/40-hours-is-enough-86d7166911ea&quot;&gt;https://hackernoon.com/40-hours-is-enough-86d7166911ea&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://m.signalvnoise.com/nobody-hits-the-ground-running-ae4d8fd0e7de&quot;&gt;https://m.signalvnoise.com/nobody-hits-the-ground-running-ae4d8fd0e7de&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://m.signalvnoise.com/software-has-bugs-this-is-normal-f64761a262ca&quot;&gt;https://m.signalvnoise.com/software-has-bugs-this-is-normal-f64761a262ca&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/startup-patterns/the-dangers-of-measuring-performance-d21cd61426df&quot;&gt;https://medium.com/startup-patterns/the-dangers-of-measuring-performance-d21cd61426df&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/javascript-scene/getting-to-10x-results-what-any-developer-can-learn-from-the-best-54b6c296a5ef&quot;&gt;https://medium.com/javascript-scene/getting-to-10x-results-what-any-developer-can-learn-from-the-best-54b6c296a5ef&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://home.opsolutely.com/the-hidden-reason-you-cant-scale-your-engineering-team/&quot;&gt;https://home.opsolutely.com/the-hidden-reason-you-cant-scale-your-engineering-team/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://code.likeagirl.io/the-power-of-giving-good-feedback-78ab2f4c2b72&quot;&gt;https://code.likeagirl.io/the-power-of-giving-good-feedback-78ab2f4c2b72&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://code.likeagirl.io/how-to-show-all-important-humility-in-leadership-without-being-a-doormat-a90433614ce6&quot;&gt;https://code.likeagirl.io/how-to-show-all-important-humility-in-leadership-without-being-a-doormat-a90433614ce6&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://code.likeagirl.io/6-solutions-to-my-recruitment-problem-but-its-still-a-problem-d299b6a52c6c&quot;&gt;https://code.likeagirl.io/6-solutions-to-my-recruitment-problem-but-its-still-a-problem-d299b6a52c6c&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/the-year-of-the-looking-glass/how-do-you-set-metrics-59f78fea7e44&quot;&gt;https://medium.com/the-year-of-the-looking-glass/how-do-you-set-metrics-59f78fea7e44&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://m.signalvnoise.com/the-3-types-of-bullshit-feedback-and-what-to-do-about-them-5de483530c3f&quot;&gt;https://m.signalvnoise.com/the-3-types-of-bullshit-feedback-and-what-to-do-about-them-5de483530c3f&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;product-development&quot;&gt;Product Development&lt;/h2&gt;
+&lt;p&gt;The process around how products are developed is important, but not the end-all
+be-all. It is important to have structures and processes in place to foster
+accountability. These structures help prevent friction
+between other groups as they work together through a common goal. With that
+said, the product will always beat the process. Until something hits the hands
+of a customer, nothing matters until the product is in the hands of the
+customer.&lt;/p&gt;
+
+&lt;p&gt;Here are some links:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hackernoon.com/antifragile-product-development-39b8d5866b77&quot;&gt;https://hackernoon.com/antifragile-product-development-39b8d5866b77&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/pminsider/the-product-beats-the-process-28028151c485&quot;&gt;https://medium.com/pminsider/the-product-beats-the-process-28028151c485&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;transparency&quot;&gt;Transparency&lt;/h2&gt;
+&lt;p&gt;The positive effects of transparency are no secret. Being transparent
+allows for more straightforward communication. It allows for levels of trust to
+be built that might not be achievable otherwise. It reduces worry, stress, and
+even friction between individuals because there are no secrets. It helps build
+relationships between individuals that further strengthen loyalty, empowerment,
+and trust.&lt;/p&gt;
+
+&lt;p&gt;Here are some other links from talented individuals about the importance of
+transparency:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.entrepreneur.com/article/244474&quot;&gt;https://www.entrepreneur.com/article/244474&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.fastcompany.com/3036794/why-a-transparent-culture-is-good-for-business&quot;&gt;https://www.fastcompany.com/3036794/why-a-transparent-culture-is-good-for-business&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sat, 30 Sep 2017 14:12:09 -0400</pubDate>
+        <link>http://localhost:4000/engineering/culture/2017/09/30/our-engineering-culture-methodologies-and-philosophies.html</link>
+        <guid isPermaLink="true">http://localhost:4000/engineering/culture/2017/09/30/our-engineering-culture-methodologies-and-philosophies.html</guid>
+        
+        
+        <category>engineering</category>
+        
+        <category>culture</category>
+        
+      </item>
     
       <item>
         <title>Integrating create-react-app with Elixir + Phoenix via Amazon S3</title>
