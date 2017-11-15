@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>ForwardFinancing Engineering Blog</title>
-  <meta name="description" content="Technical content being created and curated from the technology group at ForwardFinancing.">
+  <title>how to do code review, so it rocks</title>
+  <meta name="description" content="At Forward Financing we do a lot of code review. It’s helped our team commit to delivering quality software and it’s turned out pretty great. However, at fir...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/">
+  <link rel="canonical" href="http://localhost:4000/culture/code-review/2017/11/15/code-review.html">
   <link rel="alternate" type="application/rss+xml" title="ForwardFinancing Engineering Blog" href="/feed.xml">
   
   
@@ -58,99 +58,47 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">how to do code review, so it rocks</h1>
+    <p class="post-meta"><time datetime="2017-11-15T11:00:00-05:00" itemprop="datePublished">Nov 15, 2017</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Janice Smith</span></span></p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Nov 15, 2017</span>
+  <div class="post-content" itemprop="articleBody">
+    <p>At Forward Financing we do a lot of code review. It’s helped our team commit to delivering quality software and it’s turned out pretty great. However, at first it can be hard to know how to dive in,
+so I’m going to shed some light on how it can be approached.</p>
 
-        <h2>
-          <a class="post-link" href="/culture/code-review/2017/11/15/code-review.html">how to do code review, so it rocks</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Sep 30, 2017</span>
+<p>In general the practice of code review helps peers collaborate on features. That collaboration brings fresh perspectives, exposing the coder and reviewer to new ways of approaching a problem they may not have thought of, while distributing that knowledge across the team. In order for this process to be successful, the review needs to be done well.</p>
 
-        <h2>
-          <a class="post-link" href="/engineering/culture/2017/09/30/our-engineering-culture-methodologies-and-philosophies.html">Our set of engineering culture and values</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jun 1, 2017</span>
+<p>Initially the coder should consider adding some context to a given PR. I like to put a description  of the changes and the feature, but it can also be nice to comment on specific lines that might be complex.  Also a link to the card or ticket can be a big help. When doing this, it is a good time for the coder to think about the PR as a whole.</p>
+<ul>
+  <li>Should this be more than one PR?</li>
+  <li>Should the code I write have any comments that to clarify or document any of these changes?</li>
+</ul>
 
-        <h2>
-          <a class="post-link" href="/react/elixir/devops/2017/06/01/deploying-create-react-app-to-s3.html">Integrating create-react-app with Elixir + Phoenix via Amazon S3</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 8, 2017</span>
+<p>Once the PR is ready to be reviewed, it can be good to ask for the opinion of specific engineers while still opening it up to get more points of view.  It can be great to get the eyes of someone who has spent a lot of time in the codebase or with that feature that is being updated, but just keep in mind as the coder, you will get different kinds of feedback based on who is reviewing. I like to try to get a few different perspectives if I can.</p>
 
-        <h2>
-          <a class="post-link" href="/culture/management/leadership/2017/05/08/five-lessons-learned.html">Five Lessons Learned During My First Year as a Technical Director</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 21, 2017</span>
+<p>As a reviewer, the first pass is a good time to look for areas of the code that jump out at you.</p>
+<ul>
+  <li>Are there any clearly unaddressed edge cases?</li>
+  <li>Are there any Deviations from the agreed style guide?</li>
+</ul>
 
-        <h2>
-          <a class="post-link" href="/sidekiq/activerecord/ruby/rails/2017/04/21/juggling-sidekiq-transactions.html">Sidekiq Gotchas: Juggling Multiple Database Commits in Sidekiq Transactions</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 15, 2017</span>
+<p>Be sure to add notes to the PR in a clear and good natured way.</p>
 
-        <h2>
-          <a class="post-link" href="/elixir/r/heroku/2017/03/15/elixir-and-r-on-heroku.html">Getting Elixir and R working on Heroku</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 7, 2017</span>
+<p>Beyond that, a reviewer can have more specific questions that may be better served by a quick conversation, rather than a back and forth on the PR. It can be a big help on a team to get to know each other and how each person likes to communicate. Asking questions is also a good way to learn about the coder’s style or approach to solving an issue, “Why do you prefer a case statement here?”.  These kinds of questions can touch on performance, readability, extensibility. If it is a large feature or a big bug fix, it is great in code review to ask questions about where else this code is used or will be used. What may happen if the new code is used in ways maybe not intended by the coder? A conversion is one of the great things to come out of a code review.</p>
 
-        <h2>
-          <a class="post-link" href="/api/2017/03/07/using-our-lead-submissions-api.html">Using Our Lead Submissions API</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Dec 20, 2016</span>
+<p>Questions can be a big help, because the coder may have a ready answer they can add for more context, or it could be that those cases are covered somewhere else, by another feature. This helps the coder and reviewer find any possible issues, but also actively lets both of them get more insight into the feature.</p>
 
-        <h2>
-          <a class="post-link" href="/sql/ruby/rails/efficiency/speed/2016/12/20/sql-functions-vs-active-record.html">Need for Speed: SQL vs. ActiveRecord</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Sep 30, 2016</span>
+<p>Code review helps teams distribute the understanding and cognitive load of a codebase across from members, making it much easier to step in when needed. When a team approaches review positively with a mind to exchange ideas it can be a great thing.</p>
 
-        <h2>
-          <a class="post-link" href="/jekyll/update/2016/09/30/welcome-to-jekyll.html">Welcome to Jekyll!</a>
-        </h2>
-      </li>
-    
-  </ul>
+<p>In summary, along with a good outlook, the keys to code review are context, questions, and conversation.</p>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+  </div>
 
-</div>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-41945096-2', 'auto');
-  ga('send', 'pageview');
-
-</script>
+  
+</article>
 
       </div>
     </main>
