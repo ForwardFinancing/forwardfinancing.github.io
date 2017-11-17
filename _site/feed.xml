@@ -6,9 +6,51 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 02 Oct 2017 11:11:47 -0400</pubDate>
-    <lastBuildDate>Mon, 02 Oct 2017 11:11:47 -0400</lastBuildDate>
+    <pubDate>Wed, 15 Nov 2017 14:53:43 -0500</pubDate>
+    <lastBuildDate>Wed, 15 Nov 2017 14:53:43 -0500</lastBuildDate>
     <generator>Jekyll v3.4.1</generator>
+    
+      <item>
+        <title>how to do code review, so it rocks</title>
+        <description>&lt;p&gt;At Forward Financing we do a lot of code review. It’s helped our team commit to delivering quality software and it’s turned out pretty great. However, at first it can be hard to know how to dive in,
+so I’m going to shed some light on how it can be approached.&lt;/p&gt;
+
+&lt;p&gt;In general the practice of code review helps peers collaborate on features. That collaboration brings fresh perspectives, exposing the coder and reviewer to new ways of approaching a problem they may not have thought of, while distributing that knowledge across the team. In order for this process to be successful, the review needs to be done well.&lt;/p&gt;
+
+&lt;p&gt;Initially the coder should consider adding some context to a given PR. I like to put a description  of the changes and the feature, but it can also be nice to comment on specific lines that might be complex.  Also a link to the card or ticket can be a big help. When doing this, it is a good time for the coder to think about the PR as a whole.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Should this be more than one PR?&lt;/li&gt;
+  &lt;li&gt;Should the code I write have any comments that to clarify or document any of these changes?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Once the PR is ready to be reviewed, it can be good to ask for the opinion of specific engineers while still opening it up to get more points of view.  It can be great to get the eyes of someone who has spent a lot of time in the codebase or with that feature that is being updated, but just keep in mind as the coder, you will get different kinds of feedback based on who is reviewing. I like to try to get a few different perspectives if I can.&lt;/p&gt;
+
+&lt;p&gt;As a reviewer, the first pass is a good time to look for areas of the code that jump out at you.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Are there any clearly unaddressed edge cases?&lt;/li&gt;
+  &lt;li&gt;Are there any Deviations from the agreed style guide?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Be sure to add notes to the PR in a clear and good natured way.&lt;/p&gt;
+
+&lt;p&gt;Beyond that, a reviewer can have more specific questions that may be better served by a quick conversation, rather than a back and forth on the PR. It can be a big help on a team to get to know each other and how each person likes to communicate. Asking questions is also a good way to learn about the coder’s style or approach to solving an issue, “Why do you prefer a case statement here?”.  These kinds of questions can touch on performance, readability, extensibility. If it is a large feature or a big bug fix, it is great in code review to ask questions about where else this code is used or will be used. What may happen if the new code is used in ways maybe not intended by the coder? A conversion is one of the great things to come out of a code review.&lt;/p&gt;
+
+&lt;p&gt;Questions can be a big help, because the coder may have a ready answer they can add for more context, or it could be that those cases are covered somewhere else, by another feature. This helps the coder and reviewer find any possible issues, but also actively lets both of them get more insight into the feature.&lt;/p&gt;
+
+&lt;p&gt;Code review helps teams distribute the understanding and cognitive load of a codebase across from members, making it much easier to step in when needed. When a team approaches review positively with a mind to exchange ideas it can be a great thing.&lt;/p&gt;
+
+&lt;p&gt;In summary, along with a good outlook, the keys to code review are context, questions, and conversation.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 15 Nov 2017 11:00:00 -0500</pubDate>
+        <link>http://localhost:4000/culture/code-review/2017/11/15/code-review.html</link>
+        <guid isPermaLink="true">http://localhost:4000/culture/code-review/2017/11/15/code-review.html</guid>
+        
+        
+        <category>culture</category>
+        
+        <category>code-review</category>
+        
+      </item>
     
       <item>
         <title>Our set of engineering culture and values</title>
