@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Getting a React Single Page App on Continuous Delivery"
-date:   2017-11-15 12:00:00 -0400
+date:   2017-12-15 12:00:00 -0400
 categories: culture continuous-delivery
 author: Patrick Hereford
 ---
