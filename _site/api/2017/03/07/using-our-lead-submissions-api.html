@@ -22,37 +22,46 @@
     <header class="site-header" role="banner">
 
   <div class="wrapper">
-
+    
+    
     <a class="site-title" href="/">ForwardFinancing Engineering Blog</a>
+  
+    
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
 
-    <nav class="site-nav">
-      <span class="menu-icon">
-        <svg viewBox="0 0 18 15" width="18px" height="15px">
-          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
-          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
-          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
-        </svg>
-      </span>
-
-      <div class="trigger">
-        
+        <div class="trigger">
           
-          <a class="page-link" href="/about/">About</a>
+            
+            
+            <a class="page-link" href="/about/">About</a>
+            
           
-        
+            
+            
           
-        
+            
+            
           
-        
+            
+            
           
-        
+            
+            
           
-        
-      </div>
-    </nav>
-
+        </div>
+      </nav>
+    
   </div>
-
 </header>
 
 
@@ -62,7 +71,14 @@
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Using Our Lead Submissions API</h1>
-    <p class="post-meta"><time datetime="2017-03-07T11:00:00-05:00" itemprop="datePublished">Mar 7, 2017</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Zach Cotter</span></span></p>
+    <p class="post-meta">
+      <time datetime="2017-03-07T11:00:00-05:00" itemprop="datePublished">
+        
+        Mar 7, 2017
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Zach Cotter</span></span>
+      </p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
@@ -109,126 +125,124 @@ For example, the POST url might be
 <p>The request body should be in JSON format, so the content type header should
 set to JSON as well. Your headers should look like:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>api_key: YOUR_API_KEY_HERE
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>api_key: YOUR_API_KEY_HERE
 Content-Type: application/json
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The request body should contain a JSON payload that describes the lead you are
 submitting. The full format can be found in our API documentation. An example
 request body is below:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">All</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">lead</span><span class="w"> </span><span class="err">data</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">wrapped</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">lead</span><span class="w"> </span><span class="err">object</span><span class="w">
-  </span><span class="nt">"lead"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">contacts</span><span class="w"> </span><span class="err">attributes</span><span class="w"> </span><span class="err">are</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">list</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">contacts</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">merchant,</span><span class="w"> </span><span class="err">usually</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">owners</span><span class="w">
-    </span><span class="err">//</span><span class="w"> </span><span class="err">If</span><span class="w"> </span><span class="err">there</span><span class="w"> </span><span class="err">are</span><span class="w"> </span><span class="err">multiple</span><span class="w"> </span><span class="err">contacts,</span><span class="w"> </span><span class="err">provide</span><span class="w"> </span><span class="err">multiple</span><span class="w"> </span><span class="err">contact</span><span class="w"> </span><span class="err">objects</span><span class="w"> </span><span class="err">within</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">contacts_attributes</span><span class="w"> </span><span class="err">list</span><span class="w">
-    </span><span class="nt">"contacts_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">first</span><span class="w"> </span><span class="err">name</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">contact</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business</span><span class="w">
-        </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Erlich"</span><span class="p">,</span><span class="w">
-        </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">last</span><span class="w"> </span><span class="err">name</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">contact</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business</span><span class="w">
-        </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bachman"</span><span class="p">,</span><span class="w">
-        </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">email</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">contact</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business</span><span class="w">
-        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"erlich@piedpiper.com"</span><span class="p">,</span><span class="w">
-        </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">contact's</span><span class="w"> </span><span class="err">title</span><span class="w"> </span><span class="err">within</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business</span><span class="w">
-        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO and Spiritual Advisor"</span><span class="p">,</span><span class="w">
-        </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">contact's</span><span class="w"> </span><span class="err">date</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">birth</span><span class="w">
-        </span><span class="nt">"born_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-01-01"</span><span class="p">,</span><span class="w">
-        </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">contact's</span><span class="w"> </span><span class="err">home</span><span class="w"> </span><span class="err">phone</span><span class="w"> </span><span class="err">number</span><span class="w">
-        </span><span class="nt">"home_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6176781000"</span><span class="p">,</span><span class="w">
-        </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">contact's</span><span class="w"> </span><span class="err">cell</span><span class="w"> </span><span class="err">phone</span><span class="w"> </span><span class="err">number</span><span class="w">
-        </span><span class="nt">"cell_phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6176781000"</span><span class="p">,</span><span class="w">
-        </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">contacts</span><span class="w"> </span><span class="err">Social</span><span class="w"> </span><span class="err">Security</span><span class="w"> </span><span class="err">Number,</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">no</span><span class="w"> </span><span class="err">spaces</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">dashes</span><span class="w">
-        </span><span class="nt">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"234345566"</span><span class="p">,</span><span class="w">
-        </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">date</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">contact</span><span class="w"> </span><span class="err">became</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">owner</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business</span><span class="w">
-        </span><span class="nt">"ownership_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-01-01"</span><span class="p">,</span><span class="w">
-        </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">attributes</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">owners</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">address</span><span class="w"> </span><span class="err">are</span><span class="w"> </span><span class="err">nested</span><span class="w"> </span><span class="err">within</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="nt">"current_address_attributes"</span><span class="w">
-        </span><span class="nt">"current_address_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">first</span><span class="w"> </span><span class="err">line</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">contact's</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">address</span><span class="w">
-          </span><span class="nt">"street1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36 Bromfield St"</span><span class="p">,</span><span class="w">
-          </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">second</span><span class="w"> </span><span class="err">line</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">contact's</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">address</span><span class="w">
-          </span><span class="nt">"street2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Second Floor"</span><span class="p">,</span><span class="w">
-          </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">city</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">contact's</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">address</span><span class="w">
-          </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Boston"</span><span class="p">,</span><span class="w">
-          </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">state</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">contact's</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">address</span><span class="w">
-          </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MA"</span><span class="p">,</span><span class="w">
-          </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">zipcode</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">contact's</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">address</span><span class="w">
-          </span><span class="nt">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00112"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-        </span><span class="err">//</span><span class="w"> </span><span class="err">If</span><span class="w"> </span><span class="err">there</span><span class="w"> </span><span class="err">were</span><span class="w"> </span><span class="err">additional</span><span class="w"> </span><span class="err">contacts</span><span class="p">,</span><span class="w"> </span><span class="err">they</span><span class="w"> </span><span class="err">would</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">listed</span><span class="w"> </span><span class="err">here</span><span class="w">
-      </span><span class="err">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">account</span><span class="w"> </span><span class="err">attributes</span><span class="w"> </span><span class="err">object</span><span class="w"> </span><span class="err">describes</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business</span><span class="w"> </span><span class="err">applying</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">loan.</span><span class="w">
-    </span><span class="err">//</span><span class="w"> </span><span class="err">Since</span><span class="w"> </span><span class="err">it</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">an</span><span class="w"> </span><span class="err">object</span><span class="w"> </span><span class="err">({})</span><span class="p">,</span><span class="w"> </span><span class="err">not</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">list</span><span class="w"> </span><span class="err">([])</span><span class="w"> </span><span class="err">there</span><span class="w"> </span><span class="err">can</span><span class="w"> </span><span class="err">only</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">one.</span><span class="w">
-    </span><span class="nt">"account_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">entity_type</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business,</span><span class="w"> </span><span class="err">all</span><span class="w"> </span><span class="err">valid</span><span class="w"> </span><span class="err">options</span><span class="w"> </span><span class="err">can</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">found</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">page:</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">https://api.forwardfinancing.com/api_docs</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">Expand</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">lead</span><span class="w"> </span><span class="err">endpoint</span><span class="w"> </span><span class="err">and</span><span class="w"> </span><span class="err">click</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="nt">"Model"</span><span class="w">
-      </span><span class="nt">"entity_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Limited Liability Company (LLC)"</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">name</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business,</span><span class="w"> </span><span class="err">also</span><span class="w"> </span><span class="err">known</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="nt">"DBA"</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="nt">"Trade Name"</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pied Piper"</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">date</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business</span><span class="w"> </span><span class="err">was</span><span class="w"> </span><span class="err">started</span><span class="w">
-      </span><span class="nt">"started_on"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-01-01"</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">legal</span><span class="w"> </span><span class="err">name</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business</span><span class="w">
-      </span><span class="nt">"legal_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pied Piper LLC"</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">phone</span><span class="w"> </span><span class="err">number</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business</span><span class="w">
-      </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6176781000"</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">email</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business</span><span class="w">
-      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"support@piedpiper.com"</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">website</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business</span><span class="w">
-      </span><span class="nt">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.piedpiper.com/"</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">Federal</span><span class="w"> </span><span class="err">Employer</span><span class="w"> </span><span class="err">Identification</span><span class="w"> </span><span class="err">Number</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business,</span><span class="w"> </span><span class="err">with</span><span class="w"> </span><span class="err">no</span><span class="w"> </span><span class="err">spaces</span><span class="w"> </span><span class="err">or</span><span class="w"> </span><span class="err">dashes</span><span class="w">
-      </span><span class="nt">"fein"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">average</span><span class="w"> </span><span class="err">monthly</span><span class="w"> </span><span class="err">revenue</span><span class="w"> </span><span class="err">bucket</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business,</span><span class="w"> </span><span class="err">valid</span><span class="w"> </span><span class="err">options</span><span class="w"> </span><span class="err">can</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">found</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">documentation</span><span class="w"> </span><span class="err">page</span><span class="w">
-      </span><span class="nt">"monthly_revenue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Less than $5,000"</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">name</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">industry</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">in</span><span class="w">
-      </span><span class="nt">"industry_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Compression Algorithms"</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">attributes</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">businesses</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">address</span><span class="w"> </span><span class="err">are</span><span class="w"> </span><span class="err">nested</span><span class="w"> </span><span class="err">within</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="nt">"current_address_attributes"</span><span class="w">
-      </span><span class="nt">"current_address_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">first</span><span class="w"> </span><span class="err">line</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business's</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">address</span><span class="w">
-        </span><span class="nt">"street1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36 Bromfield St"</span><span class="p">,</span><span class="w">
-        </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">second</span><span class="w"> </span><span class="err">line</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business's</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">address</span><span class="w">
-        </span><span class="nt">"street2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Second Floor"</span><span class="p">,</span><span class="w">
-        </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">city</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business's</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">address</span><span class="w">
-        </span><span class="nt">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Boston"</span><span class="p">,</span><span class="w">
-        </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">state</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business's</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">address</span><span class="w">
-        </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MA"</span><span class="p">,</span><span class="w">
-        </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">zipcode</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business's</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">address</span><span class="w">
-        </span><span class="nt">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00112"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="err">//</span><span class="w"> </span><span class="err">Attributes</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">their</span><span class="w"> </span><span class="err">most</span><span class="w"> </span><span class="err">recent</span><span class="w"> </span><span class="err">previous</span><span class="w"> </span><span class="err">loan</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">file.</span><span class="w">
-    </span><span class="nt">"loan_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">company's</span><span class="w"> </span><span class="err">name</span><span class="w"> </span><span class="err">that</span><span class="w"> </span><span class="err">disbursed</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">loan</span><span class="w">
-      </span><span class="nt">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wells Fargo"</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">Daily</span><span class="w"> </span><span class="err">Payment</span><span class="w"> </span><span class="err">Amount</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">loan</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">float</span><span class="w">
-      </span><span class="nt">"daily_payment_amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">25.00</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">The</span><span class="w"> </span><span class="err">remaining</span><span class="w"> </span><span class="err">balance</span><span class="w"> </span><span class="err">on</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">loan</span><span class="w">
-      </span><span class="nt">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mf">15000.23</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"application_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">Does</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">applicant</span><span class="w"> </span><span class="err">have</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">current</span><span class="w"> </span><span class="err">loan?</span><span class="w">
-      </span><span class="nt">"has_current_loan"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">Is</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">applicant</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">owner</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business?</span><span class="w">
-      </span><span class="nt">"applicant_is_owner"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">What</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">loan</span><span class="w"> </span><span class="err">intended</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">be</span><span class="w"> </span><span class="err">used</span><span class="w"> </span><span class="err">for?</span><span class="w">
-      </span><span class="nt">"loan_use"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Debt Refinancing"</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">How</span><span class="w"> </span><span class="err">much</span><span class="w"> </span><span class="err">capital</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">needed?</span><span class="w">
-      </span><span class="nt">"capital_needed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000"</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">How</span><span class="w"> </span><span class="err">much</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business</span><span class="w"> </span><span class="err">does</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">primary</span><span class="w"> </span><span class="err">owner</span><span class="w"> </span><span class="err">own?</span><span class="w">
-      </span><span class="nt">"owner_1_percent_ownership"</span><span class="p">:</span><span class="w"> </span><span class="mi">56</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">How</span><span class="w"> </span><span class="err">much</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">business</span><span class="w"> </span><span class="err">does</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">secondary</span><span class="w"> </span><span class="err">owner</span><span class="w"> </span><span class="err">own</span><span class="w"> </span><span class="err">(if</span><span class="w"> </span><span class="err">applicable)?</span><span class="w">
-      </span><span class="nt">"owner_2_percent_ownership"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">Your</span><span class="w"> </span><span class="err">internal</span><span class="w"> </span><span class="err">ID</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">this</span><span class="w"> </span><span class="err">submission</span><span class="w">
-      </span><span class="nt">"reference_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ANYTHING_YOUWANT_AS_A_STRING"</span><span class="p">,</span><span class="w">
-      </span><span class="err">//</span><span class="w"> </span><span class="err">Any</span><span class="w"> </span><span class="err">notes</span><span class="w"> </span><span class="err">you</span><span class="w"> </span><span class="err">want</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">include</span><span class="w"> </span><span class="err">about</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">submission</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">our</span><span class="w"> </span><span class="err">team</span><span class="w">
-      </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"We think this is a great deal!"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="err">}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  // All of the lead data is wrapped in the lead object
+  "lead": {
+    // The contacts attributes are a list of contacts for the merchant, usually the owners
+    // If there are multiple contacts, provide multiple contact objects within the contacts_attributes list
+    "contacts_attributes": [
+      {
+        // The first name of a contact for the business
+        "first_name": "Erlich",
+        // The last name of a contact for the business
+        "last_name": "Bachman",
+        // The email of a contact for the business
+        "email": "erlich@piedpiper.com",
+        // The contact's title within the business
+        "title": "COO and Spiritual Advisor",
+        // The contact's date of birth
+        "born_on": "2015-01-01",
+        // The contact's home phone number
+        "home_phone": "6176781000",
+        // The contact's cell phone number
+        "cell_phone": "6176781000",
+        // The contacts Social Security Number, with no spaces or dashes
+        "ssn": "234345566",
+        // The date the contact became an owner in the business
+        "ownership_date": "2015-01-01",
+        // The attributes for an owners current address are nested within the "current_address_attributes"
+        "current_address_attributes": {
+          // The first line of the contact's current address
+          "street1": "36 Bromfield St",
+          // The second line of the contact's current address
+          "street2": "Second Floor",
+          // The city of the contact's current address
+          "city": "Boston",
+          // The state of the contact's current address
+          "state": "MA",
+          // The zipcode of the contact's current address
+          "zip": "00112"
+        }
+        // If there were additional contacts, they would be listed here
+      }
+    ],
+    // The account attributes object describes the business applying for a loan.
+    // Since it is an object ({}), not a list ([]) there can only be one.
+    "account_attributes": {
+      // The entity_type of the business, all valid options can be found on this page:
+      // https://api.forwardfinancing.com/api_docs
+      // Expand the lead endpoint and click on "Model"
+      "entity_type": "Limited Liability Company (LLC)",
+      // The name of the business, also known as the "DBA" or "Trade Name"
+      "name": "Pied Piper",
+      // The date the business was started
+      "started_on": "2015-01-01",
+      // The legal name of the business
+      "legal_name": "Pied Piper LLC",
+      // The phone number of the business
+      "phone": "6176781000",
+      // The email of the business
+      "email": "support@piedpiper.com",
+      // The website for the business
+      "website": "https://www.piedpiper.com/",
+      // The Federal Employer Identification Number for the business, with no spaces or dashes
+      "fein": "000000000",
+      // The average monthly revenue bucket for the business, valid options can be found on the documentation page
+      "monthly_revenue": "Less than $5,000",
+      // The name of the industry the business is in
+      "industry_name": "Compression Algorithms",
+      // The attributes for the businesses current address are nested within the "current_address_attributes"
+      "current_address_attributes": {
+        // The first line of the business's current address
+        "street1": "36 Bromfield St",
+        // The second line of the business's current address
+        "street2": "Second Floor",
+        // The city of the business's current address
+        "city": "Boston",
+        // The state of the business's current address
+        "state": "MA",
+        // The zipcode of the business's current address
+        "zip": "00112"
+      }
+    },
+    // Attributes of their most recent previous loan on file.
+    "loan_attributes": {
+      // The company's name that disbursed the loan
+      "company_name": "Wells Fargo",
+      // The Daily Payment Amount for the loan as a float
+      "daily_payment_amount": 25.00,
+      // The remaining balance on the loan
+      "balance": 15000.23
+    },
+    "application_attributes": {
+      // Does the applicant have a current loan?
+      "has_current_loan": true,
+      // Is the applicant the owner of the business?
+      "applicant_is_owner": true,
+      // What is the loan intended to be used for?
+      "loan_use": "Debt Refinancing",
+      // How much capital is needed?
+      "capital_needed": "50000",
+      // How much of the business does the primary owner own?
+      "owner_1_percent_ownership": 56,
+      // How much of the business does the secondary owner own (if applicable)?
+      "owner_2_percent_ownership": 9,
+      // Your internal ID for this submission
+      "reference_id": "ANYTHING_YOUWANT_AS_A_STRING",
+      // Any notes you want to include about the submission for our team
+      "notes": "We think this is a great deal!"
+    }
+  }
+}
+</code></pre></div></div>
 
 <h3 id="response">Response</h3>
 
@@ -237,26 +251,24 @@ required attributes are missing, you will receive HTTP status code 422
 Unprocessable Entity. The response body may contain information about what part
 of your request was invalid in JSON format, for example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"contacts_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"Must provide address"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "errors": {
+    "contacts_attributes": [
+      "Must provide address"
+    ]
+  }
+}
+</code></pre></div></div>
 
 <p>If your request is successful, you will receive HTTP status code 201 Created.
 The response body will contain a success message, and an ID for your submission,
 which will be used later for submitting attachments. For example</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your lead was successfully created."</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QTEQ.YJNyDzbMP0YX0D7qQr7PZcn7CU2E.TIIvFdZlr._ps.FDvDvwqGzI-c5FQ"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "message": "Your lead was successfully created.",
+  "id": "QTEQ.YJNyDzbMP0YX0D7qQr7PZcn7CU2E.TIIvFdZlr._ps.FDvDvwqGzI-c5FQ"
+}
+</code></pre></div></div>
 
 <h2 id="the-attachment-endpoint">The Attachment Endpoint</h2>
 
@@ -328,13 +340,12 @@ header. The request body format is JSON, so the <code class="highlighter-rouge">
 parameters, you provide an <code class="highlighter-rouge">attachment_url</code> parameter, which is a URL to the
 attachment you want to submit. For example:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"attachment_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://yourwebsite.com/files/some_attachment.pdf"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bank_statement.pdf"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"lead_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QTEQ.YJNyDzbMP0YX0D7qQr7PZcn7CU2E.TIIvFdZlr._ps.FDvDvwqGzI-c5FQ"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "attachment_url": "https://yourwebsite.com/files/some_attachment.pdf",
+  "filename": "bank_statement.pdf",
+  "lead_id": "QTEQ.YJNyDzbMP0YX0D7qQr7PZcn7CU2E.TIIvFdZlr._ps.FDvDvwqGzI-c5FQ"
+}
+</code></pre></div></div>
 
 <h3 id="response-1">Response</h3>
 
@@ -342,11 +353,10 @@ attachment you want to submit. For example:</p>
 code of 202 Accepted, which indicates that the attachment is being processed
 into our system.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your attachment was received and is being processed"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "message": "Your attachment was received and is being processed"
+}
+</code></pre></div></div>
 
 <hr />
 

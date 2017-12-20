@@ -22,37 +22,46 @@
     <header class="site-header" role="banner">
 
   <div class="wrapper">
-
+    
+    
     <a class="site-title" href="/">ForwardFinancing Engineering Blog</a>
+  
+    
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
 
-    <nav class="site-nav">
-      <span class="menu-icon">
-        <svg viewBox="0 0 18 15" width="18px" height="15px">
-          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
-          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
-          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
-        </svg>
-      </span>
-
-      <div class="trigger">
-        
+        <div class="trigger">
           
-          <a class="page-link" href="/about/">About</a>
+            
+            
+            <a class="page-link" href="/about/">About</a>
+            
           
-        
+            
+            
           
-        
+            
+            
           
-        
+            
+            
           
-        
+            
+            
           
-        
-      </div>
-    </nav>
-
+        </div>
+      </nav>
+    
   </div>
-
 </header>
 
 
@@ -62,7 +71,14 @@
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Implementing Fuzzy Search in Elixir Using Ecto and Postgres</h1>
-    <p class="post-meta"><time datetime="2017-12-20T11:00:00-05:00" itemprop="datePublished">Dec 20, 2017</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Demi Filippou</span></span></p>
+    <p class="post-meta">
+      <time datetime="2017-12-20T11:00:00-05:00" itemprop="datePublished">
+        
+        Dec 20, 2017
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Demi Filippou</span></span>
+      </p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
@@ -92,7 +108,7 @@
 <p><code class="highlighter-rouge">mix ecto.gen.migration add_fuzzystrmatch_extension</code></p>
 
 <p>Make sure to define <code class="highlighter-rouge">up</code> and <code class="highlighter-rouge">down</code> rather than defining the default <code class="highlighter-rouge">change</code> Elixir provides, or Ecto will be unable to rollback this migration.</p>
-<div class="language-elixir highlighter-rouge"><pre class="highlight"><code>  <span class="k">defmodule</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">Migrations</span><span class="o">.</span><span class="no">AddFuzzystrmatchExtension</span> <span class="k">do</span>
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">defmodule</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">Migrations</span><span class="o">.</span><span class="no">AddFuzzystrmatchExtension</span> <span class="k">do</span>
     <span class="kn">use</span> <span class="no">Ecto</span><span class="o">.</span><span class="no">Migration</span>
 
     <span class="k">def</span> <span class="n">up</span> <span class="k">do</span>
@@ -103,14 +119,13 @@
       <span class="n">execute</span> <span class="sd">"</span><span class="s2">DROP extension if exists fuzzystrmatch;"</span>
     <span class="k">end</span>
   <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Now we’re ready for the fun part.</p>
 
 <h3 id="using-levenshtein">Using Levenshtein</h3>
 <p>I started off simple. Just a SQL query that we will execute using <a href="https://hexdocs.pm/ecto/Ecto.Adapters.SQL.html#query/4">Ecto’s SQL adapter</a>. For now we will only search on email for simplicity. Let’s add it to our model.</p>
 
-<div class="language-elixir highlighter-rouge"><pre class="highlight"><code>  <span class="k">defmodule</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span> <span class="k">do</span>
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">defmodule</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span> <span class="k">do</span>
 
     <span class="o">.</span>
     <span class="o">.</span>
@@ -121,11 +136,10 @@
       <span class="no">MyApp</span><span class="o">.</span><span class="no">Repo</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">[</span><span class="n">query_string</span><span class="p">,</span> <span class="n">threshold</span><span class="p">])</span>
     <span class="k">end</span>
   <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Test that by running something like this:</p>
-<div class="language-elixir highlighter-rouge"><pre class="highlight"><code>  <span class="n">iex</span><span class="o">&gt;</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="o">.</span><span class="n">fuzzy_search</span><span class="p">(</span><span class="sd">"</span><span class="s2">dfilippo@forwardfinancing.com"</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">iex</span><span class="o">&gt;</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="o">.</span><span class="n">fuzzy_search</span><span class="p">(</span><span class="sd">"</span><span class="s2">dfilippo@forwardfinancing.com"</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
   <span class="p">{</span>
     <span class="ss">:ok</span><span class="p">,</span>
     <span class="p">%</span><span class="no">Postgrex</span><span class="o">.</span><span class="no">Result</span><span class="p">{</span>
@@ -133,8 +147,7 @@
     <span class="ss">command:</span> <span class="ss">:select</span><span class="p">,</span> <span class="ss">connection_id:</span> <span class="m">45434</span><span class="p">,</span> <span class="ss">num_rows:</span> <span class="m">1</span><span class="p">,</span>
     <span class="ss">rows:</span> <span class="p">[[</span><span class="sd">"</span><span class="s2">Demi Filippou"</span><span class="p">,</span> <span class="sd">"</span><span class="s2">dfilippou@forwardfinancing.com"</span><span class="o">...</span><span class="p">]]}</span>
   <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>This returns a tuple with a <code class="highlighter-rouge">Postgrex.Result</code> map containing the results of the query. It works! Even though my email is spelled slightly wrong, my user shows up. Yay! But we are still far from perfect.</p>
 
@@ -143,7 +156,7 @@
 
 <h3 id="fragments-to-the-rescue">Fragments to the Rescue!</h3>
 <p>Fragments are amazing. We can transform that nasty SQL query into something beautiful. Let’s rewrite the bit from earlier.</p>
-<div class="language-elixir highlighter-rouge"><pre class="highlight"><code>
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
   <span class="k">defmodule</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span> <span class="k">do</span>
     <span class="kn">import</span> <span class="no">Ecto</span><span class="o">.</span><span class="no">Query</span>
 
@@ -163,16 +176,14 @@
       <span class="no">MyApp</span><span class="o">.</span><span class="no">Repo</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
     <span class="k">end</span>
   <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Run the same test command as before</p>
-<div class="language-elixir highlighter-rouge"><pre class="highlight"><code>  <span class="n">iex</span><span class="o">&gt;</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="o">.</span><span class="n">fuzzy_search</span><span class="p">(</span><span class="sd">"</span><span class="s2">dfilipoop@forwardfinancing.com"</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">iex</span><span class="o">&gt;</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="o">.</span><span class="n">fuzzy_search</span><span class="p">(</span><span class="sd">"</span><span class="s2">dfilipoop@forwardfinancing.com"</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
   <span class="p">[%</span><span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="p">{</span><span class="ss">name:</span> <span class="sd">"</span><span class="s2">Demi Filippou"</span><span class="p">,</span> <span class="ss">email:</span> <span class="sd">"</span><span class="s2">dfilippou@forwardfinancing.com"</span><span class="o">...</span><span class="p">}]</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Now you should see the same results, but instead of receiving a tuple with a <code class="highlighter-rouge">Postgrex.Result</code>, you will get an actual user! Sweet. Plus, this code is way easier to build on and keep DRY. Let’s add the ability to search by name as well, it will be super simple with fragments!</p>
-<div class="language-elixir highlighter-rouge"><pre class="highlight"><code>  <span class="k">defmodule</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span> <span class="k">do</span>
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">defmodule</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span> <span class="k">do</span>
     <span class="kn">import</span> <span class="no">Ecto</span><span class="o">.</span><span class="no">Query</span>
 
     <span class="o">.</span>
@@ -195,20 +206,18 @@
       <span class="no">MyApp</span><span class="o">.</span><span class="no">Repo</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
     <span class="k">end</span>
   <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Now we can search on name and email, and it was so simple!</p>
-<div class="language-elixir highlighter-rouge"><pre class="highlight"><code>  <span class="n">iex</span><span class="o">&gt;</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="o">.</span><span class="n">fuzzy_search</span><span class="p">(</span><span class="sd">"</span><span class="s2">Demy Filippou"</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">iex</span><span class="o">&gt;</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="o">.</span><span class="n">fuzzy_search</span><span class="p">(</span><span class="sd">"</span><span class="s2">Demy Filippou"</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
   <span class="p">[%</span><span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="p">{</span><span class="ss">name:</span> <span class="sd">"</span><span class="s2">Demi Filippou"</span><span class="o">...</span><span class="p">}]</span>
 
   <span class="n">iex</span><span class="o">&gt;</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="o">.</span><span class="n">fuzzy_search</span><span class="p">(</span><span class="sd">"</span><span class="s2">Foo"</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
   <span class="p">[%</span><span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="p">{</span><span class="ss">name:</span> <span class="sd">"</span><span class="s2">Mr. Foo"</span><span class="o">...</span><span class="p">},</span> <span class="p">%</span><span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="p">{</span><span class="ss">email:</span> <span class="sd">"</span><span class="s2">z@foo.co"</span><span class="o">...</span><span class="p">},</span> <span class="p">%</span><span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="p">{</span><span class="ss">name:</span> <span class="sd">"</span><span class="s2">Foo"</span><span class="o">...</span><span class="p">},]</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="ordering-our-results">Ordering Our Results</h3>
 <p>Now, if this solution is to be of any use, we need to order our results by relevance. You can see in the previous example the user whose name was exactly “Foo” showed up last. With the way we have it written so far, there is no guarantee the ordering of our results will make sense, and the higher we set our Levenshtein threshold the more our results will be polluted, with the best results potentially being hidden at the end. So let’s go ahead and order based on the smallest Levenshtein distance across email and name. We can use the Postgres function <a href="https://www.postgresql.org/docs/9.5/static/functions-conditional.html#FUNCTIONS-GREATEST-LEAST">LEAST</a> for this, which selects the smallest value from a list. Let’s modify the code from the last section.</p>
-<div class="language-elixir highlighter-rouge"><pre class="highlight"><code>  <span class="k">defmodule</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span> <span class="k">do</span>
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">defmodule</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span> <span class="k">do</span>
     <span class="kn">import</span> <span class="no">Ecto</span><span class="o">.</span><span class="no">Query</span>
 
     <span class="o">.</span>
@@ -236,21 +245,18 @@
       <span class="no">MyApp</span><span class="o">.</span><span class="no">Repo</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
     <span class="k">end</span>
   <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Now your fuzzy search results should be ordered by smallest Levenshtein distance of both email and name.</p>
-<div class="language-elixir highlighter-rouge"><pre class="highlight"><code>  <span class="n">iex</span><span class="o">&gt;</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="o">.</span><span class="n">fuzzy_search</span><span class="p">(</span><span class="sd">"</span><span class="s2">Joe Johnson"</span><span class="p">,</span> <span class="m">10</span><span class="p">)</span>
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">iex</span><span class="o">&gt;</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="o">.</span><span class="n">fuzzy_search</span><span class="p">(</span><span class="sd">"</span><span class="s2">Joe Johnson"</span><span class="p">,</span> <span class="m">10</span><span class="p">)</span>
   <span class="p">[%</span><span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="p">{</span><span class="ss">name:</span> <span class="sd">"</span><span class="s2">Joe Johnson"</span><span class="o">...</span><span class="p">},</span> <span class="p">%</span><span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="p">{</span><span class="ss">name:</span> <span class="sd">"</span><span class="s2">Joe Shmo"</span><span class="o">...</span><span class="p">},</span> <span class="p">%</span><span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="p">{</span><span class="ss">email:</span> <span class="sd">"</span><span class="s2">Pete@johnson.com"</span><span class="o">...</span><span class="p">}]</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="case-insensitivity">Case Insensitivity</h3>
 <p>Bad news for us! The Levenshtein function is case sensitive. This means using any caps casing at all, either in our query or in our user’s name or email fields, will be driving up the Levenshtein distance. So if we had a user whose name was “demi filippou”, and we did this…</p>
-<div class="language-elixir highlighter-rouge"><pre class="highlight"><code>  <span class="n">iex</span><span class="o">&gt;</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="o">.</span><span class="n">fuzzy_search</span><span class="p">(</span><span class="sd">"</span><span class="s2">DEMI FILIPPOU"</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">iex</span><span class="o">&gt;</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="o">.</span><span class="n">fuzzy_search</span><span class="p">(</span><span class="sd">"</span><span class="s2">DEMI FILIPPOU"</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
+</code></pre></div></div>
 <p>…we’d get no results! The Levenshtein distance here would actually be the length of my name, because according to Levenshtein, D and d are different characters, as are E and e, and so on. I can’t imagine how case sensitivity in fuzzy search would be helpful, so let’s fix that. We can use Postgres <a href="https://www.postgresql.org/docs/9.5/static/functions-string.html#FUNCTIONS-STRING-SQL">LOWER</a> for this. We can downcase our query string, and downcase the name and email of the users we are searching to ensure the case sensitivity of Levenshtein doesn’t get in our way.</p>
-<div class="language-elixir highlighter-rouge"><pre class="highlight"><code>  <span class="k">defmodule</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span> <span class="k">do</span>
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">defmodule</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span> <span class="k">do</span>
     <span class="kn">import</span> <span class="no">Ecto</span><span class="o">.</span><span class="no">Query</span>
 
     <span class="o">.</span>
@@ -279,25 +285,22 @@
       <span class="no">MyApp</span><span class="o">.</span><span class="no">Repo</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
     <span class="k">end</span>
   <span class="k">end</span>
-</code></pre>
-</div>
-<div class="language-elixir highlighter-rouge"><pre class="highlight"><code>  <span class="n">iex</span><span class="o">&gt;</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="o">.</span><span class="n">fuzzy_search</span><span class="p">(</span><span class="sd">"</span><span class="s2">DEMI FILIPPOU"</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">iex</span><span class="o">&gt;</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="o">.</span><span class="n">fuzzy_search</span><span class="p">(</span><span class="sd">"</span><span class="s2">DEMI FILIPPOU"</span><span class="p">,</span> <span class="m">5</span><span class="p">)</span>
   <span class="p">[%</span><span class="no">MyApp</span><span class="o">.</span><span class="no">User</span><span class="p">{</span><span class="ss">name:</span> <span class="sd">"</span><span class="s2">Demi Filippou"</span><span class="p">,</span> <span class="ss">email:</span> <span class="sd">"</span><span class="s2">dfilippou@forwardfinancing.com"</span><span class="o">...</span><span class="p">}]</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <h3 id="leveraging-macros-to-dry-it-up">Leveraging Macros to DRY it up</h3>
 <p>It’s looking good so far! But once you see how awesome fuzzy search is, you might want to search on more fields. We decided to search on first name, last name, full name, email address, and the domain name in the email. It worked great, but our original implementation with the fragments got very repetitive, and we ended up having something like this code block five times:</p>
-<div class="language-elixir highlighter-rouge"><pre class="highlight"><code>   <span class="n">fragment</span><span class="p">(</span>
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">fragment</span><span class="p">(</span>
             <span class="sd">"</span><span class="s2">levenshtein(LOWER(?), LOWER(?))"</span><span class="p">,</span>
             <span class="n">u</span><span class="o">.</span><span class="n">email</span><span class="p">,</span>
             <span class="o">^</span><span class="n">query_string</span>
           <span class="p">)</span> <span class="o">&lt;=</span> <span class="o">^</span><span class="n">threshold</span> 
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>Not to mention repeating ourselves again and again in the <code class="highlighter-rouge">order_by</code>. Ugh. I do <em>not</em> want to see any more LOWERs. So let’s make it more dynamic! I took the advice of the Hex Docs and wrote some macros to <a href="https://hexdocs.pm/ecto/Ecto.Query.API.html#fragment/1-defining-custom-functions-using-macros-and-fragment">expose the Levenshtein function</a>. This made it neater, more readable, and more dynamic. Win.</p>
 
 <p>So go ahead and throw these macros in a helper module or in your model:</p>
-<div class="language-elixir highlighter-rouge"><pre class="highlight"><code>    <span class="c1"># Macro that takes two strings and determines if the levenshtein distance</span>
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1"># Macro that takes two strings and determines if the levenshtein distance</span>
     <span class="c1"># between them is less than the given threshold</span>
     <span class="k">defmacro</span> <span class="n">levenshtein</span><span class="p">(</span><span class="n">str1</span><span class="p">,</span> <span class="n">str2</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span> <span class="k">do</span>
       <span class="kn">quote</span> <span class="k">do</span>
@@ -318,11 +321,10 @@
         <span class="p">)</span>
       <span class="k">end</span>
     <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Now, we can really clean up the fuzzy search function. Make sure to import your module with your macros if you decided to separate them.</p>
-<div class="language-elixir highlighter-rouge"><pre class="highlight"><code>  <span class="k">defmodule</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span> <span class="k">do</span>
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">defmodule</span> <span class="no">MyApp</span><span class="o">.</span><span class="no">User</span> <span class="k">do</span>
     <span class="kn">import</span> <span class="no">Ecto</span><span class="o">.</span><span class="no">Query</span>
 
     <span class="o">.</span>
@@ -344,8 +346,7 @@
     <span class="no">MyApp</span><span class="o">.</span><span class="no">Repo</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
   <span class="k">end</span>
 <span class="k">end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>The functionality is identical but now it’s super easy to search on more fields. And that’s it - you now have a fully functional <code class="highlighter-rouge">fuzzy_search</code> function that returns search results under a given Levenshtein threshold!</p>
 
   </div>
