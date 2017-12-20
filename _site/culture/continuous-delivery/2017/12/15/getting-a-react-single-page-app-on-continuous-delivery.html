@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>How To Do Code Review, So It Rocks!</title>
-  <meta name="description" content="We do a lot of code review at Forward Financing. It’s helped our team commit to delivering quality software and it has turned out pretty great. It can be har...">
+  <title>Getting a React Single Page App on Continuous Delivery</title>
+  <meta name="description" content="Your pilot product just launched after weeks of writing code. Feedback is coming back in droves. Bugs are piling up. From being a two-person team on this sof...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/culture/code-review/2017/11/15/code-review.html">
+  <link rel="canonical" href="http://localhost:4000/culture/continuous-delivery/2017/12/15/getting-a-react-single-page-app-on-continuous-delivery.html">
   <link rel="alternate" type="application/rss+xml" title="ForwardFinancing Engineering Blog" href="/feed.xml">
   
   
@@ -61,39 +61,55 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">How To Do Code Review, So It Rocks!</h1>
-    <p class="post-meta"><time datetime="2017-11-15T11:00:00-05:00" itemprop="datePublished">Nov 15, 2017</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Janice Smith</span></span></p>
+    <h1 class="post-title" itemprop="name headline">Getting a React Single Page App on Continuous Delivery</h1>
+    <p class="post-meta"><time datetime="2017-12-15T11:00:00-05:00" itemprop="datePublished">Dec 15, 2017</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Patrick Hereford</span></span></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>We do a lot of code review at Forward Financing. It’s helped our team commit to delivering quality software and it has
- turned out pretty great. It can be hard to know how to dive in, so I’m going to shed some light on how it can be approached.</p>
+    <p>Your pilot product just launched after weeks of writing code. Feedback is coming
+back in droves. Bugs are piling up. From being a two-person team on this soft
+launch, the team now grows to four based on demand and feedback.</p>
 
-<p>In general, the practice of code review helps peers collaborate on features. That collaboration brings fresh perspectives, exposing the coder and reviewer to new ways of approaching a problem they may not have thought of, while distributing that knowledge across the team. In order for this process to be successful, the review needs to be done well.</p>
+<p>Your engineering workflow encourages QA on a staging environment that closely
+mimics production. Before the pilot, there wasn’t ever a time where the team of
+two really needed the staging environment at the same time. Now, it seems like
+multiple engineers require staging at the same time, causing bottlenecks and
+delays in shipping features to the customers.</p>
 
-<p>Initially the coder should consider adding some context to a given Pull Request. I like to put a description of the changes and the feature, but it can also be nice to comment on specific lines that might be complex.  Also a link to the card or ticket can be a big help. This is a good time for the coder to think about the PR as a whole.</p>
-<ul>
-  <li>Should this be more than one PR?</li>
-  <li>Should the code I write have any comments to clarify or document any of these changes?</li>
-</ul>
+<p>This happens at every organization as it begins to scale its engineering
+team. Bottlenecks like these are commonplace and can create quite a bit of
+friction in an engineer’s productivity.</p>
 
-<p>Once the PR is ready to be reviewed, asking for the opinion of specific engineers is good along with keeping it open to the group for more points of view. Getting the eyes of someone who has spent a lot of time in the codebase is great, but just keep in mind as the coder, you will get different kinds of feedback based on who is reviewing. I like to try to get a few different perspectives if I can.</p>
+<h2 id="continuous-delivery-to-the-rescue">Continuous Delivery to the Rescue</h2>
+<p>To alleviate this friction, most organizations turn to Continuous Delivery.
+This practice is generally used to decrease turnaround times on features. What
+this does not solve is the concept of siloed environments for QA. What
+complicates this further is that our build is for a static asset that is hosted
+on a CDN. Our build generates a manifest file and then one JavaScript and one
+CSS compiled asset.</p>
 
-<p>As a reviewer, the first pass is a good time to look for areas of the code that jump out at you.</p>
-<ul>
-  <li>Are there any clearly unaddressed edge cases?</li>
-  <li>Are there any deviations from the agreed upon style guide?</li>
-</ul>
+<h2 id="our-solution-for-silos">Our Solution for Silos</h2>
+<p>We ended up creating a build pipeline for our staging and production environments.
+These two environments, staging and production, are set up on auto deployment.
+In addition, we added development builds that mimic our staging
+environment from our development branch in git. These development builds rename
+the manifest file so we can specifically access the development static assets.
+Our server then knows how to request the specific compiled assets via url
+query parameters. Below is a screenshot of our Heroku build pipeline that auto
+generates our assets.</p>
 
-<p>Be sure to add notes to the PR in a clear and good-natured way.</p>
+<p><img src="http://localhost:4000/assets/heroku_spa_pipeline.png" alt="Heroku Build Pipeline" /></p>
 
-<p>Beyond that, a reviewer can have more specific questions that may be better served by having a quick conversation, rather than a back and forth on the PR. Learning how each person likes to communicate and having everyone get to know each other’s style is great. Consider asking questions about different approaches to solving an issue, i.e. “Why do you prefer a case statement here?”. These kinds of questions can touch on performance, readability, and extensibility. If it is a large feature or a big bug fix, it is great in code review to ask questions about where else this code is used or will be used. What may happen if the new code is used in ways maybe not intended by the coder? A conversation is one of the great things to come out of a code review.</p>
+<p>Here is a screenshot of the end result in our CDN.</p>
 
-<p>Questions can be a big help, because the coder may have an answer they can add for more context, or it could be that those cases are covered by another feature. This helps the coder and reviewer find any possible issues, but also actively lets both of them get more insight into the feature.</p>
+<p><img src="http://localhost:4000/assets/aws_pipeline_result.png" alt="CDN Manifest" /></p>
 
-<p>Code review helps teams distribute the understanding and cognitive load of a codebase across the team, making it much easier to step in when needed. When a team approaches review positively with a mind to exchange ideas it can be a great thing.</p>
-
-<p>In summary, along with a good outlook, the keys to code review are context, questions, and conversation.</p>
+<h2 id="one-size-does-not-fit-all">One Size Does Not Fit All</h2>
+<p>While building this, we realized that everyone’s purpose in this single page
+build process is vastly different. Most open source tooling we found was built
+around building and compiling assets and serving it up via nginx and express.
+Given that, our solution may not be perfect for your situation but it has
+certaintly helped us become more productive as engineers.</p>
 
   </div>
 
