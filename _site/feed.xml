@@ -6,9 +6,136 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 22 Dec 2017 11:58:57 -0500</pubDate>
-    <lastBuildDate>Fri, 22 Dec 2017 11:58:57 -0500</lastBuildDate>
+    <pubDate>Wed, 03 Jan 2018 15:33:51 -0500</pubDate>
+    <lastBuildDate>Wed, 03 Jan 2018 15:33:51 -0500</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>This Is Not a Test</title>
+        <description>&lt;p&gt;At Forward Financing, we are always trying to improve how we work.
+We have some core tenets to how we work as a team. Our director of engineering,
+Patrick Hereford, wrote a great post about that recently. You should check it out &lt;a href=&quot;http://tech.forwardfinancing.com/engineering/culture/2017/09/30/our-engineering-culture-methodologies-and-philosophies.html&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We are growing the engineering team here,
+in a push that will eventually more than double the size of our group.
+This growth is key to support all of the new work coming our way,
+marking an increased investment in tech here at Forward Financing.
+These positions are for different levels of engineers and for both local and remote team members.
+This is a very exciting time for us, but how successful we are may ultimately depend on who we hire.&lt;/p&gt;
+
+&lt;p&gt;We care about finding team members interested in joining a blameless culture rooted in learning.
+We do this mainly with code review and pairing.
+There are lots of great engineers out there, all with their own styles and preferred ways of working in a team.
+We want to focus on finding team members who will strengthen the values we have in place and bring in different points of view.&lt;/p&gt;
+
+&lt;p&gt;We talked a lot about how we might tailor an interview solution that fits our team, and we came together on pair programming. We do not practice strict formal pairing here as a whole,
+but we really like to collaborate, especially on large features.
+It is common for each person to either hop on a call with another engineer about a challenge, an idea, or to talk over code review. Being able to communicate well with any new person is key.&lt;/p&gt;
+
+&lt;p&gt;In the end we set up a process for pairing with a candidate who could be done in about an hour and had both a backend and frontend section (we are a full-stack team).
+We choose to go with a three-person call, one teammate leading the frontend, and another teammate to lead the backend portion. This works out well for us because then two engineers get to talk to the candidate, and the candidate also gets to ask questions and see how we work with each other.&lt;/p&gt;
+
+&lt;p&gt;The idea is to give a small window into how we work, while also getting an idea about how the candidate might fit. Our setup is based on our own codebases, with a few features removed. This worked for us because it is nice to see a candidate work with code that is based on our actual codebase, and also makes it simpler for us to guide a candidate.&lt;/p&gt;
+
+&lt;p&gt;Once we start the exercise with the candidate, the main point is to have them be the ones driving the solutions and communicating with us about what they are thinking. We try to make it clear that we want to see how they work. We stress that it is not a test. We are completely happy with talking it out, looking at docs for syntax and pseudo-coding solutions as a first pass.&lt;/p&gt;
+
+&lt;p&gt;Also, it is great to hear about optimizations the candidate might make, or what they may change with more time to complete. This lets us get a sense for a person’s personality, disposition and problem-solving style. I am enjoying getting a chance to talk to so many engineers and to see how they communicate. All in all, the goal is to make it as painless for the candidates as possible while giving us all the chance to get to know each other.&lt;/p&gt;
+
+&lt;p&gt;This is an energy-intensive process for us for sure, but so far, the opportunity to meet people and showing where they may fit in with the team has been a really a good investment for us. The team is growing, and it feels like we are growing in all the right ways.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 02 Jan 2018 11:00:00 -0500</pubDate>
+        <link>http://localhost:4000/culture/interviews/2018/01/02/this-is-not-a-test.html</link>
+        <guid isPermaLink="true">http://localhost:4000/culture/interviews/2018/01/02/this-is-not-a-test.html</guid>
+        
+        
+        <category>culture</category>
+        
+        <category>interviews</category>
+        
+      </item>
+    
+      <item>
+        <title>Using ngrok for Local Webhook Development</title>
+        <description>&lt;p&gt;Many API’s use webhooks to subscribe consumers to realtime information changes. When a record is updated or an event occurs in the providers system, they notify consumers by sending that data via HTTP request to each consumer’s web server. This strategy can be preferable to modern technologies like WebSockets in some cases, because the consumer isn’t required to maintain a long running web connection with the provider.&lt;/p&gt;
+
+&lt;p&gt;The server-initiated nature of webhooks makes developing a webhook consumer on your local machine challenging.
+With traditional API development, I would usually start by using a HTTP request client like Postman or Curl to hit the service I’m integrating with. Once I have a good idea of what the requests and responses look like, I’d start up a debugging console in my local app and start building the code interactively. But with webhooks, my app receives the HTTP requests instead of sending them. How do I point the webhook provider to my local app running on &lt;code class=&quot;highlighter-rouge&quot;&gt;localhost&lt;/code&gt;?&lt;/p&gt;
+
+&lt;p&gt;A colleague recommended an awesome (free) tool called &lt;a href=&quot;https://ngrok.com/&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ngrok&lt;/code&gt;&lt;/a&gt;. Ngrok provides a service which records web requests on a publically accessible domain. These recorded requests are then forwarded to your local machine at a port of your choice. The responses your local machine sends are forwarded all the way back to the original requester.&lt;/p&gt;
+
+&lt;h4 id=&quot;installation&quot;&gt;Installation&lt;/h4&gt;
+
+&lt;p&gt;In order to run ngrok, you’ll need to register for an account and &lt;a href=&quot;https://ngrok.com/download&quot;&gt;download+install&lt;/a&gt; the tool on your  machine.&lt;/p&gt;
+
+&lt;h4 id=&quot;getting-it-started&quot;&gt;Getting it started&lt;/h4&gt;
+&lt;p&gt;First I spun up my local web server with a debugger in place. I was using Elixir/Phoenix for this project, so my endpoint looked something like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyProject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Api&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;V1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;MyController&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyProject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Web&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:controller&lt;/span&gt;
+
+  &lt;span class=&quot;nv&quot;&gt;@spec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Plug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Conn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Plug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Conn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;IEx&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;IEx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pry&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ngrok&lt;/code&gt; takes a network protocol and the port your server is running on. So if my app were running locally on port 3000, I would run:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ngrok http 3000&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Once started, the ngrok console looks something like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Session Status                online
+Account                       Zach Cotter (Plan: Free)
+Version                       2.2.8
+Region                        United States (us)
+Web Interface                 http://127.0.0.1:4040
+Forwarding                    http://5e7e5b85.ngrok.io -&amp;gt; localhost:3000
+Forwarding                    https://5e7e5b85.ngrok.io -&amp;gt; localhost:3000
+
+Connections                   ttl     opn     rt1     rt5     p50     p90
+                              0       0       0.00    0.00    0.00    0.00
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The “Forwarding” attribute lists the publically accessible URL which is forwarding to our web server on port 3000, in this case &lt;code class=&quot;highlighter-rouge&quot;&gt;http://5e7e5b85.ngrok.io&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You can configure your webhook service to point to your debugging endpoint at that domain. For the endpoint above, the full url would be &lt;code class=&quot;highlighter-rouge&quot;&gt;http://5e7e5b85.ngrok.io/api/v1/my_controller&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You could also just test hitting that URL from Postman or Curl locally to double check that your web server is running.&lt;/p&gt;
+
+&lt;h4 id=&quot;the-web-interface&quot;&gt;The web interface&lt;/h4&gt;
+
+&lt;p&gt;Ngrok offers a very handy local web interface which shows each request and response with URL, body and headers.
+This console can be found at &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:4040&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/ngrok_web_console.png&quot; alt=&quot;CDN Manifest&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;request-replay&quot;&gt;Request Replay&lt;/h4&gt;
+
+&lt;p&gt;One of the best features with ngrok is the “Replay” button in the upper right. Clicking this sends the request from the webhook server to your local server again. This made a number of things much easier for me. I found that whenever my local web server received a second request from the webhook server, it would break the debugging session I was currently in, causing me to lose some of my work. This was solved by disconnecting the webhook server after it had sent one request, and then just replaying that request from &lt;code class=&quot;highlighter-rouge&quot;&gt;ngrok&lt;/code&gt; whenever I needed one to work with. The “Replay” button was also helpful because I didn’t have to wait for a new webhook to come through to test my code everytime I changed something.&lt;/p&gt;
+
+&lt;h4 id=&quot;https&quot;&gt;HTTPS&lt;/h4&gt;
+
+&lt;p&gt;We use HTTPS locally for all of our web services in development for security and to more closely mimic the environment found in production. To get &lt;code class=&quot;highlighter-rouge&quot;&gt;ngrok&lt;/code&gt; pointing to &lt;code class=&quot;highlighter-rouge&quot;&gt;https&lt;/code&gt; locally, all I had to do was change the command its run with:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ngrok tcp 3000&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This command gives you a forwarding URL that looks like: &lt;code class=&quot;highlighter-rouge&quot;&gt;tcp://0.tcp.ngrok.io:10034&lt;/code&gt;. You can just change the &lt;code class=&quot;highlighter-rouge&quot;&gt;tcp://&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;https://&lt;/code&gt; and give that URL to your webhook provider&lt;/p&gt;
+
+&lt;h4 id=&quot;more-about-ngrok&quot;&gt;More about ngrok&lt;/h4&gt;
+
+&lt;p&gt;Ngrok has tons of other features, and seems really well documented. There is a lot more to see on the &lt;a href=&quot;https://ngrok.com/docs&quot;&gt;documentation page&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 26 Dec 2017 11:00:00 -0500</pubDate>
+        <link>http://localhost:4000/tools/2017/12/26/using-ngrok-for-local-webhook-development.html</link>
+        <guid isPermaLink="true">http://localhost:4000/tools/2017/12/26/using-ngrok-for-local-webhook-development.html</guid>
+        
+        
+        <category>tools</category>
+        
+      </item>
     
       <item>
         <title>Implementing Fuzzy Search in Elixir Using Ecto and Postgres</title>
@@ -1154,372 +1281,6 @@ on Heroku was definitely not expected, but got us over the finish line.&lt;/p&gt
         <category>r</category>
         
         <category>heroku</category>
-        
-      </item>
-    
-      <item>
-        <title>Using Our Lead Submissions API</title>
-        <description>&lt;p&gt;&lt;em&gt;Our Lead Submissions API is designed to allow our business partners to submit
-potential deals automatically from their system to ours.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h2&gt;
-
-&lt;p&gt;Check out our automatically generated API docs
-&lt;a href=&quot;https://api-staging.forwardfinancing.com/api_docs&quot;&gt;here&lt;/a&gt;. They are
-interactive, so you can send example requests directly from the documentation in
-addition to viewing the request and response formats. We also have a &lt;a href=&quot;https://github.com/ForwardFinancing/partner_api_client_samples&quot;&gt;
- github repo containing example client code in various languages
-&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h4 id=&quot;authentication&quot;&gt;Authentication&lt;/h4&gt;
-
-&lt;p&gt;You will need to contact us to get your API key. The API key should be included
-in your request headers such that the request header key is &lt;code class=&quot;highlighter-rouge&quot;&gt;api_key&lt;/code&gt; and the
-request header value for that key is your API key. If you omit the api_key or
-provide an incorrect one, the HTTP status code of the response will be 401
-Unauthorized.&lt;/p&gt;
-
-&lt;h4 id=&quot;https&quot;&gt;HTTPS&lt;/h4&gt;
-
-&lt;p&gt;Since your API requests will contain sensitive personal information about our
-customers, you must use SSL (HTTPS). To discourage insecure API requests,
-the response code will be 403 Forbidden for all requests made over HTTP.&lt;/p&gt;
-
-&lt;h4 id=&quot;rate-limiting&quot;&gt;Rate Limiting&lt;/h4&gt;
-
-&lt;p&gt;We impose a rate limit per user of 1 request per second. If you exceed this rate
-of requests, the response code will be 429 Too Many Requests. If you need to
-exceed this limit for some reason, please let us know!&lt;/p&gt;
-
-&lt;h2 id=&quot;the-lead-endpoint&quot;&gt;The Lead Endpoint&lt;/h2&gt;
-
-&lt;p&gt;Lead Submissions may be made via POST request to the &lt;code class=&quot;highlighter-rouge&quot;&gt;/v1/lead&lt;/code&gt; endpoint.
-For example, the POST url might be
-&lt;code class=&quot;highlighter-rouge&quot;&gt;https://api-staging.forwardfinancing.com/v1/lead&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;request&quot;&gt;Request&lt;/h3&gt;
-
-&lt;p&gt;The request body should be in JSON format, so the content type header should
-set to JSON as well. Your headers should look like:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;api_key: YOUR_API_KEY_HERE
-Content-Type: application/json
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The request body should contain a JSON payload that describes the lead you are
-submitting. The full format can be found in our API documentation. An example
-request body is below:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-  // All of the lead data is wrapped in the lead object
-  &quot;lead&quot;: {
-    // The contacts attributes are a list of contacts for the merchant, usually the owners
-    // If there are multiple contacts, provide multiple contact objects within the contacts_attributes list
-    &quot;contacts_attributes&quot;: [
-      {
-        // The first name of a contact for the business
-        &quot;first_name&quot;: &quot;Erlich&quot;,
-        // The last name of a contact for the business
-        &quot;last_name&quot;: &quot;Bachman&quot;,
-        // The email of a contact for the business
-        &quot;email&quot;: &quot;erlich@piedpiper.com&quot;,
-        // The contact's title within the business
-        &quot;title&quot;: &quot;COO and Spiritual Advisor&quot;,
-        // The contact's date of birth
-        &quot;born_on&quot;: &quot;2015-01-01&quot;,
-        // The contact's home phone number
-        &quot;home_phone&quot;: &quot;6176781000&quot;,
-        // The contact's cell phone number
-        &quot;cell_phone&quot;: &quot;6176781000&quot;,
-        // The contacts Social Security Number, with no spaces or dashes
-        &quot;ssn&quot;: &quot;234345566&quot;,
-        // The date the contact became an owner in the business
-        &quot;ownership_date&quot;: &quot;2015-01-01&quot;,
-        // The attributes for an owners current address are nested within the &quot;current_address_attributes&quot;
-        &quot;current_address_attributes&quot;: {
-          // The first line of the contact's current address
-          &quot;street1&quot;: &quot;36 Bromfield St&quot;,
-          // The second line of the contact's current address
-          &quot;street2&quot;: &quot;Second Floor&quot;,
-          // The city of the contact's current address
-          &quot;city&quot;: &quot;Boston&quot;,
-          // The state of the contact's current address
-          &quot;state&quot;: &quot;MA&quot;,
-          // The zipcode of the contact's current address
-          &quot;zip&quot;: &quot;00112&quot;
-        }
-        // If there were additional contacts, they would be listed here
-      }
-    ],
-    // The account attributes object describes the business applying for a loan.
-    // Since it is an object ({}), not a list ([]) there can only be one.
-    &quot;account_attributes&quot;: {
-      // The entity_type of the business, all valid options can be found on this page:
-      // https://api.forwardfinancing.com/api_docs
-      // Expand the lead endpoint and click on &quot;Model&quot;
-      &quot;entity_type&quot;: &quot;Limited Liability Company (LLC)&quot;,
-      // The name of the business, also known as the &quot;DBA&quot; or &quot;Trade Name&quot;
-      &quot;name&quot;: &quot;Pied Piper&quot;,
-      // The date the business was started
-      &quot;started_on&quot;: &quot;2015-01-01&quot;,
-      // The legal name of the business
-      &quot;legal_name&quot;: &quot;Pied Piper LLC&quot;,
-      // The phone number of the business
-      &quot;phone&quot;: &quot;6176781000&quot;,
-      // The email of the business
-      &quot;email&quot;: &quot;support@piedpiper.com&quot;,
-      // The website for the business
-      &quot;website&quot;: &quot;https://www.piedpiper.com/&quot;,
-      // The Federal Employer Identification Number for the business, with no spaces or dashes
-      &quot;fein&quot;: &quot;000000000&quot;,
-      // The average monthly revenue bucket for the business, valid options can be found on the documentation page
-      &quot;monthly_revenue&quot;: &quot;Less than $5,000&quot;,
-      // The name of the industry the business is in
-      &quot;industry_name&quot;: &quot;Compression Algorithms&quot;,
-      // The attributes for the businesses current address are nested within the &quot;current_address_attributes&quot;
-      &quot;current_address_attributes&quot;: {
-        // The first line of the business's current address
-        &quot;street1&quot;: &quot;36 Bromfield St&quot;,
-        // The second line of the business's current address
-        &quot;street2&quot;: &quot;Second Floor&quot;,
-        // The city of the business's current address
-        &quot;city&quot;: &quot;Boston&quot;,
-        // The state of the business's current address
-        &quot;state&quot;: &quot;MA&quot;,
-        // The zipcode of the business's current address
-        &quot;zip&quot;: &quot;00112&quot;
-      }
-    },
-    // Attributes of their most recent previous loan on file.
-    &quot;loan_attributes&quot;: {
-      // The company's name that disbursed the loan
-      &quot;company_name&quot;: &quot;Wells Fargo&quot;,
-      // The Daily Payment Amount for the loan as a float
-      &quot;daily_payment_amount&quot;: 25.00,
-      // The remaining balance on the loan
-      &quot;balance&quot;: 15000.23
-    },
-    &quot;application_attributes&quot;: {
-      // Does the applicant have a current loan?
-      &quot;has_current_loan&quot;: true,
-      // Is the applicant the owner of the business?
-      &quot;applicant_is_owner&quot;: true,
-      // What is the loan intended to be used for?
-      &quot;loan_use&quot;: &quot;Debt Refinancing&quot;,
-      // How much capital is needed?
-      &quot;capital_needed&quot;: &quot;50000&quot;,
-      // How much of the business does the primary owner own?
-      &quot;owner_1_percent_ownership&quot;: 56,
-      // How much of the business does the secondary owner own (if applicable)?
-      &quot;owner_2_percent_ownership&quot;: 9,
-      // Your internal ID for this submission
-      &quot;reference_id&quot;: &quot;ANYTHING_YOUWANT_AS_A_STRING&quot;,
-      // Any notes you want to include about the submission for our team
-      &quot;notes&quot;: &quot;We think this is a great deal!&quot;
-    }
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;response&quot;&gt;Response&lt;/h3&gt;
-
-&lt;p&gt;If your request is unsuccessful, for example if the JSON is invalid or certain
-required attributes are missing, you will receive HTTP status code 422
-Unprocessable Entity. The response body may contain information about what part
-of your request was invalid in JSON format, for example:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-  &quot;errors&quot;: {
-    &quot;contacts_attributes&quot;: [
-      &quot;Must provide address&quot;
-    ]
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;If your request is successful, you will receive HTTP status code 201 Created.
-The response body will contain a success message, and an ID for your submission,
-which will be used later for submitting attachments. For example&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-  &quot;message&quot;: &quot;Your lead was successfully created.&quot;,
-  &quot;id&quot;: &quot;QTEQ.YJNyDzbMP0YX0D7qQr7PZcn7CU2E.TIIvFdZlr._ps.FDvDvwqGzI-c5FQ&quot;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;the-attachment-endpoint&quot;&gt;The Attachment Endpoint&lt;/h2&gt;
-
-&lt;p&gt;The attachment endpoint enables you to submit documents related to leads that
-have already been submitted. Attachment Submissions may be made via POST
-request to the &lt;code class=&quot;highlighter-rouge&quot;&gt;/v1/attachment&lt;/code&gt; endpoint. For example, the POST url might be
-&lt;code class=&quot;highlighter-rouge&quot;&gt;https://api-staging.forwardfinancing.com/v1/attachment&lt;/code&gt;. To submit multiple
-attachments, submit multiple requests.&lt;/p&gt;
-
-&lt;p&gt;You can send attachments by submitting either the raw binary of the attachment
-file, or by submitting a URL to the attachment.&lt;/p&gt;
-
-&lt;h3 id=&quot;request---sending-the-attachment-as-a-binary&quot;&gt;Request - Sending the Attachment as a Binary&lt;/h3&gt;
-
-&lt;h4 id=&quot;url-parameters&quot;&gt;URL Parameters&lt;/h4&gt;
-
-&lt;p&gt;The attachments endpoint requires two URL parameters:&lt;/p&gt;
-
-&lt;p&gt;1) The &lt;code class=&quot;highlighter-rouge&quot;&gt;filename&lt;/code&gt; parameter, which indicates the desired filename in our system
-for the attachment you are uploading. For example &lt;code class=&quot;highlighter-rouge&quot;&gt;bank_statement.pdf&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;2) The &lt;code class=&quot;highlighter-rouge&quot;&gt;lead_id&lt;/code&gt; parameter, indicating which of your previously submitted leads
-the attachment is associated with. The lead id can be found in the response to
-the leads endpoint. For example
-&lt;code class=&quot;highlighter-rouge&quot;&gt;QTEQ.YJNyDzbMP0YX0D7qQr7PZcn7CU2E.TIIvFdZlr._ps.FDvDvwqGzI-c5FQ&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;The full url with parameters will look something like:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;https://api-staging.forwardfinancing.com/v1/attachment?filename=bank_statement.pdf&amp;amp;lead_id=QTEQ.YJNyDzbMP0YX0D7qQr7PZcn7CU2E.TIIvFdZlr._ps.FDvDvwqGzI-c5FQ&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;If any of the required URL parameters are omitted or invalid, you will receive
-a 400 Bad Request.&lt;/p&gt;
-
-&lt;h4 id=&quot;headers&quot;&gt;Headers&lt;/h4&gt;
-
-&lt;p&gt;As with the other endpoints, you must include your API Key in the &lt;code class=&quot;highlighter-rouge&quot;&gt;api_key&lt;/code&gt;
-header. Since the request body format for this endpoint is not JSON, you should
-NOT set the &lt;code class=&quot;highlighter-rouge&quot;&gt;Content-Type&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;application/json&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;body&quot;&gt;Body&lt;/h4&gt;
-
-&lt;p&gt;The request body should contain the binary of the file you want to upload. In
-most languages, you can accomplish this by reading the file contents into memory
-and then outputting them into your request body as binary or a string.&lt;/p&gt;
-
-&lt;p&gt;If for some reason, your system does not allow you to send a binary request
-body, you can Base 64 encode the binary into a string. If you choose this
-option, you must indicate the body is encoded by passing &lt;code class=&quot;highlighter-rouge&quot;&gt;encoded=true&lt;/code&gt; in the
-URL parameters. Be sure to use strict Base 64 encoding, which encodes new line (&lt;code class=&quot;highlighter-rouge&quot;&gt;\n&lt;/code&gt;) characters.&lt;/p&gt;
-
-&lt;h3 id=&quot;request---sending-a-url-to-the-attachment&quot;&gt;Request - Sending a URL to the attachment&lt;/h3&gt;
-
-&lt;p&gt;The same endpoint can be used to submit a URL to the attachment, rather than
-the raw binary.&lt;/p&gt;
-
-&lt;h4 id=&quot;url-parameters-1&quot;&gt;URL Parameters&lt;/h4&gt;
-
-&lt;p&gt;No URL parameters are needed, but optionally you can include the body params in
-the URL instead.&lt;/p&gt;
-
-&lt;h4 id=&quot;headers-1&quot;&gt;Headers&lt;/h4&gt;
-
-&lt;p&gt;As with the other endpoints, you must include your API Key in the &lt;code class=&quot;highlighter-rouge&quot;&gt;api_key&lt;/code&gt;
-header. The request body format is JSON, so the &lt;code class=&quot;highlighter-rouge&quot;&gt;Content-Type&lt;/code&gt; should be
-&lt;code class=&quot;highlighter-rouge&quot;&gt;application/json&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;body-1&quot;&gt;Body&lt;/h4&gt;
-
-&lt;p&gt;Three JSON body params are required. In addition to the filename and lead_id
-parameters, you provide an &lt;code class=&quot;highlighter-rouge&quot;&gt;attachment_url&lt;/code&gt; parameter, which is a URL to the
-attachment you want to submit. For example:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-  &quot;attachment_url&quot;: &quot;https://yourwebsite.com/files/some_attachment.pdf&quot;,
-  &quot;filename&quot;: &quot;bank_statement.pdf&quot;,
-  &quot;lead_id&quot;: &quot;QTEQ.YJNyDzbMP0YX0D7qQr7PZcn7CU2E.TIIvFdZlr._ps.FDvDvwqGzI-c5FQ&quot;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;response-1&quot;&gt;Response&lt;/h3&gt;
-
-&lt;p&gt;If the request is successful, you will receive a response with an HTTP status
-code of 202 Accepted, which indicates that the attachment is being processed
-into our system.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
-  &quot;message&quot;: &quot;Your attachment was received and is being processed&quot;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&quot;happy-coding-if-you-encounter-any-issues-or-need-help-please-dont-hesitate-to-contact-us&quot;&gt;Happy Coding! If you encounter any issues or need help please don’t hesitate to contact us!&lt;/h4&gt;
-</description>
-        <pubDate>Tue, 07 Mar 2017 11:00:00 -0500</pubDate>
-        <link>http://localhost:4000/api/2017/03/07/using-our-lead-submissions-api.html</link>
-        <guid isPermaLink="true">http://localhost:4000/api/2017/03/07/using-our-lead-submissions-api.html</guid>
-        
-        
-        <category>api</category>
-        
-      </item>
-    
-      <item>
-        <title>Need for Speed: SQL vs. ActiveRecord</title>
-        <description>&lt;p&gt;Here at Forward Financing, the ability to report on the state our portfolio is the backbone of our business and the primary tool for us to check on the health of our investments. The bulk of that load falls to our funding application, a Ruby on Rails application powered by Postgres.&lt;/p&gt;
-
-&lt;p&gt;The Tech team here recently brought the application in-house, after it had spent several years under the stewardship of consultants domestic and abroad. When it came under our umbrella in Spring 2016, reports were generated via ActiveRecord query, iterating through our portfolio of about 3,500 advances at the time and nearly 300k payments from merchants tied to those advances.&lt;/p&gt;
-
-&lt;p&gt;The code structure involved a Ruby module dedicated specifically for report calculations and a caching system on all associated records whose goal was to improve the processing time. Calculations for each advance would involve iterating through hundreds of its associated payments, along with any rejections or fees that may have been incurred along the way. Multiply that by a few thousand, and it’s no surprise that a bottleneck was inevitable.&lt;/p&gt;
-
-&lt;p&gt;A six-hour bottleneck at its slowest, to be exact. With several key stakeholders spread out across the Northeast requiring at least one report every day, the slowness of the process necessitated late-night, early morning or weekend report generation to avoid potential side effects slowing down regular business operations.&lt;/p&gt;
-
-&lt;p&gt;Though the code itself, by nature of it being Ruby, was semantically easy to read and understand, ActiveRecord, no matter how much we refactored and eager-loaded, was proving to not be a sustainable solution as we continued to grow our portfolio and our associated records increased exponentially.&lt;/p&gt;
-
-&lt;h3 id=&quot;enter-sql&quot;&gt;Enter SQL&lt;/h3&gt;
-
-&lt;p&gt;At first, my team and I discussed a variety of solutions, such as porting out the reporting to another application in a more math-friendly language such as Elixir, to incorporating an already-in-use Solr solution. The overhead involved in getting everything up and running proved to be too large, and without any guarantee of a meaningful performance increase.&lt;/p&gt;
-
-&lt;p&gt;In the end, we settled on a lower-level language solution — Custom SQL functions. By translating all of the calculations that were initially in the Ruby module to custom SQL functions, we were able to avoid iterating over hundreds of thousands records and perform a single query off the database.&lt;/p&gt;
-
-&lt;p&gt;I first started by building out a query that would establish a base unit on which all of our other calculations would be based across the rest of the report. In this situation, it was the sum total of all of our payments for a scoped range set by the user:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CREATE OR REPLACE FUNCTION total_payments_for_range(
-    payment_start_date date,
-    payment_end_date date
-)
-    RETURNS TABLE (
-      total_payments_for_range numeric,
-      advance_id integer
-    ) AS $$
-    SELECT
-      COALESCE(sum(p.actual_holdback_amount), 0) as total_payments_for_range,
-      id as advance_id
-    FROM advances a
-    LEFT JOIN (
-      SELECT
-        actual_holdback_amount,
-        advance_id
-      FROM payments p
-      WHERE p.payment_date &amp;gt;= payment_start_date AND p.payment_date &amp;lt;= payment_end_date
-    ) as p
-    ON p.advance_id = a.id
-    GROUP BY a.id
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;By structuring all of our subsequent calculations around this base query, we were able to bring down our total report time to around 27 seconds on the first iteration of the SQL report function. Further refactors to remove my myriad structural problems, mostly duplicated or redundant queries, I was finally able to get our current build down to… &lt;em&gt;drumroll please&lt;/em&gt;&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;EXPLAIN ANALYZE SELECT * FROM generate_report(~~PARAMS~~);
-                  QUERY PLAN
---------------------------------------------
- Function Scan on generate_report  (cost=0.25..10.25 rows=1000 width=1552) (actual time=3610.526..3610.817 rows=2995 loops=1)
- Planning time: 0.087 ms
- Execution time: 3611.286 ms
-(3 rows)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Implementing the SQL query in to our existing Rails stack involved a trivial amount of overhead, setting up a sanitized query via Rails &lt;a href=&quot;http://api.rubyonrails.org/classes/ActiveRecord/Sanitization/ClassMethods.html#method-i-sanitize_sql_for_conditions&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sanitize_sql_for_conditions&lt;/code&gt;&lt;/a&gt; and building out a custom report record &lt;code class=&quot;highlighter-rouge&quot;&gt;Struct&lt;/code&gt; to handle the query table.&lt;/p&gt;
-
-&lt;p&gt;3.6 seconds. Down from 6 hours.&lt;/p&gt;
-</description>
-        <pubDate>Tue, 20 Dec 2016 16:00:00 -0500</pubDate>
-        <link>http://localhost:4000/sql/ruby/rails/efficiency/speed/2016/12/20/sql-functions-vs-active-record.html</link>
-        <guid isPermaLink="true">http://localhost:4000/sql/ruby/rails/efficiency/speed/2016/12/20/sql-functions-vs-active-record.html</guid>
-        
-        
-        <category>sql</category>
-        
-        <category>ruby</category>
-        
-        <category>rails</category>
-        
-        <category>efficiency</category>
-        
-        <category>speed</category>
         
       </item>
     
