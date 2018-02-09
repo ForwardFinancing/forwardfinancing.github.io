@@ -74,7 +74,7 @@ request body is below:
         "email": "erlich@piedpiper.com",
         // The contact's title within the business
         "title": "COO and Spiritual Advisor",
-        // The contact's date of birth
+        // The contact's date of birth must be before today's date
         "born_on": "2015-01-01",
         // The contact's home phone number
         "home_phone": "6176781000",
