@@ -6,9 +6,90 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 03 Jan 2018 15:33:51 -0500</pubDate>
-    <lastBuildDate>Wed, 03 Jan 2018 15:33:51 -0500</lastBuildDate>
+    <pubDate>Thu, 15 Feb 2018 16:44:43 -0500</pubDate>
+    <lastBuildDate>Thu, 15 Feb 2018 16:44:43 -0500</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Infrastructure and Sprint Work: The Great Balancing Act</title>
+        <description>&lt;h1 id=&quot;wearing-different-hats&quot;&gt;Wearing Different Hats&lt;/h1&gt;
+
+&lt;p&gt;Being an automation engineer can involve a number of things, and on a team like
+ours that still has a relatively new and growing automation team, it does involve
+doing a lot of different things. Often, a lot of different things at once.&lt;/p&gt;
+
+&lt;p&gt;One thing I often think about with this job is the balance between doing in-sprint
+work with features as they come through the pipeline and doing more ‘big picture’
+infrastructure work.&lt;/p&gt;
+
+&lt;p&gt;I think there is a natural inclination to spend as much time
+as possible working on QA for features in the sprint because it’s a more visible
+and immediate way to help the team. No one wants to feel like they’re neglecting
+the rest of the team, so when a QA request comes in there is an understandable
+urge to drop what you’re doing to help get that feature over the finish line.&lt;/p&gt;
+
+&lt;p&gt;But improving infrastructure is inherently the type of work that demands
+attention over long periods of time, and it is important not to neglect it.&lt;/p&gt;
+
+&lt;h1 id=&quot;breaking-the-divide&quot;&gt;Breaking The Divide&lt;/h1&gt;
+
+&lt;p&gt;Our team’s slack time periods between sprints is a great time to tackle these
+long-term infrastructure tasks without being pulled out of context to address work
+tied to a sprint.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, as we’ve come to realize, a single slack time is
+not always enough to complete the lengthy cycle of researching, experimenting,
+building, failing, and repeating until the system you are working on is working.&lt;/p&gt;
+
+&lt;p&gt;As an example, in our previous slack time we began the process of integrating
+our automated test suites with Jenkins and Docker, technologies we didn’t
+currently have in our team’s pipeline. Naturally, we didn’t complete this process
+in a week, but we carried our momentum into the next sprint and the result was
+that for the first time, infrastructure work was becoming sprint work for us.
+And that’s where the balancing act comes in.&lt;/p&gt;
+
+&lt;h1 id=&quot;what-comes-next&quot;&gt;What Comes Next&lt;/h1&gt;
+
+&lt;p&gt;As both our feature automation teams grow, one thing that will become critical
+is our ability to meet the demand of the QA queue as we increase our overall
+output, while still allowing room to devote periods of undivided attention
+to tricky infrastructure tasks that will improve our processes and output in the
+long run.&lt;/p&gt;
+
+&lt;p&gt;With a growing automation team, my hope is that we will be able to break up into
+fluidly defined subteams that can alternate between ‘sprint’ and ‘non-sprint’
+work.&lt;/p&gt;
+
+&lt;p&gt;These roles would need to alternate infrequently enough that each subteam
+has plenty of time to make meaningful progress on their task, but frequently
+enough that every automation engineer remains active and engaged on both fronts
+throughout the sprint.&lt;/p&gt;
+
+&lt;p&gt;So, it all comes back to a balancing act, and it will likely be a process that
+continues to change and evolve as we discover what works and what doesn’t.&lt;/p&gt;
+
+&lt;h1 id=&quot;tldr&quot;&gt;TL;DR&lt;/h1&gt;
+
+&lt;p&gt;As much as I love working with the features team to QA the awesome work they do,
+the amount I’ve found that I enjoy working on infrastructure has been the most
+pleasantly surprising aspect of my job.&lt;/p&gt;
+
+&lt;p&gt;Balancing these two types of work can be a challenge, but I’m eager to continue
+working to strike that balance so that we can simultaneously help to improve
+individual app features and the pipeline as a whole.&lt;/p&gt;
+
+&lt;p&gt;Thanks for reading!&lt;/p&gt;
+</description>
+        <pubDate>Thu, 15 Feb 2018 11:00:00 -0500</pubDate>
+        <link>http://localhost:4000/automation/infrastructure/2018/02/15/infrastructure-and-sprint-work.html</link>
+        <guid isPermaLink="true">http://localhost:4000/automation/infrastructure/2018/02/15/infrastructure-and-sprint-work.html</guid>
+        
+        
+        <category>automation</category>
+        
+        <category>infrastructure</category>
+        
+      </item>
     
       <item>
         <title>This Is Not a Test</title>
@@ -1183,104 +1264,6 @@ end
         <category>ruby</category>
         
         <category>rails</category>
-        
-      </item>
-    
-      <item>
-        <title>Getting Elixir and R working on Heroku</title>
-        <description>&lt;h2 id=&quot;framing-the-problem&quot;&gt;Framing the Problem&lt;/h2&gt;
-&lt;p&gt;Our business executives needed some in depth analysis on payment performance in
-the form of something called a &lt;a href=&quot;http://capitalsvcs.com/newsroom/whitepapers_case-studies/articles/Vintage%20Analysis-What%20is%20it%20and%20what%20does%20it%20do.pdf&quot;&gt;vintage curve&lt;/a&gt;.
-For those that are entrenched in the analysis world, this looks pretty familiar,
-right? It looks eerily similar to &lt;a href=&quot;https://en.wikipedia.org/wiki/Cohort_analysis&quot;&gt;cohort analysis&lt;/a&gt;.
-It probably looks that way because it is a form of cohort analysis. What the
-execs wanted to measure is payment performance of their portfolio for each
-“vintage” (i.e. a month that we funded a small business) and seeing how that
-group performs in comparison to other groups.&lt;/p&gt;
-
-&lt;h2 id=&quot;formulating-a-solution&quot;&gt;Formulating a Solution&lt;/h2&gt;
-&lt;p&gt;Our solution, which will be detailed in another blog post, had to involve a 
-handful of technologies. We need to host this software on a server (Heroku).
-We needed SQL, as all of our data resides in a RDBMS. It has to involve a
-highly computational language, we chose R, to handle summarization and data
-reshaping. Lastly, we needed a layer to handle API requests to get the data
-out of the system, of which we chose Elixir.&lt;/p&gt;
-
-&lt;h2 id=&quot;implementing-the-solution&quot;&gt;Implementing the Solution&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Assumption&lt;/strong&gt;: You have a heroku account and Heroku Toolbelt
-installed on your system as I go through a variety of commands and concepts.
-For our purposes, our heroku app will be called &lt;code class=&quot;highlighter-rouge&quot;&gt;tool-analysis-example&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;getting-r-on-heroku&quot;&gt;Getting R on Heroku&lt;/h3&gt;
-&lt;p&gt;The first thing we need to do here is get a R buildpack on associated to our
-heroku app. This &lt;a href=&quot;https://github.com/virtualstaticvoid/heroku-buildpack-r/tree/cedar-14-chroot&quot;&gt;one&lt;/a&gt;
-looks pretty good. To add it, we run the following command:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;heroku buildpacks:add --index 1 https://github.com/virtualstaticvoid/heroku-buildpack-r.git#cedar-14-chroot&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;From reading the README, we need to add an &lt;code class=&quot;highlighter-rouge&quot;&gt;init.R&lt;/code&gt; file to the main directory
-of our repo. This &lt;code class=&quot;highlighter-rouge&quot;&gt;init.R&lt;/code&gt; is used during deployment to install necessary
-dependencies. Here are the dependencies we used:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;install.packages('devtools', repos='http://cran.us.r-project.org')
-devtools::install_github(&quot;RcppCore/Rcpp&quot;)
-devtools::install_github(&quot;rstats-db/DBI&quot;)
-devtools::install_github(&quot;rstats-db/RPostgres&quot;)
-install.packages('jsonlite', repos='http://cran.us.r-project.org')
-install.packages('httr', repos='http://cran.us.r-project.org')
-install.packages('reshape2', repos='http://cran.us.r-project.org')
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;While installing R for the first time, all of these dependencies installed
-correctly with the exception of RPostgres. The error that was raised was due
-to not having libpq-dev on the instance. Bummer! Time to fix that now! We now
-need to install libpg-dev on our instance using Apt. To do this, we add another
-buildpack at the beginning of our pipeline:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;heroku buildpacks:add --index 1 https://github.com/heroku/heroku-buildpack-apt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This takes an &lt;code class=&quot;highlighter-rouge&quot;&gt;Aptfile&lt;/code&gt; in the root directory which will contain a single line
-of &lt;code class=&quot;highlighter-rouge&quot;&gt;libpq-dev&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Our next deploy will &lt;em&gt;NOW&lt;/em&gt; be successful and R will be able to communicate with
-our RDMBS.&lt;/p&gt;
-
-&lt;h3 id=&quot;getting-elixir-on-heroku&quot;&gt;Getting Elixir on Heroku&lt;/h3&gt;
-&lt;p&gt;This is pretty straightforward and just takes a &lt;a href=&quot;https://github.com/HashNuke/heroku-buildpack-elixir&quot;&gt;buildpack&lt;/a&gt;.
-&lt;code class=&quot;highlighter-rouge&quot;&gt;heroku buildpacks:add --index 3 https://github.com/HashNuke/heroku-buildpack-elixir&lt;/code&gt;
-Per the readme, this one needs a &lt;code class=&quot;highlighter-rouge&quot;&gt;elixir_buildpack.config&lt;/code&gt; file in the root
-directory of your application’s repository. Your next deploy will now install
-erlang and elixir without issue.&lt;/p&gt;
-
-&lt;h3 id=&quot;getting-elixir-to-communicate-with-r&quot;&gt;Getting Elixir to Communicate with R&lt;/h3&gt;
-&lt;p&gt;Lastly, we need to get Elixir to invoke an R script we created. For this
-example, our R script is located at &lt;code class=&quot;highlighter-rouge&quot;&gt;./r_scripts/vintage.R&lt;/code&gt; in our repository.&lt;/p&gt;
-
-&lt;p&gt;Using Elixir’s &lt;code class=&quot;highlighter-rouge&quot;&gt;System&lt;/code&gt; module, we can invoke commands on the system.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;System.cmd(&quot;Rscript&quot;, [&quot;./app/r_scripts/vintage.R&quot;])
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The output of this command will be a tuple where the first element is a string
-of the output from your R script.&lt;/p&gt;
-
-&lt;p&gt;Our API endpoint that returns the R results from this sytem averages about 3
-seconds. Not too shabby given the amount of data it is returning! We could
-reduce that probably by 60% by altering our JSON payload to be streamlined.&lt;/p&gt;
-
-&lt;h2 id=&quot;tldr&quot;&gt;TLDR&lt;/h2&gt;
-&lt;p&gt;It is possible to get R and a web framework of choice on Heroku. Installing apt
-on Heroku was definitely not expected, but got us over the finish line.&lt;/p&gt;
-
-&lt;p&gt;Thanks for reading!&lt;/p&gt;
-</description>
-        <pubDate>Wed, 15 Mar 2017 12:00:00 -0400</pubDate>
-        <link>http://localhost:4000/elixir/r/heroku/2017/03/15/elixir-and-r-on-heroku.html</link>
-        <guid isPermaLink="true">http://localhost:4000/elixir/r/heroku/2017/03/15/elixir-and-r-on-heroku.html</guid>
-        
-        
-        <category>elixir</category>
-        
-        <category>r</category>
-        
-        <category>heroku</category>
         
       </item>
     

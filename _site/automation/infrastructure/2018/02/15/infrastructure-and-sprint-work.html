@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>ForwardFinancing Engineering Blog</title>
-  <meta name="description" content="Technical content being created and curated from the technology group at ForwardFinancing.">
+  <title>Infrastructure and Sprint Work: The Great Balancing Act</title>
+  <meta name="description" content="Wearing Different Hats">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/">
+  <link rel="canonical" href="http://localhost:4000/automation/infrastructure/2018/02/15/infrastructure-and-sprint-work.html">
   <link rel="alternate" type="application/rss+xml" title="ForwardFinancing Engineering Blog" href="/feed.xml">
   
   
@@ -67,131 +67,93 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Infrastructure and Sprint Work: The Great Balancing Act</h1>
+    <p class="post-meta">
+      <time datetime="2018-02-15T11:00:00-05:00" itemprop="datePublished">
+        
+        Feb 15, 2018
+      </time>
+      
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Brad Leyden</span></span>
+      </p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Feb 15, 2018</span>
+  <div class="post-content" itemprop="articleBody">
+    <h1 id="wearing-different-hats">Wearing Different Hats</h1>
 
-        <h2>
-          <a class="post-link" href="/automation/infrastructure/2018/02/15/infrastructure-and-sprint-work.html">Infrastructure and Sprint Work: The Great Balancing Act</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jan 2, 2018</span>
+<p>Being an automation engineer can involve a number of things, and on a team like
+ours that still has a relatively new and growing automation team, it does involve
+doing a lot of different things. Often, a lot of different things at once.</p>
 
-        <h2>
-          <a class="post-link" href="/culture/interviews/2018/01/02/this-is-not-a-test.html">This Is Not a Test</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Dec 26, 2017</span>
+<p>One thing I often think about with this job is the balance between doing in-sprint
+work with features as they come through the pipeline and doing more ‘big picture’
+infrastructure work.</p>
 
-        <h2>
-          <a class="post-link" href="/tools/2017/12/26/using-ngrok-for-local-webhook-development.html">Using ngrok for Local Webhook Development</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Dec 20, 2017</span>
+<p>I think there is a natural inclination to spend as much time
+as possible working on QA for features in the sprint because it’s a more visible
+and immediate way to help the team. No one wants to feel like they’re neglecting
+the rest of the team, so when a QA request comes in there is an understandable
+urge to drop what you’re doing to help get that feature over the finish line.</p>
 
-        <h2>
-          <a class="post-link" href="/elixir/ecto/postgres/fuzzy-search/2017/12/20/fuzzy-search-in-elixir.html">Implementing Fuzzy Search in Elixir Using Ecto and Postgres</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Dec 15, 2017</span>
+<p>But improving infrastructure is inherently the type of work that demands
+attention over long periods of time, and it is important not to neglect it.</p>
 
-        <h2>
-          <a class="post-link" href="/culture/continuous-delivery/2017/12/15/getting-a-react-single-page-app-on-continuous-delivery.html">Getting a React Single Page App on Continuous Delivery</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Nov 15, 2017</span>
+<h1 id="breaking-the-divide">Breaking The Divide</h1>
 
-        <h2>
-          <a class="post-link" href="/culture/code-review/2017/11/15/code-review.html">How To Do Code Review, So It Rocks!</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Sep 30, 2017</span>
+<p>Our team’s slack time periods between sprints is a great time to tackle these
+long-term infrastructure tasks without being pulled out of context to address work
+tied to a sprint.</p>
 
-        <h2>
-          <a class="post-link" href="/engineering/culture/2017/09/30/our-engineering-culture-methodologies-and-philosophies.html">Our set of engineering culture and values</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Jun 1, 2017</span>
+<p>Unfortunately, as we’ve come to realize, a single slack time is
+not always enough to complete the lengthy cycle of researching, experimenting,
+building, failing, and repeating until the system you are working on is working.</p>
 
-        <h2>
-          <a class="post-link" href="/react/elixir/devops/2017/06/01/deploying-create-react-app-to-s3.html">Integrating create-react-app with Elixir + Phoenix via Amazon S3</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">May 8, 2017</span>
+<p>As an example, in our previous slack time we began the process of integrating
+our automated test suites with Jenkins and Docker, technologies we didn’t
+currently have in our team’s pipeline. Naturally, we didn’t complete this process
+in a week, but we carried our momentum into the next sprint and the result was
+that for the first time, infrastructure work was becoming sprint work for us.
+And that’s where the balancing act comes in.</p>
 
-        <h2>
-          <a class="post-link" href="/culture/management/leadership/2017/05/08/five-lessons-learned.html">Five Lessons Learned During My First Year as a Technical Director</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Apr 21, 2017</span>
+<h1 id="what-comes-next">What Comes Next</h1>
 
-        <h2>
-          <a class="post-link" href="/sidekiq/activerecord/ruby/rails/2017/04/21/juggling-sidekiq-transactions.html">Sidekiq Gotchas: Juggling Multiple Database Commits in Sidekiq Transactions</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 15, 2017</span>
+<p>As both our feature automation teams grow, one thing that will become critical
+is our ability to meet the demand of the QA queue as we increase our overall
+output, while still allowing room to devote periods of undivided attention
+to tricky infrastructure tasks that will improve our processes and output in the
+long run.</p>
 
-        <h2>
-          <a class="post-link" href="/elixir/r/heroku/2017/03/15/elixir-and-r-on-heroku.html">Getting Elixir and R working on Heroku</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 7, 2017</span>
+<p>With a growing automation team, my hope is that we will be able to break up into
+fluidly defined subteams that can alternate between ‘sprint’ and ‘non-sprint’
+work.</p>
 
-        <h2>
-          <a class="post-link" href="/api/2017/03/07/using-our-lead-submissions-api.html">Using Our Lead Submissions API</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Dec 20, 2016</span>
+<p>These roles would need to alternate infrequently enough that each subteam
+has plenty of time to make meaningful progress on their task, but frequently
+enough that every automation engineer remains active and engaged on both fronts
+throughout the sprint.</p>
 
-        <h2>
-          <a class="post-link" href="/sql/ruby/rails/efficiency/speed/2016/12/20/sql-functions-vs-active-record.html">Need for Speed: SQL vs. ActiveRecord</a>
-        </h2>
-      </li>
-    
-  </ul>
+<p>So, it all comes back to a balancing act, and it will likely be a process that
+continues to change and evolve as we discover what works and what doesn’t.</p>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+<h1 id="tldr">TL;DR</h1>
 
-</div>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<p>As much as I love working with the features team to QA the awesome work they do,
+the amount I’ve found that I enjoy working on infrastructure has been the most
+pleasantly surprising aspect of my job.</p>
 
-  ga('create', 'UA-41945096-2', 'auto');
-  ga('send', 'pageview');
+<p>Balancing these two types of work can be a challenge, but I’m eager to continue
+working to strike that balance so that we can simultaneously help to improve
+individual app features and the pipeline as a whole.</p>
 
-</script>
+<p>Thanks for reading!</p>
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>
