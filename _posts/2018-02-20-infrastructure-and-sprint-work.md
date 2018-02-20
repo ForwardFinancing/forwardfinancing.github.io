@@ -17,7 +17,7 @@ infrastructure work.
 
 I think there is a natural inclination to spend as much time as possible working
 on QA for features in the sprint because it's a more visible and immediate way to
-help their fellow engineers. No one wants to feel like they're neglecting the team,
+help our fellow engineers. No one wants to feel like they're neglecting the team,
 so when a QA request comes in there is an understandable urge to drop what you're
 doing to help get that feature over the finish line.
 
