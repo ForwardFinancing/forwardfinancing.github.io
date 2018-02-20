@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 16 Feb 2018 13:07:20 -0500</pubDate>
-    <lastBuildDate>Fri, 16 Feb 2018 13:07:20 -0500</lastBuildDate>
+    <pubDate>Tue, 20 Feb 2018 12:55:53 -0500</pubDate>
+    <lastBuildDate>Tue, 20 Feb 2018 12:55:53 -0500</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -83,9 +83,9 @@ individual app features and the pipeline as a whole.&lt;/p&gt;
 
 &lt;p&gt;Thanks for reading!&lt;/p&gt;
 </description>
-        <pubDate>Fri, 16 Feb 2018 11:00:00 -0500</pubDate>
-        <link>http://localhost:4000/automation/infrastructure/2018/02/16/infrastructure-and-sprint-work.html</link>
-        <guid isPermaLink="true">http://localhost:4000/automation/infrastructure/2018/02/16/infrastructure-and-sprint-work.html</guid>
+        <pubDate>Tue, 20 Feb 2018 11:00:00 -0500</pubDate>
+        <link>http://localhost:4000/automation/infrastructure/2018/02/20/infrastructure-and-sprint-work.html</link>
+        <guid isPermaLink="true">http://localhost:4000/automation/infrastructure/2018/02/20/infrastructure-and-sprint-work.html</guid>
         
         
         <category>automation</category>

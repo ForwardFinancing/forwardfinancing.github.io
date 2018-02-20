@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Infrastructure and Sprint Work: The Great Balancing Act"
-date:   2018-02-16 12:00:00 -0400
+date:   2018-02-20 12:00:00 -0400
 categories: automation infrastructure
 author: Brad Leyden
 ---
