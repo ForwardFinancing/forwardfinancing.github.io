@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Infrastructure and Sprint Work: The Great Balancing Act</title>
-  <meta name="description" content="Wearing Different Hats">
+  <title>Automating Processes with Gen Servers: A Beginner&#39;s Approach</title>
+  <meta name="description" content="As a financial services company, Forward Financing invests a signficant amount of time and resources around timebound reporting – think daily, weekly, monthl...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/automation/infrastructure/2018/02/20/infrastructure-and-sprint-work.html">
+  <link rel="canonical" href="http://localhost:4000/elixir/automation/microservices/2018/03/16/first-steps-into-gen-servers.html">
   <link rel="alternate" type="application/rss+xml" title="ForwardFinancing Engineering Blog" href="/feed.xml">
   
   
@@ -70,88 +70,93 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Infrastructure and Sprint Work: The Great Balancing Act</h1>
+    <h1 class="post-title" itemprop="name headline">Automating Processes with Gen Servers: A Beginner&#39;s Approach</h1>
     <p class="post-meta">
-      <time datetime="2018-02-20T11:00:00-05:00" itemprop="datePublished">
+      <time datetime="2018-03-16T10:00:00-04:00" itemprop="datePublished">
         
-        Feb 20, 2018
+        Mar 16, 2018
       </time>
       
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Brad Leyden</span></span>
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">Kelvin Ma</span></span>
       </p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <h1 id="wearing-different-hats">Wearing Different Hats</h1>
+    <p>As a financial services company, Forward Financing invests a signficant amount of time and resources around timebound reporting – think daily, weekly, monthly, etc., report generation. As opportunities for automation are concerned, it doesn’t get more obvious than this.</p>
 
-<p>Being an automation engineer can involve a number of things, and on a team like
-ours that still has a relatively new and growing automation team, it does involve
-doing a lot of different things – many times, a lot of different things at once.</p>
+<p>A big part of my growth as an engineer comes from getting out of my comfort zone, using new and unfamiliar tools to build hopefully useful tools. After doing a little research on potential solutions for our automation opportunity, I settled on Elixir’s GenServer, or Generic Server, pattern. Coming from a primarily Object Oriented Programming background with Rails, this pattern was a bit foreign to me, to say the least.</p>
 
-<p>One thing I often think about with this job is the balance between doing in-sprint
-work with features as they come through the pipeline and doing more “big picture”
-infrastructure work.</p>
+<h3 id="getting-started">Getting Started</h3>
 
-<p>I think there is a natural inclination to spend as much time as possible working
-on QA for features in the sprint because it’s a more visible and immediate way to
-help our fellow engineers. No one wants to feel like they’re neglecting the team,
-so when a QA request comes in there is an understandable urge to drop what you’re
-doing to help get that feature over the finish line.</p>
+<p>The basic premise for this project was to spin up a simple Phoenix/Elixir microservice application to perform two main tasks – make an API call to one of our monolith apps for portfolio data and then generate an email with the results once a month. After building out the API call in Rails, it was time to get started on the GenServer.</p>
 
-<p>But improving infrastructure is inherently the type of work that demands
-attention over long periods of time, and it is important not to neglect it.</p>
+<p>From the <a href="https://hexdocs.pm/elixir/GenServer.html">GenServer</a> HexDocs:</p>
 
-<h1 id="breaking-the-divide">Breaking The Divide</h1>
+<blockquote>
+  <p>A GenServer is a process like any other Elixir process and it can be used to keep state, execute code asynchronously and so on.</p>
+</blockquote>
 
-<p>Our team’s sprint cycles involve a week-long slack time between each sprint. This
-time allows engineers to “pick up the slack” by addressing things that wouldn’t
-fall under a standard sprint, such as reducing tech debt or learning a new
-technology to hopefully use in future sprints. Slack time is a great time to
-tackle these long-term infrastructure tasks without being pulled out of context
-to do work tied to a sprint.</p>
+<p>Seems pretty straightforward. By writing a GenServer and isolating this single task into its own process, I am effectively creating a microservice that can be managed by the application’s own <a href="https://hexdocs.pm/elixir/Supervisor.html">supervision tree</a>.</p>
 
-<p>Unfortunately, as we’ve come to realize, a single slack time is not always enough
-to complete the lengthy cycle of researching, experimenting, building, failing,
-and repeating until the system you are working on is functional.</p>
+<p>Here’s what I ended up with, using the default callbacks for GenServer:</p>
 
-<p>As an example, in our previous slack time we began the process of integrating
-our automated test suites with Jenkins and Docker, technologies we didn’t
-currently have in our team’s pipeline. Naturally, we didn’t complete this process
-in a week, but we carried our momentum into the next sprint and the result was
-that for the first time, infrastructure work was becoming sprint work for us.
-And that’s where the balancing act comes in.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  # Default implementation of GenServer
+  def start_link(opts) do
+    GenServer.start_link(__MODULE__, :ok, opts)
+  end
 
-<h1 id="what-comes-next">What Comes Next</h1>
+  # Initializes the GenServer on application startup
+  def init(state) do
+    schedule_work()
+    {:ok, state}
+  end
 
-<p>As both our feature and automation teams grow, one thing that will become critical
-is our ability to meet the demand of the QA queue as we increase our overall
-output, while still devoting periods of undivided attention to tricky infrastructure
-tasks that will improve our processes and output in the long run.</p>
+  # Generic catch-all message/event handler
+  def handle_info(:work, state) do
+    do_work() # The actual business logic, defined below
+    schedule_work() # Process scheduler
+    {:noreply, state}
+  end
 
-<p>With a growing automation team, my hope is that we will be able to break up into
-fluidly defined subteams that can alternate between “sprint” and “non-sprint”
-work.</p>
+  # The work!
+  def do_work() do
+    # Business logic goes here!
+  end
 
-<p>These roles would need to alternate infrequently enough that each subteam
-has plenty of time to make meaningful progress on their task, but frequently
-enough that every automation engineer remains active and engaged on both fronts
-throughout the sprint.</p>
+  # Scheduler to set interval for do_work()
+  defp schedule_work() do
+    Process.send_after(self(), :work, INTERVAL_IN_MILLESECONDS)
+  end
+</code></pre></div></div>
 
-<p>So, it all comes back to a balancing act, and it will likely be a process that
-continues to change and evolve as we discover what works and what doesn’t.</p>
+<p>Back to the docs to explain what’s going on here:</p>
+<blockquote>
+  <p>The goal of a GenServer is to abstract the “receive” loop for developers, automatically handling system messages, support code change, synchronous calls and more.</p>
+</blockquote>
 
-<h1 id="tldr">TL;DR</h1>
+<p>Once this GenServer gets integrated into the supervision tree,  we’ve essentially created a black box that will receive periodic messages to “do work”.</p>
 
-<p>As much as I love working with the features team to QA the awesome work they do,
-I’ve found that I enjoy working on infrastructure just as much. It’s not something
-I expected coming into this role, and it’s definitely been one of my most
-exciting career developments since joining the Forward Financing team.</p>
+<p>No controllers. No models. No database.</p>
 
-<p>Balancing these two types of work can be a challenge, but I’m eager to continue
-working to strike that balance so that we can simultaneously help to improve
-individual app features and the pipeline as a whole.</p>
+<p>Doesn’t get much simpler than that!</p>
 
-<p>Thanks for reading!</p>
+<h3 id="future-implications">Future Implications</h3>
+
+<p>At this point, you know that I can now read and follow basic documentation. What a relief!</p>
+
+<p>What I find most fascinating about this particular pattern is its ability to effectively manage multiple microservices within a single supervision tree. While in this particular example I’m only implementing a single GenServer, adding another two, three…10, more, would be a trivial process. And they could even communicate with each other with their own messages.</p>
+
+<p>As an engineering organization, Forward Financing is committed to the microservice philosophy. Our ecosystem of applications has grown significantly in a very short period of time, so being able to effectively manage processes across all of our core business functions is and will continue to be a priority.</p>
+
+<p>What kinds of options do we have with this pattern?</p>
+<ul>
+  <li>A monolith of microservices, operating within a single application’s supervision tree</li>
+  <li>Multiple business-related microservices organized by business function</li>
+  <li>Individual applications for each microservice</li>
+  <li>Something else entirely?</li>
+</ul>
+
+<p>There are pros and cons for all of these, I’m sure, but figuring it out on our own is going to be a lot of fun.</p>
 
   </div>
 

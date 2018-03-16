@@ -6,9 +6,100 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 20 Feb 2018 13:38:35 -0500</pubDate>
-    <lastBuildDate>Tue, 20 Feb 2018 13:38:35 -0500</lastBuildDate>
+    <pubDate>Fri, 16 Mar 2018 10:58:21 -0400</pubDate>
+    <lastBuildDate>Fri, 16 Mar 2018 10:58:21 -0400</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Automating Processes with Gen Servers: A Beginner's Approach</title>
+        <description>&lt;p&gt;As a financial services company, Forward Financing invests a signficant amount of time and resources around timebound reporting – think daily, weekly, monthly, etc., report generation. As opportunities for automation are concerned, it doesn’t get more obvious than this.&lt;/p&gt;
+
+&lt;p&gt;A big part of my growth as an engineer comes from getting out of my comfort zone, using new and unfamiliar tools to build hopefully useful tools. After doing a little research on potential solutions for our automation opportunity, I settled on Elixir’s GenServer, or Generic Server, pattern. Coming from a primarily Object Oriented Programming background with Rails, this pattern was a bit foreign to me, to say the least.&lt;/p&gt;
+
+&lt;h3 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h3&gt;
+
+&lt;p&gt;The basic premise for this project was to spin up a simple Phoenix/Elixir microservice application to perform two main tasks – make an API call to one of our monolith apps for portfolio data and then generate an email with the results once a month. After building out the API call in Rails, it was time to get started on the GenServer.&lt;/p&gt;
+
+&lt;p&gt;From the &lt;a href=&quot;https://hexdocs.pm/elixir/GenServer.html&quot;&gt;GenServer&lt;/a&gt; HexDocs:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A GenServer is a process like any other Elixir process and it can be used to keep state, execute code asynchronously and so on.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Seems pretty straightforward. By writing a GenServer and isolating this single task into its own process, I am effectively creating a microservice that can be managed by the application’s own &lt;a href=&quot;https://hexdocs.pm/elixir/Supervisor.html&quot;&gt;supervision tree&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Here’s what I ended up with, using the default callbacks for GenServer:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  # Default implementation of GenServer
+  def start_link(opts) do
+    GenServer.start_link(__MODULE__, :ok, opts)
+  end
+
+  # Initializes the GenServer on application startup
+  def init(state) do
+    schedule_work()
+    {:ok, state}
+  end
+
+  # Generic catch-all message/event handler
+  def handle_info(:work, state) do
+    do_work() # The actual business logic, defined below
+    schedule_work() # Process scheduler
+    {:noreply, state}
+  end
+
+  # The work!
+  def do_work() do
+    # Business logic goes here!
+  end
+
+  # Scheduler to set interval for do_work()
+  defp schedule_work() do
+    Process.send_after(self(), :work, INTERVAL_IN_MILLESECONDS)
+  end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Back to the docs to explain what’s going on here:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The goal of a GenServer is to abstract the “receive” loop for developers, automatically handling system messages, support code change, synchronous calls and more.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Once this GenServer gets integrated into the supervision tree,  we’ve essentially created a black box that will receive periodic messages to “do work”.&lt;/p&gt;
+
+&lt;p&gt;No controllers. No models. No database.&lt;/p&gt;
+
+&lt;p&gt;Doesn’t get much simpler than that!&lt;/p&gt;
+
+&lt;h3 id=&quot;future-implications&quot;&gt;Future Implications&lt;/h3&gt;
+
+&lt;p&gt;At this point, you know that I can now read and follow basic documentation. What a relief!&lt;/p&gt;
+
+&lt;p&gt;What I find most fascinating about this particular pattern is its ability to effectively manage multiple microservices within a single supervision tree. While in this particular example I’m only implementing a single GenServer, adding another two, three…10, more, would be a trivial process. And they could even communicate with each other with their own messages.&lt;/p&gt;
+
+&lt;p&gt;As an engineering organization, Forward Financing is committed to the microservice philosophy. Our ecosystem of applications has grown significantly in a very short period of time, so being able to effectively manage processes across all of our core business functions is and will continue to be a priority.&lt;/p&gt;
+
+&lt;p&gt;What kinds of options do we have with this pattern?&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A monolith of microservices, operating within a single application’s supervision tree&lt;/li&gt;
+  &lt;li&gt;Multiple business-related microservices organized by business function&lt;/li&gt;
+  &lt;li&gt;Individual applications for each microservice&lt;/li&gt;
+  &lt;li&gt;Something else entirely?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are pros and cons for all of these, I’m sure, but figuring it out on our own is going to be a lot of fun.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 16 Mar 2018 10:00:00 -0400</pubDate>
+        <link>http://localhost:4000/elixir/automation/microservices/2018/03/16/first-steps-into-gen-servers.html</link>
+        <guid isPermaLink="true">http://localhost:4000/elixir/automation/microservices/2018/03/16/first-steps-into-gen-servers.html</guid>
+        
+        
+        <category>elixir</category>
+        
+        <category>automation</category>
+        
+        <category>microservices</category>
+        
+      </item>
     
       <item>
         <title>Infrastructure and Sprint Work: The Great Balancing Act</title>
@@ -24,7 +115,7 @@ infrastructure work.&lt;/p&gt;
 
 &lt;p&gt;I think there is a natural inclination to spend as much time as possible working
 on QA for features in the sprint because it’s a more visible and immediate way to
-help their fellow engineers. No one wants to feel like they’re neglecting the team,
+help our fellow engineers. No one wants to feel like they’re neglecting the team,
 so when a QA request comes in there is an understandable urge to drop what you’re
 doing to help get that feature over the finish line.&lt;/p&gt;
 
@@ -1188,85 +1279,6 @@ are to be accomplished, it all starts with listening.&lt;/p&gt;
         <category>management</category>
         
         <category>leadership</category>
-        
-      </item>
-    
-      <item>
-        <title>Sidekiq Gotchas: Juggling Multiple Database Commits in Sidekiq Transactions</title>
-        <description>&lt;h2 id=&quot;the-issue&quot;&gt;The Issue&lt;/h2&gt;
-
-&lt;p&gt;In one of our applications, we have a feature that generates a schedule of payments for our merchants’ accounts. In these accounts, balances change, payment amounts may fluctuate, fees are incurred, terms can alter —- lots of things that can throw off the duration of a daily payment schedule. To solve this, our initial solution was to handle the recalculation via Sidekiq Worker, handling all of the different factors for potentially hundreds of thousands of records asynchronously. The worker would purge any outdated records, and then regenerate a schedule based on the new criteria for the account. Pretty straightforward, right?&lt;/p&gt;
-
-&lt;p&gt;It looked something like this:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def rebalance_schedule(starting_date)
-  delete_payments_after(starting_date)
-  create_scheduled_payments_after(starting_date)
-end
-
-class ScheduleWorker
-  ...
-  def perform(id, starting_date)
-    schedule = Schedule.find(id)
-    rebalance_schedule(starting_date)
-  end
-end
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Of course, a solution can never be that simple.&lt;/p&gt;
-
-&lt;p&gt;As soon as we started running this process, we noticed that schedules were showing duplicate items in the schedule. Not good!&lt;/p&gt;
-
-&lt;h2 id=&quot;so-what-happened&quot;&gt;So, what happened?&lt;/h2&gt;
-
-&lt;p&gt;Because of the transactional nature of the Sidekiq job, the duplication turned out to be side effect of introducing two database commits within the worker.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Within the context of the worker...
-
-def rebalance_schedule(starting_date)
-  delete_scheduled_payments_after(starting_date) &amp;lt;-- Schedule payments &quot;deleted&quot;, but not committed
-  create_scheduled_payments_after(starting_date) &amp;lt;-- Creates duplicate payments on top of existing, but not-yet-deleted items
-
-  ** Duplicates get committed to database -- Bad! **
-end
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;As a transaction, we should assume that there is only going to be one database commit. Makes sense, right?&lt;/p&gt;
-
-&lt;p&gt;Our solution ended up decoupling the computationally easy deletion from the worker and only running the computationally expensive recalculation and record creation in to the asynchronous job.&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class ScheduleWorker
-  ...
-  def perform(id, starting_date)
-    schedule = Schedule.find(id)
-    create_scheduled_payments_after(starting_date)
-  end
-end
-
-def rebalance_schedule(starting_date)
-    ActiveRecord::Base.transaction do
-      delete_future_payments(starting_date)
-    end
-    ScheduleWorker.perform_async(id, starting_date)
-  end
-end
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;TL;DR: Don’t put multiple transactions into a single Sidekiq job!&lt;/p&gt;
-</description>
-        <pubDate>Fri, 21 Apr 2017 15:00:00 -0400</pubDate>
-        <link>http://localhost:4000/sidekiq/activerecord/ruby/rails/2017/04/21/juggling-sidekiq-transactions.html</link>
-        <guid isPermaLink="true">http://localhost:4000/sidekiq/activerecord/ruby/rails/2017/04/21/juggling-sidekiq-transactions.html</guid>
-        
-        
-        <category>sidekiq</category>
-        
-        <category>activerecord</category>
-        
-        <category>ruby</category>
-        
-        <category>rails</category>
         
       </item>
     
