@@ -161,7 +161,8 @@ request body is below:
       "owner_1_percent_ownership": 56,
       // How much of the business does the secondary owner own (if applicable)?
       "owner_2_percent_ownership": 9,
-      // Your internal ID for this submission
+      // Your internal ID for this submission. If included, this must be unique
+      // compared to your previous submissions.
       "reference_id": "ANYTHING_YOUWANT_AS_A_STRING",
       // Any notes you want to include about the submission for our team
       "notes": "We think this is a great deal!"
@@ -184,6 +185,16 @@ of your request was invalid in JSON format, for example:
       "Must provide address"
     ]
   }
+}
+```
+
+You may also receive an HTTP status code of 422 Unprocessable Entity if you have
+submitted a reference_id that you have used in the past. In that case you will see
+a similar JSON response, like:
+
+```
+{
+  "message": "Reference ID is not unique."
 }
 ```
 
