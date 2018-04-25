@@ -8,7 +8,7 @@ author: Scott Davidson
 
 I am a firm believer that there is almost always room for improvement in process, especially when it comes to automating tasks. As an Automation Engineer here at Forward Financing, I am always trying to ensure optimal productivity for my team. However, I am also constantly looking for improvements that I can make within my personal process to help me save time throughout the day.
 
-A great way to accomplish this is by first identyifying some cumbersome task, and then writing a script for it. Currently, I have many useful scripts on both my work and home computers for accomplishing various things. These scripts may not be useful to everyone, but they help me accomplish tasks in a fraction of the time, and end up saving me minutes or hours in my week. Recently, I encountered an arduous daily process in my workflow that was taking me too much time and wrote a script to help me solve this problem.
+A great way to accomplish this is by first identifying some cumbersome task, and then writing a script for it. Currently, I have many useful scripts on both my work and home computers to accomplish various things. These scripts may not be useful to everyone, but they help me accomplish tasks in a fraction of the time, and end up saving me minutes or hours in my week. Recently, I encountered an arduous daily process in my workflow that was taking me too much time and wrote a script to help me solve this problem.
 
 **Note: The specific example showcased here assumes that you are on macOS**
 
@@ -16,9 +16,9 @@ A great way to accomplish this is by first identyifying some cumbersome task, an
 
 Since I am constantly either QAing or communicating with engineers about features, I like to provide as much context as possible. I found that visual aides are very helpful at providing additional context surrounding an issue.
 
-I primarily use a Macbook. Luckily, macOS provides users the ability to take screenshots. There are a few different ways to do this [outlined here by Apple support](https://support.apple.com/en-us/HT201361). Since I usually only want a portion of the screen, I prefer the shortcut: `command` + `shift` + `4` to select a capture area with my mouse.
+I primarily use a MacBook. Luckily, macOS provides users the ability to take screenshots. There are a few different ways to do this [outlined here by Apple support](https://support.apple.com/en-us/HT201361). Since I usually only want a portion of the screen, I prefer the shortcut: `command` + `shift` + `4` to select a capture area with my mouse.
 
-I would end up taking a screenshot, finding it in my filesystem, opening it, editing it, changing the name, and then attaching it to a message after finding it again in my filesystem. This required a lot of manual steps, and took a decent amount of time. I looked into ways of changing the default name and location of screenshots, but I wanted something a little more custom. After some digging, I found out that macOS has the `screencapture` utility that can be used in `Terminal`. (In your terminal, type `man screencapture` for more information). As soon as I discovered this, I immediately wanted to write a script so I could shave time off this arduous process.
+I would take a screenshot, find it in my filesystem, open it, edit it, change the name, and then attach it to a message after finding it again in my filesystem. This required a lot of manual steps, and took a decent amount of time. I looked into ways of changing the default name and location of screenshots, but I wanted something a little more custom. After some digging, I found out that macOS has the `screencapture` utility that can be used in `Terminal`. (In your terminal, type `man screencapture` for more information). As soon as I discovered this, I immediately wanted to write a script so I could shave time off this arduous process.
 
 # Investigation Time
 
@@ -108,7 +108,7 @@ Assuming I saved my script to `~/screenshot.sh`, I can invoke it as follows.
 ```
 bash ~/screenshot.sh <file_name> [<optional_extension>]
 ```
-`<file_name>` - **This is required** By default, the file name is going to be `$SCREENSHOT_DIR/<name_of_file>.png`
+`<file_name>` - **This is required** By default, the file name is going to be `$SCREENSHOT_DIR/<file_name>.png`
 `<optional_extension>` - (optional) If you don't want the file extension to be `png` you can define it with this arg. This option could be `jpg` for a `.jpg` extension.
 
 All you have to do is:
@@ -136,7 +136,7 @@ As long as the above gets sourced when you open your new shell (or run `. ~/.bas
 # Running Script With Our New Alias
 Now that our `alias` is set up, in your terminal, type:
 ```
-snap <name_of_file> [<optional_path>]
+snap <file_name> [<optional_path>]
 ```
 Even though we have an alias, the arguments the script accepts remain the same. Just like we saw when running the script without an alias, you will everything will work exactly as it did before.
 
@@ -146,8 +146,8 @@ Just to recap:
 3. The path will be copied to your clipboard! If you need to open the file, you can just type `open`, then paste the path in to your terminal!
 
 # Conclusion
-Hopefully after reading this, you will see how easy it is to make little tweaks in your workflow. As I mentioned before, the above script took me under 10 minutes to write. Now my cumbersome process of taking a screenshot is done write from my terminal in about a minute. I chose to write a bash script, but the above can be accomplished with pretty much any language you choose. I have used `Ruby`, `Perl`, and `Python` in the past to write scripts too!
+Hopefully after reading this, you will see how easy it is to make little tweaks in your workflow. As I mentioned before, the above script took me under 10 minutes to write. Now my cumbersome process of taking a screenshot is done right from my terminal in about a minute. I chose to write a bash script, but the above can be accomplished with pretty much any language you choose. I have used `Ruby`, `Perl`, and `Python` in the past to write scripts too!
 
-Next time you find yourself wanting to complain about a task you are repeatedly preforming, I suggest taking a step back and thinking about if there is a way to automate it. Even if it can't be fully automated, I find that there is usually some way to make it less painful with the use of scripts. I'm always surprised how a script that takes minutes to write can ultimately save me many hours. As engineers, we have tools at our disposal to make our lives easier, it's just a matter of identifying and implementing them.
+Next time you find yourself wanting to complain about a task you are repeatedly performing, I suggest taking a step back and thinking about if there is a way to automate it. Even if it can't be fully automated, I find that there is usually some way to make it less painful with the use of scripts. I'm always surprised how a script that takes minutes to write can ultimately save me many hours. As engineers, we have tools at our disposal to make our lives easier, it's just a matter of identifying and implementing them.
 
 Happy scripting!
