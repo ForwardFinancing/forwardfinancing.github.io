@@ -6,15 +6,15 @@ categories: automation scripts
 author: Scott Davidson
 ---
 
-I am a firm believer that there is almost always room for improvement in process, especially when it comes to automating tasks. As an Automation Engineer here at Forward Financing, I try to ensure optimal productivity for my team. However, I also constantly look for improvements that I can make within my personal process to help me save time throughout the day.
+I am a firm believer that there is almost always room for improvement in process, especially when it comes to automating tasks. As an Automation Engineer here at Forward Financing, I try to ensure optimal productivity for my team. However, I also constantly look for improvements within my personal process to help me save time throughout the day.
 
-A great way to accomplish this is by first identifying some cumbersome task, and then writing a script for it. Currently, I have many useful scripts on both my work and home computers to accomplish various things. These scripts help me accomplish tasks in a fraction of the time, saving me minutes or hours in my week. Recently, I encountered an arduous daily process in my workflow that was taking me too much time and wrote a script to help me solve this problem.
+A great way to accomplish this is by first identifying some cumbersome task, and then writing a script for it. Currently, I have many useful scripts on both my work and home computers to help me accomplish tasks in a fraction of the time, saving me minutes or hours in my week. Recently, I encountered an arduous daily process in my workflow that was taking me too much time and wrote a script to help me solve this problem.
 
 **Note: The specific example showcased here assumes that you are on macOS**
 
 # Identifying the Problem
 
-I like to provide as much context as possible when QAing or communicating with engineers about features. I found that visual aides are very helpful at providing additional context surrounding an issue.
+I like to provide as much context as possible when QAing or communicating with engineers about features. I found that visual aids are very helpful at providing additional context surrounding an issue.
 
 MacOS provides users the ability to take screenshots. There are a few different ways to do this [outlined here by Apple support](https://support.apple.com/en-us/HT201361). Since I usually only want a portion of the screen, I prefer the shortcut: `command` + `shift` + `4` to select a capture area with my mouse.
 
