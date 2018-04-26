@@ -84,7 +84,7 @@ echo "screenshot will be saved to: $SCREENSHOT_PATH"
 
 # invoke screencapture, specifying mouse capture and absolute path of destination
 screencapture -s $SCREENSHOT_PATH
-# At this point, mouse changes to cursor and use must select screenshot area.
+# At this point, mouse changes to cursor and you must select screenshot area.
 
 # This command will copy the path to our screenshot to our clipboard
 # Ready to paste with `command` + `V` shortcut
@@ -136,7 +136,7 @@ Now that our `alias` is set up, in your terminal, type:
 ```
 snap <file_name> [<optional_path>]
 ```
-Even though we have an alias, the arguments the script accepts remain the same. Just like we saw when running the script without an alias, you will everything will work exactly as it did before.
+Even though we have an alias, the arguments the script accepts remain the same. Just like we saw when running the script without an alias, everything will work exactly as it did before.
 
 Just to recap:
 1. Run script
