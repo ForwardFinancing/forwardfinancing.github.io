@@ -6,25 +6,25 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 25 Apr 2018 17:04:53 -0400</pubDate>
-    <lastBuildDate>Wed, 25 Apr 2018 17:04:53 -0400</lastBuildDate>
+    <pubDate>Thu, 26 Apr 2018 10:37:23 -0400</pubDate>
+    <lastBuildDate>Thu, 26 Apr 2018 10:37:23 -0400</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
         <title>Increasing Productivity with Scripts: Utilizing Mac's screencapture Utility</title>
-        <description>&lt;p&gt;I am a firm believer that there is almost always room for improvement in process, especially when it comes to automating tasks. As an Automation Engineer here at Forward Financing, I am always trying to ensure optimal productivity for my team. However, I am also constantly looking for improvements that I can make within my personal process to help me save time throughout the day.&lt;/p&gt;
+        <description>&lt;p&gt;I am a firm believer that there is almost always room for improvement in process, especially when it comes to automating tasks. As an Automation Engineer here at Forward Financing, I try to ensure optimal productivity for my team. However, I also constantly look for improvements that I can make within my personal process to help me save time throughout the day.&lt;/p&gt;
 
-&lt;p&gt;A great way to accomplish this is by first identifying some cumbersome task, and then writing a script for it. Currently, I have many useful scripts on both my work and home computers to accomplish various things. These scripts may not be useful to everyone, but they help me accomplish tasks in a fraction of the time, and end up saving me minutes or hours in my week. Recently, I encountered an arduous daily process in my workflow that was taking me too much time and wrote a script to help me solve this problem.&lt;/p&gt;
+&lt;p&gt;A great way to accomplish this is by first identifying some cumbersome task, and then writing a script for it. Currently, I have many useful scripts on both my work and home computers to accomplish various things. These scripts help me accomplish tasks in a fraction of the time, saving me minutes or hours in my week. Recently, I encountered an arduous daily process in my workflow that was taking me too much time and wrote a script to help me solve this problem.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Note: The specific example showcased here assumes that you are on macOS&lt;/strong&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;identifying-the-problem&quot;&gt;Identifying the Problem&lt;/h1&gt;
 
-&lt;p&gt;Since I am constantly either QAing or communicating with engineers about features, I like to provide as much context as possible. I found that visual aides are very helpful at providing additional context surrounding an issue.&lt;/p&gt;
+&lt;p&gt;I like to provide as much context as possible when QAing or communicating with engineers about features. I found that visual aides are very helpful at providing additional context surrounding an issue.&lt;/p&gt;
 
-&lt;p&gt;I primarily use a MacBook. Luckily, macOS provides users the ability to take screenshots. There are a few different ways to do this &lt;a href=&quot;https://support.apple.com/en-us/HT201361&quot;&gt;outlined here by Apple support&lt;/a&gt;. Since I usually only want a portion of the screen, I prefer the shortcut: &lt;code class=&quot;highlighter-rouge&quot;&gt;command&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;shift&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;4&lt;/code&gt; to select a capture area with my mouse.&lt;/p&gt;
+&lt;p&gt;MacOS provides users the ability to take screenshots. There are a few different ways to do this &lt;a href=&quot;https://support.apple.com/en-us/HT201361&quot;&gt;outlined here by Apple support&lt;/a&gt;. Since I usually only want a portion of the screen, I prefer the shortcut: &lt;code class=&quot;highlighter-rouge&quot;&gt;command&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;shift&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;4&lt;/code&gt; to select a capture area with my mouse.&lt;/p&gt;
 
-&lt;p&gt;I would take a screenshot, find it in my filesystem, open it, edit it, change the name, and then attach it to a message after finding it again in my filesystem. This required a lot of manual steps, and took a decent amount of time. I looked into ways of changing the default name and location of screenshots, but I wanted something a little more custom. After some digging, I found out that macOS has the &lt;code class=&quot;highlighter-rouge&quot;&gt;screencapture&lt;/code&gt; utility that can be used in &lt;code class=&quot;highlighter-rouge&quot;&gt;Terminal&lt;/code&gt;. (In your terminal, type &lt;code class=&quot;highlighter-rouge&quot;&gt;man screencapture&lt;/code&gt; for more information). As soon as I discovered this, I immediately wanted to write a script so I could shave time off this arduous process.&lt;/p&gt;
+&lt;p&gt;I would take a screenshot, find it in my filesystem, open it, edit it, change the name, and then attach it to a message after finding it again in my filesystem. This required a lot of manual steps, and took a decent amount of time. I looked into ways of changing the default name and location of screenshots, but I wanted something a little more custom. After some digging, I found out that macOS has the &lt;code class=&quot;highlighter-rouge&quot;&gt;screencapture&lt;/code&gt; utility that can be used in &lt;code class=&quot;highlighter-rouge&quot;&gt;Terminal&lt;/code&gt;. (In your terminal, type &lt;code class=&quot;highlighter-rouge&quot;&gt;man screencapture&lt;/code&gt; for more information). As soon as I discovered this, I wanted to write a script so I could shave time off this arduous process.&lt;/p&gt;
 
 &lt;h1 id=&quot;investigation-time&quot;&gt;Investigation Time&lt;/h1&gt;
 
@@ -34,7 +34,7 @@
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SYNOPSIS
      screencapture [-SWCTMPcimswxto] file
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;I learned &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;file&amp;gt;&lt;/code&gt; is the path to destination of where the screenshot will be saved. I also knew that I wanted to select only a portion of the screen with my mouse when taking the screenshot. After exploring the documentation for this utility more I found the following flag.&lt;/p&gt;
+&lt;p&gt;I learned &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;file&amp;gt;&lt;/code&gt; is the path to destination of where the screenshot will be saved. I also knew that I wanted to select only a portion of the screen with my mouse when taking the screenshot. After exploring the documentation for this utility more I found the following flag:&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-s      Only allow mouse selection mode.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;So I came to the conclusion that I would be invoking the &lt;code class=&quot;highlighter-rouge&quot;&gt;screencapture&lt;/code&gt; utility from my script as follows.&lt;/p&gt;
@@ -43,15 +43,13 @@
 &lt;p&gt;I felt comfortable enough with the utility to proceed after identifying how it would be used. All that was left was a matter of writing the bash script and making the file and extension names dynamic.&lt;/p&gt;
 
 &lt;p&gt;I also decided that it would be very helpful to have the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;path_to_file&amp;gt;&lt;/code&gt; copied to my clipboard. This would make the file easy to open in preview on the command line after the script ran with the command: &lt;code class=&quot;highlighter-rouge&quot;&gt;open &amp;lt;path_to_file&amp;gt;&lt;/code&gt;. Having the path to the clipboard would also make it easier to locate in &lt;code class=&quot;highlighter-rouge&quot;&gt;Finder&lt;/code&gt; for Mac (You can enter absolute path in &lt;code class=&quot;highlighter-rouge&quot;&gt;Finder&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;command&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;shift&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;G&lt;/code&gt;).
-Luckily, Mac has the &lt;code class=&quot;highlighter-rouge&quot;&gt;pbcopy&lt;/code&gt; command that allows you to paste to your system &lt;code class=&quot;highlighter-rouge&quot;&gt;Clipboard&lt;/code&gt; via the command line. You can read more about &lt;code class=&quot;highlighter-rouge&quot;&gt;pbcopy&lt;/code&gt; by typing &lt;code class=&quot;highlighter-rouge&quot;&gt;man pbcopy&lt;/code&gt; in your terminal.&lt;/p&gt;
+Mac has the &lt;code class=&quot;highlighter-rouge&quot;&gt;pbcopy&lt;/code&gt; command that allows you to paste to your system &lt;code class=&quot;highlighter-rouge&quot;&gt;Clipboard&lt;/code&gt; via the command line. You can read more about &lt;code class=&quot;highlighter-rouge&quot;&gt;pbcopy&lt;/code&gt; by typing &lt;code class=&quot;highlighter-rouge&quot;&gt;man pbcopy&lt;/code&gt; in your terminal.&lt;/p&gt;
 
 &lt;h1 id=&quot;writing-the-script&quot;&gt;Writing The Script&lt;/h1&gt;
 
-&lt;p&gt;I will not go a ton into bash scripting in this tutorial. There are plenty of other great tutorials and resources for that online. However, I will provide a brief description of my thought process and detailed comments within the attached snippet for the script.&lt;/p&gt;
+&lt;p&gt;Since the &lt;code class=&quot;highlighter-rouge&quot;&gt;screencapture&lt;/code&gt; utility requires one argument (&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;path_to_file&amp;gt;&lt;/code&gt;), my script would at minimum require one argument. I didn’t want to type out an absolute path or always invoke the script from my screenshot directory, so I chose to only pass the file’s base name to my script, and keep the path to my desired directory in a variable. I then concatenated the base file name argument with my desired directory within my script and passed this resulting absolute path to the &lt;code class=&quot;highlighter-rouge&quot;&gt;screencapture&lt;/code&gt; command.&lt;/p&gt;
 
-&lt;p&gt;After looking into the &lt;code class=&quot;highlighter-rouge&quot;&gt;screencapture&lt;/code&gt; utility, I learned that it requires one argument (&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;path_to_file&amp;gt;&lt;/code&gt;). This means that my script would at minimum require one argument as well. I didn’t want to type out an absolute path or always invoke the script from my screenshot directory, so I decided I would only pass the file’s base name to my script, and keep the path to my desired directory in a variable. I decided to concatenate the base file name argument with my desired directory within my script and pass this resulting absolute path to the &lt;code class=&quot;highlighter-rouge&quot;&gt;screencapture&lt;/code&gt; command.&lt;/p&gt;
-
-&lt;p&gt;I decided that I may also want to specify the extension of the file. I’m usually fine with &lt;code class=&quot;highlighter-rouge&quot;&gt;png&lt;/code&gt; as an extension. To limit keystrokes, I decided that this would be the default extension for my screenshots. I also decided to make the extension a second optional argument to my script.&lt;/p&gt;
+&lt;p&gt;I wanted the flexibility to specify the extension of the file as well. I’m usually fine with &lt;code class=&quot;highlighter-rouge&quot;&gt;png&lt;/code&gt; as an extension. To limit keystrokes, I made this the default extension for my screenshots. I also made the script able to accept a second optional argument to specify a different file type.&lt;/p&gt;
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# assign variable SCREENSHOT_DIR value of shell ENV value SCREENSHOT_DIR&lt;/span&gt;
@@ -93,10 +91,10 @@ screencapture &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&q
 &lt;span class=&quot;c&quot;&gt;# This command will copy the path to our screenshot to our clipboard&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# Ready to paste with `command` + `V` shortcut&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$SCREENSHOT_PATH&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; | pbcopy
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;This path to this screenshot has been copied to your clipboard.&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;The path to this screenshot has been copied to your clipboard.&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;At this point you can also create a file and paste in the above code, for the sake of this tutorial I’ll say mine is at &lt;code class=&quot;highlighter-rouge&quot;&gt;~/screenshot.sh&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;At this point you can also create a file and paste in the above code.&lt;/p&gt;
 
 &lt;p&gt;This script may appear complicated at first sight, but it only took under 10 minutes to write!&lt;/p&gt;
 

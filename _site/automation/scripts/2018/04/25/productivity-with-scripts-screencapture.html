@@ -82,19 +82,19 @@
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>I am a firm believer that there is almost always room for improvement in process, especially when it comes to automating tasks. As an Automation Engineer here at Forward Financing, I am always trying to ensure optimal productivity for my team. However, I am also constantly looking for improvements that I can make within my personal process to help me save time throughout the day.</p>
+    <p>I am a firm believer that there is almost always room for improvement in process, especially when it comes to automating tasks. As an Automation Engineer here at Forward Financing, I try to ensure optimal productivity for my team. However, I also constantly look for improvements that I can make within my personal process to help me save time throughout the day.</p>
 
-<p>A great way to accomplish this is by first identifying some cumbersome task, and then writing a script for it. Currently, I have many useful scripts on both my work and home computers to accomplish various things. These scripts may not be useful to everyone, but they help me accomplish tasks in a fraction of the time, and end up saving me minutes or hours in my week. Recently, I encountered an arduous daily process in my workflow that was taking me too much time and wrote a script to help me solve this problem.</p>
+<p>A great way to accomplish this is by first identifying some cumbersome task, and then writing a script for it. Currently, I have many useful scripts on both my work and home computers to accomplish various things. These scripts help me accomplish tasks in a fraction of the time, saving me minutes or hours in my week. Recently, I encountered an arduous daily process in my workflow that was taking me too much time and wrote a script to help me solve this problem.</p>
 
 <p><strong>Note: The specific example showcased here assumes that you are on macOS</strong></p>
 
 <h1 id="identifying-the-problem">Identifying the Problem</h1>
 
-<p>Since I am constantly either QAing or communicating with engineers about features, I like to provide as much context as possible. I found that visual aides are very helpful at providing additional context surrounding an issue.</p>
+<p>I like to provide as much context as possible when QAing or communicating with engineers about features. I found that visual aides are very helpful at providing additional context surrounding an issue.</p>
 
-<p>I primarily use a MacBook. Luckily, macOS provides users the ability to take screenshots. There are a few different ways to do this <a href="https://support.apple.com/en-us/HT201361">outlined here by Apple support</a>. Since I usually only want a portion of the screen, I prefer the shortcut: <code class="highlighter-rouge">command</code> + <code class="highlighter-rouge">shift</code> + <code class="highlighter-rouge">4</code> to select a capture area with my mouse.</p>
+<p>MacOS provides users the ability to take screenshots. There are a few different ways to do this <a href="https://support.apple.com/en-us/HT201361">outlined here by Apple support</a>. Since I usually only want a portion of the screen, I prefer the shortcut: <code class="highlighter-rouge">command</code> + <code class="highlighter-rouge">shift</code> + <code class="highlighter-rouge">4</code> to select a capture area with my mouse.</p>
 
-<p>I would take a screenshot, find it in my filesystem, open it, edit it, change the name, and then attach it to a message after finding it again in my filesystem. This required a lot of manual steps, and took a decent amount of time. I looked into ways of changing the default name and location of screenshots, but I wanted something a little more custom. After some digging, I found out that macOS has the <code class="highlighter-rouge">screencapture</code> utility that can be used in <code class="highlighter-rouge">Terminal</code>. (In your terminal, type <code class="highlighter-rouge">man screencapture</code> for more information). As soon as I discovered this, I immediately wanted to write a script so I could shave time off this arduous process.</p>
+<p>I would take a screenshot, find it in my filesystem, open it, edit it, change the name, and then attach it to a message after finding it again in my filesystem. This required a lot of manual steps, and took a decent amount of time. I looked into ways of changing the default name and location of screenshots, but I wanted something a little more custom. After some digging, I found out that macOS has the <code class="highlighter-rouge">screencapture</code> utility that can be used in <code class="highlighter-rouge">Terminal</code>. (In your terminal, type <code class="highlighter-rouge">man screencapture</code> for more information). As soon as I discovered this, I wanted to write a script so I could shave time off this arduous process.</p>
 
 <h1 id="investigation-time">Investigation Time</h1>
 
@@ -104,7 +104,7 @@
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SYNOPSIS
      screencapture [-SWCTMPcimswxto] file
 </code></pre></div></div>
-<p>I learned <code class="highlighter-rouge">&lt;file&gt;</code> is the path to destination of where the screenshot will be saved. I also knew that I wanted to select only a portion of the screen with my mouse when taking the screenshot. After exploring the documentation for this utility more I found the following flag.</p>
+<p>I learned <code class="highlighter-rouge">&lt;file&gt;</code> is the path to destination of where the screenshot will be saved. I also knew that I wanted to select only a portion of the screen with my mouse when taking the screenshot. After exploring the documentation for this utility more I found the following flag:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-s      Only allow mouse selection mode.
 </code></pre></div></div>
 <p>So I came to the conclusion that I would be invoking the <code class="highlighter-rouge">screencapture</code> utility from my script as follows.</p>
@@ -113,15 +113,13 @@
 <p>I felt comfortable enough with the utility to proceed after identifying how it would be used. All that was left was a matter of writing the bash script and making the file and extension names dynamic.</p>
 
 <p>I also decided that it would be very helpful to have the <code class="highlighter-rouge">&lt;path_to_file&gt;</code> copied to my clipboard. This would make the file easy to open in preview on the command line after the script ran with the command: <code class="highlighter-rouge">open &lt;path_to_file&gt;</code>. Having the path to the clipboard would also make it easier to locate in <code class="highlighter-rouge">Finder</code> for Mac (You can enter absolute path in <code class="highlighter-rouge">Finder</code> with <code class="highlighter-rouge">command</code> + <code class="highlighter-rouge">shift</code> + <code class="highlighter-rouge">G</code>).
-Luckily, Mac has the <code class="highlighter-rouge">pbcopy</code> command that allows you to paste to your system <code class="highlighter-rouge">Clipboard</code> via the command line. You can read more about <code class="highlighter-rouge">pbcopy</code> by typing <code class="highlighter-rouge">man pbcopy</code> in your terminal.</p>
+Mac has the <code class="highlighter-rouge">pbcopy</code> command that allows you to paste to your system <code class="highlighter-rouge">Clipboard</code> via the command line. You can read more about <code class="highlighter-rouge">pbcopy</code> by typing <code class="highlighter-rouge">man pbcopy</code> in your terminal.</p>
 
 <h1 id="writing-the-script">Writing The Script</h1>
 
-<p>I will not go a ton into bash scripting in this tutorial. There are plenty of other great tutorials and resources for that online. However, I will provide a brief description of my thought process and detailed comments within the attached snippet for the script.</p>
+<p>Since the <code class="highlighter-rouge">screencapture</code> utility requires one argument (<code class="highlighter-rouge">&lt;path_to_file&gt;</code>), my script would at minimum require one argument. I didn’t want to type out an absolute path or always invoke the script from my screenshot directory, so I chose to only pass the file’s base name to my script, and keep the path to my desired directory in a variable. I then concatenated the base file name argument with my desired directory within my script and passed this resulting absolute path to the <code class="highlighter-rouge">screencapture</code> command.</p>
 
-<p>After looking into the <code class="highlighter-rouge">screencapture</code> utility, I learned that it requires one argument (<code class="highlighter-rouge">&lt;path_to_file&gt;</code>). This means that my script would at minimum require one argument as well. I didn’t want to type out an absolute path or always invoke the script from my screenshot directory, so I decided I would only pass the file’s base name to my script, and keep the path to my desired directory in a variable. I decided to concatenate the base file name argument with my desired directory within my script and pass this resulting absolute path to the <code class="highlighter-rouge">screencapture</code> command.</p>
-
-<p>I decided that I may also want to specify the extension of the file. I’m usually fine with <code class="highlighter-rouge">png</code> as an extension. To limit keystrokes, I decided that this would be the default extension for my screenshots. I also decided to make the extension a second optional argument to my script.</p>
+<p>I wanted the flexibility to specify the extension of the file as well. I’m usually fine with <code class="highlighter-rouge">png</code> as an extension. To limit keystrokes, I made this the default extension for my screenshots. I also made the script able to accept a second optional argument to specify a different file type.</p>
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
 
 <span class="c"># assign variable SCREENSHOT_DIR value of shell ENV value SCREENSHOT_DIR</span>
@@ -163,10 +161,10 @@ screencapture <span class="nt">-s</span> <span class="nv">$SCREENSHOT_PATH</span
 <span class="c"># This command will copy the path to our screenshot to our clipboard</span>
 <span class="c"># Ready to paste with `command` + `V` shortcut</span>
 <span class="nb">printf</span> <span class="s2">"</span><span class="nv">$SCREENSHOT_PATH</span><span class="s2">"</span> | pbcopy
-<span class="nb">echo</span> <span class="s2">"This path to this screenshot has been copied to your clipboard."</span>
+<span class="nb">echo</span> <span class="s2">"The path to this screenshot has been copied to your clipboard."</span>
 </code></pre></div></div>
 
-<p>At this point you can also create a file and paste in the above code, for the sake of this tutorial I’ll say mine is at <code class="highlighter-rouge">~/screenshot.sh</code>.</p>
+<p>At this point you can also create a file and paste in the above code.</p>
 
 <p>This script may appear complicated at first sight, but it only took under 10 minutes to write!</p>
 

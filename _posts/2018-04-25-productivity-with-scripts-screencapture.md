@@ -6,19 +6,19 @@ categories: automation scripts
 author: Scott Davidson
 ---
 
-I am a firm believer that there is almost always room for improvement in process, especially when it comes to automating tasks. As an Automation Engineer here at Forward Financing, I am always trying to ensure optimal productivity for my team. However, I am also constantly looking for improvements that I can make within my personal process to help me save time throughout the day.
+I am a firm believer that there is almost always room for improvement in process, especially when it comes to automating tasks. As an Automation Engineer here at Forward Financing, I try to ensure optimal productivity for my team. However, I also constantly look for improvements that I can make within my personal process to help me save time throughout the day.
 
-A great way to accomplish this is by first identifying some cumbersome task, and then writing a script for it. Currently, I have many useful scripts on both my work and home computers to accomplish various things. These scripts may not be useful to everyone, but they help me accomplish tasks in a fraction of the time, and end up saving me minutes or hours in my week. Recently, I encountered an arduous daily process in my workflow that was taking me too much time and wrote a script to help me solve this problem.
+A great way to accomplish this is by first identifying some cumbersome task, and then writing a script for it. Currently, I have many useful scripts on both my work and home computers to accomplish various things. These scripts help me accomplish tasks in a fraction of the time, saving me minutes or hours in my week. Recently, I encountered an arduous daily process in my workflow that was taking me too much time and wrote a script to help me solve this problem.
 
 **Note: The specific example showcased here assumes that you are on macOS**
 
 # Identifying the Problem
 
-Since I am constantly either QAing or communicating with engineers about features, I like to provide as much context as possible. I found that visual aides are very helpful at providing additional context surrounding an issue.
+I like to provide as much context as possible when QAing or communicating with engineers about features. I found that visual aides are very helpful at providing additional context surrounding an issue.
 
-I primarily use a MacBook. Luckily, macOS provides users the ability to take screenshots. There are a few different ways to do this [outlined here by Apple support](https://support.apple.com/en-us/HT201361). Since I usually only want a portion of the screen, I prefer the shortcut: `command` + `shift` + `4` to select a capture area with my mouse.
+MacOS provides users the ability to take screenshots. There are a few different ways to do this [outlined here by Apple support](https://support.apple.com/en-us/HT201361). Since I usually only want a portion of the screen, I prefer the shortcut: `command` + `shift` + `4` to select a capture area with my mouse.
 
-I would take a screenshot, find it in my filesystem, open it, edit it, change the name, and then attach it to a message after finding it again in my filesystem. This required a lot of manual steps, and took a decent amount of time. I looked into ways of changing the default name and location of screenshots, but I wanted something a little more custom. After some digging, I found out that macOS has the `screencapture` utility that can be used in `Terminal`. (In your terminal, type `man screencapture` for more information). As soon as I discovered this, I immediately wanted to write a script so I could shave time off this arduous process.
+I would take a screenshot, find it in my filesystem, open it, edit it, change the name, and then attach it to a message after finding it again in my filesystem. This required a lot of manual steps, and took a decent amount of time. I looked into ways of changing the default name and location of screenshots, but I wanted something a little more custom. After some digging, I found out that macOS has the `screencapture` utility that can be used in `Terminal`. (In your terminal, type `man screencapture` for more information). As soon as I discovered this, I wanted to write a script so I could shave time off this arduous process.
 
 # Investigation Time
 
@@ -29,7 +29,7 @@ I knew I wanted to specify a name and extension for my file on the fly. The foll
 SYNOPSIS
      screencapture [-SWCTMPcimswxto] file
 ```
-I learned `<file>` is the path to destination of where the screenshot will be saved. I also knew that I wanted to select only a portion of the screen with my mouse when taking the screenshot. After exploring the documentation for this utility more I found the following flag.
+I learned `<file>` is the path to destination of where the screenshot will be saved. I also knew that I wanted to select only a portion of the screen with my mouse when taking the screenshot. After exploring the documentation for this utility more I found the following flag:
 ```
 -s      Only allow mouse selection mode.
 ```
@@ -40,15 +40,13 @@ screencapture -s <path_to_file>
 I felt comfortable enough with the utility to proceed after identifying how it would be used. All that was left was a matter of writing the bash script and making the file and extension names dynamic.
 
 I also decided that it would be very helpful to have the `<path_to_file>` copied to my clipboard. This would make the file easy to open in preview on the command line after the script ran with the command: `open <path_to_file>`. Having the path to the clipboard would also make it easier to locate in `Finder` for Mac (You can enter absolute path in `Finder` with `command` + `shift` + `G`).
-Luckily, Mac has the `pbcopy` command that allows you to paste to your system `Clipboard` via the command line. You can read more about `pbcopy` by typing `man pbcopy` in your terminal.
+Mac has the `pbcopy` command that allows you to paste to your system `Clipboard` via the command line. You can read more about `pbcopy` by typing `man pbcopy` in your terminal.
 
 # Writing The Script
 
-I will not go a ton into bash scripting in this tutorial. There are plenty of other great tutorials and resources for that online. However, I will provide a brief description of my thought process and detailed comments within the attached snippet for the script.
+Since the `screencapture` utility requires one argument (`<path_to_file>`), my script would at minimum require one argument. I didn't want to type out an absolute path or always invoke the script from my screenshot directory, so I chose to only pass the file's base name to my script, and keep the path to my desired directory in a variable. I then concatenated the base file name argument with my desired directory within my script and passed this resulting absolute path to the `screencapture` command.
 
-After looking into the `screencapture` utility, I learned that it requires one argument (`<path_to_file>`). This means that my script would at minimum require one argument as well. I didn't want to type out an absolute path or always invoke the script from my screenshot directory, so I decided I would only pass the file's base name to my script, and keep the path to my desired directory in a variable. I decided to concatenate the base file name argument with my desired directory within my script and pass this resulting absolute path to the `screencapture` command.
-
-I decided that I may also want to specify the extension of the file. I'm usually fine with `png` as an extension. To limit keystrokes, I decided that this would be the default extension for my screenshots. I also decided to make the extension a second optional argument to my script.
+I wanted the flexibility to specify the extension of the file as well. I'm usually fine with `png` as an extension. To limit keystrokes, I made this the default extension for my screenshots. I also made the script able to accept a second optional argument to specify a different file type.
 ```sh
 #!/bin/bash
 
@@ -91,10 +89,10 @@ screencapture -s $SCREENSHOT_PATH
 # This command will copy the path to our screenshot to our clipboard
 # Ready to paste with `command` + `V` shortcut
 printf "$SCREENSHOT_PATH" | pbcopy
-echo "This path to this screenshot has been copied to your clipboard."
+echo "The path to this screenshot has been copied to your clipboard."
 ```
 
-At this point you can also create a file and paste in the above code, for the sake of this tutorial I'll say mine is at `~/screenshot.sh`.
+At this point you can also create a file and paste in the above code.
 
 This script may appear complicated at first sight, but it only took under 10 minutes to write!
 
