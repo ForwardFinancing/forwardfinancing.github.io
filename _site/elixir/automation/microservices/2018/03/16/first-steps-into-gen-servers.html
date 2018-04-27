@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Automating Processes with Gen Servers: A Beginner&#39;s Approach</title>
-  <meta name="description" content="As a financial services company, Forward Financing invests a signficant amount of time and resources around timebound reporting – think daily, weekly, monthl...">
+  <meta name="description" content="As a financial services company, Forward Financing invests a signficant amount of time and resources in timebound reporting – think daily, weekly, monthly, e...">
 
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="canonical" href="http://localhost:4000/elixir/automation/microservices/2018/03/16/first-steps-into-gen-servers.html">
@@ -82,9 +82,9 @@
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>As a financial services company, Forward Financing invests a signficant amount of time and resources around timebound reporting – think daily, weekly, monthly, etc., report generation. As opportunities for automation are concerned, it doesn’t get more obvious than this.</p>
+    <p>As a financial services company, Forward Financing invests a signficant amount of time and resources in timebound reporting – think daily, weekly, monthly, etc., report generation. As opportunities for automation are concerned, it doesn’t get more obvious than this.</p>
 
-<p>A big part of my growth as an engineer comes from getting out of my comfort zone, using new and unfamiliar tools to build hopefully useful tools. After doing a little research on potential solutions for our automation opportunity, I settled on Elixir’s GenServer, or Generic Server, pattern. Coming from a primarily Object Oriented Programming background with Rails, this pattern was a bit foreign to me, to say the least.</p>
+<p>Getting out of my comfort zone has been a key part of my engineering growth, using new and unfamiliar tools to build potentially useful tools. After doing a little research on potential solutions for our automation opportunity, I settled on Elixir’s GenServer, or Generic Server, pattern. Coming from a primarily Object Oriented Programming background with Rails, this pattern was a bit foreign to me, to say the least.</p>
 
 <h3 id="getting-started">Getting Started</h3>
 
@@ -100,33 +100,33 @@
 
 <p>Here’s what I ended up with, using the default callbacks for GenServer:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  # Default implementation of GenServer
-  def start_link(opts) do
-    GenServer.start_link(__MODULE__, :ok, opts)
-  end
+<div class="language-elixir highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1"># Default implementation of GenServer</span>
+  <span class="k">def</span> <span class="n">start_link</span><span class="p">(</span><span class="n">opts</span><span class="p">)</span> <span class="k">do</span>
+    <span class="no">GenServer</span><span class="o">.</span><span class="n">start_link</span><span class="p">(</span><span class="bp">__MODULE__</span><span class="p">,</span> <span class="ss">:ok</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
+  <span class="k">end</span>
 
-  # Initializes the GenServer on application startup
-  def init(state) do
-    schedule_work()
-    {:ok, state}
-  end
+  <span class="c1"># Initializes the GenServer on application startup</span>
+  <span class="k">def</span> <span class="n">init</span><span class="p">(</span><span class="n">state</span><span class="p">)</span> <span class="k">do</span>
+    <span class="n">schedule_work</span><span class="p">()</span>
+    <span class="p">{</span><span class="ss">:ok</span><span class="p">,</span> <span class="n">state</span><span class="p">}</span>
+  <span class="k">end</span>
 
-  # Generic catch-all message/event handler
-  def handle_info(:work, state) do
-    do_work() # The actual business logic, defined below
-    schedule_work() # Process scheduler
-    {:noreply, state}
-  end
+  <span class="c1"># Generic catch-all message/event handler</span>
+  <span class="k">def</span> <span class="n">handle_info</span><span class="p">(</span><span class="ss">:work</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span> <span class="k">do</span>
+    <span class="n">do_work</span><span class="p">()</span> <span class="c1"># The actual business logic, defined below</span>
+    <span class="n">schedule_work</span><span class="p">()</span> <span class="c1"># Process scheduler</span>
+    <span class="p">{</span><span class="ss">:noreply</span><span class="p">,</span> <span class="n">state</span><span class="p">}</span>
+  <span class="k">end</span>
 
-  # The work!
-  def do_work() do
-    # Business logic goes here!
-  end
+  <span class="c1"># The work!</span>
+  <span class="k">def</span> <span class="n">do_work</span><span class="p">()</span> <span class="k">do</span>
+    <span class="c1"># Business logic goes here!</span>
+  <span class="k">end</span>
 
-  # Scheduler to set interval for do_work()
-  defp schedule_work() do
-    Process.send_after(self(), :work, INTERVAL_IN_MILLESECONDS)
-  end
+  <span class="c1"># Scheduler to set interval for do_work()</span>
+  <span class="k">defp</span> <span class="n">schedule_work</span><span class="p">()</span> <span class="k">do</span>
+    <span class="no">Process</span><span class="o">.</span><span class="n">send_after</span><span class="p">(</span><span class="n">self</span><span class="p">(),</span> <span class="ss">:work</span><span class="p">,</span> <span class="no">INTERVAL_IN_MILLISECONDS</span><span class="p">)</span>
+  <span class="k">end</span>
 </code></pre></div></div>
 
 <p>Back to the docs to explain what’s going on here:</p>
@@ -144,7 +144,7 @@
 
 <p>At this point, you know that I can now read and follow basic documentation. What a relief!</p>
 
-<p>What I find most fascinating about this particular pattern is its ability to effectively manage multiple microservices within a single supervision tree. While in this particular example I’m only implementing a single GenServer, adding another two, three…10, more, would be a trivial process. And they could even communicate with each other with their own messages.</p>
+<p>What I find most fascinating about this particular pattern is its ability to effectively manage multiple microservices within a single supervision tree. While in this particular example I’m only implementing a single GenServer, adding another two, three, 10, or more would be a trivial process. They could even communicate with each other.</p>
 
 <p>As an engineering organization, Forward Financing is committed to the microservice philosophy. Our ecosystem of applications has grown significantly in a very short period of time, so being able to effectively manage processes across all of our core business functions is and will continue to be a priority.</p>
 

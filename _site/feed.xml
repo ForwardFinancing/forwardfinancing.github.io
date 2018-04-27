@@ -6,15 +6,169 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 16 Mar 2018 10:58:21 -0400</pubDate>
-    <lastBuildDate>Fri, 16 Mar 2018 10:58:21 -0400</lastBuildDate>
+    <pubDate>Thu, 26 Apr 2018 15:49:21 -0400</pubDate>
+    <lastBuildDate>Thu, 26 Apr 2018 15:49:21 -0400</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
-        <title>Automating Processes with Gen Servers: A Beginner's Approach</title>
-        <description>&lt;p&gt;As a financial services company, Forward Financing invests a signficant amount of time and resources around timebound reporting – think daily, weekly, monthly, etc., report generation. As opportunities for automation are concerned, it doesn’t get more obvious than this.&lt;/p&gt;
+        <title>Increasing Productivity with Scripts: Utilizing Mac's screencapture Utility</title>
+        <description>&lt;p&gt;I am a firm believer that there is almost always room for improvement in process, especially when it comes to automating tasks. As an Automation Engineer here at Forward Financing, I try to ensure optimal productivity for my team. However, I also constantly look for improvements within my personal process to help me save time throughout the day.&lt;/p&gt;
 
-&lt;p&gt;A big part of my growth as an engineer comes from getting out of my comfort zone, using new and unfamiliar tools to build hopefully useful tools. After doing a little research on potential solutions for our automation opportunity, I settled on Elixir’s GenServer, or Generic Server, pattern. Coming from a primarily Object Oriented Programming background with Rails, this pattern was a bit foreign to me, to say the least.&lt;/p&gt;
+&lt;p&gt;A great way to accomplish this is by first identifying some cumbersome task, and then writing a script for it. Currently, I have many useful scripts on both my work and home computers to help me accomplish tasks in a fraction of the time, saving me minutes or hours in my week. Recently, I encountered an arduous daily process in my workflow that was taking me too much time and wrote a script to help me solve this problem.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note: The specific example showcased here assumes that you are on macOS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;identifying-the-problem&quot;&gt;Identifying the Problem&lt;/h1&gt;
+
+&lt;p&gt;I like to provide as much context as possible when QAing or communicating with engineers about features. I found that visual aids are very helpful at providing additional context surrounding an issue.&lt;/p&gt;
+
+&lt;p&gt;MacOS provides users the ability to take screenshots. There are a few different ways to do this &lt;a href=&quot;https://support.apple.com/en-us/HT201361&quot;&gt;outlined here by Apple support&lt;/a&gt;. Since I usually only want a portion of the screen, I prefer the shortcut: &lt;code class=&quot;highlighter-rouge&quot;&gt;command&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;shift&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;4&lt;/code&gt; to select a capture area with my mouse.&lt;/p&gt;
+
+&lt;p&gt;I would take a screenshot, find it in my filesystem, open it, edit it, change the name, and then attach it to a message after finding it again in my filesystem. This required a lot of manual steps, and took a decent amount of time. I looked into ways of changing the default name and location of screenshots, but I wanted something a little more custom. After some digging, I found out that macOS has the &lt;code class=&quot;highlighter-rouge&quot;&gt;screencapture&lt;/code&gt; utility that can be used in &lt;code class=&quot;highlighter-rouge&quot;&gt;Terminal&lt;/code&gt;. (In your terminal, type &lt;code class=&quot;highlighter-rouge&quot;&gt;man screencapture&lt;/code&gt; for more information). As soon as I discovered this, I wanted to write a script so I could shave time off this arduous process.&lt;/p&gt;
+
+&lt;h1 id=&quot;investigation-time&quot;&gt;Investigation Time&lt;/h1&gt;
+
+&lt;p&gt;After learning of the &lt;code class=&quot;highlighter-rouge&quot;&gt;screencapture&lt;/code&gt; utility, I began to explore its docs and try it out. I first identified what I wanted to accomplish with my script, and then looked for corresponding flags or variations on the command that would support the behavior I wanted.&lt;/p&gt;
+
+&lt;p&gt;I knew I wanted to specify a name and extension for my file on the fly. The following is from &lt;code class=&quot;highlighter-rouge&quot;&gt;man screencapture&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SYNOPSIS
+     screencapture [-SWCTMPcimswxto] file
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;I learned &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;file&amp;gt;&lt;/code&gt; is the path to destination of where the screenshot will be saved. I also knew that I wanted to select only a portion of the screen with my mouse when taking the screenshot. After exploring the documentation for this utility more I found the following flag:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-s      Only allow mouse selection mode.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;So I came to the conclusion that I would be invoking the &lt;code class=&quot;highlighter-rouge&quot;&gt;screencapture&lt;/code&gt; utility from my script as follows.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;screencapture -s &amp;lt;path_to_file&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;I felt comfortable enough with the utility to proceed after identifying how it would be used. All that was left was a matter of writing the bash script and making the file and extension names dynamic.&lt;/p&gt;
+
+&lt;p&gt;I also decided that it would be very helpful to have the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;path_to_file&amp;gt;&lt;/code&gt; copied to my clipboard. This would make the file easy to open in preview on the command line after the script ran with the command: &lt;code class=&quot;highlighter-rouge&quot;&gt;open &amp;lt;path_to_file&amp;gt;&lt;/code&gt;. Having the path to the clipboard would also make it easier to locate in &lt;code class=&quot;highlighter-rouge&quot;&gt;Finder&lt;/code&gt; for Mac (You can enter absolute path in &lt;code class=&quot;highlighter-rouge&quot;&gt;Finder&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;command&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;shift&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;G&lt;/code&gt;).
+Mac has the &lt;code class=&quot;highlighter-rouge&quot;&gt;pbcopy&lt;/code&gt; command that allows you to paste to your system &lt;code class=&quot;highlighter-rouge&quot;&gt;Clipboard&lt;/code&gt; via the command line. You can read more about &lt;code class=&quot;highlighter-rouge&quot;&gt;pbcopy&lt;/code&gt; by typing &lt;code class=&quot;highlighter-rouge&quot;&gt;man pbcopy&lt;/code&gt; in your terminal.&lt;/p&gt;
+
+&lt;h1 id=&quot;writing-the-script&quot;&gt;Writing The Script&lt;/h1&gt;
+
+&lt;p&gt;Since the &lt;code class=&quot;highlighter-rouge&quot;&gt;screencapture&lt;/code&gt; utility requires one argument (&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;path_to_file&amp;gt;&lt;/code&gt;), my script would at minimum require one argument. I didn’t want to type out an absolute path or always invoke the script from my screenshot directory, so I chose to only pass the file’s base name to my script, and keep the path to my desired directory in a variable. I then concatenated the base file name argument with my desired directory within my script and passed this resulting absolute path to the &lt;code class=&quot;highlighter-rouge&quot;&gt;screencapture&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;p&gt;I wanted the flexibility to specify the extension of the file as well. I’m usually fine with &lt;code class=&quot;highlighter-rouge&quot;&gt;png&lt;/code&gt; as an extension. To limit keystrokes, I made this the default extension for my screenshots. I also made the script able to accept a second optional argument to specify a different file type.&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# assign variable SCREENSHOT_DIR value of shell ENV value SCREENSHOT_DIR&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# if env SCREENSHOT_DIR is not defined, use $HOME as default directory&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;SCREENSHOT_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;SCREENSHOT_DIR&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# use /bin/test to determine if length of string is zero&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   -z will return true if length of arg is zero&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# In this case, if the first argument to this script ($1) is not defined,&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   throw error and exit script&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-z&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;ERROR: Please provide filename as first argument.&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# assign variable EXT value of second argument passed to script&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# If no second argument is passed to script, assign 'png' as default extension&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;EXT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;png&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# define timestamp that will be appended to screencapture's file path&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# helpful to ensure screenshots with same name not overwritten&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# using date utility (man date) for more info&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;timestamp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;date +&lt;span class=&quot;s2&quot;&gt;&quot;%H_%M_%S_%p&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Combination of&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   1. $SCREENSHOT_DIR defined above / in ENV variable&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   2. $1, the first argument passed to the script&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   3. $timestamp defined above&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   4. $EXT defined above / in second argument passed to script&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;SCREENSHOT_PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$SCREENSHOT_DIR&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$timestamp&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$EXT&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Add helpful output to STDOUT, notifying us of screenshot's destination&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;screenshot will be saved to: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$SCREENSHOT_PATH&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# invoke screencapture, specifying mouse capture and absolute path of destination&lt;/span&gt;
+screencapture &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$SCREENSHOT_PATH&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# At this point, mouse changes to cursor and you must select screenshot area.&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# This command will copy the path to our screenshot to our clipboard&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Ready to paste with `command` + `V` shortcut&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$SCREENSHOT_PATH&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; | pbcopy
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;The path to this screenshot has been copied to your clipboard.&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;At this point you can also create a file and paste in the above code.&lt;/p&gt;
+
+&lt;p&gt;This script may appear complicated at first sight, but it only took under 10 minutes to write!&lt;/p&gt;
+
+&lt;h1 id=&quot;calling-our-script&quot;&gt;Calling our Script&lt;/h1&gt;
+
+&lt;p&gt;As seen above in the script’s comments, it’s using an ENV var, &lt;code class=&quot;highlighter-rouge&quot;&gt;SCREENSHOT_DIR&lt;/code&gt;. If this var is not exported to your shell, the default value in the script will be used.
+Right now my default value is &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;$HOME&quot;&lt;/code&gt;. You can either change that default value in your script, or define/export &lt;code class=&quot;highlighter-rouge&quot;&gt;SCREENSHOT_DIR&lt;/code&gt; in the shell from which you run the script.&lt;/p&gt;
+
+&lt;p&gt;As mentioned in the last section, I decided to let this script take 2 arguments.
+Assuming I saved my script to &lt;code class=&quot;highlighter-rouge&quot;&gt;~/screenshot.sh&lt;/code&gt;, I can invoke it as follows.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bash ~/screenshot.sh &amp;lt;file_name&amp;gt; [&amp;lt;optional_extension&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;file_name&amp;gt;&lt;/code&gt; - &lt;strong&gt;This is required&lt;/strong&gt; By default, the file name is going to be &lt;code class=&quot;highlighter-rouge&quot;&gt;$SCREENSHOT_DIR/&amp;lt;file_name&amp;gt;.png&lt;/code&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;optional_extension&amp;gt;&lt;/code&gt; - (optional) If you don’t want the file extension to be &lt;code class=&quot;highlighter-rouge&quot;&gt;png&lt;/code&gt; you can define it with this arg. This option could be &lt;code class=&quot;highlighter-rouge&quot;&gt;jpg&lt;/code&gt; for a &lt;code class=&quot;highlighter-rouge&quot;&gt;.jpg&lt;/code&gt; extension.&lt;/p&gt;
+
+&lt;p&gt;All you have to do is:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Run script&lt;/li&gt;
+  &lt;li&gt;Select area to capture with your mouse&lt;/li&gt;
+  &lt;li&gt;The path will be copied to your clipboard! If you need to open the file, you can just type &lt;code class=&quot;highlighter-rouge&quot;&gt;open&lt;/code&gt;, then paste the path in to your terminal!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;setting-up-a-bash-alias&quot;&gt;Setting up a bash alias&lt;/h1&gt;
+&lt;p&gt;The point of this script in the first place was to save time. For that reason you probably don’t want to type &lt;code class=&quot;highlighter-rouge&quot;&gt;bash &amp;lt;path_to_screenshot_script&amp;gt; &amp;lt;file_name&amp;gt; [&amp;lt;optional_extension&amp;gt;]&lt;/code&gt; every single time.
+Luckily, it’s very easy to set up a bash alias for this script!
+If you are unfamiliar with &lt;code class=&quot;highlighter-rouge&quot;&gt;aliases&lt;/code&gt; in bash, there is an excellent overview here http://tldp.org/LDP/abs/html/aliases.html.&lt;/p&gt;
+
+&lt;p&gt;I chose to alias the execution of this script to &lt;code class=&quot;highlighter-rouge&quot;&gt;snap&lt;/code&gt;. So instead of starting this command with &lt;code class=&quot;highlighter-rouge&quot;&gt;bash &amp;lt;path_to_screenshot_script&amp;gt;&lt;/code&gt;, I can just type &lt;code class=&quot;highlighter-rouge&quot;&gt;snap&lt;/code&gt;.
+Note that you can make the following alias name whatever you want though…&lt;/p&gt;
+
+&lt;p&gt;Add the following to your &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.bashrc&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.bash_profile&lt;/code&gt;, or anywhere that gets sourced when starting a new shell. (I suggest eventually setting up a file for all &lt;code class=&quot;highlighter-rouge&quot;&gt;aliases&lt;/code&gt; like a &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.bash_aliases&lt;/code&gt; file. There are plenty of great tutorials for that online also).&lt;/p&gt;
+
+&lt;p&gt;For the purpose of this tutorial we’ll put our &lt;code class=&quot;highlighter-rouge&quot;&gt;alias&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.bash_profile&lt;/code&gt; since this should be getting sourced on your Mac.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;snap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;bash ~/scripts/screencapture.sh&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;As long as the above gets sourced when you open your new shell (or run &lt;code class=&quot;highlighter-rouge&quot;&gt;. ~/.bash_profile&lt;/code&gt; to do in your current terminal), you will be able to use &lt;code class=&quot;highlighter-rouge&quot;&gt;snap&lt;/code&gt; as an alias for our script!&lt;/p&gt;
+
+&lt;h1 id=&quot;running-script-with-our-new-alias&quot;&gt;Running Script With Our New Alias&lt;/h1&gt;
+&lt;p&gt;Now that our &lt;code class=&quot;highlighter-rouge&quot;&gt;alias&lt;/code&gt; is set up, in your terminal, type:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;snap &amp;lt;file_name&amp;gt; [&amp;lt;optional_path&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Even though we have an alias, the arguments the script accepts remain the same. Just like we saw when running the script without an alias, everything will work exactly as it did before.&lt;/p&gt;
+
+&lt;p&gt;Just to recap:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Run script&lt;/li&gt;
+  &lt;li&gt;Select area to capture with your mouse&lt;/li&gt;
+  &lt;li&gt;The path will be copied to your clipboard! If you need to open the file, you can just type &lt;code class=&quot;highlighter-rouge&quot;&gt;open&lt;/code&gt;, then paste the path in to your terminal!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;Hopefully after reading this, you will see how easy it is to make little tweaks in your workflow. As I mentioned before, the above script took me under 10 minutes to write. Now my cumbersome process of taking a screenshot is done right from my terminal in about a minute. I chose to write a bash script, but the above can be accomplished with pretty much any language you choose. I have used &lt;code class=&quot;highlighter-rouge&quot;&gt;Ruby&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Perl&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;Python&lt;/code&gt; in the past to write scripts too!&lt;/p&gt;
+
+&lt;p&gt;Next time you find yourself wanting to complain about a task you are repeatedly performing, I suggest taking a step back and thinking about if there is a way to automate it. Even if it can’t be fully automated, I find that there is usually some way to make it less painful with the use of scripts. I’m always surprised how a script that takes minutes to write can ultimately save me many hours. As engineers, we have tools at our disposal to make our lives easier, it’s just a matter of identifying and implementing them.&lt;/p&gt;
+
+&lt;p&gt;Happy scripting!&lt;/p&gt;
+</description>
+        <pubDate>Wed, 25 Apr 2018 12:00:00 -0400</pubDate>
+        <link>http://localhost:4000/automation/scripts/2018/04/25/productivity-with-scripts-screencapture.html</link>
+        <guid isPermaLink="true">http://localhost:4000/automation/scripts/2018/04/25/productivity-with-scripts-screencapture.html</guid>
+        
+        
+        <category>automation</category>
+        
+        <category>scripts</category>
+        
+      </item>
+    
+      <item>
+        <title>Automating Processes with Gen Servers: A Beginner's Approach</title>
+        <description>&lt;p&gt;As a financial services company, Forward Financing invests a signficant amount of time and resources in timebound reporting – think daily, weekly, monthly, etc., report generation. As opportunities for automation are concerned, it doesn’t get more obvious than this.&lt;/p&gt;
+
+&lt;p&gt;Getting out of my comfort zone has been a key part of my engineering growth, using new and unfamiliar tools to build potentially useful tools. After doing a little research on potential solutions for our automation opportunity, I settled on Elixir’s GenServer, or Generic Server, pattern. Coming from a primarily Object Oriented Programming background with Rails, this pattern was a bit foreign to me, to say the least.&lt;/p&gt;
 
 &lt;h3 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h3&gt;
 
@@ -30,33 +184,33 @@
 
 &lt;p&gt;Here’s what I ended up with, using the default callbacks for GenServer:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  # Default implementation of GenServer
-  def start_link(opts) do
-    GenServer.start_link(__MODULE__, :ok, opts)
-  end
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;c1&quot;&gt;# Default implementation of GenServer&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start_link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;opts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;GenServer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start_link&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;__MODULE__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;opts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 
-  # Initializes the GenServer on application startup
-  def init(state) do
-    schedule_work()
-    {:ok, state}
-  end
+  &lt;span class=&quot;c1&quot;&gt;# Initializes the GenServer on application startup&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;schedule_work&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 
-  # Generic catch-all message/event handler
-  def handle_info(:work, state) do
-    do_work() # The actual business logic, defined below
-    schedule_work() # Process scheduler
-    {:noreply, state}
-  end
+  &lt;span class=&quot;c1&quot;&gt;# Generic catch-all message/event handler&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handle_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:work&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;do_work&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# The actual business logic, defined below&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;schedule_work&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Process scheduler&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:noreply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 
-  # The work!
-  def do_work() do
-    # Business logic goes here!
-  end
+  &lt;span class=&quot;c1&quot;&gt;# The work!&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;do_work&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Business logic goes here!&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 
-  # Scheduler to set interval for do_work()
-  defp schedule_work() do
-    Process.send_after(self(), :work, INTERVAL_IN_MILLESECONDS)
-  end
+  &lt;span class=&quot;c1&quot;&gt;# Scheduler to set interval for do_work()&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;defp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;schedule_work&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;Process&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;send_after&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:work&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INTERVAL_IN_MILLISECONDS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Back to the docs to explain what’s going on here:&lt;/p&gt;
@@ -74,7 +228,7 @@
 
 &lt;p&gt;At this point, you know that I can now read and follow basic documentation. What a relief!&lt;/p&gt;
 
-&lt;p&gt;What I find most fascinating about this particular pattern is its ability to effectively manage multiple microservices within a single supervision tree. While in this particular example I’m only implementing a single GenServer, adding another two, three…10, more, would be a trivial process. And they could even communicate with each other with their own messages.&lt;/p&gt;
+&lt;p&gt;What I find most fascinating about this particular pattern is its ability to effectively manage multiple microservices within a single supervision tree. While in this particular example I’m only implementing a single GenServer, adding another two, three, 10, or more would be a trivial process. They could even communicate with each other.&lt;/p&gt;
 
 &lt;p&gt;As an engineering organization, Forward Financing is committed to the microservice philosophy. Our ecosystem of applications has grown significantly in a very short period of time, so being able to effectively manage processes across all of our core business functions is and will continue to be a priority.&lt;/p&gt;
 
@@ -1182,103 +1336,6 @@ for develop and master.&lt;/p&gt;
         <category>elixir</category>
         
         <category>devops</category>
-        
-      </item>
-    
-      <item>
-        <title>Five Lessons Learned During My First Year as a Technical Director</title>
-        <description>&lt;p&gt;Making the leap from an engineer to a director can be daunting. There are so
-many other responsibilities that get placed on you as a director that it can be
-overwhelming. The hardest shift, I feel, is the switch from spending most of your
-time and energy coding to solving other types of problems. Most of
-that time shifts towards higher priority responsibilities like budgeting,
-planning, product strategy, mentoring, recruitment and so much more.&lt;/p&gt;
-
-&lt;p&gt;Even though coding is still enjoyable for those making this switch, it can be
-rather far down the list of largest impacts a director can provide to their
-organization. But like engineering, one should have the mindset of embracing
-challenges and learning opportunities within their new role.
-There will never be a shortage of learning opportunities at this level,
-or so it feels.&lt;/p&gt;
-
-&lt;p&gt;With that, here are the top five things I have learned in my time as a director:&lt;/p&gt;
-
-&lt;h3 id=&quot;continuous-learning-is-a-fantastic-investment&quot;&gt;Continuous Learning Is a Fantastic Investment&lt;/h3&gt;
-&lt;p&gt;Investment in employee growth is not a new trend. This investment can be
-implemented in a variety of forms, ranging from conference budgets to ingrained
-processes that foster growth for employees.&lt;/p&gt;
-
-&lt;p&gt;Here are some things we do that help with continuous learning:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Office hours for experimentation&lt;/li&gt;
-  &lt;li&gt;Conference/workshop budgets for exposure to new ideas and new tools&lt;/li&gt;
-  &lt;li&gt;Code review&lt;/li&gt;
-  &lt;li&gt;Pair programming&lt;/li&gt;
-  &lt;li&gt;Mentoring&lt;/li&gt;
-  &lt;li&gt;Technical book-a-month club (not required reading, but we buy a technical
-book every month)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The response to the above has led to highly engaged and motivated individuals
-who continue to apply new tools to new situations and are continually creating
-more sustainable and maintainable software. &lt;a href=&quot;https://www.forwardfinancing.com/blog/takeaways-railsconf-2017/&quot;&gt;Here&lt;/a&gt;
-is a blog post by one of our engineers about Continuous Learning.&lt;/p&gt;
-
-&lt;h3 id=&quot;breaking-down-knowledge-silos&quot;&gt;Breaking Down Knowledge Silos&lt;/h3&gt;
-&lt;p&gt;As teams grow and scale, knowledge silos tend to form around services,
-codebases, and processes. Certain engineers who build and maintain codebases
-end up with all of the knowledge around how that piece of infrastructure
-interacts in the ecosystem. It’s important to disseminate this information as
-succinctly as possible. Other than creating documentation in the codebase, we
-have found that using &lt;a href=&quot;https://www.discourse.org/&quot;&gt;Discourse&lt;/a&gt;
-and documenting the following has helped immensely:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Business Processes&lt;/li&gt;
-  &lt;li&gt;Code Paths&lt;/li&gt;
-  &lt;li&gt;Blameless Post Mortems&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Each one of those deserves its own blog post, but suffice to say it helps
-onboarding new engineers to understand how each app works in the ecosystem and
-what its role is.&lt;/p&gt;
-
-&lt;h3 id=&quot;perceived-failure-is-an-actual-blessing&quot;&gt;Perceived Failure is an Actual Blessing&lt;/h3&gt;
-&lt;p&gt;Failure is defined differently from person to person. To some, it’s about using
-the wrong software pattern in the wrong circumstance. To others, it’s deploying
-bad code to production. Whatever the case may be, it’s important that teams
-understand it’s absolutely OK to make mistakes. From experience, it seems that
-most engineers learn the most from their missteps.&lt;/p&gt;
-
-&lt;h3 id=&quot;1-on-1-meetings-are-indispensible&quot;&gt;1-on-1 Meetings are Indispensible&lt;/h3&gt;
-&lt;p&gt;I never really understood the importance of the 1-on-1 as an engineer. You
-have to take time out of your day and spend 30 minutes with your boss addressing
-things ranging from emotions to tasks. Now as a director, the 1-on-1 is the
-most important recurring meetings you will have. It gives
-you insight into how best to step up and fill the gaps that the team may have,
-which changes constantly. Most importantly, it sets your team up to be
-successful as you support its needs.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-most-important-aspect-of-a-directors-job-is&quot;&gt;The Most Important Aspect of a Director’s Job is…&lt;/h3&gt;
-&lt;p&gt;Listening.&lt;/p&gt;
-
-&lt;p&gt;I won’t expound much on this as many other highly qualified
-individuals have covered this topic at length. Everyone has pain points while
-working at any company. It is important to make sure individuals feel heard
-and feel supported within their organization. If any of these
-are to be accomplished, it all starts with listening.&lt;/p&gt;
-
-&lt;p&gt;Thanks for reading!&lt;/p&gt;
-</description>
-        <pubDate>Mon, 08 May 2017 12:00:00 -0400</pubDate>
-        <link>http://localhost:4000/culture/management/leadership/2017/05/08/five-lessons-learned.html</link>
-        <guid isPermaLink="true">http://localhost:4000/culture/management/leadership/2017/05/08/five-lessons-learned.html</guid>
-        
-        
-        <category>culture</category>
-        
-        <category>management</category>
-        
-        <category>leadership</category>
         
       </item>
     
