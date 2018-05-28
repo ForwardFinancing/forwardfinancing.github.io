@@ -12,13 +12,13 @@ At Forward Financing we are always going forward, that's why our technology stac
 We work with Rails, Phoenix, React, Redux among others, that means as developers we are changing the
 development environment sometimes more than once at day.
 
-Sometimes in the morning you are developing a new feature in the elixir-phoenix environment, and at the
+Sometimes in the morning you are developing a new feature in the Elixir-Phoenix environment, and at the
 afternoon we are improving existing code made on Ruby on Rails.
 
 The main thing with this "switching" is the programming paradigm that each of this technologies uses is totally
 different.
 
-### Object Oriented Programming (OOP) vs Functional Programming (FP)
+### Object Oriented Programming (OOP) and Functional Programming (FP)
 
 A program has two main components, the data and the behavior.
 The main difference between OOP and FP is how the manage these components.
@@ -32,7 +32,7 @@ have an instance of it.
 
 Let's see a practical example, we need to implement a program that shuffle cards on a deck.
 
-Object Oriented approach 
+Object Oriented approach
 ```
 class Card
   def new(value)
@@ -53,12 +53,22 @@ class Deck
     end
   end
 
-  def shuffle
-    
+  def shuffle_deck
+    @cards = @cards.shuffle
   end
 
-  def contains?
-  
+  def contains?(card_value)
+    @cards.each do |c|
+      return true if c.value == card_value
+    end
+    false
+  end
+
+  def show_cards
+    @cards.each do |c|
+      puts c.value
+      puts ' , '
+    end
   end
 
 end
@@ -67,13 +77,58 @@ end
 Functional approach
 ```
 Module Cards
-  def create_deck
+  def create_deck(list_of_values)
+    list_of_values
   end
 
-  def shuffle_deck
+  def shuffle_deck(deck)
+    Enum.shuffle(deck)
   end
 
-  def contains?
+  def contains?(deck, card)
+    Enum.member?(deck, card)
   end
 end
 ```
+
+As we can see the OO progamming takes us to separate the elements in objects (Card and Deck) as much as we can, we can compare an object with an atom, as the smallest structure on the ecosystem.
+
+In the FP we can see the approach is more direct, like straight to the point.
+
+Of course both, FP and OOP had their pros and cos, but we are not puting the focus on that in this post.
+
+Using the code
+```
+OOP
+
+> deck = Deck.new(['King of Spades', 'Ace of Heart', 'Two of Diamonds'])
+
+> deck.show_cards
+King of Spades, Ace of Heart, Two of Diamonds,
+> deck.shuffle_deck
+> deck.show_cards
+Ace of Heart, Two of Diamonds, King of Spades,
+> deck.contains?('Two of Clubs')
+false
+
+```
+
+```
+FP
+> deck = Cards.create_deck(["King of Spades", "Ace of Heart", "Two of Diamonds"])
+["King of Spades", "Ace of Heart", "Two of Diamonds"]
+> Cards.contains?(deck, "Two of Clubs")
+false
+> deck = Cards.shuffle_deck(deck)
+["Ace of Heart", "King of Spades", "Two of Diamonds"]
+
+```
+
+In OOP the value of the object mutes when the methods are being executed, for example shuffle_deck it does save
+the new deck shuffled.
+
+Also in OOP the object is the one that calls the methods, on FP the functions are executed by the module, and the
+original value is not changed unless we assign that value.
+
+This is a pretty simple example of the differences between the structure of a program using these two paradigms, and sometimes switching the state from OOP to FP takes a little of time, that's why is necessary to know the basics of each 
+one and understand them.
