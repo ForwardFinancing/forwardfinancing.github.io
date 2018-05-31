@@ -9,13 +9,11 @@ author: Tania Paiva
 ## Working With Object Oriented and Functional Programming Without Losing Your Mind
 
 At Forward Financing we work with several technologies, our stack is pretty mixed.
-We work with Rails, Phoenix, React, Redux among others, which means we are changing the
-development environment sometimes more than once at day.
+Rails, Phoenix, React, Redux just to name a few - which means we have to switch from one development tool or environment to the next several times a day on a regular basis.
 
-Sometimes in the morning you are developing a new feature in the Elixir-Phoenix environment, and in the
-afternoon we are improving existing code made on Ruby on Rails.
+In practice, this means you could find yourself developing a new feature in the Elixir-Phoenix environment in the morning, and improving existing Ruby on Rails code in the afternoon.
 
-The main thing with this "switching" is the programming paradigm that each of this technologies uses is totally
+The main thing with this switching is the programming paradigm that each of this technologies uses is totally
 different.
 
 ### Object Oriented Programming (OOP) and Functional Programming (FP)
@@ -23,7 +21,7 @@ different.
 A program has two main components, the data and the behavior.
 The main difference between OOP and FP is how we manage these components.
 
-OOP puts together data and its associated behavior in a single place called an `Object`. For FP, the data and behavior are  different things and should be separated.
+OOP puts together data and its associated behavior in a single place called an `Object`. For FP, the data and behavior are different things and should be separated.
 
 FP tries to avoid sharing state and mutation on data. The objective of FP is building pure functions with no side effects.
 
@@ -34,25 +32,25 @@ A function is a piece of code that is called by name. It can be passed data to o
 
 A method is a piece of code that is called by a name that is associated with the Object.
 
-Let's see a practical example, we need to implement a program that shuffles cards on a deck.
+Let's see a practical example, *and imagine* we need to implement a program that shuffles cards on a deck.
 
 ### Object Oriented approach
 ``` ruby
 class Card
-  def new(value)
+  def initialize(value)
     @value = value
   end
 
   def value
-    return @value
+    @value
   end
 
 end
 
 class Deck
-  def new(values)
+  def initialize(values)
     @cards = []
-    values.each |v| do
+    values.each do |v|
       @cards << Card.new(v)
     end
   end
@@ -62,27 +60,24 @@ class Deck
   end
 
   def contains?(card_value)
-    @cards.each do |c|
-      return true if c.value == card_value
+    @cards.any? do |card|
+      card.value == card_value
     end
-    false
   end
 
   def show_cards
-    @cards.each do |c|
-      puts c.value
-      puts ' , '
-    end
+    @cards.map(&:value).join(', ')
   end
 
 end
 
 > deck = Deck.new(['King of Spades', 'Ace of Heart', 'Two of Diamonds'])
+<Deck:0x00007fb03e082208 @cards=[#<Card:0x00007fb03e082190 @value="King of Spades">, #<Card:0x00007fb03e082168 @value="Ace of Heart">, #<Card:0x00007fb03e0820c8 @value="Two of Diamonds">]>
 > deck.show_cards
-King of Spades, Ace of Heart, Two of Diamonds,
+King of Spades, Ace of Heart, Two of Diamonds
 > deck.shuffle_deck
 > deck.show_cards
-Ace of Heart, Two of Diamonds, King of Spades,
+Ace of Heart, Two of Diamonds, King of Spades
 > deck.contains?('Two of Clubs')
 false
 ```
