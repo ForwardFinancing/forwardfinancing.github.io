@@ -6,8 +6,6 @@ categories: elixir coding ruby oo functional
 author: Tania Paiva
 ---
 
-## Working With Object Oriented and Functional Programming Without Losing Your Mind
-
 At Forward Financing we work with several technologies, our stack is pretty mixed.
 Rails, Phoenix, React, Redux just to name a few - which means we have to switch from one development tool or environment to the next several times a day on a regular basis.
 
@@ -34,7 +32,7 @@ A method is a piece of code that is called by a name that is associated with the
 
 Let's see a practical example, *and imagine* we need to implement a program that shuffles cards on a deck.
 
-### Object Oriented approach
+### Object Oriented Approach
 ``` ruby
 class Card
   def initialize(value)
@@ -82,7 +80,7 @@ Ace of Heart, Two of Diamonds, King of Spades
 false
 ```
 
-Functional approach
+### Functional Approach
 ``` elixir
 Module Cards
   def create_deck(list_of_values)
