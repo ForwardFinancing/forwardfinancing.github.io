@@ -10,13 +10,12 @@ At Forward Financing we work with several technologies, our stack is pretty mixe
 Rails, Phoenix, React, Redux just to name a few - which means we have to switch from one development tool or environment to the next several times a day on a regular basis.
 
 In practice, this means you could find yourself developing a new feature in the Elixir-Phoenix environment in the morning, and improving existing Ruby on Rails code in the afternoon.
-
 The main thing with this switching is the programming paradigm that each of this technologies uses is totally
 different.
 
 ### Object Oriented Programming (OOP) and Functional Programming (FP)
 
-A program has two main components, the data and the behavior.
+A program has two main components: the data and the behavior.
 The main difference between OOP and FP is how we manage these components.
 
 OOP puts together data and its associated behavior in a single place called an `Object`. For FP, the data and behavior are different things and should be separated.
@@ -26,7 +25,7 @@ FP tries to avoid sharing state and mutation on data. The objective of FP is bui
 OOP provides properties and methods for objects, they live inside the class structure, an object has a class and we can
 have an instance of it.
 
-A function is a piece of code that is called by name. It can be passed data to operate on (parameters) and can optionally return data (the most common practice is to return something). All data that is passed to a function is explicitly passed.
+A function is a piece of code that is called by name. It can be passed data on which to operate (parameters) and can optionally return data (the most common practice is to return something). All data that is passed to a function is explicitly passed.
 
 A method is a piece of code that is called by a name that is associated with the Object.
 
@@ -109,17 +108,17 @@ As we can see the OOP takes us to separate the elements in objects (Card and Dec
 
 In the FP we can see the approach is more direct.
 
-Of course both, FP and OOP had their pros and cons, but we are not puting the focus on that in this post.
+Of course both, FP and OOP has their pros and cons, but we are not putting the focus on that in this post.
 
 In OOP the value of the object mutates when the methods are being executed, for example shuffle_deck it saves
 the new deck shuffled.
-
 Also in OOP the object is the one that calls the methods, on FP the functions are executed by the module, and the
 original value is not changed unless we assign that value.
+Functions and methods are pretty similar, both do "stuff" with the data and define the behavior, except in the following examples:
 
-Functions and methods are pretty similar, both do "stuff" with the data and define the behavior, except for:
-  A method is implicitly passed the object on which it was called.
-  A method is able to operate on data that is contained within the class (remembering that an object is an instance of a class - the class is the definition, the object is an instance of that data).
+- A method is implicitly passed the object on which it was called.
 
-This is a pretty simple example of the differences between the structure of a program using these two paradigms, and sometimes switching the state from OOP to FP takes a little time, that's why it is necessary to know the basics of each
+- A method is able to operate on data that is contained within the class (remembering that an object is an instance of a class - the class is the definition, the object is an instance of that data).
+
+This is a pretty simple example of the differences between the structure of a program using these two paradigms, and sometimes switching the state from OOP to FP takes a little time. That's why it is necessary to know the basics of each
 one.
