@@ -108,7 +108,7 @@ As we can see the OOP takes us to separate the elements in objects (Card and Dec
 
 In the FP we can see the approach is more direct.
 
-Of course both, FP and OOP has their pros and cons, but we are not putting the focus on that in this post.
+Of course both FP and OOP have their pros and cons, but we are not putting the focus on that in this post.
 
 In OOP the value of the object mutates when the methods are being executed, for example shuffle_deck it saves
 the new deck shuffled.
