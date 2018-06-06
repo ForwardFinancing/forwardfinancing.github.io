@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Working With Object Oriented and Functional Programming Without Losing Your Mind"
-date:   2018-04-26 12:00:00 -0400
+date:   2018-06-06 12:00:00 -0400
 categories: elixir coding ruby oo functional
 author: Tania Paiva
 ---
