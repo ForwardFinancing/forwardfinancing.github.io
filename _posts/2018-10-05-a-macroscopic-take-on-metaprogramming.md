@@ -18,7 +18,7 @@ One of the main unknowns when coding is user data.
 Everyday code does not necessarily solve unique problems.
 As developers, we use well defined conventions and set of functions we are familiar with to process this data and return whatever is defined in the product specifications.
 
-There should be room for abstraction and generalisation and yet, the consensus is to try and avoid metaprogramming as much as possible.
+There should be room for abstraction and generalization and yet, the consensus is to try and avoid metaprogramming as much as possible.
 
 The prefix "meta" is self-referential which tends to indicate linguistically that metaprogramming encompasses all of programming including "normal" programming.
 We could think of "normal" programming as our ability to solve unique problems.
@@ -149,7 +149,7 @@ In a development or staging environment, we want to be able to view the output o
 We think it would avoid context switching and help speed up things a bit.
 
 We implement a mock object to output the event to the console.
-We deep clone the FirstExternalApi object and set the '_getDispatcher' to ouput to the console.
+We deep clone the FirstExternalApi object and set the '_getDispatcher' to output to the console.
 
 ```
 function clone() {
@@ -176,7 +176,7 @@ Based on the node environment, we have an object responsible for trickling our e
 Another way to look at this problem would be to wonder if we could hijack this `_getDispatcher` function and mock it directly at the "source".
 
 es6 proxies allow just that.
-They offer a way to catch just what you need of the behaviour or add to it.
+They offer a way to catch just what you need of the behavior or add to it.
 
 So in our example, we replace the mock with the below:
 ```
@@ -279,7 +279,7 @@ end
 It's possible to go even further by extracting all the tests to another macro to define the tests separately.
 
 
-Metaprogramming is not a bag of tricks, it's the path to a better deeper understanding of any language and potentially more expressive code.
+Metaprogramming is not a bag of tricks, it's the path to a deeper understanding of any language and potentially more expressive code.
 
 Languages like Elixir give the ability to the programmer of making extensions tailored to their needs which are first-class features.
 
