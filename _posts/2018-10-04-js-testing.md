@@ -26,11 +26,16 @@ time and it gets better with some experience.
 In this article we will talk about the testing tools we use for our javascript projects.
 
 * [Jest](https://jestjs.io/)
-Jest it’s well suited for React code testing, but is not limited only to it, so any JS code can be tested.  
+Delightful JavaScript Testing, Jest is used by Facebook to test all JavaScript code including  
+React applications. One of Jest's philosophies is to provide an integrated "zero-configuration" experience. 
 
 * [Enzyme](https://airbnb.io/enzyme/)
-A JS Testing utility for React to assert, manipulate, and traverse your React Components' output.
+Is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your  
+React Components' output.
 
 Ok, those are cool names but what can we do with them?  
 Here are some examples on how to use these tools:
 
+```
+javascript
+```
