@@ -36,6 +36,45 @@ React Components' output.
 Ok, those are cool names but what can we do with them?  
 Here are some examples on how to use these tools:
 
-```
-javascript
+We have a utility function that validates dates are in the following format DD/MM/YYYY
+
+```javascript
+function areInvalidDates(values){
+    let errors = [];
+    if (values.length > 0) {
+      errors = values.map(value => {
+        if (value.split("/").length !== 3 ||
+            value.split("/")[2].length !== 4 ||
+            value.split("/")[1].length !== 2 ||
+            value.split("/")[0].length !== 2
+            ) {
+            return 'invalid';
+        } else {
+          return 'valid';
+        }
+      });
+    }
+    return errors.includes('invalid');
+  }
+
+  // the test
+  describe('utils', function() {
+    it('should have a function that will validate an array of date string values', function () {
+      const valuesWithInvalid = ["01/02/1990", "01/04/22", "02/02/2000"];
+      const hasOneInvalidYear = utils.validateDateStrings(valuesWithInvalid);
+      expect(hasOneInvalidYear).toBe.true;
+
+      const valuesWithAnotherInvalid = ["01/02/1990", "01/4/2000", "02/02/2000"];
+      const hasInvalidDay = utils.validateDateStrings(valuesWithAnotherInvalid);
+      expect(hasInvalidDay).toBe.true;
+
+      const valuesWithSomeInvalid = ["1/02/1990", "01/04/2000", "02/02/2000"];
+      const hasInvalidMonth = utils.validateDateStrings(valuesWithSomeInvalid);
+      expect(hasInvalidMonth).toBe.true;
+
+      const valuesWithAllValid = ["01/02/1990", "01/04/2001", "02/02/2000"];
+      const allValid = utils.validateDateStrings(valuesWithAllValid);
+      expect(allValid).toBe.false;
+    });
+  });
 ```
