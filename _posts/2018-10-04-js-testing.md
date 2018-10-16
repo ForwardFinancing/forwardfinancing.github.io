@@ -38,11 +38,11 @@ Here are some examples on how to use these tools:
 
 We have a utility function that validates dates are in the following format DD/MM/YYYY
 
-```javascript
+``` javascript
 function areInvalidDates(values){
-    let errors = [];
+    let status = [];
     if (values.length > 0) {
-      errors = values.map(value => {
+      status = values.map(value => {
         if (value.split("/").length !== 3 ||
             value.split("/")[2].length !== 4 ||
             value.split("/")[1].length !== 2 ||
@@ -54,26 +54,26 @@ function areInvalidDates(values){
         }
       });
     }
-    return errors.includes('invalid');
+    return status.includes('invalid');
   }
 
   // the test
   describe('utils', function() {
-    it('should have a function that will validate an array of date string values', function () {
+    it('should have a function that validates an array of date string values', function () {
       const valuesWithInvalid = ["01/02/1990", "01/04/22", "02/02/2000"];
-      const hasOneInvalidYear = utils.validateDateStrings(valuesWithInvalid);
+      const hasOneInvalidYear = utils.areInvalidDates(valuesWithInvalid);
       expect(hasOneInvalidYear).toBe.true;
 
       const valuesWithAnotherInvalid = ["01/02/1990", "01/4/2000", "02/02/2000"];
-      const hasInvalidDay = utils.validateDateStrings(valuesWithAnotherInvalid);
+      const hasInvalidDay = utils.areInvalidDates(valuesWithAnotherInvalid);
       expect(hasInvalidDay).toBe.true;
 
       const valuesWithSomeInvalid = ["1/02/1990", "01/04/2000", "02/02/2000"];
-      const hasInvalidMonth = utils.validateDateStrings(valuesWithSomeInvalid);
+      const hasInvalidMonth = utils.areInvalidDates(valuesWithSomeInvalid);
       expect(hasInvalidMonth).toBe.true;
 
       const valuesWithAllValid = ["01/02/1990", "01/04/2001", "02/02/2000"];
-      const allValid = utils.validateDateStrings(valuesWithAllValid);
+      const allValid = utils.areInvalidDates(valuesWithAllValid);
       expect(allValid).toBe.false;
     });
   });
