@@ -12,16 +12,25 @@ At Forward Financing we feel a big proud when our projects reach high test cover
 ensurance for making improvements and upgrades later with the warranty that existing functionality will  
 keep working.
 
-Mistakes can be happen, always, and that is where tests can be real saviors, as an alert that  
+Mistakes can happen, always, and that is where tests can be real saviors, as an alert that  
 something was altered by mistake, or that some functionality is not providing the expected result.
 
 Tests verifies that the application meets the requeriments, it guarantees the code makes what we expect  
 it to do.
 
+Okay, tests can do a lot for us, but is not always sun and butterflies, writing good tests takes  
+time and it gets better with some experience.
+
 ![Coverage]({{"/assets/test_coverage.png" | absolute_url}})
 
 In this article we will talk about the testing tools we use for our javascript projects.
 
-* [Jest](https://jestjs.io/) - Delightful JavaScript Testing
+* [Jest](https://jestjs.io/)
+Jest it’s well suited for React code testing, but is not limited only to it, so any JS code can be tested.  
 
-* [Enzyme](https://github.com/airbnb/enzyme)
+* [Enzyme](https://airbnb.io/enzyme/)
+A JS Testing utility for React to assert, manipulate, and traverse your React Components' output.
+
+Ok, those are cool names but what can we do with them?  
+Here are some examples on how to use these tools:
+
