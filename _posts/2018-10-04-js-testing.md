@@ -78,3 +78,7 @@ function areInvalidDates(values){
     });
   });
 ```
+
+This first example makes use of Jest library to set what do we expect to see with each set of values.
+The behavior of the function on each case is evaluated and we can set the expected result according  
+the params.
