@@ -82,3 +82,122 @@ function areInvalidDates(values){
 This first example makes use of Jest library to set what do we expect to see with each set of values.
 The behavior of the function on each case is evaluated and we can set the expected result according  
 the params.
+
+Now how does Jest and Enzyme work with React components? :thinking:
+Let's say we have a login box component with fields for email and password:
+
+```javascript
+
+class LoginBox extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      email: '',
+      password: ''
+    };
+  }
+
+  saveInput(name, event) {
+    if ((event.keyCode || event.which) === 13) {
+      this.submitForm(event);
+      return;
+    }
+    let state = {};
+    state[name] = event.target.value;
+    this.setState(state);
+  }
+
+  submitForm(event) {
+    event.preventDefault();
+    this.props.onSubmit(this.state);
+  }
+
+  render() {
+    return (
+      <div className="login-box">
+        <div className="login-box__header">
+          <h1>Login</h1>
+        </div>
+        <div className="login-box__content">
+          {
+            this.props.error &&
+            <div className="login-box__error">{this.props.error}</div>
+          }
+          <form className="login-box__form">
+            <LabeledField
+              type="text"
+              label="Email"
+              name="email"
+              onKeyUp={this.saveInput.bind(this, 'email')}
+            />
+
+            <LabeledField
+              type="password"
+              label="Password"
+              name="password"
+              onKeyUp={this.saveInput.bind(this, 'password')}
+            />
+
+            <button type="submit"
+                    className="login-box__form-submit"
+                    onClick={this.submitForm.bind(this)}
+            >
+              Login
+            </button>
+          </form>
+          <a href="https://someaddressforgetapass">
+            Reset your password
+          </a>
+        </div>
+      </div>
+    );
+  }
+}
+
+LoginBox.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  error: PropTypes.string
+};
+
+export default LoginBox;
+
+
+/// test
+describe('LoginBox', () => {
+  it('should render without throwing an error', () => {
+    const wrapper = shallow(
+      <LoginBox onSubmit={() => {}} error="testing"/>
+    );
+    expect(wrapper).toBe.ok;
+  });
+
+  it('should update state with keyUp events', () => {
+    const wrapper = mount(
+      <LoginBox onSubmit={() => {}}/>
+    );
+    const input = wrapper.find('input[type="text"]');
+    input.simulate('keyUp', {target: {value: "a"}});
+    expect(wrapper.state().email).toEqual('a');
+  });
+
+  it('should submit the form when enter is pressed', () => {
+    const onSubmit = jest.fn();
+    const wrapper = mount(
+      <LoginBox onSubmit={onSubmit}/>
+    );
+    const input = wrapper.find('input[type="text"]');
+    input.simulate('keyUp', {keyCode: 13});
+    expect(onSubmit).toHaveBeenCalled();
+  });
+});
+
+```
+
+In this test `shallow` and `mount` from Enzyme are the stars of the show.  
+Shallow calls constructor and render functions from the component.  
+Mount calls constructor, render and componentDidMount functions from the component.
+
+Enzyme also includes a lot of useful functions for finding elements and interacting  
+with them through event simulation like click, keyUp, focus, etc.  
+The state and workflow of a component can be tested with Enzyme utilities.
