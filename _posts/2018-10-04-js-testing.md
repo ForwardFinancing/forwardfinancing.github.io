@@ -8,14 +8,14 @@ author: Tania Paiva
 
 Should I test this? the answer is a BIG YES. Tests are your friends, and saviors sometimes (often).
 
-At Forward Financing we feel a big proud when our projects reach high test coverage, because thats our  
-ensurance for making improvements and upgrades later with the warranty that existing functionality will  
+At Forward Financing, we feel proud when our projects reach high test coverage. It's our best insurance  
+for making improvements and upgrades later with the warranty that existing functionality will  
 keep working.
 
-Mistakes can happen, always, and that is where tests can be real saviors, as an alert that  
+Mistakes can always happen, and that is where tests can be real saviors, as an alert that  
 something was altered by mistake, or that some functionality is not providing the expected result.
 
-Tests verifies that the application meets the requeriments, it guarantees the code makes what we expect  
+Tests verify the application meets the requeriments, it guarantees the code makes what we expect  
 it to do.
 
 Okay, tests can do a lot for us, but is not always sun and butterflies, writing good tests takes  
@@ -79,7 +79,7 @@ function areInvalidDates(values){
   });
 ```
 
-This first example makes use of Jest library to set what do we expect to see with each set of values.
+This first example makes use of Jest library to set what we expect to see with each set of values.
 The behavior of the function on each case is evaluated and we can set the expected result according  
 the params.
 
@@ -195,9 +195,12 @@ describe('LoginBox', () => {
 ```
 
 In this test `shallow` and `mount` from Enzyme are the stars of the show.  
-Shallow calls constructor and render functions from the component.  
-Mount calls constructor, render and componentDidMount functions from the component.
+Shallow calls constructor and render functions in the component.  
+Mount calls constructor, render and componentDidMount functions in the component.
 
 Enzyme also includes a lot of useful functions for finding elements and interacting  
 with them through event simulation like click, keyUp, focus, etc.  
-The state and workflow of a component can be tested with Enzyme utilities.
+The state and workflow of a component can be tested with Enzyme utilities.  
+With these tools we can ensure what events are triggered on each case, if there's an  
+accidental change for example on the onSubmit action the test will fail and will alert  
+that something not wanted has changed.
