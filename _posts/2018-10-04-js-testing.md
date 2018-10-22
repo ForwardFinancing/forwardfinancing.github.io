@@ -12,6 +12,10 @@ At Forward Financing, we feel proud when our projects reach high test coverage. 
 for making improvements and upgrades later with the guarantee that existing functionality will  
 keep working.
 
+The last time where tests watched our backs was during an upgrade process. When the test turned red we  
+we were able to find (after a long while debugging of course) an issue with the the way the css classes  
+were generated in one of our custom libraries, this issue was affecting the UI of five of our services.  
+
 Mistakes can always happen, and that is where tests can be real saviors as an alert that  
 something was altered by mistake or that some functionality is not providing the expected result.
 
