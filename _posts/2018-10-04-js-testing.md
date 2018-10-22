@@ -203,3 +203,6 @@ The state and workflow of a component can be tested with Enzyme utilities.
 With these tools we can ensure what events are triggered on each case, if there's an  
 accidental change for example on the onSubmit action the test will fail and will alert  
 that something not wanted has changed.
+
+In general terms we can say we are fans of high test coverage because of the multiple benefits  
+that provide to the development process and the maintenance of the code.
