@@ -9,25 +9,25 @@ author: Tania Paiva
 Should I test this? the answer is a BIG YES. Tests are your friends, and saviors sometimes (often).
 
 At Forward Financing, we feel proud when our projects reach high test coverage. It's our best insurance  
-for making improvements and upgrades later with the warranty that existing functionality will  
+for making improvements and upgrades later with the guarantee that existing functionality will  
 keep working.
 
-Mistakes can always happen, and that is where tests can be real saviors, as an alert that  
-something was altered by mistake, or that some functionality is not providing the expected result.
+Mistakes can always happen, and that is where tests can be real saviors as an alert that  
+something was altered by mistake or that some functionality is not providing the expected result.
 
-Tests verify the application meets the requeriments, it guarantees the code makes what we expect  
+Tests verify the application meets the requirements, it guarantees the code does what we expect  
 it to do.
 
-Okay, tests can do a lot for us, but is not always sun and butterflies, writing good tests takes  
+Okay, tests can do a lot for us, but it is not always sun and butterflies, writing good tests takes  
 time and it gets better with some experience.
 
 ![Coverage]({{"/assets/test_coverage.png" | absolute_url}})
 
-In this article we will talk about the testing tools we use for our javascript projects.
+The following are some of the testing tools we use for our javascript projects.
 
 * [Jest](https://jestjs.io/)
-Delightful JavaScript Testing, Jest is used by Facebook to test all JavaScript code including  
-React applications. One of Jest's philosophies is to provide an integrated "zero-configuration" experience. 
+"Delightful JavaScript Testing" (according to them of course) is used by Facebook to test all JavaScript code including  
+React applications. One of Jest's philosophies is to provide an integrated "zero-configuration" experience.
 
 * [Enzyme](https://airbnb.io/enzyme/)
 Is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your  
@@ -79,12 +79,13 @@ function areInvalidDates(values){
   });
 ```
 
-This first example makes use of Jest library to set what we expect to see with each set of values.
+This first example makes use of Jest to set what we expect to see with each set of values.
 The behavior of the function on each case is evaluated and we can set the expected result according  
 the params.
 
 Now how does Jest and Enzyme work with React components? :thinking:
-Let's say we have a login box component with fields for email and password:
+Let's say we have a login box component with fields for email and password  
+that sends the form when clicking the button or when hitting enter key.
 
 ```javascript
 
@@ -195,8 +196,8 @@ describe('LoginBox', () => {
 ```
 
 In this test `shallow` and `mount` from Enzyme are the stars of the show.  
-Shallow calls constructor and render functions in the component.  
-Mount calls constructor, render and componentDidMount functions in the component.
+Shallow calls `constructor` and `render` functions in the component.  
+Mount calls `constructor`, `render` and `componentDidMount` functions in the component.
 
 Enzyme also includes a lot of useful functions for finding elements and interacting  
 with them through event simulation like click, keyUp, focus, etc.  
