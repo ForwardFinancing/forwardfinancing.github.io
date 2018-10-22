@@ -6,7 +6,7 @@ categories: software testing js javascript jest enzyme
 author: Tania Paiva
 ---
 
-Should I test this? the answer is a BIG YES. Tests are your friends, and saviors sometimes (often).
+Should I test this? the answer is a **big yes**. Tests are your friends, and saviors sometimes (often).
 
 At Forward Financing, we feel proud when our projects reach high test coverage. It's our best insurance  
 for making improvements and upgrades later with the guarantee that existing functionality will  
@@ -18,7 +18,7 @@ something was altered by mistake or that some functionality is not providing the
 Tests verify the application meets the requirements, it guarantees the code does what we expect  
 it to do.
 
-Okay, tests can do a lot for us, but it is not always sun and butterflies, writing good tests takes  
+Okay, tests can do a lot for us, but it is not always sun and butterflies — writing good tests takes  
 time and it gets better with some experience.
 
 ![Coverage]({{"/assets/test_coverage.png" | absolute_url}})
@@ -39,42 +39,36 @@ Here are some examples on how to use these tools:
 We have a utility function that validates dates are in the following format DD/MM/YYYY
 
 ``` javascript
-function areInvalidDates(values){
-    let status = [];
-    if (values.length > 0) {
-      status = values.map(value => {
-        if (value.split("/").length !== 3 ||
-            value.split("/")[2].length !== 4 ||
-            value.split("/")[1].length !== 2 ||
-            value.split("/")[0].length !== 2
-            ) {
-            return 'invalid';
-        } else {
-          return 'valid';
-        }
-      });
+function isValid(value){
+  if (value.length > 0) {
+    if (value.split("/").length == 3 &&
+        value.split("/")[2].length == 4 &&
+        value.split("/")[1].length == 2 &&
+        value.split("/")[0].length == 2
+        ) {
+        return true;
+    } else {
+      return false;
     }
-    return status.includes('invalid');
+  } else {
+    return false;
   }
+}
 
   // the test
   describe('utils', function() {
-    it('should have a function that validates an array of date string values', function () {
-      const valuesWithInvalid = ["01/02/1990", "01/04/22", "02/02/2000"];
-      const hasOneInvalidYear = utils.areInvalidDates(valuesWithInvalid);
-      expect(hasOneInvalidYear).toBe.true;
+    it('should have a function that validates a string date in format DD/MM/YYYY', function () {
+      const invalidYear = "01/04/22";
+      expect(utils.isValid(invalidYear)).toBe.false;
 
-      const valuesWithAnotherInvalid = ["01/02/1990", "01/4/2000", "02/02/2000"];
-      const hasInvalidDay = utils.areInvalidDates(valuesWithAnotherInvalid);
-      expect(hasInvalidDay).toBe.true;
+      const invalidMonth = "01/4/2000";
+      expect(utils.isValid(invalidMonth)).toBe.false;
 
-      const valuesWithSomeInvalid = ["1/02/1990", "01/04/2000", "02/02/2000"];
-      const hasInvalidMonth = utils.areInvalidDates(valuesWithSomeInvalid);
-      expect(hasInvalidMonth).toBe.true;
+      const invalidDay = "1/02/1990";
+      expect(utils.isValid(invalidDay)).toBe.false;
 
-      const valuesWithAllValid = ["01/02/1990", "01/04/2001", "02/02/2000"];
-      const allValid = utils.areInvalidDates(valuesWithAllValid);
-      expect(allValid).toBe.false;
+      const valueWithAllValid = "02/02/2000";
+      expect(utils.isValid(valueWithAllValid)).toBe.true;
     });
   });
 ```
