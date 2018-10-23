@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Javascript Projects Testing"
+title:  "Javascript Unit Testing"
 date:   2018-10-04 12:00:00 -0400
-categories: software testing js javascript jest enzyme
+categories: software unit testing js javascript jest enzyme
 author: Tania Paiva
 ---
 
@@ -12,9 +12,9 @@ At Forward Financing, we feel proud when our projects reach high test coverage. 
 for making improvements and upgrades later with the guarantee that existing functionality will  
 keep working.
 
-The last time where tests watched our backs was during an upgrade process. When the test turned red we  
-were able to find (after a long while debugging of course) an issue with the the way the css classes  
-were generated in one of our custom libraries, this issue was affecting the UI of five of our services.  
+Tests watched our backs during a recent upgrade process, saving us from potential headaches. When the  
+test failed after a package upgrade we discovered an issue with the way the css classes were generated  
+in one of our custom libraries. This issue was affecting the UI for five of our services.  
 
 Mistakes can always happen, and that is where tests can be real saviors as an alert that  
 something was altered by mistake or that some functionality is not providing the expected result.
@@ -27,11 +27,11 @@ time and it gets better with some experience.
 
 ![Coverage]({{"/assets/test_coverage.png" | absolute_url}})
 
-The following are some of the testing tools we use for our javascript projects.
+The following are some of the testing tools we use in our javascript projects.
 
 * [Jest](https://jestjs.io/)
-"Delightful JavaScript Testing" (according to them of course) is used by Facebook to test all JavaScript code including  
-React applications. One of Jest's philosophies is to provide an integrated "zero-configuration" experience.
+"Delightful JavaScript Testing" (according to them of course) is used by Facebook to test all JavaScript code  
+including React applications. One of Jest's philosophies is to provide an integrated "zero-configuration" experience.
 
 * [Enzyme](https://airbnb.io/enzyme/)
 Is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your  
@@ -77,13 +77,13 @@ function isValid(value){
   });
 ```
 
-This first example makes use of Jest to set what we expect to see with each set of values.
-The behavior of the function on each case is evaluated and we can set the expected result according  
-the params.
+This first example makes use of Jest to set what we expect to see with each set of values.  
+The behavior of the function on each case is evaluated and we can set the expected result  
+according the params.
 
-Now how does Jest and Enzyme work with React components? :thinking:
-Let's say we have a login box component with fields for email and password  
-that sends the form when clicking the button or when hitting enter key.
+Now how does Jest and Enzyme work with React components? :thinking:  
+Let's say we have a login box component with fields for email and password that sends the  
+form when clicking the button or when hitting enter key.
 
 ```javascript
 
