@@ -6,8 +6,8 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 17 Dec 2018 16:41:54 -0500</pubDate>
-    <lastBuildDate>Mon, 17 Dec 2018 16:41:54 -0500</lastBuildDate>
+    <pubDate>Wed, 19 Dec 2018 12:11:51 -0500</pubDate>
+    <lastBuildDate>Wed, 19 Dec 2018 12:11:51 -0500</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -49,7 +49,7 @@ searching for it online, and so I would always do that before asking any. The fe
 ask ended up with very simple answers so having a habit of doing things by myself, I felt that I hadn’t tried enough to answer the question myself. However, I would end up not being able to find the answers I was looking for and kept feeling like a burden asking simple questions like what a specific query did or what the stack trace from the error meant. 
 Furthermore, I would have asked so many questions about how the apps work from a business
 perspective by shadowing the stakeholders (underwriters, prequal analysts) and seeing the overall workflow
-and what issues there were with it. I only got a good feel for ONE part of the underwriting app
+and what issues there were with it. I only got a good feel for &lt;em&gt;one&lt;/em&gt; piece of the underwriting app - our internal risk analysis tool for funding merchants - 
 after struggling on a card (described in detail later) and asking lots of questions directly to an
 underwriter. As weeks passed by and I got more comfortable at the job, 
 I got better about leaving aside that feeling and asking the question anyways - 
@@ -73,34 +73,19 @@ the friction between stakeholders and engineers.&lt;/p&gt;
 sprint of three weeks + a few days reserved for what we call slack time - a short period where the team
 works on tech debt and projects that are not of immediate business concern -
 was changed to two weeks with no slack time. However, I feel that this did not pan
-out too well due to these reasons:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Meeting durations were not modified to reflect the reduction in sprint duration
-which meant that on the days of those meetings, productivity was hindered due to those
-meetings acting as distractions.&lt;/li&gt;
-  &lt;li&gt;In our workflow, a lot of the tasks require collaboration from multiple teams.
-Sometimes the back-and-forth between coworkers working on a feature together takes time 
-and with unavoidable external factors (eg. QA team backlogged, Heroku being down),
-engineers could lose a day or two of productive work. Therefore, the impact of a lost day
-in a two-week sprint compared to a three-week sprint proves to be much more significant.&lt;/li&gt;
-  &lt;li&gt;Due to the prior points and the lack of slack time to work on tech debt, the non-immediate
-yet non-trivial tech debt tasks were piling up. Ideally, there was to be a portion of
-time during the sprint dedicated towards tackling technical debt; however, this did not work out
-due to the above reducing the time allotted for prioritized feature work, leaving no room for it.&lt;/li&gt;
-&lt;/ul&gt;
+out too well due to meetings happening too often causing a lack of productivity. Additionally, tech debt piled up due to immediate business needs being prioritized over it, thus there was no time to work on it with the removal of slack time.&lt;/p&gt;
 
-&lt;p&gt;These are just some of the observations I made during this slightly chaotic time - others
+&lt;p&gt;These are just some of the observations I made during this slightly chaotic time; others
 might have completely different interpretations and thoughts of the matter.
 As of the time of writing this post, we have reverted back to a three-week sprint with a week’s
 worth of slack time. From this, I learned that processes can and will change, but they don’t necessarily
-need to be permanent and should be critically assessed to see if they work out or not.&lt;/p&gt;
+need to be permanent and should be critically assessed to see if they work out or not. The same process that happened to not fit into our workflow may as well be the best one for another engineering team.&lt;/p&gt;
 
 &lt;h1 id=&quot;bite-off-a-bit-more-than-you-can-chew&quot;&gt;Bite off a Bit More than You Can Chew&lt;/h1&gt;
 &lt;p&gt;I had absolutely no idea how much I could take on in terms of workload and deliver in a timely manner.
 What if I didn’t finish my cards for the sprint? Or what if I break other features with my new one?
 But with time I’ve come to realize that it wasn’t about delivering everything on time or having a perfect
-feature, but rather to extend myself a bit more every time and fail often. During one sprint I had just one card and was hesitant on asking for more (even though they weren’t big tasks), but I took another and it went just fine. And although it might not work out everytime, failure in software engineering is the &lt;em&gt;expected&lt;/em&gt; outcome, so it’s okay. Just as with testing, you’ll be constantly disappointed
-if you expect them to work the first time around.&lt;/p&gt;
+feature, but rather to extend myself a bit more every time and fail often. During one sprint I had just one card and was hesitant on asking for more (even though they weren’t big tasks), but I took another and it went just fine. And although it might not work out everytime, failure in software engineering is not such a huge issue. Just as with tests, things just might not work the first time around and that’s okay.&lt;/p&gt;
 
 &lt;h1 id=&quot;hashdig-then-dig-a-bit-more-even-if-you-find-a-nil&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Hash#Dig&lt;/code&gt; then Dig a Bit More… Even If You Find a &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt;&lt;/h1&gt;
 &lt;p&gt;So during my last few weeks here, I decided to pick up an seemingly straightforward
@@ -113,8 +98,7 @@ the view, but pulling the data was a nightmare. Having never worked with the Und
 before, diving deep into binary payload and digging out 10-times deep nested hashes for one
 Date object was not the most fun thing I had in mind.&lt;/p&gt;
 
-&lt;p&gt;In the beginning I thought it was a one hour task, as the documents had methods that related to 
-the LexisNexis and Experian date objects which I believed to correspond to what I needed.
+&lt;p&gt;In the beginning I thought it was a one hour task, as the documents had methods that pulled dates from a background check vendor and a credit bureau which I believed to correspond to what I needed.
 However, I soon found out after that those were the dates of when the data was pulled, not the actual
 dates that I needed. Figuring out the specific document type that contained the data was a hassle, not to
 mention that I probably must have seen over a thousand nil values helplessly trying to dig for the proper
@@ -122,7 +106,7 @@ object. After wrestling with the task for a week, I figured out the exact method
 but it was not pulling the correct data from some applications. Then another week of struggle passed until I realized that the backend logic was already done in a separate part of the app - until that point,I didn’t know I could have felt this demoralized and plain dumb for not seeing it sooner.&lt;/p&gt;
 
 &lt;p&gt;However, I found a silver lining after going through this process: I had dug a lot deeper into the app than I would have if I were to find the pre-existing function initially, getting quite familiar with the app’s object relations, MVC design, as well as discovering the nuances of Ruby. I would do it
-better the second time around, but that’s exactly what experience is.&lt;/p&gt;
+better the second time around, but that’s exactly what experience is for.&lt;/p&gt;
 
 &lt;h1 id=&quot;the-end-or-not&quot;&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;end&lt;/code&gt;… Or Not&lt;/h1&gt;
 &lt;p&gt;And with less than a few days left of my first co-op, I would like to thank the
@@ -136,11 +120,26 @@ I have had a lot of exciting and unique experiences here that I would be hard pr
 find at another company and am going to take the lessons learned here forward (pun absolutely intended)
 into the future.&lt;/p&gt;
 
+&lt;h1 id=&quot;acknowledgements&quot;&gt;Acknowledgements&lt;/h1&gt;
+&lt;p&gt;I would like to thank everyone here at Forward Financing and shoutout a few people for making my time here so very pleasant:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Kelvin&lt;/strong&gt; - For sound mentorship/guidance and establishing #BestRow&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Zach&lt;/strong&gt; - For solid leadership and nuanced humor (and being the only other person I know to use &lt;a href=&quot;https://micro-editor.github.io/&quot;&gt;Micro&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Scott&lt;/strong&gt; - For bringing so much energy into the office everyday&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Natacha&lt;/strong&gt; - For helping me find footing by pair programming extensively when I first started&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mike&lt;/strong&gt; - For diving deep into seemingly infinitely-nested Hash structs with me&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Nate&lt;/strong&gt; - For the thorough code reviews and red-hot enthusiasm for programming languages&lt;/p&gt;
+
 &lt;h1 id=&quot;thanks-for-reading&quot;&gt;&lt;strong&gt;Thanks for reading!&lt;/strong&gt;&lt;/h1&gt;
 </description>
-        <pubDate>Sun, 16 Dec 2018 03:00:00 -0500</pubDate>
-        <link>http://localhost:4000/co-op/learning/2018/12/16/so-long-and-thanks.html</link>
-        <guid isPermaLink="true">http://localhost:4000/co-op/learning/2018/12/16/so-long-and-thanks.html</guid>
+        <pubDate>Tue, 18 Dec 2018 03:00:00 -0500</pubDate>
+        <link>http://localhost:4000/co-op/learning/2018/12/18/so-long-and-thanks.html</link>
+        <guid isPermaLink="true">http://localhost:4000/co-op/learning/2018/12/18/so-long-and-thanks.html</guid>
         
         
         <category>co-op</category>

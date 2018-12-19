@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "So Long, And Thanks for All the Coffee"
-date:   2018-12-16 4:00:00 -0400
+date:   2018-12-18 4:00:00 -0400
 categories: co-op learning
 author: Hobin Yang
 ---
@@ -42,7 +42,7 @@ searching for it online, and so I would always do that before asking any. The fe
 ask ended up with very simple answers so having a habit of doing things by myself, I felt that I hadn't tried enough to answer the question myself. However, I would end up not being able to find the answers I was looking for and kept feeling like a burden asking simple questions like what a specific query did or what the stack trace from the error meant. 
 Furthermore, I would have asked so many questions about how the apps work from a business
 perspective by shadowing the stakeholders (underwriters, prequal analysts) and seeing the overall workflow
-and what issues there were with it. I only got a good feel for ONE part of the underwriting app
+and what issues there were with it. I only got a good feel for _one_ piece of the underwriting app - our internal risk analysis tool for funding merchants - 
 after struggling on a card (described in detail later) and asking lots of questions directly to an
 underwriter. As weeks passed by and I got more comfortable at the job, 
 I got better about leaving aside that feeling and asking the question anyways - 
@@ -66,32 +66,19 @@ I would like to start of by talking about a rather significant change in our eng
 sprint of three weeks + a few days reserved for what we call slack time - a short period where the team
 works on tech debt and projects that are not of immediate business concern -
 was changed to two weeks with no slack time. However, I feel that this did not pan
-out too well due to these reasons:
-* Meeting durations were not modified to reflect the reduction in sprint duration
-which meant that on the days of those meetings, productivity was hindered due to those
-meetings acting as distractions.
-* In our workflow, a lot of the tasks require collaboration from multiple teams.
-Sometimes the back-and-forth between coworkers working on a feature together takes time 
-and with unavoidable external factors (eg. QA team backlogged, Heroku being down),
-engineers could lose a day or two of productive work. Therefore, the impact of a lost day
-in a two-week sprint compared to a three-week sprint proves to be much more significant.
-* Due to the prior points and the lack of slack time to work on tech debt, the non-immediate
-yet non-trivial tech debt tasks were piling up. Ideally, there was to be a portion of
-time during the sprint dedicated towards tackling technical debt; however, this did not work out
-due to the above reducing the time allotted for prioritized feature work, leaving no room for it.
+out too well due to meetings happening too often causing a lack of productivity. Additionally, tech debt piled up due to immediate business needs being prioritized over it, thus there was no time to work on it with the removal of slack time.
 
-These are just some of the observations I made during this slightly chaotic time - others
+These are just some of the observations I made during this slightly chaotic time; others
 might have completely different interpretations and thoughts of the matter.
 As of the time of writing this post, we have reverted back to a three-week sprint with a week's
 worth of slack time. From this, I learned that processes can and will change, but they don't necessarily
-need to be permanent and should be critically assessed to see if they work out or not.
+need to be permanent and should be critically assessed to see if they work out or not. The same process that happened to not fit into our workflow may as well be the best one for another engineering team.
 
 # Bite off a Bit More than You Can Chew
 I had absolutely no idea how much I could take on in terms of workload and deliver in a timely manner.
 What if I didn't finish my cards for the sprint? Or what if I break other features with my new one?
 But with time I've come to realize that it wasn't about delivering everything on time or having a perfect
-feature, but rather to extend myself a bit more every time and fail often. During one sprint I had just one card and was hesitant on asking for more (even though they weren't big tasks), but I took another and it went just fine. And although it might not work out everytime, failure in software engineering is the _expected_ outcome, so it's okay. Just as with testing, you'll be constantly disappointed
-if you expect them to work the first time around. 
+feature, but rather to extend myself a bit more every time and fail often. During one sprint I had just one card and was hesitant on asking for more (even though they weren't big tasks), but I took another and it went just fine. And although it might not work out everytime, failure in software engineering is not such a huge issue. Just as with tests, things just might not work the first time around and that's okay. 
 
 # `Hash#Dig` then Dig a Bit More... Even If You Find a `nil`
 So during my last few weeks here, I decided to pick up an seemingly straightforward
@@ -104,8 +91,7 @@ the view, but pulling the data was a nightmare. Having never worked with the Und
 before, diving deep into binary payload and digging out 10-times deep nested hashes for one
 Date object was not the most fun thing I had in mind.
 
-In the beginning I thought it was a one hour task, as the documents had methods that related to 
-the LexisNexis and Experian date objects which I believed to correspond to what I needed.
+In the beginning I thought it was a one hour task, as the documents had methods that pulled dates from a background check vendor and a credit bureau which I believed to correspond to what I needed.
 However, I soon found out after that those were the dates of when the data was pulled, not the actual
 dates that I needed. Figuring out the specific document type that contained the data was a hassle, not to
 mention that I probably must have seen over a thousand nil values helplessly trying to dig for the proper
@@ -113,7 +99,7 @@ object. After wrestling with the task for a week, I figured out the exact method
 but it was not pulling the correct data from some applications. Then another week of struggle passed until I realized that the backend logic was already done in a separate part of the app - until that point,I didn't know I could have felt this demoralized and plain dumb for not seeing it sooner.
 
 However, I found a silver lining after going through this process: I had dug a lot deeper into the app than I would have if I were to find the pre-existing function initially, getting quite familiar with the app's object relations, MVC design, as well as discovering the nuances of Ruby. I would do it
-better the second time around, but that's exactly what experience is.
+better the second time around, but that's exactly what experience is for.
 
 
 # The `end`... Or Not
@@ -127,5 +113,21 @@ interview I've had, but for this co-op it had substance and proved itself well.
 I have had a lot of exciting and unique experiences here that I would be hard pressed to
 find at another company and am going to take the lessons learned here forward (pun absolutely intended)
 into the future. 
+
+
+# Acknowledgements
+I would like to thank everyone here at Forward Financing and shoutout a few people for making my time here so very pleasant:
+
+**Kelvin** - For sound mentorship/guidance and establishing #BestRow
+
+**Zach** - For solid leadership and nuanced humor (and being the only other person I know to use [Micro](https://micro-editor.github.io/))
+
+**Scott** - For bringing so much energy into the office everyday
+
+**Natacha** - For helping me find footing by pair programming extensively when I first started
+
+**Mike** - For diving deep into seemingly infinitely-nested Hash structs with me
+
+**Nate** - For the thorough code reviews and red-hot enthusiasm for programming languages
 
 # **Thanks for reading!**
