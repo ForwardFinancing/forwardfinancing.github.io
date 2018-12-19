@@ -6,9 +6,804 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 26 Apr 2018 15:49:21 -0400</pubDate>
-    <lastBuildDate>Thu, 26 Apr 2018 15:49:21 -0400</lastBuildDate>
+    <pubDate>Wed, 19 Dec 2018 12:11:51 -0500</pubDate>
+    <lastBuildDate>Wed, 19 Dec 2018 12:11:51 -0500</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>So Long, And Thanks for All the Coffee</title>
+        <description>&lt;p&gt;Up until July when I joined Forward Financing for my first ever co-op, I didn’t
+really have a clear picture of what kind of work I was going to be doing. I had taken a good number of
+courses in university which taught everything from functional programming to design
+patterns and AI algorithms. I had done a few small-scale projects in
+those classes and during my spare time, and even worked a little bit
+with React and a few APIs to create a web app. Good enough, right? Well, not exactly.
+I would soon find out that those projects bore little resemblance to
+what day-to-day software engineering entailed and were nothing like the constantly force-pushed
+one-branch repo with commit messages such as ‘help’ or ‘possible fix’.&lt;/p&gt;
+
+&lt;p&gt;The first thing I noticed when I started was the sheer number of repositories
+that I had to clone and oh wow look so many directories and branches and jeez
+that’s a lot of dependencies and what’s a Sidekiq? I thought only superheroes had
+those. It took a few weeks to get adjusted into a daily routine after setting everything
+up and attending meetings to absorb as much knowledge about the different apps and how they
+worked together.&lt;/p&gt;
+
+&lt;p&gt;To be honest, I felt quite unprepared for my role here as a full stack engineer
+co-op. I didn’t have a baseline at all as to what I could handle and working with
+an unfamiliar and huge codebase was daunting to say the least. Not to mention that I had
+little to no experience working with the tech stack here (Ruby, Elixir, React).
+What did help was taking on small tasks like improving test coverage and addressing
+minor tech debts to get exposed to the many different applications the company uses.
+In addition, everyone on my fantastic team was friendly and eager to help, encouraging
+that I ask any question I had. It seemed all dandy and fine besides the fact that I was still doubtful of my ability to perform well jumping off the deep end into the world of web development.&lt;/p&gt;
+
+&lt;h1 id=&quot;overcoming-impostor-syndrome&quot;&gt;Overcoming Impostor Syndrome&lt;/h1&gt;
+&lt;p&gt;Ever since I was first accepted into Northeastern, I felt as if I didn’t really deserve to be in
+such a good school - all I did in high school was coast by and play lots of video games. And I felt
+the same way everytime I was praised for being “smart” on the sole basis that I was majoring in Computer Science, when I got a tutoring job for a class that I really struggled in, and most recently being hired as a co-op here. I wasn’t the kid that asked dozens of questions to the professor out of pure curiosity nor did I have a particularly easy time in my CS classes which didn’t help. I had a lot of doubts about myself being competent as a co-op as I was unfamiliar with all of the tech stack as well as not possessing any prior experience. But as my first co-op comes to a close, I now feel that I’ve learnt a substantial amount compared to what I thought I was capable of both in terms of technical and communication skills. And sometimes you do get lucky, but it’s what you make of those opportunities - and I think that I’ve done a satisfactory job.&lt;/p&gt;
+
+&lt;h1 id=&quot;really-youre-not-bothering-anyone&quot;&gt;Really, You’re Not Bothering Anyone&lt;/h1&gt;
+&lt;p&gt;If there’s one thing that I would say I could change from my time working here, it would be that I would ask a lot more questions. I thought that my questions were usually basic and could be easily found
+searching for it online, and so I would always do that before asking any. The few questions I did
+ask ended up with very simple answers so having a habit of doing things by myself, I felt that I hadn’t tried enough to answer the question myself. However, I would end up not being able to find the answers I was looking for and kept feeling like a burden asking simple questions like what a specific query did or what the stack trace from the error meant. 
+Furthermore, I would have asked so many questions about how the apps work from a business
+perspective by shadowing the stakeholders (underwriters, prequal analysts) and seeing the overall workflow
+and what issues there were with it. I only got a good feel for &lt;em&gt;one&lt;/em&gt; piece of the underwriting app - our internal risk analysis tool for funding merchants - 
+after struggling on a card (described in detail later) and asking lots of questions directly to an
+underwriter. As weeks passed by and I got more comfortable at the job, 
+I got better about leaving aside that feeling and asking the question anyways - 
+but I do wish that I had done it sooner.&lt;/p&gt;
+
+&lt;p&gt;If I had to do it all over again, I would’ve asked about five times more questions than I did
+regardless of how basic or obvious the answers seemed.
+Funny thing is, I’ve heard this advice over and over again
+and yet it fell on deaf ears for me until I went through the experience myself. But I know now
+for the future that I might end up a bit annoying sometimes but at least I’ll learn a lot!&lt;/p&gt;
+
+&lt;h1 id=&quot;always-in-flux&quot;&gt;Always in Flux&lt;/h1&gt;
+&lt;p&gt;A rather unique experience I had during my time at Forward Financing was quickly adjusting
+to the constant change. From when I joined in July to a couple months later in
+December, the company went through a few big changes. We had (and still have) a shortage
+of product managers which taught me how important they are in keeping the
+software development lifecycle (SDLC) running smoothly especially with scoping out tasks and minimizing
+the friction between stakeholders and engineers.&lt;/p&gt;
+
+&lt;p&gt;I would like to start of by talking about a rather significant change in our engineering process where our
+sprint of three weeks + a few days reserved for what we call slack time - a short period where the team
+works on tech debt and projects that are not of immediate business concern -
+was changed to two weeks with no slack time. However, I feel that this did not pan
+out too well due to meetings happening too often causing a lack of productivity. Additionally, tech debt piled up due to immediate business needs being prioritized over it, thus there was no time to work on it with the removal of slack time.&lt;/p&gt;
+
+&lt;p&gt;These are just some of the observations I made during this slightly chaotic time; others
+might have completely different interpretations and thoughts of the matter.
+As of the time of writing this post, we have reverted back to a three-week sprint with a week’s
+worth of slack time. From this, I learned that processes can and will change, but they don’t necessarily
+need to be permanent and should be critically assessed to see if they work out or not. The same process that happened to not fit into our workflow may as well be the best one for another engineering team.&lt;/p&gt;
+
+&lt;h1 id=&quot;bite-off-a-bit-more-than-you-can-chew&quot;&gt;Bite off a Bit More than You Can Chew&lt;/h1&gt;
+&lt;p&gt;I had absolutely no idea how much I could take on in terms of workload and deliver in a timely manner.
+What if I didn’t finish my cards for the sprint? Or what if I break other features with my new one?
+But with time I’ve come to realize that it wasn’t about delivering everything on time or having a perfect
+feature, but rather to extend myself a bit more every time and fail often. During one sprint I had just one card and was hesitant on asking for more (even though they weren’t big tasks), but I took another and it went just fine. And although it might not work out everytime, failure in software engineering is not such a huge issue. Just as with tests, things just might not work the first time around and that’s okay.&lt;/p&gt;
+
+&lt;h1 id=&quot;hashdig-then-dig-a-bit-more-even-if-you-find-a-nil&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Hash#Dig&lt;/code&gt; then Dig a Bit More… Even If You Find a &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt;&lt;/h1&gt;
+&lt;p&gt;So during my last few weeks here, I decided to pick up an seemingly straightforward
+3 point task that involved pulling date info from LexisNexis and Experian to compare with
+data from a merchant’s application. All I was actually doing was writing a small service
+to grab the data and load it in the ERB template for the view. Little did I know how awful
+APIs could be as well as that it would take me a month to complete this tiny feature.
+I would say that I spent maybe a couple days actually writing the service and helper to create
+the view, but pulling the data was a nightmare. Having never worked with the Underwriting App
+before, diving deep into binary payload and digging out 10-times deep nested hashes for one
+Date object was not the most fun thing I had in mind.&lt;/p&gt;
+
+&lt;p&gt;In the beginning I thought it was a one hour task, as the documents had methods that pulled dates from a background check vendor and a credit bureau which I believed to correspond to what I needed.
+However, I soon found out after that those were the dates of when the data was pulled, not the actual
+dates that I needed. Figuring out the specific document type that contained the data was a hassle, not to
+mention that I probably must have seen over a thousand nil values helplessly trying to dig for the proper
+object. After wrestling with the task for a week, I figured out the exact method to pull the data,
+but it was not pulling the correct data from some applications. Then another week of struggle passed until I realized that the backend logic was already done in a separate part of the app - until that point,I didn’t know I could have felt this demoralized and plain dumb for not seeing it sooner.&lt;/p&gt;
+
+&lt;p&gt;However, I found a silver lining after going through this process: I had dug a lot deeper into the app than I would have if I were to find the pre-existing function initially, getting quite familiar with the app’s object relations, MVC design, as well as discovering the nuances of Ruby. I would do it
+better the second time around, but that’s exactly what experience is for.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-end-or-not&quot;&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;end&lt;/code&gt;… Or Not&lt;/h1&gt;
+&lt;p&gt;And with less than a few days left of my first co-op, I would like to thank the
+entire engineering team for making my time here wonderful and memorable.
+We have a great team here not only in Boston, but all over the world
+in the UK, India, Dominican Republic, Brazil, and Paraguay - all of whom flew in just last week
+to make for a memorable holiday season and end of the year.
+The clichéd response to “what’s your favorite part of the job” is “the people” in every
+interview I’ve had, but for this co-op it had substance and proved itself well.
+I have had a lot of exciting and unique experiences here that I would be hard pressed to
+find at another company and am going to take the lessons learned here forward (pun absolutely intended)
+into the future.&lt;/p&gt;
+
+&lt;h1 id=&quot;acknowledgements&quot;&gt;Acknowledgements&lt;/h1&gt;
+&lt;p&gt;I would like to thank everyone here at Forward Financing and shoutout a few people for making my time here so very pleasant:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Kelvin&lt;/strong&gt; - For sound mentorship/guidance and establishing #BestRow&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Zach&lt;/strong&gt; - For solid leadership and nuanced humor (and being the only other person I know to use &lt;a href=&quot;https://micro-editor.github.io/&quot;&gt;Micro&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Scott&lt;/strong&gt; - For bringing so much energy into the office everyday&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Natacha&lt;/strong&gt; - For helping me find footing by pair programming extensively when I first started&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Mike&lt;/strong&gt; - For diving deep into seemingly infinitely-nested Hash structs with me&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Nate&lt;/strong&gt; - For the thorough code reviews and red-hot enthusiasm for programming languages&lt;/p&gt;
+
+&lt;h1 id=&quot;thanks-for-reading&quot;&gt;&lt;strong&gt;Thanks for reading!&lt;/strong&gt;&lt;/h1&gt;
+</description>
+        <pubDate>Tue, 18 Dec 2018 03:00:00 -0500</pubDate>
+        <link>http://localhost:4000/co-op/learning/2018/12/18/so-long-and-thanks.html</link>
+        <guid isPermaLink="true">http://localhost:4000/co-op/learning/2018/12/18/so-long-and-thanks.html</guid>
+        
+        
+        <category>co-op</category>
+        
+        <category>learning</category>
+        
+      </item>
+    
+      <item>
+        <title>A Macroscopic Take on Metaprogramming</title>
+        <description>&lt;p&gt;If you are as keen on DIY as I am and equally as helpless, the first time you’re presented with some sort of power tool you may think, “This is scary — how could I possibly use this?”.&lt;/p&gt;
+
+&lt;p&gt;In some respects, metaprogramming can feel just like this.&lt;/p&gt;
+
+&lt;p&gt;If we take a look at &lt;a href=&quot;https://en.wikipedia.org/wiki/Metaprogramming&quot;&gt;Wikipedia’s definition&lt;/a&gt;:
+“Metaprogramming is a programming technique in which computer programs have the ability to treat programs as their data.”&lt;/p&gt;
+
+&lt;p&gt;Another common definition is “writing code that writes code.”&lt;/p&gt;
+
+&lt;p&gt;User data is one of the main unknowns in coding.
+Everyday code does not necessarily solve unique problems.
+As developers, we use well-defined conventions and set of functions we are familiar with to process this data and return whatever is defined in the product specifications.&lt;/p&gt;
+
+&lt;p&gt;There should be room for abstraction and generalization and yet, the consensus is to try and avoid metaprogramming as much as possible — especially as it can sometimes compromise readability.&lt;/p&gt;
+
+&lt;p&gt;The prefix “meta” is self-referential which tends to indicate linguistically that metaprogramming encompasses all of programming including “normal” programming.
+We could think of “normal” programming as our ability to solve unique problems.
+All of the other kinds of general problems could — in theory — be handled by metaprogramming.&lt;/p&gt;
+
+&lt;p&gt;Getting to know the reflective methods and tools every language we use is a way of refining one’s craft.
+It also offers a glimpse into and a better understanding of the internals of the language.&lt;/p&gt;
+
+&lt;h2 id=&quot;ruby&quot;&gt;Ruby&lt;/h2&gt;
+
+&lt;p&gt;When working with Ruby, chances are you will come across the DRY, don’t repeat yourself, paradigm.&lt;/p&gt;
+
+&lt;p&gt;The idea of avoiding duplication seems like a sound one in a more general context too.
+It will make any refactoring or change easier.&lt;/p&gt;
+
+&lt;p&gt;Not a cure-all but definitely a tool to keep handy in one’s dev belt.&lt;/p&gt;
+
+&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
+
+&lt;p&gt;We have a test suite responsible for checking that the index page of our website includes the content we expect:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class IndexTest &amp;lt; TestCase
+  test_homepage_has_about_content do
+    visit '/'
+    assert page.has_content?(about)
+  end
+
+  test_homepage_has_news_content do
+    visit '/'
+    assert page.has_content?(news)
+  end
+
+  ...
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A quick online search or pairing could reduce the code to:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class IndexTest &amp;lt; TestCase
+  HOMEPAGE_CONTENT = ['About', 'Meetups', 'Tweets', 'News'].freeze
+
+  HOMEPAGE_CONTENT.each do |content|
+    define_method(&quot;test_homepage_has_#{content}_content&quot;) do
+      visit '/'
+      assert page.has_content?(content)
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;What does &lt;a href=&quot;&amp;quot;https://ruby-doc.org/core-2.5.1/Module.html#method-i-define_method&amp;quot;&quot; target=&quot;_blank&quot;&gt;define_method&lt;/a&gt; do exactly and where does it come from?&lt;/p&gt;
+
+&lt;p&gt;Running &lt;code class=&quot;highlighter-rouge&quot;&gt;IndexTest.methods&lt;/code&gt; returns a lot of methods we have not defined ourselves.
+This is where the concept of inheritance starts to be visible.&lt;/p&gt;
+
+&lt;p&gt;This call returns a list that includes all of the methods accessible in the object’s ancestors.&lt;/p&gt;
+
+&lt;p&gt;If we want to know how many ancestors the IndexTest class has, we can run:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;IndexTest.ancestors
+=&amp;gt; [IndexTest, Object, Kernel, BasicObject]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you check each ancestor individually, &lt;code class=&quot;highlighter-rouge&quot;&gt;define_method&lt;/code&gt; or even &lt;code class=&quot;highlighter-rouge&quot;&gt;ancestors&lt;/code&gt; are nowhere to be found.&lt;/p&gt;
+
+&lt;p&gt;This is because inheritance is not limited to direct “vertical” precedence.
+&lt;code class=&quot;highlighter-rouge&quot;&gt;BasicObject&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Object&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;IndexText&lt;/code&gt; are all classes and they have Class as their class.
+All of them are instances of Class. Class ancestors are:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Class.ancestors
+=&amp;gt; [Class, Module, Object, Kernel, BasicObject]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Module is where &lt;code class=&quot;highlighter-rouge&quot;&gt;define_methods&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;ancestors&lt;/code&gt; are defined.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;define_method&lt;/code&gt; allows us to pass an argument and dynamically constructs a method based on the latter.
+The &lt;code class=&quot;highlighter-rouge&quot;&gt;do&lt;/code&gt; keyword gives away the fact that — unlike &lt;code class=&quot;highlighter-rouge&quot;&gt;def&lt;/code&gt; — the body of the method is a &lt;code class=&quot;highlighter-rouge&quot;&gt;block&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This means that &lt;code class=&quot;highlighter-rouge&quot;&gt;define_method&lt;/code&gt; creates a closure which is both convenient and potentially cumbersome.
+If its scope includes large objects, we may want to avoid it altogether.
+It all depends whether we need to make use of the surrounding environment.&lt;/p&gt;
+
+&lt;p&gt;Understanding inheritance in Ruby is key to using the language better.&lt;/p&gt;
+
+&lt;p&gt;A lot of Ruby’s so-called “magic” exists in fact due to metaprogramming.&lt;/p&gt;
+
+&lt;h2 id=&quot;javascript&quot;&gt;JavaScript&lt;/h2&gt;
+
+&lt;p&gt;ES6 has introduced a new feature called Proxy – which lo and behold – is an application of the &lt;a href=&quot;https://en.wikipedia.org/wiki/Proxy_pattern&quot;&gt;proxy pattern&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In short, it acts as an interface to either just forward to the original recipient or apply additional logic.&lt;/p&gt;
+
+&lt;h3 id=&quot;example-1&quot;&gt;Example&lt;/h3&gt;
+
+&lt;p&gt;We’re writing a library to use with our frontend applications.
+It will offer functions to report a set of events to a couple of external APIs.
+These APIs are in turn responsible for dispatching these to our internal messaging systems.&lt;/p&gt;
+
+&lt;p&gt;We have an object responsible for dispatching the event to the first external API.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import externalApi from 'external-api';
+let isInitialized;
+
+const FirstExternalApi = {
+  _getDispatcher: () =&amp;gt; {
+  return (method, ...args) =&amp;gt; {
+  return externalApi.push([ method, ...args]);
+};
+},
+
+dispatch: function(event) {
+  if (isInitialized) {
+    const { dispatchMethodName } = event;
+
+    this[dispatchMethodName](event);
+  }
+},
+
+_dispatchEvent: function({ method, eventAttributes={ } }) {
+  this._getDispatcher()(method, eventAttributes);
+},
+
+_dispatchException: function({eventAttributes}) {
+  this._dispatchEvent({ method: 'SHOUT', eventAttributes });
+},
+
+[...]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In a development or staging environment, we want to be able to view the output of &lt;code class=&quot;highlighter-rouge&quot;&gt;_getDispatcher&lt;/code&gt; in real time.
+We think it would avoid context switching and help speed up things a bit.&lt;/p&gt;
+
+&lt;p&gt;We implement a mock object to output the event to the console.
+We deep clone the FirstExternalApi object and set the &lt;code class=&quot;highlighter-rouge&quot;&gt;_getDispatcher&lt;/code&gt; to output to the console.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function clone() {
+ // deep clone logic
+}
+
+const FirstExternalApiMock = clone(FirstExternalApi);
+
+FirstExternalApiMock._getDispatcher = function() {
+  return (method, ...args) =&amp;gt; {
+    const argsString = args.map(arg =&amp;gt; {
+      return JSON.stringify(arg, null, 4);
+  }).join(', ');
+
+    console.log(`externalApi('${method}', ${argsString})`);
+  };
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Based on the node environment, we have an object responsible for trickling our events down to:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;either the real FirstExternalApi object responsible for communicating with the external API&lt;/li&gt;
+  &lt;li&gt;or the mock object&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Another way to look at this problem would be to wonder if we could hijack this &lt;code class=&quot;highlighter-rouge&quot;&gt;_getDispatcher&lt;/code&gt; function and mock it directly at the “source”.&lt;/p&gt;
+
+&lt;p&gt;ES6 proxies allow just that.
+They offer a way to catch just what you need of the behavior or add to it.&lt;/p&gt;
+
+&lt;p&gt;So in our example, we replace the mock with the following:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;const FirstExternalApiMock = new Proxy(FirstExternalApi, {
+  get(target, propKey) {
+    if (propKey === '_getDispatcher') {
+      return () =&amp;gt; {
+        return (method, ...args)=&amp;gt; {
+          const argsString = args.map(arg =&amp;gt; {
+            return JSON.stringify(arg, null, 4);
+        }).join(', ');
+
+          console.log(`externalApi: ('${argsString}')`);
+        }
+      };
+    } else {
+      return target[propKey];
+    }
+  }
+});
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We pass the object we are interested in.
+“get” is responsible for “listening” to whenever a property of this object is called.
+Now we leave all properties but one alone and focus entirely on “trapping” &lt;code class=&quot;highlighter-rouge&quot;&gt;_getDispatcher&lt;/code&gt;.
+When it’s called, we output the arguments to the console.&lt;/p&gt;
+
+&lt;p&gt;It’s a different, slightly more concise more way of implementing our solution.&lt;/p&gt;
+
+&lt;h2 id=&quot;elixir&quot;&gt;Elixir&lt;/h2&gt;
+
+&lt;p&gt;In Elixir, most of the metaprogramming boils down to understanding the functions &lt;code class=&quot;highlighter-rouge&quot;&gt;quote&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;unquote&lt;/code&gt; (by no means a measure of simplicity).
+&lt;code class=&quot;highlighter-rouge&quot;&gt;quote&lt;/code&gt; effectively gives us access to Elixir’s AST (abstract syntax tree) by showing us how an expression is parsed and transformed into a tree that Elixir can handle.
+What is returned typically contains three-element tuples (operation/data type, metadata, arguments/data).&lt;/p&gt;
+
+&lt;h3 id=&quot;example-2&quot;&gt;Example&lt;/h3&gt;
+
+&lt;p&gt;Again, we would like to make our test suite a bit more concise.
+Our application offers two endpoints with a very similar set of functionality.
+This should be a good case for abstracting most of their testing and sharing the tests between the two endpoints (endpoint_a and endpoint_b).
+Not dissimilar to RSpec shared example feature, making use of a domain specific language would work for our purposes.&lt;/p&gt;
+
+&lt;p&gt;We have a series of tests like the one below:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;defmodule Api.V1.AControllerTest do
+	test &quot;#create http returns a 403 status with json error&quot; do
+	  &quot;/v1/endpoint_a&quot;
+	  |&amp;gt; create_record(403, ssl_error())
+	end
+end
+
+defmodule Api.V1.BControllerTest do
+	test &quot;#create http returns a 403 status with json error&quot; do
+	  &quot;/v1/endpoint_b&quot;
+	  |&amp;gt; create_record(403, ssl_error())
+	end
+end
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The only difference being the endpoint, we can abstract this to:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;defmodule SharedTestCase do
+  use ExUnit.Case
+
+  @moduletag endpoint: &quot;endpoint_a&quot;
+
+  test &quot;#create http returns a 403 status with json error&quot; do
+  		&quot;/v1/#{endpoint}&quot;
+  		|&amp;gt; create_record(403, ssl_error())
+	end
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;@moduletag is a module attribute provided by ExUnit: one of its uses being to act as a temporary module storage to be used during compilation.&lt;/p&gt;
+
+&lt;p&gt;A macro is going to help Api.V1.AControllerTest and Api.V1.BControllerTest modules make use of the SharedTestCase module.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;defmodule SharedTestCase do
+  defmacro __using__(options) do
+    quote do
+      use ExUnit.Case
+
+      @moduletag unquote(options)
+
+      test &quot;#create http returns a 403 status with json error&quot;, %{endpoint: endpoint} do
+        &quot;/v1/#{endpoint}&quot;
+        |&amp;gt; create_record(403, ssl_error())
+      end
+
+      ...
+    end
+  end
+end
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It’s possible to go even further by extracting all the tests to another macro to define the tests separately.&lt;/p&gt;
+
+&lt;p&gt;Metaprogramming is not a bag of tricks, it’s the path to a deeper understanding of any language and potentially more expressive code.&lt;/p&gt;
+
+&lt;p&gt;Languages like Elixir give the ability to the programmer of making extensions tailored to their needs which are first-class features.&lt;/p&gt;
+
+&lt;p&gt;It’s too good an opportunity to pass up and not use for the greater good of generalization, DRY-ing your codebase and making the code more expressive.&lt;/p&gt;
+
+&lt;p&gt;If this seems daunting at first, chances are you’re like me.
+This means one can start from a long redundant looking piece of code they have just written, feel an urge to make it better, and little by little, abstract away as much as possible.&lt;/p&gt;
+
+&lt;p&gt;If this doesn’t seem daunting, it should simply lead to think more and code less.&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 05 Oct 2018 12:00:00 -0400</pubDate>
+        <link>http://localhost:4000/elixir/ruby/javascript/2018/10/05/a-macroscopic-take-on-metaprogramming.html</link>
+        <guid isPermaLink="true">http://localhost:4000/elixir/ruby/javascript/2018/10/05/a-macroscopic-take-on-metaprogramming.html</guid>
+        
+        
+        <category>elixir</category>
+        
+        <category>ruby</category>
+        
+        <category>javascript</category>
+        
+      </item>
+    
+      <item>
+        <title>Javascript Unit Testing</title>
+        <description>&lt;p&gt;Should I test this? the answer is a &lt;strong&gt;big yes&lt;/strong&gt;. Tests are your friends, and saviors sometimes (often).&lt;/p&gt;
+
+&lt;p&gt;At Forward Financing, we feel proud when our projects reach high test coverage. It’s our best insurance&lt;br /&gt;
+for making improvements and upgrades later with the guarantee that existing functionality will&lt;br /&gt;
+keep working.&lt;/p&gt;
+
+&lt;p&gt;Tests watched our backs during a recent upgrade process, saving us from potential headaches. When the&lt;br /&gt;
+test failed after a package upgrade we discovered an issue with the way the css classes were generated&lt;br /&gt;
+in one of our custom libraries. This issue was affecting the UI for five of our services.&lt;/p&gt;
+
+&lt;p&gt;Mistakes can always happen, and that is where tests can be real saviors as an alert that&lt;br /&gt;
+something was altered by mistake or that some functionality is not providing the expected result.&lt;/p&gt;
+
+&lt;p&gt;Tests verify the application meets the requirements, it guarantees the code does what we expect&lt;br /&gt;
+it to do.&lt;/p&gt;
+
+&lt;p&gt;Okay, tests can do a lot for us, but it is not always sun and butterflies — writing good tests takes&lt;br /&gt;
+time and it gets better with some experience.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/test_coverage.png&quot; alt=&quot;Coverage&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The following are some of the testing tools we use in our javascript projects.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://jestjs.io/&quot;&gt;Jest&lt;/a&gt;
+“Delightful JavaScript Testing” (according to them of course) is used by Facebook to test all JavaScript code&lt;br /&gt;
+including React applications. One of Jest’s philosophies is to provide an integrated “zero-configuration” experience.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://airbnb.io/enzyme/&quot;&gt;Enzyme&lt;/a&gt;
+Is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your&lt;br /&gt;
+React Components’ output.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ok, those are cool names but what can we do with them?&lt;br /&gt;
+Here are some examples on how to use these tools:&lt;/p&gt;
+
+&lt;p&gt;We have a utility function that validates dates are in the following format DD/MM/YYYY&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isValid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// the test&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'utils'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'should have a function that validates a string date in format DD/MM/YYYY'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;invalidYear&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;01/04/22&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;utils&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isValid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;invalidYear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toBe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+      &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;invalidMonth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;01/4/2000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;utils&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isValid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;invalidMonth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toBe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+      &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;invalidDay&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;1/02/1990&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;utils&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isValid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;invalidDay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toBe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+      &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;valueWithAllValid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;02/02/2000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;utils&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isValid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;valueWithAllValid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toBe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This first example makes use of Jest to set what we expect to see with each set of values.&lt;br /&gt;
+The behavior of the function on each case is evaluated and we can set the expected result&lt;br /&gt;
+according the params.&lt;/p&gt;
+
+&lt;p&gt;Now how does Jest and Enzyme work with React components? :thinking:&lt;br /&gt;
+Let’s say we have a login box component with fields for email and password that sends the&lt;br /&gt;
+form when clicking the button or when hitting enter key.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;LoginBox&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;saveInput&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keyCode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;which&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;submitForm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;submitForm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;preventDefault&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onSubmit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;login-box&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;login-box__header&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;h1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Login&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/h1&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;login-box__content&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;login-box__error&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+          &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;form&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;login-box__form&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LabeledField&lt;/span&gt;
+              &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;
+              &lt;span class=&quot;nx&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Email&quot;&lt;/span&gt;
+              &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;email&quot;&lt;/span&gt;
+              &lt;span class=&quot;nx&quot;&gt;onKeyUp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;saveInput&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'email'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;
+            &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LabeledField&lt;/span&gt;
+              &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;password&quot;&lt;/span&gt;
+              &lt;span class=&quot;nx&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Password&quot;&lt;/span&gt;
+              &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;password&quot;&lt;/span&gt;
+              &lt;span class=&quot;nx&quot;&gt;onKeyUp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;saveInput&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'password'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;
+            &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;button&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;submit&quot;&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;className&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;login-box__form-submit&quot;&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;onClick&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;submitForm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+              &lt;span class=&quot;nx&quot;&gt;Login&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/button&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;          &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/form&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;          &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;https://someaddressforgetapass&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;Reset&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;your&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;password&lt;/span&gt;
+          &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/a&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;LoginBox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;propTypes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;onSubmit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PropTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isRequired&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PropTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;LoginBox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+
+&lt;span class=&quot;c1&quot;&gt;/// test&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'LoginBox'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'should render without throwing an error'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;wrapper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;shallow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LoginBox&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;onSubmit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}}&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;testing&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wrapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toBe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'should update state with keyUp events'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;wrapper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LoginBox&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;onSubmit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}}&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;wrapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'input[type=&quot;text&quot;]'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;simulate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'keyUp'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}});&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wrapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'should submit the form when enter is pressed'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;onSubmit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;jest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;wrapper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LoginBox&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;onSubmit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onSubmit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;wrapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'input[type=&quot;text&quot;]'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;simulate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'keyUp'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;keyCode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onSubmit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toHaveBeenCalled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In this test &lt;code class=&quot;highlighter-rouge&quot;&gt;shallow&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;mount&lt;/code&gt; from Enzyme are the stars of the show.&lt;br /&gt;
+Shallow calls &lt;code class=&quot;highlighter-rouge&quot;&gt;constructor&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; functions in the component.&lt;br /&gt;
+Mount calls &lt;code class=&quot;highlighter-rouge&quot;&gt;constructor&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;componentDidMount&lt;/code&gt; functions in the component.&lt;/p&gt;
+
+&lt;p&gt;Enzyme also includes a lot of useful functions for finding elements and interacting&lt;br /&gt;
+with them through event simulation like click, keyUp, focus, etc.&lt;br /&gt;
+The state and workflow of a component can be tested with Enzyme utilities.&lt;br /&gt;
+With these tools we can ensure what events are triggered on each case, if there’s an&lt;br /&gt;
+accidental change for example on the onSubmit action the test will fail and will alert&lt;br /&gt;
+that something not wanted has changed.&lt;/p&gt;
+
+&lt;p&gt;In general terms we can say we are fans of high test coverage because of the multiple benefits&lt;br /&gt;
+that provide to the development process and the maintenance of the code.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 04 Oct 2018 12:00:00 -0400</pubDate>
+        <link>http://localhost:4000/software/unit/testing/js/javascript/jest/enzyme/2018/10/04/js-testing.html</link>
+        <guid isPermaLink="true">http://localhost:4000/software/unit/testing/js/javascript/jest/enzyme/2018/10/04/js-testing.html</guid>
+        
+        
+        <category>software</category>
+        
+        <category>unit</category>
+        
+        <category>testing</category>
+        
+        <category>js</category>
+        
+        <category>javascript</category>
+        
+        <category>jest</category>
+        
+        <category>enzyme</category>
+        
+      </item>
+    
+      <item>
+        <title>Working With Object Oriented and Functional Programming Without Losing Your Mind</title>
+        <description>&lt;p&gt;At Forward Financing we work with several technologies, our stack is pretty mixed.
+Rails, Phoenix, React, Redux just to name a few - which means we have to switch from one development tool or environment to the next several times a day on a regular basis. &lt;br /&gt;
+In practice, this means you could find yourself developing a new feature in the Elixir-Phoenix environment in the morning, and improving existing Ruby on Rails code in the afternoon.
+The main thing with this switching is the programming paradigm that each of this technologies uses is totally
+different.&lt;/p&gt;
+
+&lt;h3 id=&quot;object-oriented-programming-oop-and-functional-programming-fp&quot;&gt;Object Oriented Programming (OOP) and Functional Programming (FP)&lt;/h3&gt;
+
+&lt;p&gt;A program has two main components: the data and the behavior.&lt;br /&gt;
+The main difference between OOP and FP is how we manage these components.&lt;br /&gt;
+OOP puts together data and its associated behavior in a single place called an &lt;code class=&quot;highlighter-rouge&quot;&gt;Object&lt;/code&gt;. For FP, the data and behavior are different things and should be separated.&lt;br /&gt;
+FP tries to avoid sharing state and mutation on data. The objective of FP is building pure functions with no side effects.&lt;br /&gt;
+OOP provides properties and methods for objects, they live inside the class structure, an object has a class and we can
+have an instance of it.&lt;br /&gt;
+A function is a piece of code that is called by name. It can be passed data on which to operate (parameters) and can optionally return data (the most common practice is to return something). All data that is passed to a function is explicitly passed.&lt;br /&gt;
+A method is a piece of code that is called by a name that is associated with the Object.&lt;/p&gt;
+
+&lt;p&gt;Let’s see a practical example, &lt;em&gt;and imagine&lt;/em&gt; we need to implement a program that shuffles cards on a deck.&lt;/p&gt;
+
+&lt;h3 id=&quot;object-oriented-approach&quot;&gt;Object Oriented Approach&lt;/h3&gt;
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Card&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;value&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@value&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Deck&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;initialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@cards&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+      &lt;span class=&quot;vi&quot;&gt;@cards&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Card&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;shuffle_deck&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@cards&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@cards&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;shuffle&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;contains?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;card_value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@cards&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;any?&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;card&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;card&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;card_value&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;show_cards&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@cards&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;', '&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deck&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Deck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'King of Spades'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Ace of Heart'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Two of Diamonds'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Deck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x00007fb03e082208&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@cards&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#&amp;lt;Card:0x00007fb03e082190 @value=&quot;King of Spades&quot;&amp;gt;, #&amp;lt;Card:0x00007fb03e082168 @value=&quot;Ace of Heart&quot;&amp;gt;, #&amp;lt;Card:0x00007fb03e0820c8 @value=&quot;Two of Diamonds&quot;&amp;gt;]&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;show_cards&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;King&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Spades&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Ace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Heart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Two&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Diamonds&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;shuffle_deck&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;show_cards&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;Ace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Heart&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Two&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Diamonds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;King&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Spades&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;contains?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Two of Clubs'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;functional-approach&quot;&gt;Functional Approach&lt;/h3&gt;
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;no&quot;&gt;Module&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Cards&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;create_deck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list_of_values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;list_of_values&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shuffle_deck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shuffle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;contains?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;card&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;member?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;card&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deck&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Cards&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create_deck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;King of Spades&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Ace of Heart&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Two of Diamonds&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;King of Spades&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Ace of Heart&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Two of Diamonds&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Cards&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;contains?&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Two of Clubs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;deck&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Cards&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shuffle_deck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;deck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Ace of Heart&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;King of Spades&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Two of Diamonds&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As we can see the OOP takes us to separate the elements in objects (Card and Deck) as much as we can, we can compare an object with an atom, as the smallest structure on the ecosystem.&lt;br /&gt;
+In FP we can see the approach is more direct.&lt;br /&gt;
+Of course both FP and OOP have their pros and cons, but we are not putting the focus on that in this post.&lt;br /&gt;
+In OOP the value of the object mutates when the methods are being executed, for example shuffle_deck it saves
+the new deck shuffled.&lt;br /&gt;
+Also in OOP the object is the one that calls the methods, on FP the functions are executed by the module, and the
+original value is not changed unless we assign that value.&lt;br /&gt;
+Functions and methods are pretty similar, both do “stuff” with the data and define the behavior, except in the following examples:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;A method is implicitly passed the object on which it was called.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A method is able to operate on data that is contained within the class (remembering that an object is an instance of a class - the class is the definition, the object is an instance of that data).&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is a pretty simple example of the differences between the structure of a program using these two paradigms, and sometimes switching the state from OOP to FP takes a little time. That’s why it is necessary to know the basics of each
+one.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 06 Jun 2018 12:00:00 -0400</pubDate>
+        <link>http://localhost:4000/elixir/coding/ruby/oo/functional/2018/06/06/elixir-post.html</link>
+        <guid isPermaLink="true">http://localhost:4000/elixir/coding/ruby/oo/functional/2018/06/06/elixir-post.html</guid>
+        
+        
+        <category>elixir</category>
+        
+        <category>coding</category>
+        
+        <category>ruby</category>
+        
+        <category>oo</category>
+        
+        <category>functional</category>
+        
+      </item>
     
       <item>
         <title>Increasing Productivity with Scripts: Utilizing Mac's screencapture Utility</title>
@@ -747,595 +1542,6 @@ This console can be found at &lt;code class=&quot;highlighter-rouge&quot;&gt;htt
         <category>postgres</category>
         
         <category>fuzzy-search</category>
-        
-      </item>
-    
-      <item>
-        <title>Getting a React Single Page App on Continuous Delivery</title>
-        <description>&lt;p&gt;Your pilot product just launched after weeks of writing code. Feedback is coming
-back in droves. Bugs are piling up. From being a two-person team on this soft
-launch, the team now grows to four based on demand and feedback.&lt;/p&gt;
-
-&lt;p&gt;Your engineering workflow encourages QA on a staging environment that closely
-mimics production. Before the pilot, there wasn’t ever a time where the team of
-two really needed the staging environment at the same time. Now, it seems like
-multiple engineers require staging at the same time, causing bottlenecks and
-delays in shipping features to the customers.&lt;/p&gt;
-
-&lt;p&gt;This happens at every organization as it begins to scale its engineering
-team. Bottlenecks like these are commonplace and can create quite a bit of
-friction in an engineer’s productivity.&lt;/p&gt;
-
-&lt;h2 id=&quot;continuous-delivery-to-the-rescue&quot;&gt;Continuous Delivery to the Rescue&lt;/h2&gt;
-&lt;p&gt;To alleviate this friction, most organizations turn to Continuous Delivery.
-This practice is generally used to decrease turnaround times on features. What
-this does not solve is the concept of siloed environments for QA. What
-complicates this further is that our build is for a static asset that is hosted
-on a CDN. Our build generates a manifest file and then one JavaScript and one
-CSS compiled asset.&lt;/p&gt;
-
-&lt;h2 id=&quot;our-solution-for-silos&quot;&gt;Our Solution for Silos&lt;/h2&gt;
-&lt;p&gt;We ended up creating a build pipeline for our staging and production environments.
-These two environments, staging and production, are set up on auto deployment.
-In addition, we added development builds that mimic our staging
-environment from our development branch in git. These development builds rename
-the manifest file so we can specifically access the development static assets.
-Our server then knows how to request the specific compiled assets via url
-query parameters. Below is a screenshot of our Heroku build pipeline that auto
-generates our assets.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/heroku_spa_pipeline.png&quot; alt=&quot;Heroku Build Pipeline&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Here is a screenshot of the end result in our CDN.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/aws_pipeline_result.png&quot; alt=&quot;CDN Manifest&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;one-size-does-not-fit-all&quot;&gt;One Size Does Not Fit All&lt;/h2&gt;
-&lt;p&gt;While building this, we realized that everyone’s purpose in this single page
-build process is vastly different. Most open source tooling we found was built
-around building and compiling assets and serving it up via nginx and express.
-Given that, our solution may not be perfect for your situation but it has
-certaintly helped us become more productive as engineers.&lt;/p&gt;
-</description>
-        <pubDate>Fri, 15 Dec 2017 11:00:00 -0500</pubDate>
-        <link>http://localhost:4000/culture/continuous-delivery/2017/12/15/getting-a-react-single-page-app-on-continuous-delivery.html</link>
-        <guid isPermaLink="true">http://localhost:4000/culture/continuous-delivery/2017/12/15/getting-a-react-single-page-app-on-continuous-delivery.html</guid>
-        
-        
-        <category>culture</category>
-        
-        <category>continuous-delivery</category>
-        
-      </item>
-    
-      <item>
-        <title>How To Do Code Review, So It Rocks!</title>
-        <description>&lt;p&gt;We do a lot of code review at Forward Financing. It’s helped our team commit to delivering quality software and it has
- turned out pretty great. It can be hard to know how to dive in, so I’m going to shed some light on how it can be approached.&lt;/p&gt;
-
-&lt;p&gt;In general, the practice of code review helps peers collaborate on features. That collaboration brings fresh perspectives, exposing the coder and reviewer to new ways of approaching a problem they may not have thought of, while distributing that knowledge across the team. In order for this process to be successful, the review needs to be done well.&lt;/p&gt;
-
-&lt;p&gt;Initially the coder should consider adding some context to a given Pull Request. I like to put a description of the changes and the feature, but it can also be nice to comment on specific lines that might be complex.  Also a link to the card or ticket can be a big help. This is a good time for the coder to think about the PR as a whole.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Should this be more than one PR?&lt;/li&gt;
-  &lt;li&gt;Should the code I write have any comments to clarify or document any of these changes?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Once the PR is ready to be reviewed, asking for the opinion of specific engineers is good along with keeping it open to the group for more points of view. Getting the eyes of someone who has spent a lot of time in the codebase is great, but just keep in mind as the coder, you will get different kinds of feedback based on who is reviewing. I like to try to get a few different perspectives if I can.&lt;/p&gt;
-
-&lt;p&gt;As a reviewer, the first pass is a good time to look for areas of the code that jump out at you.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Are there any clearly unaddressed edge cases?&lt;/li&gt;
-  &lt;li&gt;Are there any deviations from the agreed upon style guide?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Be sure to add notes to the PR in a clear and good-natured way.&lt;/p&gt;
-
-&lt;p&gt;Beyond that, a reviewer can have more specific questions that may be better served by having a quick conversation, rather than a back and forth on the PR. Learning how each person likes to communicate and having everyone get to know each other’s style is great. Consider asking questions about different approaches to solving an issue, i.e. “Why do you prefer a case statement here?”. These kinds of questions can touch on performance, readability, and extensibility. If it is a large feature or a big bug fix, it is great in code review to ask questions about where else this code is used or will be used. What may happen if the new code is used in ways maybe not intended by the coder? A conversation is one of the great things to come out of a code review.&lt;/p&gt;
-
-&lt;p&gt;Questions can be a big help, because the coder may have an answer they can add for more context, or it could be that those cases are covered by another feature. This helps the coder and reviewer find any possible issues, but also actively lets both of them get more insight into the feature.&lt;/p&gt;
-
-&lt;p&gt;Code review helps teams distribute the understanding and cognitive load of a codebase across the team, making it much easier to step in when needed. When a team approaches review positively with a mind to exchange ideas it can be a great thing.&lt;/p&gt;
-
-&lt;p&gt;In summary, along with a good outlook, the keys to code review are context, questions, and conversation.&lt;/p&gt;
-</description>
-        <pubDate>Wed, 15 Nov 2017 11:00:00 -0500</pubDate>
-        <link>http://localhost:4000/culture/code-review/2017/11/15/code-review.html</link>
-        <guid isPermaLink="true">http://localhost:4000/culture/code-review/2017/11/15/code-review.html</guid>
-        
-        
-        <category>culture</category>
-        
-        <category>code-review</category>
-        
-      </item>
-    
-      <item>
-        <title>Our set of engineering culture and values</title>
-        <description>&lt;p&gt;Every engineering group is different. Every engineering manager values different
-aspects of their team. This list was put together by the engineering team at
-&lt;em&gt;Forward Financing&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;engineers-flow&quot;&gt;Engineer’s Flow&lt;/h2&gt;
-&lt;p&gt;There is an engineering management theory called “Flow” – it’s any state for an
-engineer that is void of interruption and disruption. This
-is when engineers do their best work, can tackle the hardest problems, and why
-you’ll often find our room either full of energy and boisterous or very very
-quiet to the point you can hear a pin drop. We do many things to help get
-engineers into Flow. Some rules we follow:&lt;br /&gt;
-1) Do not disturb if headset is on
-2) Turn off Slack notifications when working on larger/harder problems
-3) Flexible work-from-home policy to reduce visual noise and disruption from
-outside parties&lt;/p&gt;
-
-&lt;p&gt;Here are some articles that speak specifically about Flow or topics close in
-nature to Flow.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.paulgraham.com/makersschedule.html&quot;&gt;http://www.paulgraham.com/makersschedule.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.paulgraham.com/makersschedule.html&quot;&gt;http://firstround.com/review/track-and-facilitate-your-engineers-flow-states-in-this-simple-way/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://hackernoon.com/its-a-wonder-some-teams-get-anything-done-64104f59bf5e&quot;&gt;https://hackernoon.com/its-a-wonder-some-teams-get-anything-done-64104f59bf5e&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;scrum&quot;&gt;Scrum&lt;/h2&gt;
-&lt;p&gt;Scrum is an Agile methodology that help teams get things done in as productive
-a manner as possible. It allows the business to track project progress
-transparently and get an idea of throughput based on estimation. Scrum allows
-the product team (Product Managers and Engineer) to be able to set expectations
-that stakeholders understand and abide by.&lt;/p&gt;
-
-&lt;p&gt;While none of us believes in burn down
-charts, for those people who are far removed from the process, it can act as
-a flag that a is sprint going well or falling behind.&lt;/p&gt;
-
-&lt;p&gt;The most important
-piece of Scrum is the Retrospective. This is an open forum to discuss what went
-well during the sprint, what failed, and what we can do as a team to address
-the issues that led to the failures. Thus far, we have evolved our process with
-our current team to address the issues that have arisen so far, and it has all
-been for the better. Most importantly, we archive our Retrospective notes in
-Confluence so we can track progress in fixing things that are broken with our
-process.&lt;/p&gt;
-
-&lt;p&gt;Here are some articles that speak specifically about Scrum and its importance
-in organizations.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://martinfowler.com/bliki/FlaccidScrum.html&quot;&gt;https://martinfowler.com/bliki/FlaccidScrum.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.scrumalliance.org/community/articles/2014/november/top-10-reasons-to-adopt-scrum-in-an-organization&quot;&gt;https://www.scrumalliance.org/community/articles/2014/november/top-10-reasons-to-adopt-scrum-in-an-organization&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;blameless-culture&quot;&gt;Blameless Culture&lt;/h2&gt;
-&lt;p&gt;Having a blameless culture is paramount for building a sustainable, long-lived
-engineering culture. No matter the project, bugs are going to exist. Whether
-it is due to miscommunication, misinterpretation, speed, lack of tests, etc.,
-bugs will always be introduced into new and old systems alike.
-It is of utmost importance to have a culture of &lt;em&gt;learning from
-mistakes&lt;/em&gt; as opposed to vilifying the one individual who made the mistake.&lt;/p&gt;
-
-&lt;p&gt;Here is a link that better describe the nuance of a blameless culture and
-it’s benefits to a team and it’s culture.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://americastestkitchen.github.io/culture/engineering/2015/05/13/the-value-of-postmortems/&quot;&gt;https://americastestkitchen.github.io/culture/engineering/2015/05/13/the-value-of-postmortems/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;technical-debt&quot;&gt;Technical Debt&lt;/h2&gt;
-&lt;p&gt;Every company has technical debt, and it can take many forms. Some are legacy
-projects that engineering teams inherit with its primary architects long gone.
-Sometimes shortcuts are taken in order to meet deadlines. In either scenario,
-technical debt has a negative
-effect on health of systems, engineering productivity, and more. This topic,
-which has been discussed in length in every possible forum, is of the utmost
-importance due to its impact.&lt;/p&gt;
-
-&lt;p&gt;Here are some links about what technical debt is, and its place in
-organizations.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://martinfowler.com/bliki/TechnicalDebt.html&quot;&gt;https://martinfowler.com/bliki/TechnicalDebt.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://medium.com/modern-agile/who-manages-technical-debt-levels-7e634b0a5974?source=linkShare-fd418bfc22ba-1506544066&quot;&gt;https://medium.com/modern-agile/who-manages-technical-debt-levels-7e634b0a5974?source=linkShare-fd418bfc22ba-1506544066&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;code-review&quot;&gt;Code Review&lt;/h2&gt;
-&lt;p&gt;Code review is very important in every organization. It acts as a way to
-educate other engineers about a project, a form of quality control
-to prevent bugs from being introduced into systems and
-mentorship as the feedback given helps engineers form better practices and
-habits. While code reviews can be expensive, it is &lt;em&gt;the most important&lt;/em&gt; vehicle
-we have to help identify and prevent new technical debt from being introduced
-into the system.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.atlassian.com/agile/code-reviews&quot;&gt;https://www.atlassian.com/agile/code-reviews&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://hackernoon.com/the-art-of-pull-requests-6f0f099850f9&quot;&gt;https://hackernoon.com/the-art-of-pull-requests-6f0f099850f9&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://medium.com/@vaidehijoshi/crafting-better-code-reviews-1a5fc00a9312&quot;&gt;https://medium.com/@vaidehijoshi/crafting-better-code-reviews-1a5fc00a9312&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;continuous-delivery&quot;&gt;Continuous Delivery&lt;/h2&gt;
-&lt;p&gt;There are a lot of pros and cons around having a Continuous Delivery setup. We
-have most of our applications (all but our application that handles money) on
-continuous delivery. This methodology removes the ceremony around deployment.
-Removing the deployment ceremony reduces engineer frustration, increases
-engineer productivity, and so much more. From a business standpoint, features
-get released faster and quicker.&lt;/p&gt;
-
-&lt;p&gt;Here are some articles about what continuous delivery is and its benefits to an
-organization.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://martinfowler.com/bliki/ContinuousDelivery.html&quot;&gt;https://martinfowler.com/bliki/ContinuousDelivery.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;pair-programming&quot;&gt;Pair Programming&lt;/h2&gt;
-&lt;p&gt;It’s difficult to concisely speak about the importance of pair programming.
-Beyond the immediate impact it provides engineers, it also has long lasting
-effects that can’t be replaced with other frameworks. It helps form bonds of
-mentorship and coaching toward improving the engineer who requested the pair. It
-further strengthens trust and bonds between individuals as they build a rapport
-and help each other through challenges.&lt;/p&gt;
-
-&lt;p&gt;While there are plenty of pro and con articles around the internet about
-pairing, here are some about the positive benefits of it and why we use it
-at Forward Financing:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://raygun.com/blog/how-good-is-pair-programming-really/&quot;&gt;https://raygun.com/blog/how-good-is-pair-programming-really/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;
-&lt;p&gt;Testing is another important vehicle that helps reduce technical debt from
-being introduced into new systems and ensures that requirements are met. Tests
-are a way an engineer can programatically understand if its functionality is
-in fact doing what is intended.&lt;/p&gt;
-
-&lt;p&gt;Here are some articles about why testing is important and why companies decide
-to invest in testing.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://martinfowler.com/bliki/UnitTest.html&quot;&gt;https://martinfowler.com/bliki/UnitTest.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;continuous-learning&quot;&gt;Continuous Learning&lt;/h2&gt;
-&lt;p&gt;Continuous learning is nothing new to businesses, but has made a recent
-resurgence in business culture. This framework allows companies to invest in
-employees by giving them new skills, reinforcing old skills with new twists, and
-more. This has so many positive effects on an organization that it is difficult
-to enumerate them all. I tend to focus on two:
-1) Employee retention
-2) Employee growth&lt;/p&gt;
-
-&lt;p&gt;Here are some links that describe what continuous learning is and why it is important.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.td.org/Publications/Magazines/TD/TD-Archive/2017/02/Webex-10-Ways-to-Build-a-Culture-of-Continuous-Learning&quot;&gt;https://www.td.org/Publications/Magazines/TD/TD-Archive/2017/02/Webex-10-Ways-to-Build-a-Culture-of-Continuous-Learning&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;management&quot;&gt;Management&lt;/h2&gt;
-&lt;p&gt;Managing a team of engineers is often likened to herding cats. It is a tall task
-that most people fumble through. Being the liaison between senior management and
-engineers also has its own set of challenges. The two most important pieces
-that any manager can do for engineers:
-1) Guard rigorously against context switching
-2) Facilitate growing trust throughout the team&lt;/p&gt;
-
-&lt;p&gt;Beyond those two, there is so much that happens to keep engineers happy,
-motivated, and engaged. Here are some articles written by people whom I respect in
-the industry who have gone on to build some amazing engineering cultures:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.td.org/Publications/Magazines/TD/TD-Archive/2017/02/Webex-10-Ways-to-Build-a-Culture-of-Continuous-Learning&quot;&gt;http://firstround.com/review/three-powerful-conversations-managers-must-have-to-develop-their-people/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://hackernoon.com/40-hours-is-enough-86d7166911ea&quot;&gt;https://hackernoon.com/40-hours-is-enough-86d7166911ea&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://m.signalvnoise.com/nobody-hits-the-ground-running-ae4d8fd0e7de&quot;&gt;https://m.signalvnoise.com/nobody-hits-the-ground-running-ae4d8fd0e7de&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://m.signalvnoise.com/software-has-bugs-this-is-normal-f64761a262ca&quot;&gt;https://m.signalvnoise.com/software-has-bugs-this-is-normal-f64761a262ca&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://medium.com/startup-patterns/the-dangers-of-measuring-performance-d21cd61426df&quot;&gt;https://medium.com/startup-patterns/the-dangers-of-measuring-performance-d21cd61426df&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://medium.com/javascript-scene/getting-to-10x-results-what-any-developer-can-learn-from-the-best-54b6c296a5ef&quot;&gt;https://medium.com/javascript-scene/getting-to-10x-results-what-any-developer-can-learn-from-the-best-54b6c296a5ef&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://home.opsolutely.com/the-hidden-reason-you-cant-scale-your-engineering-team/&quot;&gt;https://home.opsolutely.com/the-hidden-reason-you-cant-scale-your-engineering-team/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://code.likeagirl.io/the-power-of-giving-good-feedback-78ab2f4c2b72&quot;&gt;https://code.likeagirl.io/the-power-of-giving-good-feedback-78ab2f4c2b72&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://code.likeagirl.io/how-to-show-all-important-humility-in-leadership-without-being-a-doormat-a90433614ce6&quot;&gt;https://code.likeagirl.io/how-to-show-all-important-humility-in-leadership-without-being-a-doormat-a90433614ce6&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://code.likeagirl.io/6-solutions-to-my-recruitment-problem-but-its-still-a-problem-d299b6a52c6c&quot;&gt;https://code.likeagirl.io/6-solutions-to-my-recruitment-problem-but-its-still-a-problem-d299b6a52c6c&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://medium.com/the-year-of-the-looking-glass/how-do-you-set-metrics-59f78fea7e44&quot;&gt;https://medium.com/the-year-of-the-looking-glass/how-do-you-set-metrics-59f78fea7e44&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://m.signalvnoise.com/the-3-types-of-bullshit-feedback-and-what-to-do-about-them-5de483530c3f&quot;&gt;https://m.signalvnoise.com/the-3-types-of-bullshit-feedback-and-what-to-do-about-them-5de483530c3f&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;product-development&quot;&gt;Product Development&lt;/h2&gt;
-&lt;p&gt;The process around how products are developed is important, but not the end-all
-be-all. It is important to have structures and processes in place to foster
-accountability. These structures help prevent friction
-between other groups as they work together through a common goal. With that
-said, the product will always beat the process. Until something hits the hands
-of a customer, nothing matters until the product is in the hands of the
-customer.&lt;/p&gt;
-
-&lt;p&gt;Here are some links:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://hackernoon.com/antifragile-product-development-39b8d5866b77&quot;&gt;https://hackernoon.com/antifragile-product-development-39b8d5866b77&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://medium.com/pminsider/the-product-beats-the-process-28028151c485&quot;&gt;https://medium.com/pminsider/the-product-beats-the-process-28028151c485&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;transparency&quot;&gt;Transparency&lt;/h2&gt;
-&lt;p&gt;The positive effects of transparency are no secret. Being transparent
-allows for more straightforward communication. It allows for levels of trust to
-be built that might not be achievable otherwise. It reduces worry, stress, and
-even friction between individuals because there are no secrets. It helps build
-relationships between individuals that further strengthen loyalty, empowerment,
-and trust.&lt;/p&gt;
-
-&lt;p&gt;Here are some other links from talented individuals about the importance of
-transparency:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.entrepreneur.com/article/244474&quot;&gt;https://www.entrepreneur.com/article/244474&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.fastcompany.com/3036794/why-a-transparent-culture-is-good-for-business&quot;&gt;https://www.fastcompany.com/3036794/why-a-transparent-culture-is-good-for-business&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        <pubDate>Sat, 30 Sep 2017 14:12:09 -0400</pubDate>
-        <link>http://localhost:4000/engineering/culture/2017/09/30/our-engineering-culture-methodologies-and-philosophies.html</link>
-        <guid isPermaLink="true">http://localhost:4000/engineering/culture/2017/09/30/our-engineering-culture-methodologies-and-philosophies.html</guid>
-        
-        
-        <category>engineering</category>
-        
-        <category>culture</category>
-        
-      </item>
-    
-      <item>
-        <title>Integrating create-react-app with Elixir + Phoenix via Amazon S3</title>
-        <description>&lt;p&gt;At Forward Financing, we’ve started using
-&lt;a href=&quot;https://github.com/facebookincubator/create-react-app&quot;&gt;create-react-app&lt;/a&gt;
-as a starter kit for all of our new
-&lt;a href=&quot;https://facebook.github.io/react/&quot;&gt;React&lt;/a&gt;
-projects. create-react-app is awesome
-because it comes with a one-size-fits-all webpack configuration via the
-&lt;code class=&quot;highlighter-rouge&quot;&gt;react-scripts&lt;/code&gt; package. All you have to do is &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run build&lt;/code&gt; and you have a
-ready-to-ship &lt;code class=&quot;highlighter-rouge&quot;&gt;/build&lt;/code&gt; folder with minified production asset files.&lt;/p&gt;
-
-&lt;p&gt;For our first project using create-react-app, we built an interface to manage our users’ roles and access across our tech ecosystem. The backend server was our standalone single sign-on service,
-written in Elixir+Phoenix. An
-API for the new React frontend was built into that backend service.&lt;/p&gt;
-
-&lt;p&gt;We had a few requirements for the deployment process of the React app:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The compiled JavaScript+CSS assets needed to be hosted somewhere cheaply and
-efficiently.&lt;/li&gt;
-  &lt;li&gt;The React app need to live at a subresource of our existing single sign-on
-application, specifically &lt;code class=&quot;highlighter-rouge&quot;&gt;login.forwardfinancing.com/panel/user_roles&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;The React app needed to have a separate deploy process from the backend app&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;hosting-the-react-build-folder&quot;&gt;Hosting the React build folder&lt;/h3&gt;
-
-&lt;p&gt;One popular option to quickly deploy React apps is to spin up an
-Express server on a shared
-virtual server provider like Heroku or DigitalOcean. This doesn’t make a lot of
-sense because you are paying ~$5/month just to serve up a few static
-files from a dedicated cloud server. I also am not a fan of using JavaScript as
-a backend web server because it is single threaded. Instead, we decided to serve our assets from
-AWS S3+CloudFront. This has a few big benefits:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Amazon has already optimized those services to do one thing, and one thing
-only - serve up static files.&lt;/li&gt;
-  &lt;li&gt;Instead of paying for a whole server, you are only paying fractions of a cent
-to serve the files.&lt;/li&gt;
-  &lt;li&gt;If someone wants to launch a DDoS attack against the service providing the
-assets, they will have to attack Amazon instead of you. S3 offers configuration
-options to help prevent this.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In order to host the assets cheaply and effectively on S3, we more or less
-followed &lt;a href=&quot;https://medium.com/@omgwtfmarc/deploying-create-react-app-to-s3-or-cloudfront-48dae4ce0af&quot;&gt;this helpful article.&lt;/a&gt;.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;Create a bucket on S3 and make that bucket public&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Install aws-cli using your favorite package manager (brew install aws-cli)&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Run aws configure with your credentials&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Add the following to your &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; scripts:&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;scripts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;deploy&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;aws s3 sync build/ s3://your-bucket --region your-region&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;When you run &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run deploy&lt;/code&gt; after having run &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run build&lt;/code&gt;, the contents of
-the build folder will be synced to your S3 bucket.&lt;/p&gt;
-
-&lt;p&gt;Now your React app should be visible at
-&lt;code class=&quot;highlighter-rouge&quot;&gt;https://&amp;lt;your-bucket&amp;gt;.s3.amazonaws.com/index.html&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;using-the-hosted-assets-in-our-backend-app&quot;&gt;Using the hosted assets in our backend app&lt;/h3&gt;
-
-&lt;p&gt;But we don’t want to mount the React app at
-&lt;code class=&quot;highlighter-rouge&quot;&gt;https://&amp;lt;your-bucket&amp;gt;.s3.amazonaws.com/index.html&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;We want to mount it within
-our backend service at &lt;code class=&quot;highlighter-rouge&quot;&gt;login.forwardfinancing.com/panel/user_roles&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;In order to mount the React app in our Elixir backend we created a view layout
-that matched the &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; file in the S3 bucket. Next we replaced the
-relative asset URLs with the full URL to the file on S3:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- In `web/templates/layout/react.html.eex` --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- ...more head elements here... --&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://&amp;lt;your-bucket&amp;gt;.s3.amazonaws.com/static/css/main.123abc45.css&quot;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- This is the mount point for the react app --&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;react&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script
-      &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://&amp;lt;your-bucket&amp;gt;.s3.amazonaws.com/static/js/main.123abc45.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Next, we modified the router file in our Elixir app to direct any requests to
-paths starting with &lt;code class=&quot;highlighter-rouge&quot;&gt;/panel/user_roles&lt;/code&gt; to the new layout which loads the React
-app:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;YourApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Router&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;YourApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Web&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:router&lt;/span&gt;
-
-  &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:react&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;plug&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:put_layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;YourApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;LayoutView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:react&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-  &lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/panel&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;YourApp&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;pipe_through&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:react&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/user_roles/*path&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;YourController&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:index&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Now, when a user navigates to any path starting with &lt;code class=&quot;highlighter-rouge&quot;&gt;/panel/user_roles&lt;/code&gt;, the
-React layout renders a page with your React app. At that point, React router
-takes over, so no more requests will be made to the backend other than those
-for the API until the user refreshes the page or navigates out of the React
-part of your frontend.&lt;/p&gt;
-
-&lt;h3 id=&quot;handling-the-asset-manifest-fingerprints&quot;&gt;Handling the asset manifest fingerprints&lt;/h3&gt;
-
-&lt;p&gt;You’ll notice that the compiled asset files produced by &lt;code class=&quot;highlighter-rouge&quot;&gt;create-react-app&lt;/code&gt;
-include an 8-digit fingerprint, like &lt;code class=&quot;highlighter-rouge&quot;&gt;main.123abc45.css&lt;/code&gt;. This fingerprint
-changes every time you make a change to your app and recompile it. The
-goal of this is to indicate to caching systems when the assets change that their
-cache needs to be invalidated. So, we need our backend to make a request to
-S3 for the asset manifest (which has a constant URL) in order to make sure we
-are pointing to the correct version of our assets.&lt;/p&gt;
-
-&lt;p&gt;We created a small service module in our Elixir app to contain this logic:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;YourApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;AssetManifestFetcher&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;@moduledoc&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&quot;&quot;
-    Goes to S3 and downloads the asset manifest file, which we use to find
-    the fingerprints for the frontend asset.
-  &quot;&quot;&quot;&lt;/span&gt;
-  &lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;HTTPoison&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Base&lt;/span&gt;
-
-  &lt;span class=&quot;nv&quot;&gt;@doc&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&quot;&quot;
-    The url for the S3 asset manifest file
-    Takes the domain of the S3 bucket
-  &quot;&quot;&quot;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/asset-manifest.json&quot;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-  &lt;span class=&quot;nv&quot;&gt;@doc&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&quot;&quot;
-    Turns the response body from a JSON string to a Map
-  &quot;&quot;&quot;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process_response_body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Poison&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decode!&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-  &lt;span class=&quot;nv&quot;&gt;@doc&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&quot;&quot;
-    Makes the request for the asset manifest and returns it as a hash
-  &quot;&quot;&quot;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_manifest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;domain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;get!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;domain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;We then used this service module in our controller to get the asset urls and pass them to the view:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-elixir&quot; data-lang=&quot;elixir&quot;&gt;&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;YourApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;YourController&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;YourApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Web&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:controller&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;# We define these variables in config so they can quickly be swapped out in&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;#  production and so that its easy to stub over them in test&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;#  (Great article about that test concept here: http://blog.plataformatec.com.br/2015/10/mocks-and-explicit-contracts/)&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# Returns a String with your S3 url&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;@domain&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:your_app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:frontend_asset_domain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;# Returns the service module (YourApp.AssetManifestFetcher)&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;@asset_manifest_fetcher&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:your_app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:asset_manifest_fetcher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-  &lt;span class=&quot;nv&quot;&gt;@doc&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&quot;&quot;
-  Get the asset urls from the asset manifest and pass them to the layout.
-  &quot;&quot;&quot;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_params&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;manifest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;@asset_manifest_fetcher&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_manifest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;@domain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;ss&quot;&gt;:index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;%{&lt;/span&gt;
-        &lt;span class=&quot;ss&quot;&gt;css_asset:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;asset_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;manifest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;main.css&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-        &lt;span class=&quot;ss&quot;&gt;js_asset:&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;asset_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;manifest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;main.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;# Given the downloaded asset-manifest, return the full URL to the&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# fingerprinted asset.&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# For example, &quot;main.css&quot; becomes:&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# &quot;http://something.s3.us-east-2.amazonaws.com/static/css/main.441e57a7.css&quot;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;defp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;asset_url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;manifest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;asset_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;@domain&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;manifest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;asset_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Next, we modified the layout to reference the new variables instead of hard coded
-asset paths:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-erb&quot; data-lang=&quot;erb&quot;&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- In `web/templates/layout/react.html.eex` --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;en&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- ...more head elements here... --&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@css_asset&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;stylesheet&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- This is the mount point for the react app --&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;react&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;%=&lt;/span&gt; &lt;span class=&quot;vi&quot;&gt;@js_asset&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%&amp;gt;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;This setup adds a few milliseconds to the initial React load time as the round
-trip request is made to S3 for the asset manifest. That request should probably
-be cached in higher volume production environments.&lt;/p&gt;
-
-&lt;h3 id=&quot;future-steps&quot;&gt;Future Steps&lt;/h3&gt;
-
-&lt;p&gt;One feature that would be cool to add to the React build process would be
-the ability to deploy compiled assets to different environments. This would
-probably involve having the &lt;code class=&quot;highlighter-rouge&quot;&gt;npm run deploy&lt;/code&gt; command take an argument with the
-environment name (ie staging, production), and post the assets to the S3 bucket
-in a folder with that name. Then the backend staging and production environments
-could point to the correct folder, and the assets for each would be separate.&lt;/p&gt;
-
-&lt;p&gt;A further spin on that would be to mimic Heroku’s “Review Apps” feature by
-deploying assets to a folder within the bucket with the same name as the
-current branch. This would be as simple as:&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;aws s3 sync build/$(git symbolic-ref --short HEAD) s3://your-bucket --region your-region&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Then, reviewers could preview your changes just by going to:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;https://&amp;lt;your-bucket&amp;gt;.s3.amazonaws.com/your-branch/index.html&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;The staging and production environments could point to the assets in the folders
-for develop and master.&lt;/p&gt;
-
-</description>
-        <pubDate>Wed, 31 May 2017 20:00:00 -0400</pubDate>
-        <link>http://localhost:4000/react/elixir/devops/2017/06/01/deploying-create-react-app-to-s3.html</link>
-        <guid isPermaLink="true">http://localhost:4000/react/elixir/devops/2017/06/01/deploying-create-react-app-to-s3.html</guid>
-        
-        
-        <category>react</category>
-        
-        <category>elixir</category>
-        
-        <category>devops</category>
         
       </item>
     
