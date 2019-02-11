@@ -6,106 +6,352 @@
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 19 Dec 2018 12:11:51 -0500</pubDate>
-    <lastBuildDate>Wed, 19 Dec 2018 12:11:51 -0500</lastBuildDate>
+    <pubDate>Mon, 11 Feb 2019 10:00:44 -0500</pubDate>
+    <lastBuildDate>Mon, 11 Feb 2019 10:00:44 -0500</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
+        <title>Checking the Status of Your API Submitted Deal</title>
+        <description>&lt;p&gt;&lt;em&gt;Now that you have submitted your first deal via our &lt;a href=&quot;http://tech.forwardfinancing.com/api/2017/03/07/using-our-lead-submissions-api.html&quot;&gt;Lead Submission Endpoint&lt;/a&gt;,
+you’re probably wondering how it’s doing.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h2&gt;
+&lt;p&gt;The only things you’ll need are&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The &lt;strong&gt;lead ID&lt;/strong&gt; you received when you first submitted your deal&lt;/li&gt;
+  &lt;li&gt;Your &lt;strong&gt;API key&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;authentication&quot;&gt;Authentication&lt;/h4&gt;
+
+&lt;p&gt;You will need to contact us to get your &lt;strong&gt;API key&lt;/strong&gt;. The API key should be included
+in your request headers such that the request header key is &lt;code class=&quot;highlighter-rouge&quot;&gt;api_key&lt;/code&gt; and the
+request header value for that key is your &lt;strong&gt;API key&lt;/strong&gt;. If you omit the api_key or
+provide an incorrect one, the HTTP status code of the response will be 401
+Unauthorized.&lt;/p&gt;
+
+&lt;h4 id=&quot;https&quot;&gt;HTTPS&lt;/h4&gt;
+
+&lt;p&gt;Since your API requests will contain sensitive personal information about our
+customers, you must use SSL (HTTPS). To discourage insecure API requests,
+the response code will be 403 Forbidden for all requests made over HTTP.&lt;/p&gt;
+
+&lt;h4 id=&quot;rate-limiting&quot;&gt;Rate Limiting&lt;/h4&gt;
+
+&lt;p&gt;We impose a rate limit per user of 1 request per second. If you exceed this rate
+of requests, the response code will be 429 Too Many Requests. If you need to
+exceed this limit for some reason, please let us know!&lt;/p&gt;
+
+&lt;h2 id=&quot;the-deal-status-endpoint&quot;&gt;The Deal Status Endpoint&lt;/h2&gt;
+
+&lt;p&gt;You will be able to check your deal status with a GET request to the &lt;code class=&quot;highlighter-rouge&quot;&gt;/v1/deal_status&lt;/code&gt; 
+endpoint with your &lt;strong&gt;lead ID&lt;/strong&gt;.
+For example, the GET url might be&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;https://api-staging.forwardfinancing.com/v1/deal_status/&amp;lt;LEAD_ID&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;request&quot;&gt;Request&lt;/h3&gt;
+
+&lt;p&gt;The only thing you’ll need in the request header is your &lt;strong&gt;API key&lt;/strong&gt;!&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;api_key: YOUR_API_KEY_HERE
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;response&quot;&gt;Response&lt;/h3&gt;
+&lt;p&gt;The possible response body fields are&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;stage&lt;/li&gt;
+  &lt;li&gt;maxApproval&lt;/li&gt;
+  &lt;li&gt;maxPayments&lt;/li&gt;
+  &lt;li&gt;offerLink&lt;/li&gt;
+  &lt;li&gt;declineDrivers&lt;/li&gt;
+  &lt;li&gt;declineNotes&lt;/li&gt;
+  &lt;li&gt;missingInfo&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Your response will contain different fields depending on the status of your deal.
+All responses will contain the &lt;strong&gt;stage&lt;/strong&gt; of your deal.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;strong&gt;Deal Status&lt;/strong&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;stage&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;maxApproval&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;maxPayments&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;offerLink&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;declineDrivers&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;declineNotes&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;missingInfo&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;We’re currently processing your deal&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Your deal has been approved&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Your deal has been declined&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;We need more information&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;x&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;glossary&quot;&gt;Glossary&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;stage&lt;/strong&gt; - the current state of your submitted deal in our process&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;maxApproval&lt;/strong&gt; - the maximum advance amount approved for this merchant&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;maxPayments&lt;/strong&gt; - the maximum number of payments approved for this merchant (term in days), (we arrived that by multiplying months by 20)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;offerLink&lt;/strong&gt; - link to our offer calculator where you can select terms and request contracts&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;declineDrivers&lt;/strong&gt; - reasons why this deal was declined chosen from a set list (see below for list)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;declineNotes&lt;/strong&gt; - additional explanation for why this deal was declined&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;missingInfo&lt;/strong&gt; - additional information that is needed for a decision to  be made on this deal&lt;/p&gt;
+
+&lt;h2 id=&quot;sample-responses&quot;&gt;Sample Responses&lt;/h2&gt;
+&lt;p&gt;These are some possible responses you may receive from our API&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+  &quot;stage&quot;: &quot;Approval Sent&quot;,
+  &quot;maxApproval&quot;: &quot;10000&quot;,
+  &quot;maxPayments&quot;: &quot;10&quot;,
+  &quot;offerLink&quot;: &quot;offer.com&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+  &quot;stage&quot;: &quot;Declined&quot;,
+  &quot;declineDrivers&quot;: [Default history, Excessive liens or judgements],
+  &quot;declineNotes&quot;: &quot;This merchant does not look credible&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+  &quot;stage&quot;: &quot;File Missing Info&quot;,
+  &quot;missingInfo&quot;: &quot;We're going to need more recent bank statements please!&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+  &quot;stage&quot;: &quot;Working&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;possible-decline-drivers&quot;&gt;Possible Decline Drivers&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Application Incomplete&lt;/li&gt;
+  &lt;li&gt;Challenged personal credit history&lt;/li&gt;
+  &lt;li&gt;Default history&lt;/li&gt;
+  &lt;li&gt;Excessive liens or judgements&lt;/li&gt;
+  &lt;li&gt;Excessive negative days or NSFs&lt;/li&gt;
+  &lt;li&gt;Excessive recent inquiries&lt;/li&gt;
+  &lt;li&gt;Existing customer&lt;/li&gt;
+  &lt;li&gt;Failed merchant interview&lt;/li&gt;
+  &lt;li&gt;Fraud&lt;/li&gt;
+  &lt;li&gt;Inability to extend a minimum offer&lt;/li&gt;
+  &lt;li&gt;Low adjusted deposit count&lt;/li&gt;
+  &lt;li&gt;Low adjusted deposit volume&lt;/li&gt;
+  &lt;li&gt;Open or recent bankruptcy&lt;/li&gt;
+  &lt;li&gt;Over daily submission limit&lt;/li&gt;
+  &lt;li&gt;Over-leveraged w/ pre-existing financing&lt;/li&gt;
+  &lt;li&gt;Personal Bank Statements&lt;/li&gt;
+  &lt;li&gt;Poor business risk score&lt;/li&gt;
+  &lt;li&gt;Poor month to date performance&lt;/li&gt;
+  &lt;li&gt;Poor personal risk score&lt;/li&gt;
+  &lt;li&gt;Presence of criminal filings&lt;/li&gt;
+  &lt;li&gt;Previous decline&lt;/li&gt;
+  &lt;li&gt;Prohibited business type&lt;/li&gt;
+  &lt;li&gt;Restricted business location&lt;/li&gt;
+  &lt;li&gt;Poor Industry Risk Score&lt;/li&gt;
+  &lt;li&gt;Short-time In business&lt;/li&gt;
+  &lt;li&gt;Sub 500 FICO&lt;/li&gt;
+  &lt;li&gt;Too early to net 50%&lt;/li&gt;
+  &lt;li&gt;Unexplained UCCs&lt;/li&gt;
+  &lt;li&gt;Unwillingness to pay creditors&lt;/li&gt;
+  &lt;li&gt;Volatile deposits&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Thu, 07 Feb 2019 03:00:00 -0500</pubDate>
+        <link>http://localhost:4000/api/2019/02/07/checking-the-status-of-your-api-submitted-deal.html</link>
+        <guid isPermaLink="true">http://localhost:4000/api/2019/02/07/checking-the-status-of-your-api-submitted-deal.html</guid>
+        
+        
+        <category>api</category>
+        
+      </item>
+    
+      <item>
         <title>So Long, And Thanks for All the Coffee</title>
-        <description>&lt;p&gt;Up until July when I joined Forward Financing for my first ever co-op, I didn’t
+        <description>&lt;p&gt;Before I joined Forward Financing in July for my first-ever co-op, I didn’t
 really have a clear picture of what kind of work I was going to be doing. I had taken a good number of
-courses in university which taught everything from functional programming to design
+courses in university, where I learned everything from functional programming to design
 patterns and AI algorithms. I had done a few small-scale projects in
 those classes and during my spare time, and even worked a little bit
 with React and a few APIs to create a web app. Good enough, right? Well, not exactly.
 I would soon find out that those projects bore little resemblance to
-what day-to-day software engineering entailed and were nothing like the constantly force-pushed
-one-branch repo with commit messages such as ‘help’ or ‘possible fix’.&lt;/p&gt;
+what day-to-day software engineering entailed and were nothing like the constantly force-pushed,
+one-branch repo with commit messages such as “help” or “possible fix”.&lt;/p&gt;
 
 &lt;p&gt;The first thing I noticed when I started was the sheer number of repositories
-that I had to clone and oh wow look so many directories and branches and jeez
-that’s a lot of dependencies and what’s a Sidekiq? I thought only superheroes had
-those. It took a few weeks to get adjusted into a daily routine after setting everything
-up and attending meetings to absorb as much knowledge about the different apps and how they
+that I had to clone and “Oh wow! Look, so many directories and branches” and “Jeez
+that’s a lot of dependencies” and “What’s a Sidekiq? I thought only superheroes had
+those.” It took a few weeks to get adjusted into a daily routine after setting everything
+up, attending meetings to absorb as much knowledge as I could about the different apps and how they
 worked together.&lt;/p&gt;
 
 &lt;p&gt;To be honest, I felt quite unprepared for my role here as a full stack engineer
-co-op. I didn’t have a baseline at all as to what I could handle and working with
+co-op. I didn’t have a baseline at all as to what I could handle, and working with
 an unfamiliar and huge codebase was daunting to say the least. Not to mention that I had
 little to no experience working with the tech stack here (Ruby, Elixir, React).
 What did help was taking on small tasks like improving test coverage and addressing
-minor tech debts to get exposed to the many different applications the company uses.
-In addition, everyone on my fantastic team was friendly and eager to help, encouraging
-that I ask any question I had. It seemed all dandy and fine besides the fact that I was still doubtful of my ability to perform well jumping off the deep end into the world of web development.&lt;/p&gt;
+minor tech debt to get exposed to the many different applications the company uses.
+In addition, everyone on my fantastic team was friendly and eager to help, encouraging me to ask any questions I had. It seemed all dandy and fine, besides the fact that I was still doubtful of my ability to perform well, jumping off the deep end into the world of web development.&lt;/p&gt;
 
 &lt;h1 id=&quot;overcoming-impostor-syndrome&quot;&gt;Overcoming Impostor Syndrome&lt;/h1&gt;
-&lt;p&gt;Ever since I was first accepted into Northeastern, I felt as if I didn’t really deserve to be in
-such a good school - all I did in high school was coast by and play lots of video games. And I felt
-the same way everytime I was praised for being “smart” on the sole basis that I was majoring in Computer Science, when I got a tutoring job for a class that I really struggled in, and most recently being hired as a co-op here. I wasn’t the kid that asked dozens of questions to the professor out of pure curiosity nor did I have a particularly easy time in my CS classes which didn’t help. I had a lot of doubts about myself being competent as a co-op as I was unfamiliar with all of the tech stack as well as not possessing any prior experience. But as my first co-op comes to a close, I now feel that I’ve learnt a substantial amount compared to what I thought I was capable of both in terms of technical and communication skills. And sometimes you do get lucky, but it’s what you make of those opportunities - and I think that I’ve done a satisfactory job.&lt;/p&gt;
+&lt;p&gt;Ever since I was first accepted into Northeastern, I felt as if I didn’t really deserve to be at
+such a good school - all I did in high school was coast by and play lots of video games. I felt
+the same way every time I was praised for being “smart” on the sole basis that I was majoring in Computer Science, when I got a tutoring job for a class that I really struggled in, and most recently being hired as a co-op here. I wasn’t the kid who asked dozens of questions to the professor out of pure curiosity, nor did I have a particularly easy time in my CS classes, which didn’t help. I had a lot of doubts about myself being competent as a co-op, being unfamiliar with the tech stack and not possessing any prior experience. But as my first co-op comes to a close, I now feel that I’ve learned a substantial amount compared to what I thought I was capable of both in terms of technical and communication skills. And sometimes you do get lucky, but it’s what you make of those opportunities - and I think that I’ve done a satisfactory job.&lt;/p&gt;
 
 &lt;h1 id=&quot;really-youre-not-bothering-anyone&quot;&gt;Really, You’re Not Bothering Anyone&lt;/h1&gt;
-&lt;p&gt;If there’s one thing that I would say I could change from my time working here, it would be that I would ask a lot more questions. I thought that my questions were usually basic and could be easily found
-searching for it online, and so I would always do that before asking any. The few questions I did
-ask ended up with very simple answers so having a habit of doing things by myself, I felt that I hadn’t tried enough to answer the question myself. However, I would end up not being able to find the answers I was looking for and kept feeling like a burden asking simple questions like what a specific query did or what the stack trace from the error meant. 
-Furthermore, I would have asked so many questions about how the apps work from a business
+&lt;p&gt;If there’s one thing I could change from my time working here, I would have asked a lot more questions. I thought my questions were usually basic and could be easily found
+searching online, so I would always do that before asking any. The few questions I did
+ask had very simple answers, so having a habit of doing things by myself, I felt that I hadn’t tried enough to answer the question myself. However, I would end up not being able to find the answers I was looking for and kept feeling like a burden asking simple questions, like what a specific query did or what the stack trace from the error meant.&lt;/p&gt;
+
+&lt;p&gt;I would have asked so many questions about how the apps work from a business
 perspective by shadowing the stakeholders (underwriters, prequal analysts) and seeing the overall workflow
-and what issues there were with it. I only got a good feel for &lt;em&gt;one&lt;/em&gt; piece of the underwriting app - our internal risk analysis tool for funding merchants - 
+and what issues there were. I only got a good feel for &lt;em&gt;one&lt;/em&gt; piece of the underwriting app - our internal risk analysis tool for funding merchants -
 after struggling on a card (described in detail later) and asking lots of questions directly to an
-underwriter. As weeks passed by and I got more comfortable at the job, 
-I got better about leaving aside that feeling and asking the question anyways - 
+underwriter. As weeks passed by and I got more comfortable at the job,
+I got better about leaving aside that feeling and asking the question anyways -
 but I do wish that I had done it sooner.&lt;/p&gt;
 
 &lt;p&gt;If I had to do it all over again, I would’ve asked about five times more questions than I did
 regardless of how basic or obvious the answers seemed.
 Funny thing is, I’ve heard this advice over and over again
-and yet it fell on deaf ears for me until I went through the experience myself. But I know now
+and yet it fell on my deaf ears until I went through the experience myself. But I know now
 for the future that I might end up a bit annoying sometimes but at least I’ll learn a lot!&lt;/p&gt;
 
 &lt;h1 id=&quot;always-in-flux&quot;&gt;Always in Flux&lt;/h1&gt;
 &lt;p&gt;A rather unique experience I had during my time at Forward Financing was quickly adjusting
-to the constant change. From when I joined in July to a couple months later in
-December, the company went through a few big changes. We had (and still have) a shortage
-of product managers which taught me how important they are in keeping the
+to constant change. From when I joined in July to a couple months later in
+December, the company went through a few big changes. We were, and still are, in the process of hiring several product managers, which taught me how important they are in keeping the
 software development lifecycle (SDLC) running smoothly especially with scoping out tasks and minimizing
 the friction between stakeholders and engineers.&lt;/p&gt;
 
-&lt;p&gt;I would like to start of by talking about a rather significant change in our engineering process where our
-sprint of three weeks + a few days reserved for what we call slack time - a short period where the team
+&lt;p&gt;I would like to start by talking about a rather significant change in our engineering process where our
+sprint of three weeks plus a few days reserved for what we call slack time - a short period where the team
 works on tech debt and projects that are not of immediate business concern -
 was changed to two weeks with no slack time. However, I feel that this did not pan
-out too well due to meetings happening too often causing a lack of productivity. Additionally, tech debt piled up due to immediate business needs being prioritized over it, thus there was no time to work on it with the removal of slack time.&lt;/p&gt;
+out too well due to frequent meetings, causing a lack of productivity. Additionally, tech debt piled up due to immediate business needs being prioritized.&lt;/p&gt;
 
 &lt;p&gt;These are just some of the observations I made during this slightly chaotic time; others
 might have completely different interpretations and thoughts of the matter.
 As of the time of writing this post, we have reverted back to a three-week sprint with a week’s
 worth of slack time. From this, I learned that processes can and will change, but they don’t necessarily
-need to be permanent and should be critically assessed to see if they work out or not. The same process that happened to not fit into our workflow may as well be the best one for another engineering team.&lt;/p&gt;
+need to be permanent and should be critically assessed to see if they work out or not. The same process that did not fit into our workflow may be the best one for another engineering team.&lt;/p&gt;
 
 &lt;h1 id=&quot;bite-off-a-bit-more-than-you-can-chew&quot;&gt;Bite off a Bit More than You Can Chew&lt;/h1&gt;
 &lt;p&gt;I had absolutely no idea how much I could take on in terms of workload and deliver in a timely manner.
-What if I didn’t finish my cards for the sprint? Or what if I break other features with my new one?
+What if I didn’t finish my cards for the sprint? What if I break other features with my new one?
 But with time I’ve come to realize that it wasn’t about delivering everything on time or having a perfect
-feature, but rather to extend myself a bit more every time and fail often. During one sprint I had just one card and was hesitant on asking for more (even though they weren’t big tasks), but I took another and it went just fine. And although it might not work out everytime, failure in software engineering is not such a huge issue. Just as with tests, things just might not work the first time around and that’s okay.&lt;/p&gt;
+feature, but rather to extend myself a bit more every time and fail often. During one sprint I had just one card and was hesitant to ask for more, even though they weren’t big tasks, but I took another and it went just fine. And although it might not work out everytime, failure in software engineering is not such a huge issue. Just as with tests, things just might not work the first time around and that’s okay.&lt;/p&gt;
 
 &lt;h1 id=&quot;hashdig-then-dig-a-bit-more-even-if-you-find-a-nil&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Hash#Dig&lt;/code&gt; then Dig a Bit More… Even If You Find a &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt;&lt;/h1&gt;
 &lt;p&gt;So during my last few weeks here, I decided to pick up an seemingly straightforward
-3 point task that involved pulling date info from LexisNexis and Experian to compare with
+3-point task that involved pulling date info from our background check vendor and our preferred credit bureau to compare with
 data from a merchant’s application. All I was actually doing was writing a small service
 to grab the data and load it in the ERB template for the view. Little did I know how awful
-APIs could be as well as that it would take me a month to complete this tiny feature.
-I would say that I spent maybe a couple days actually writing the service and helper to create
+APIs could be, as well as that it would take me a month to complete this tiny feature.
+I would say that I spent maybe a couple of days actually writing the service and helper to create
 the view, but pulling the data was a nightmare. Having never worked with the Underwriting App
-before, diving deep into binary payload and digging out 10-times deep nested hashes for one
+before, diving deep into a binary payload and digging out 10-times deep nested hashes for one
 Date object was not the most fun thing I had in mind.&lt;/p&gt;
 
-&lt;p&gt;In the beginning I thought it was a one hour task, as the documents had methods that pulled dates from a background check vendor and a credit bureau which I believed to correspond to what I needed.
+&lt;p&gt;In the beginning I thought it was a one-hour task, as our Document models had methods that pulled dates from the background check vendor and the credit bureau.
 However, I soon found out after that those were the dates of when the data was pulled, not the actual
-dates that I needed. Figuring out the specific document type that contained the data was a hassle, not to
-mention that I probably must have seen over a thousand nil values helplessly trying to dig for the proper
+dates that I needed. Figuring out the specific document type from the vendors that contained the data was a hassle, not to
+mention that I probably must have seen more than a thousand &lt;code class=&quot;highlighter-rouge&quot;&gt;nil&lt;/code&gt; values helplessly trying to dig for the proper
 object. After wrestling with the task for a week, I figured out the exact method to pull the data,
-but it was not pulling the correct data from some applications. Then another week of struggle passed until I realized that the backend logic was already done in a separate part of the app - until that point,I didn’t know I could have felt this demoralized and plain dumb for not seeing it sooner.&lt;/p&gt;
+but it was not pulling the correct data from some applications. Then another week of struggle passed until I realized that the backend logic was already done in a separate part of the app - until that point, I didn’t know I could have felt this demoralized and plain dumb for not seeing it sooner.&lt;/p&gt;
 
-&lt;p&gt;However, I found a silver lining after going through this process: I had dug a lot deeper into the app than I would have if I were to find the pre-existing function initially, getting quite familiar with the app’s object relations, MVC design, as well as discovering the nuances of Ruby. I would do it
+&lt;p&gt;However, I found a silver lining after going through this process: I had dug a lot deeper into the app than I would have if I were to find the preexisting function initially, getting quite familiar with the app’s object relations, MVC design, as well as discovering the nuances of Ruby. I would do it
 better the second time around, but that’s exactly what experience is for.&lt;/p&gt;
 
 &lt;h1 id=&quot;the-end-or-not&quot;&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;end&lt;/code&gt;… Or Not&lt;/h1&gt;
@@ -114,7 +360,7 @@ entire engineering team for making my time here wonderful and memorable.
 We have a great team here not only in Boston, but all over the world
 in the UK, India, Dominican Republic, Brazil, and Paraguay - all of whom flew in just last week
 to make for a memorable holiday season and end of the year.
-The clichéd response to “what’s your favorite part of the job” is “the people” in every
+The clichéd response to “What’s your favorite part of the job” is “The people” in every
 interview I’ve had, but for this co-op it had substance and proved itself well.
 I have had a lot of exciting and unique experiences here that I would be hard pressed to
 find at another company and am going to take the lessons learned here forward (pun absolutely intended)
@@ -131,7 +377,7 @@ into the future.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Natacha&lt;/strong&gt; - For helping me find footing by pair programming extensively when I first started&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Mike&lt;/strong&gt; - For diving deep into seemingly infinitely-nested Hash structs with me&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Mike&lt;/strong&gt; - For diving deep into seemingly infinitely nested Hash structs with me&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Nate&lt;/strong&gt; - For the thorough code reviews and red-hot enthusiasm for programming languages&lt;/p&gt;
 
@@ -1258,290 +1504,6 @@ This console can be found at &lt;code class=&quot;highlighter-rouge&quot;&gt;htt
         
         
         <category>tools</category>
-        
-      </item>
-    
-      <item>
-        <title>Implementing Fuzzy Search in Elixir Using Ecto and Postgres</title>
-        <description>&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
-&lt;p&gt;Here at Forward Financing, our Elixir single sign-on app has always stored only a small number of users. We developed only internal tools and therefore only kept track of internal users. However, now that we are expanding and developing external facing tools, the number of users is skyrocketing. This caused a problem for admins who were creating, editing, and checking for users. To check if a user exists, an admin would have to manually click through the growing number of pages of users. Yuck. This sprint, our project managers decided it was time to implement search functionality for users. We decided to go down the route of fuzzy search, because why vanilla search when you can fuzzy search?&lt;/p&gt;
-
-&lt;h3 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h3&gt;
-&lt;p&gt;An Elixir app that uses Postgres and Ecto&lt;/p&gt;
-
-&lt;h3 id=&quot;where-do-we-start&quot;&gt;Where do we start?&lt;/h3&gt;
-&lt;p&gt;If we are going to write fuzzy search, we are going to need a way to calculate which strings are close enough to our query to show up in the results. After some quick investigating, we decided the best solution was to use the Levenshtein function from the &lt;a href=&quot;https://www.postgresql.org/docs/current/static/fuzzystrmatch.html#idm46428636025488&quot;&gt;fuzzystrmatch Postgres module&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;levenshtein-what-is-that-why-are-we-using-it&quot;&gt;Levenshtein? What is that? Why are we using it?&lt;/h3&gt;
-&lt;p&gt;Levenshtein is often referred to as “edit distance,” a name that better reflects its purpose. The Levenshtein distance between two strings is essentially the number of character changes to transform string A to string B. Valid character changes are&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Adding a character&lt;/li&gt;
-  &lt;li&gt;Deleting a character&lt;/li&gt;
-  &lt;li&gt;Changing a character&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;A low Levenshtein distance means two strings are very similar. This makes it the perfect tool for fuzzy search because we can use it to find results similar to the search query. This will make our search tolerant to typos and small misspellings.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-solution&quot;&gt;The Solution&lt;/h2&gt;
-&lt;h3 id=&quot;migration&quot;&gt;Migration&lt;/h3&gt;
-&lt;p&gt;The first thing we want to do is add our fuzzystrmatch extension. We’ll need a migration for this.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mix ecto.gen.migration add_fuzzystrmatch_extension&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Make sure to define &lt;code class=&quot;highlighter-rouge&quot;&gt;up&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;down&lt;/code&gt; rather than defining the default &lt;code class=&quot;highlighter-rouge&quot;&gt;change&lt;/code&gt; Elixir provides, or Ecto will be unable to rollback this migration.&lt;/p&gt;
-&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migrations&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;AddFuzzystrmatchExtension&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Ecto&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Migration&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;up&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;execute&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;CREATE extension if not exists fuzzystrmatch;&quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;down&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;execute&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;DROP extension if exists fuzzystrmatch;&quot;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Now we’re ready for the fun part.&lt;/p&gt;
-
-&lt;h3 id=&quot;using-levenshtein&quot;&gt;Using Levenshtein&lt;/h3&gt;
-&lt;p&gt;I started off simple. Just a SQL query that we will execute using &lt;a href=&quot;https://hexdocs.pm/ecto/Ecto.Adapters.SQL.html#query/4&quot;&gt;Ecto’s SQL adapter&lt;/a&gt;. For now we will only search on email for simplicity. Let’s add it to our model.&lt;/p&gt;
-
-&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fuzzy_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;SELECT * FROM users WHERE levenshtein(email, $1) &amp;lt;= $2&quot;&lt;/span&gt;
-      &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Repo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Test that by running something like this:&lt;/p&gt;
-&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fuzzy_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;dfilippo@forwardfinancing.com&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Postgrex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;ss&quot;&gt;columns:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;email&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-    &lt;span class=&quot;ss&quot;&gt;command:&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:select&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;connection_id:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;45434&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;num_rows:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;ss&quot;&gt;rows:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Demi Filippou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;dfilippou@forwardfinancing.com&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This returns a tuple with a &lt;code class=&quot;highlighter-rouge&quot;&gt;Postgrex.Result&lt;/code&gt; map containing the results of the query. It works! Even though my email is spelled slightly wrong, my user shows up. Yay! But we are still far from perfect.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-problem-with-using-repoquery&quot;&gt;The Problem with Using Repo.Query&lt;/h3&gt;
-&lt;p&gt;A major flaw in this execution for me is that &lt;code class=&quot;highlighter-rouge&quot;&gt;Postgrex.Result&lt;/code&gt; returns columns and rows, which are lists of strings, but not actual &lt;code class=&quot;highlighter-rouge&quot;&gt;User&lt;/code&gt; structures. This makes it very inconsistent with our other user API endpoints and a nuisance to work with. This is when a fellow engineer recommended I use Ecto &lt;a href=&quot;https://hexdocs.pm/ecto/Ecto.Query.API.html#fragment/1&quot;&gt;fragments&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;fragments-to-the-rescue&quot;&gt;Fragments to the Rescue!&lt;/h3&gt;
-&lt;p&gt;Fragments are amazing. We can transform that nasty SQL query into something beautiful. Let’s rewrite the bit from earlier.&lt;/p&gt;
-&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-  &lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Ecto&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Query&lt;/span&gt;
-
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fuzzy_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;ss&quot;&gt;where:&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;fragment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;levenshtein(?, ?)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt;
-
-      &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Repo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Run the same test command as before&lt;/p&gt;
-&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fuzzy_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;dfilipoop@forwardfinancing.com&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;[%&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Demi Filippou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;email:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;dfilippou@forwardfinancing.com&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now you should see the same results, but instead of receiving a tuple with a &lt;code class=&quot;highlighter-rouge&quot;&gt;Postgrex.Result&lt;/code&gt;, you will get an actual user! Sweet. Plus, this code is way easier to build on and keep DRY. Let’s add the ability to search by name as well, it will be super simple with fragments!&lt;/p&gt;
-&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Ecto&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Query&lt;/span&gt;
-
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fuzzy_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;ss&quot;&gt;where:&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;fragment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;levenshtein(?, ?)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;fragment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;levenshtein(?, ?)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt;
-      &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Repo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Now we can search on name and email, and it was so simple!&lt;/p&gt;
-&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fuzzy_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Demy Filippou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;[%&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Demi Filippou&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
-
-  &lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fuzzy_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Foo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;[%&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Mr. Foo&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;email:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;z@foo.co&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Foo&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;ordering-our-results&quot;&gt;Ordering Our Results&lt;/h3&gt;
-&lt;p&gt;Now, if this solution is to be of any use, we need to order our results by relevance. You can see in the previous example the user whose name was exactly “Foo” showed up last. With the way we have it written so far, there is no guarantee the ordering of our results will make sense, and the higher we set our Levenshtein threshold the more our results will be polluted, with the best results potentially being hidden at the end. So let’s go ahead and order based on the smallest Levenshtein distance across email and name. We can use the Postgres function &lt;a href=&quot;https://www.postgresql.org/docs/9.5/static/functions-conditional.html#FUNCTIONS-GREATEST-LEAST&quot;&gt;LEAST&lt;/a&gt; for this, which selects the smallest value from a list. Let’s modify the code from the last section.&lt;/p&gt;
-&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Ecto&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Query&lt;/span&gt;
-
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fuzzy_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;ss&quot;&gt;where:&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;fragment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;levenshtein(?, ?)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;fragment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;levenshtein(?, ?)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt;
-        &lt;span class=&quot;ss&quot;&gt;order_by:&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;fragment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;LEAST (levenshtein(?, ?), levenshtein(?, ?)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-              &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Repo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Now your fuzzy search results should be ordered by smallest Levenshtein distance of both email and name.&lt;/p&gt;
-&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fuzzy_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Joe Johnson&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;[%&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Joe Johnson&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Joe Shmo&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;email:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Pete@johnson.com&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;case-insensitivity&quot;&gt;Case Insensitivity&lt;/h3&gt;
-&lt;p&gt;Bad news for us! The Levenshtein function is case sensitive. This means using any caps casing at all, either in our query or in our user’s name or email fields, will be driving up the Levenshtein distance. So if we had a user whose name was “demi filippou”, and we did this…&lt;/p&gt;
-&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fuzzy_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;DEMI FILIPPOU&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;…we’d get no results! The Levenshtein distance here would actually be the length of my name, because according to Levenshtein, D and d are different characters, as are E and e, and so on. I can’t imagine how case sensitivity in fuzzy search would be helpful, so let’s fix that. We can use Postgres &lt;a href=&quot;https://www.postgresql.org/docs/9.5/static/functions-string.html#FUNCTIONS-STRING-SQL&quot;&gt;LOWER&lt;/a&gt; for this. We can downcase our query string, and downcase the name and email of the users we are searching to ensure the case sensitivity of Levenshtein doesn’t get in our way.&lt;/p&gt;
-&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Ecto&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Query&lt;/span&gt;
-
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fuzzy_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;downcase&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;ss&quot;&gt;where:&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;fragment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;levenshtein(LOWER(?), LOWER(?))&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;fragment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;levenshtein(LOWER(?), LOWER(?))&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt;
-        &lt;span class=&quot;ss&quot;&gt;order_by:&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;fragment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;LEAST (levenshtein(LOWER(?), LOWER(?)), levenshtein(LOWER(?), LOWER(?))&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-              &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Repo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;iex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fuzzy_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;DEMI FILIPPOU&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;[%&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;name:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Demi Filippou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;email:&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;dfilippou@forwardfinancing.com&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h3 id=&quot;leveraging-macros-to-dry-it-up&quot;&gt;Leveraging Macros to DRY it up&lt;/h3&gt;
-&lt;p&gt;It’s looking good so far! But once you see how awesome fuzzy search is, you might want to search on more fields. We decided to search on first name, last name, full name, email address, and the domain name in the email. It worked great, but our original implementation with the fragments got very repetitive, and we ended up having something like this code block five times:&lt;/p&gt;
-&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   &lt;span class=&quot;n&quot;&gt;fragment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-            &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;levenshtein(LOWER(?), LOWER(?))&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt; 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Not to mention repeating ourselves again and again in the &lt;code class=&quot;highlighter-rouge&quot;&gt;order_by&lt;/code&gt;. Ugh. I do &lt;em&gt;not&lt;/em&gt; want to see any more LOWERs. So let’s make it more dynamic! I took the advice of the Hex Docs and wrote some macros to &lt;a href=&quot;https://hexdocs.pm/ecto/Ecto.Query.API.html#fragment/1-defining-custom-functions-using-macros-and-fragment&quot;&gt;expose the Levenshtein function&lt;/a&gt;. This made it neater, more readable, and more dynamic. Win.&lt;/p&gt;
-
-&lt;p&gt;So go ahead and throw these macros in a helper module or in your model:&lt;/p&gt;
-&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;c1&quot;&gt;# Macro that takes two strings and determines if the levenshtein distance&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# between them is less than the given threshold&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;defmacro&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;levenshtein&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;str2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-      &lt;span class=&quot;kn&quot;&gt;quote&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;levenshtein&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;unquote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;unquote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;unquote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;# Wrapper for SQL levenshtein function, which gets the levenshtein distance&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# between str1 and str2&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# SQL levenshtein is case-sensitive, so we downcase everything to make it&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;# case-insensitive.&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;defmacro&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;levenshtein&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;str2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-      &lt;span class=&quot;kn&quot;&gt;quote&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;fragment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-          &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;levenshtein(LOWER(?), LOWER(?))&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;unquote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt;
-          &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;unquote&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now, we can really clean up the fuzzy search function. Make sure to import your module with your macros if you decided to separate them.&lt;/p&gt;
-&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Ecto&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Query&lt;/span&gt;
-
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fuzzy_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;downcase&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;ss&quot;&gt;where:&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;levenshtein&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;levenshtein&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;threshold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;ss&quot;&gt;order_by:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;fragment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-          &lt;span class=&quot;sd&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;LEAST(?, ?)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;levenshtein&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-          &lt;span class=&quot;n&quot;&gt;levenshtein&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Repo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;The functionality is identical but now it’s super easy to search on more fields. And that’s it - you now have a fully functional &lt;code class=&quot;highlighter-rouge&quot;&gt;fuzzy_search&lt;/code&gt; function that returns search results under a given Levenshtein threshold!&lt;/p&gt;
-</description>
-        <pubDate>Wed, 20 Dec 2017 11:00:00 -0500</pubDate>
-        <link>http://localhost:4000/elixir/ecto/postgres/fuzzy-search/2017/12/20/fuzzy-search-in-elixir.html</link>
-        <guid isPermaLink="true">http://localhost:4000/elixir/ecto/postgres/fuzzy-search/2017/12/20/fuzzy-search-in-elixir.html</guid>
-        
-        
-        <category>elixir</category>
-        
-        <category>ecto</category>
-        
-        <category>postgres</category>
-        
-        <category>fuzzy-search</category>
         
       </item>
     
