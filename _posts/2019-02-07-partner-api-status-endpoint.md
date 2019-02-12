@@ -47,9 +47,7 @@ For example, the GET url might be
 The only thing you'll need in the request header is your **API key**!
 
 ```
-{
   api_key: "YOUR_API_KEY_HERE"  
-}
 ```
 
 #### Sample Request
@@ -62,69 +60,23 @@ curl -X GET \
 
 ### Response
 The possible response body fields are 
-- **stage** - the current state of your submitted deal in our process 
-- **max_approval** - the maximum advance amount approved for this merchant
-- **max_payments** - the maximum number of payments approved for this merchant (term in days)
-- **offer_link** - link to our offer calculator where you can select terms and request contracts
-- **decline_drivers** - reasons why this deal was declined chosen from a set list (see below for list)
-- **decline_notes** - additional explanation for why this deal was declined 
-- **missing_info** - additional information that is needed for a decision to  be made on this deal
+- `stage` - the current state of your submitted deal in our process 
+- `max_approval` - the maximum advance amount approved for this merchant
+- `max_payments` - the maximum number of payments approved for this merchant (term in days)
+- `offer_link` - link to our offer calculator where you can select terms and request contracts
+- `decline_drivers` - reasons why this deal was declined chosen from a set list (see below for list)
+- `decline_notes` - additional explanation for why this deal was declined 
+- `missing_info` - additional information that is needed for a decision to  be made on this deal
 
 Your response will contain different fields depending on the status of your deal.
 All responses will contain the **stage** of your deal.
 
-<table class="table">
-  <tr>
-    <th> Deal Status </th>
-    <th> stage </th>
-    <th> max_approval </th>
-    <th> max_payments </th>
-    <th> offer_link </th>
-    <th> decline_drivers </th>
-    <th> decline_notes </th>
-    <th> missing_info </th>
-  </tr>
-  <tr>
-    <td id="deal_status"> Processing </td>
-    <td id="stage"> ✔ </td>
-    <td id="max_approval"/>
-    <td id="max_payments"/>
-    <td id="offer_link"/>
-    <td id="decline_drivers"/>
-    <td id="decline_notes"/>
-    <td id="missing_info"/>
-  </tr>
-  <tr>
-    <td id="deal_status"> Approved </td>
-    <td id="stage"> ✔ </td>
-    <td id="max_approval"> ✔ </td>
-    <td id="max_payments"> ✔ </td>
-    <td id="offer_link"> ✔ </td>
-    <td id="decline_drivers"/>
-    <td id="decline_notes"/>
-    <td id="missing_info"/>
-  </tr>
-  <tr>
-    <td id="deal_status"> Declined </td>
-    <td id="stage"> ✔ </td>
-    <td id="max_approval"/>
-    <td id="max_payments"/>
-    <td id="offer_link"/>
-    <td id="decline_drivers"> ✔ </td>
-    <td id="decline_notes"> ✔ </td>
-    <td id="missing_info"/>
-  </tr>
-  <tr>
-    <td id="deal_status"> Missing Information </td>
-    <td id="stage"> ✔ </td>
-    <td id="max_approval"/>
-    <td id="max_payments"/>
-    <td id="offer_link"/>
-    <td id="decline_drivers"/>
-    <td id="decline_notes"/>
-    <td id="missing_info"> ✔ </td>
-  </tr>
-</table>
+|**Deal Status**|stage  | maxApproval   | maxPayments  | offerLink  | declineDrivers  | declineNotes  | missingInfo |
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Processing | ✔ |  |  |   |   |   |   |
+| Approved  | ✔ | ✔ | ✔ | ✔ |   |   |   |
+| Declined  | ✔ |   |   |   | ✔ | ✔ |   |
+| Missing Information  | ✔ |   |   |   |   |   | ✔ |
 
 ## Response Codes
 **200 Success** - Your deal was found successfully and it's details are in the response body.
