@@ -1,6 +1,7 @@
 ---
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
+
 @charset "utf-8";
 
 // Our variables
@@ -39,7 +40,7 @@ $on-laptop:        800px;
 @import "minima";
 
 .site-header .wrapper {
-  background-color: #0B9B93;
+  background-color: #52995c;
 }
 
 .site-title, .site-title:visited {
@@ -51,9 +52,31 @@ $on-laptop:        800px;
 }
 
 a {
-  color: #4C9242;
+  color: #52995c;
 
   &:visited {
-    color: #428937;
+    color: #52995c;
   }
+  
+  &:hover {
+    color: #52995c;
+  }
+}
+
+table {
+  border-spacing: 0px;
+  border-style: solid;
+  border-collapse: collapse;
+  border-width: 1px;
+  text-align: center;
+}
+
+th, td {
+  border-style: solid;
+  border-width: 1px;
+  padding: 4px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
