@@ -16,11 +16,10 @@ The only things you'll need are:
 
 ### Authentication
 
-You will need to contact us to get your `api_key`. The API key should be included
-in your request headers such that the request header key is `api_key` and the
-request header value for that key is your `api_key`. If you omit the api_key or
-provide an incorrect one, the HTTP status code of the response will be 401
-Unauthorized.
+You will need to contact us to get your `api_key`. The `api_key` must be included
+in your request header. If the `api_key` is missing or incorrect, 
+the HTTP status code of the response will be 401
+Unauthorized. See [below](#request) for an example of a correct response header.
 
 ### HTTPS
 
@@ -44,7 +43,7 @@ For example, the GET url might be
 
 ### Request
 
-The only thing you'll need in the request header is your **API key**!
+The only thing you'll need in the request header is your `api_key`!
 
 ```
   api_key: "YOUR_API_KEY_HERE"  
@@ -71,7 +70,7 @@ The possible response body fields are
 Your response will contain different fields depending on the status of your deal.
 All responses will contain the **stage** of your deal.
 
-|**Deal Status**|stage  | maxApproval   | maxPayments  | offerLink  | declineDrivers  | declineNotes  | missingInfo |
+|**Deal Status**|stage  | max_approval   | max_payments  | offer_link  | decline_drivers  | decline_notes  | missing_info |
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | Processing | ✔ |  |  |   |   |   |   |
 | Approved  | ✔ | ✔ | ✔ | ✔ |   |   |   |
