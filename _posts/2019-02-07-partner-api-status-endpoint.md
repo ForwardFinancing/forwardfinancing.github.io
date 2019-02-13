@@ -11,8 +11,10 @@ you're probably wondering how it's doing.*
 
 ## Getting Started
 The only things you'll need are: 
-- The lead `id` you received when you first submitted your deal
+- The lead `id` you received when you first submitted your deal through our API 
 - Your `api_key`
+
+Note that this status endpoint is only for deals submitted through our API.
 
 ### Authentication
 

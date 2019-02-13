@@ -40,7 +40,7 @@ $on-laptop:        800px;
 @import "minima";
 
 .site-header .wrapper {
-  background-color: #0B9B93;
+  background-color: #52995c;
 }
 
 .site-title, .site-title:visited {
@@ -52,10 +52,14 @@ $on-laptop:        800px;
 }
 
 a {
-  color: #4C9242;
+  color: #52995c;
 
   &:visited {
-    color: #428937;
+    color: #52995c;
+  }
+  
+  &:hover {
+    color: #52995c;
   }
 }
 
