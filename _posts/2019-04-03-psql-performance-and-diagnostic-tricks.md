@@ -80,7 +80,7 @@ are `COPY` queries that are very slow. Possibly consider other backup strategies
 
 ## `psql` Metrics
 
-Seeing as PostgreSQL is a database it makes sense that it exposes it's
+Seeing as PostgreSQL is a database it makes sense that it exposes its
 statistics data as columns and tables. We'll start by looking at the
 `pg_stat_statements` table, for looking at the execution time of our queries.
 
