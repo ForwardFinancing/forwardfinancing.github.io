@@ -58,16 +58,20 @@ change in mean response time!
 
 ## Heroku Database Metrics
 
+Heroku Postgres's dashboard gives a few graphs that can help with your DB
+sleuthing. Most relevant to this investigation were the following metrics:
+
 - Most time consuming
 - Slowest execution
 
-The most time consuming queries are the first we started looking at to be
-optimized, since the goal was to reduces the number of users impacted by
-timeouts, and any less DB pressure will help the slow queries be a little less
-slow, allowing things to get less backed up.
+Since the goal is to reduce the number of users impacted by timeouts, we
+started by optimizing the most time consuming queries, and the queries used by
+the pages timing out the most. Speeding up these queries puts less pressure on
+the database, allowing other queries to flow.
 
-Next, some of the slowest execution time queries were looked at, and a few
-can be fixed as well.
+Overly slow qeuries are also worth watching out for, and can indicate a query,
+or table that needs work. Here's an example of a very slow query from our DB,
+taking over 30 seconds to execute:
 
 ![]({{"/assets/2019-04-03-psql-performance-and-diagnostic-tricks/original_fein_and_full_payload_on_accounts.png" | absolute_url}})
 
