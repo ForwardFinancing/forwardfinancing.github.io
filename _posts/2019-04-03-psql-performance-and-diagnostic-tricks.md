@@ -254,5 +254,6 @@ which includes a few of the most important statistics to query.
 [scout]: https://docs.scoutapm.com/
 [includes]: https://apidock.com/rails/ActiveRecord/QueryMethods/includes
 [psql-caching]: https://madusudanan.com/blog/understanding-postgres-caching-in-depth/
+[psql-monitoring-docs]: https://www.postgresql.org/docs/11/monitoring.html
 [pg-extras]: https://github.com/heroku/heroku-pg-extras/tree/master/commands
 [citusdata]: https://www.citusdata.com/blog/2019/03/29/health-checks-for-your-postgres-database/
