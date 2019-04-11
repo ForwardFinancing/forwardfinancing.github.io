@@ -124,7 +124,7 @@ these:
 
 TODO: Short explanation of an index.
 
-### Before (`accountid`, `stage_name`) Index on `opportunities`
+#### Before (`accountid`, `stage_name`) Index on `opportunities`
 ![]({{"/assets/2019-04-03-psql-performance-and-diagnostic-tricks/original_account_id_and_stage_name_on_opportunities.png" | absolute_url}})
 ```ruby
 class AddAccountidAndStageNameIndicesToOpportunities < ActiveRecord::Migration[5.2]
@@ -134,12 +134,12 @@ class AddAccountidAndStageNameIndicesToOpportunities < ActiveRecord::Migration[5
   end
 end
 ```
-### After (`accountid`, `stage_name`) Index on `opportunities`
+#### After (`accountid`, `stage_name`) Index on `opportunities`
 ![]({{"/assets/2019-04-03-psql-performance-and-diagnostic-tricks/new_account_id_and_stage_name_on_opportunities.png" | absolute_url}})
 
 ---
 
-### Before `account_id` on `addresses` Table
+#### Before `account_id` on `addresses` Table
 ![]({{"/assets/2019-04-03-psql-performance-and-diagnostic-tricks/original_account_id_on_addresses.png" | absolute_url}})
 ```ruby
 class AddAccountAndContactIndicesToAddresses < ActiveRecord::Migration[5.2]
@@ -149,10 +149,16 @@ class AddAccountAndContactIndicesToAddresses < ActiveRecord::Migration[5.2]
   end
 end
 ```
-### After `account_id` on `addresses` Table
+#### After `account_id` on `addresses` Table
 ![]({{"/assets/2019-04-03-psql-performance-and-diagnostic-tricks/new_account_id_on_addresses.png" | absolute_url}})
 
-### Remove N+1 Query
+#### Compare Before/After `document_id` on `document_overviews` Table
+This index was added after the first wave of indices and improvesments, so we
+can view the difference at a high level with this following report from Scout.
+
+![]({{"/assets/2019-04-03-psql-performance-and-diagnostic-tricks/compare_admin_documents_show.png" | absolute_url}})
+
+## Remove N+1 Query
 
 Scout also detects and warns us about some N+1 queries.
 
