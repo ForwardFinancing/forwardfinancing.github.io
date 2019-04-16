@@ -6,4 +6,4 @@ categories: api
 author: Zach Cotter
 ---
 
-The Forward Financing API documentation has moved to [Apiary](https://forwardfinancingapi.docs.apiary.io/#)
+The Forward Financing API documentation has moved to [Apiary](https://forwardfinancingapi.docs.apiary.io/#).
