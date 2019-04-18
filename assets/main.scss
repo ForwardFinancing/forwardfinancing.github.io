@@ -54,12 +54,17 @@ $on-laptop:        800px;
   color: white;
 }
 
-h1 { font-size: 32px !important; }
-h2 { font-size: 28px !important; }
-h3 { font-size: 25px !important; }
-h4 { font-size: 20px !important; }
-h5 { font-size: 14px !important; }
-h6 { font-size: 11px !important; }
+h1, h1 code { font-size: 32px !important; }
+h2, h2 code { font-size: 28px !important; }
+h3, h3 code { font-size: 25px !important; }
+h4, h4 code { font-size: 20px !important; }
+h5, h4 code { font-size: 14px !important; }
+h6, h6 code { font-size: 11px !important; }
+
+hr {
+  margin-bottom: 15px;
+  border: 1px dashed #222;
+}
 
 a {
   color: #52995c;
