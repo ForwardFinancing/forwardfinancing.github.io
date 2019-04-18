@@ -15,8 +15,8 @@ Starting the week of March 25, 2019, we noticed elevated timeout rates on one
 of our main applications. This was quickly causing a bit of talk around office.
 
 In this post we'll go over a few of the steps, related to our database, that we
-took to resolve our issue. This application's DB has a number of good easy low
-hanging fruit to pick off. These techniques aren't overly advanced, yet
+took to resolve our issue. This application's DB has a number of good, easy,
+low hanging fruit to pick off. These techniques aren't overly advanced, yet
 resulted in a dramatic reduction in some queries, and ultimately response times
 / timeouts.
 
@@ -34,27 +34,28 @@ resulted in a dramatic reduction in some queries, and ultimately response times
 This is mostly a post about DB monitoring, diagnostics, and optimization.
 However, this is the result of an investigation into a performance issue we
 were facing with an application, which was causing both H12 (timeout) errors in
-Heroku, but also just very poor response times.
+Heroku, but also simply very poor response times. The following metrics are
+possibly meaningful for us:
 
-- Server Respose Time
+- Server Response Time
 - Query Execution Time / Count
 - Cache Hit Rates
 - Table Bloat
 
 ## Scout Metrics
 
-First, before we had identified any potential fixes, and we were just hearing
-reports of pages timing out a lot more than normal, we could look at
-[Scout][scout].
-
-The image below is kinda a sneak peek at the performance gains we will achieve
-throughout this post (so far).
+First, before we had identified any potential fixes, we just knew that the
+application was timing out a lot, and that some endpoints specifically were
+most impacted. The first place to go for more information was our APM,
+[Scout][scout]. The image below is kinda a sneak peek at the performance gains
+we will achieve throughout this post.
 
 ![]({{"/assets/2019-04-03-psql-performance-and-diagnostic-tricks/compare_admin_applications_show.png" | absolute_url}})
 
-Here, the solid brown "total" is the optimized average response times, while
-the dotted brown is the "total" for the previous slow code. It shows a -55%
-change in mean response time!
+Here, the solid brown "total" is the average response times after deploying the
+optimizations in this post, while the dotted brown is the "total" for the
+previous slow code. It shows a -55% change in mean response time! Although,
+coming it at over 2.5s leaves plenty of room for improvement still.
 
 ## Heroku Database Metrics
 
@@ -69,14 +70,15 @@ started by optimizing the most time consuming queries, and the queries used by
 the pages timing out the most. Speeding up these queries puts less pressure on
 the database, allowing other queries to flow.
 
-Overly slow qeuries are also worth watching out for, and can indicate a query,
+Overly slow queries are also worth watching out for, and can indicate a query,
 or table that needs work. Here's an example of a very slow query from our DB,
-taking over 30 seconds to execute:
+taking over 30 seconds to execute because of a massive `full_payload` JSONB
+column:
 
 ![]({{"/assets/2019-04-03-psql-performance-and-diagnostic-tricks/original_fein_and_full_payload_on_accounts.png" | absolute_url}})
 
 It's worth mentioning, in Heroku (other's too probably) our automatic backups
-are `COPY` queries that are very slow. Possibly consider other backup strategies.
+are `COPY` queries that are very slow.
 
 ## `psql` Metrics
 
@@ -113,8 +115,7 @@ DESC LIMIT 20;
 # Improving Query Performance
 
 So, OK we've found some problems and we would like to actually speed things up
-now. To simplify greatly the 3 steps to solving any performance issue are
-these:
+now. To simplify greatly, the 3 steps to solving any performance issue are:
 
 1. Use Metrics to Identify Hot/Relevant Spot(s)
 2. Apply Optimization(s)
@@ -122,7 +123,13 @@ these:
 
 ## Missing Indices
 
-TODO: Short explanation of an index.
+Indices are a way of storing additional information about a table of data to
+make queries faster. Think of them like Post-it® Flags in a notebook. An index
+may be a binary tree on a single column, making `WHERE` clauses on that column
+faster for example, or more complex kinds of structures. These extra structures
+aren't free, and can slow down write heavy tables, so care must be used. Read
+more in the [PostgreSQL documentation][psql-indexes-docs].
+
 
 #### Before (`accountid`, `stage_name`) Index on `opportunities`
 ![]({{"/assets/2019-04-03-psql-performance-and-diagnostic-tricks/original_account_id_and_stage_name_on_opportunities.png" | absolute_url}})
@@ -154,7 +161,16 @@ end
 
 #### Compare Before/After `document_id` on `document_overviews` Table
 This index was added after the first wave of indices and improvesments, so we
-can view the difference at a high level with this following report from Scout.
+can view the difference at a high level with this following report from Scout,
+showing us before and after response times in the second day of the graph.
+
+```ruby
+class AddDocumentIdIndexToDocumentOverviews < ActiveRecord::Migration[5.2]
+  def change
+    add_index :document_overviews, :document_id
+  end
+end
+```
 
 ![]({{"/assets/2019-04-03-psql-performance-and-diagnostic-tricks/compare_admin_documents_show.png" | absolute_url}})
 
@@ -251,8 +267,6 @@ ORDER BY
 
 Look, a 3GB index that's never used! We should remove that.
 
-TODO: Add some info about indices into JSONB keys.
-
 ### Going Further
 
 There is a lot more information in the stats of PostgreSQL. [The
@@ -267,5 +281,6 @@ which includes a few of the most important statistics to query.
 [includes]: https://apidock.com/rails/ActiveRecord/QueryMethods/includes
 [psql-caching]: https://madusudanan.com/blog/understanding-postgres-caching-in-depth/
 [psql-monitoring-docs]: https://www.postgresql.org/docs/11/monitoring.html
+[psql-indexes-docs]: https://www.postgresql.org/docs/9.1/indexes.html
 [pg-extras]: https://github.com/heroku/heroku-pg-extras/tree/master/commands
 [citusdata]: https://www.citusdata.com/blog/2019/03/29/health-checks-for-your-postgres-database/
