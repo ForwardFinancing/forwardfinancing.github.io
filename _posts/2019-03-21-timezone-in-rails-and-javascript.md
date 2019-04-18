@@ -2,7 +2,7 @@
 layout: post
 title:  "Timezones in Rails and JavaScript"
 date:   2019-03-21 4:00:00 -0400
-categories: Ruby on Rails, JavaScript, Timezones, Date
+categories: Timezones
 author: Jason Ji
 ---
 
